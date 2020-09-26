@@ -41,6 +41,25 @@ Route::post('admin/schedules/update/{id}', 'admin\ScheduleController@update');
 Route::get('admin/schedules/{id}', 'admin\ScheduleController@edit');
 Route::get('/admin/schedules/delete/{id}', 'admin\ScheduleController@delete');
 Route::get('schedules/pagination', 'admin\ScheduleController@pagination');
+Route::get('schedules/pagination_by_program_id', 'admin\ScheduleController@pagination_by_program_id');
+
+
+
+
+
+/****=============== admin weekly schedules section    =====================  ******/
+Route::get('admin/schedule-weekly', 'admin\ScheduleController@schedule_weekly');
+Route::get('/admin/schedule-weekly/delete/{id}', 'admin\ScheduleController@schedule_weekly_delete');
+Route::post('admin/schedule-weekly/store', 'admin\ScheduleController@schedule_weekly_store');
+Route::get('admin/schedule-weekly/create', 'admin\ScheduleController@schedule_weekly_create');
+
+
+Route::post('admin/schedule-weekly/update/{id}', 'admin\ScheduleController@schedule_weekly_update');
+Route::get('admin/schedule-weekly/{id}', 'admin\ScheduleController@schedule_weekly_edit');
+
+Route::get('/admin/schedules/delete/{id}', 'admin\ScheduleController@delete');
+Route::get('schedules/pagination', 'admin\ScheduleController@pagination');
+Route::get('schedules/pagination_by_program_id', 'admin\ScheduleController@pagination_by_program_id');
 
 
 /****=============== app setting  section    =====================  ******/

@@ -64,9 +64,9 @@
     }
 </style>
 
-<form class="form"  id="containerForm" action="{{ url('admin/schedules/update') }}/{{ $schedule->id }}"
+<form class="form"  id="containerForm" action="<?php echo e(url('admin/schedule-weekly/update')); ?>/<?php echo e($schedule->id); ?>"
       method="post">
-    @csrf
+    <?php echo csrf_field(); ?>
     <div class="row ">
         <div class="col-md-11">
 
@@ -75,7 +75,7 @@
                 <div class="form-group has-feedback">
                     <label class="control-label col-md-3" for="date">Date</label>
                     <div class="col-md-9">
-                        <input type="text" maxlength="" value="{{ date('d-m-Y',strtotime($schedule->schedule_date))}}" class="form-control datepicker" id="schedule_date"
+                        <input type="text" maxlength="" value="<?php echo e(date('d-m-Y',strtotime($schedule->schedule_date))); ?>" class="form-control datepicker" id="schedule_date"
                                name="schedule_date" placeholder="Date" >
 
                         <p style="color:red" id="schedule_date_error"></p>
@@ -132,14 +132,14 @@
                         <select class="form-control select2" id="program_id" name="program_id">
 
 
-                            @if($programs)
-                                @foreach($programs as $program)
+                            <?php if($programs): ?>
+                                <?php $__currentLoopData = $programs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $program): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
-                                    <option value="{{$program->id}}">{{$program->program_name}}</option>
+                                    <option value="<?php echo e($program->id); ?>"><?php echo e($program->program_name); ?></option>
 
-                                @endforeach
-                            @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
 
                         </select>
                         <p style="color:red" id="program_id_error"></p>
@@ -149,7 +149,7 @@
                 <div class="form-group has-feedback">
                     <label class="control-label col-md-3" for="note">Note</label>
                     <div class="col-md-9">
-                        <input type="text" maxlength="255" value="{{$schedule->schedule_note}}" class="form-control" id="schedule_note" name="schedule_note"
+                        <input type="text" maxlength="255" value="<?php echo e($schedule->schedule_note); ?>" class="form-control" id="schedule_note" name="schedule_note"
                                placeholder="Note" >
 
                     </div>
@@ -197,9 +197,9 @@
 
     });
 
-     document.forms['containerForm'].elements['start_time'].value = "<?php echo date('H:i',strtotime($schedule->start_time)); ?>";
-     document.forms['containerForm'].elements['end_time'].value = "<?php echo date('H:i',strtotime($schedule->end_time)); ?>";
-     document.forms['containerForm'].elements['program_id'].value = "<?php echo $schedule->program_id; ?>";
+    document.forms['containerForm'].elements['start_time'].value = "<?php echo date('H:i',strtotime($schedule->start_time)); ?>";
+    document.forms['containerForm'].elements['end_time'].value = "<?php echo date('H:i',strtotime($schedule->end_time)); ?>";
+    document.forms['containerForm'].elements['program_id'].value = "<?php echo $schedule->program_id; ?>";
 
 
 </script>
@@ -239,3 +239,4 @@
 </script>
 
 
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/schedule/schedule_weekly_edit.blade.php ENDPATH**/ ?>

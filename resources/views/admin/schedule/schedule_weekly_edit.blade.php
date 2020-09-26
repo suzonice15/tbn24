@@ -64,7 +64,7 @@
     }
 </style>
 
-<form class="form"  id="containerForm" action="{{ url('admin/schedules/update') }}/{{ $schedule->id }}"
+<form class="form"  id="containerForm" action="{{ url('admin/schedule-weekly/update') }}/{{ $schedule->id }}"
       method="post">
     @csrf
     <div class="row ">
@@ -197,9 +197,9 @@
 
     });
 
-     document.forms['containerForm'].elements['start_time'].value = "<?php echo date('H:i',strtotime($schedule->start_time)); ?>";
-     document.forms['containerForm'].elements['end_time'].value = "<?php echo date('H:i',strtotime($schedule->end_time)); ?>";
-     document.forms['containerForm'].elements['program_id'].value = "<?php echo $schedule->program_id; ?>";
+    document.forms['containerForm'].elements['start_time'].value = "<?php echo date('H:i',strtotime($schedule->start_time)); ?>";
+    document.forms['containerForm'].elements['end_time'].value = "<?php echo date('H:i',strtotime($schedule->end_time)); ?>";
+    document.forms['containerForm'].elements['program_id'].value = "<?php echo $schedule->program_id; ?>";
 
 
 </script>

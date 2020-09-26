@@ -64,7 +64,7 @@
     }
 </style>
 
-<form class="form"  id="containerForm" action="{{url('/')}}/admin/schedules/store"
+<form class="form"  id="containerForm" action="{{url('/')}}/admin/schedule-weekly/store"
       method="post">
     @csrf
     <div class="row ">

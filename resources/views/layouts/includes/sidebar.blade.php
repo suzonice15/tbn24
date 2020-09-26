@@ -62,6 +62,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href=" {{ url('admin/schedules') }}"><i class="fa fa fa-list"></i></i>Schedule Daily</a></li>
+                    <li><a href=" {{ url('admin/schedule-weekly') }}"><i class="fa fa fa-list"></i></i>Schedule Weekly</a></li>
 
 
                 </ul>

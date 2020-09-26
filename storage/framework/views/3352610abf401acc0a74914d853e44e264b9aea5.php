@@ -64,9 +64,9 @@
     }
 </style>
 
-<form class="form"  id="containerForm" action="{{url('/')}}/admin/schedules/store"
+<form class="form"  id="containerForm" action="<?php echo e(url('/')); ?>/admin/schedule-weekly/store"
       method="post">
-    @csrf
+    <?php echo csrf_field(); ?>
     <div class="row ">
         <div class="col-md-11">
 
@@ -132,14 +132,14 @@
                     <select class="form-control select2" id="program_id" name="program_id">
 
 
-                            @if($programs)
-                                @foreach($programs as $program)
+                            <?php if($programs): ?>
+                                <?php $__currentLoopData = $programs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $program): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
-                        <option value="{{$program->id}}">{{$program->program_name}}</option>
+                        <option value="<?php echo e($program->id); ?>"><?php echo e($program->program_name); ?></option>
 
-                                @endforeach
-                                @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
 
                     </select>
                     <p style="color:red" id="program_id_error"></p>
@@ -234,3 +234,4 @@
 </script>
 
 
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/schedule/schedule_weekly_create.blade.php ENDPATH**/ ?>
