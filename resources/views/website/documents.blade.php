@@ -1,0 +1,26 @@
+@extends('website.master')
+@section('mainContent')
+
+
+    <section id="about" style="padding-bottom: 10px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="block wow fadeInLeft animated" >
+
+                        <?php echo $about->page_content; ?>
+
+
+        <a href="https://www.dropbox.com/s/e5ds1nfskw9zx1t/evicton-moratorium-letter-template.pdf" click="" to=""
+           download=""> <h1>Click to Download</h1>
+        </a>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+    </section>
+
+
+
+
+@endsection
