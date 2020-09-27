@@ -271,9 +271,10 @@ class SettingController extends Controller
         $row_data['live_url_bd'] = $request->live_url_bd;
         $row_data['program_start_type'] = $request->program_start_type;
         $row_data['youtube_chanel'] = $request->youtube_chanel;
-
-
-
+        $row_data['google_map'] = $request->google_map;
+        $row_data['contact_phone'] = $request->contact_phone;
+        $row_data['contact_address'] = $request->contact_address;
+        $row_data['contact_email'] = $request->contact_email;
         DB::table('app_seating')->where('app_setting_id', 1)->update($row_data);
          return redirect('admin/app-setting');
     }

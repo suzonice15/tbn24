@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         'Intervention\Image\ImageServiceProvider',
         Stevebauman\Location\LocationServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => 'Intervention\Image\Facades\Image',
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
     ],
 

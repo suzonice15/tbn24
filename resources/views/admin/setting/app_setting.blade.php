@@ -56,6 +56,30 @@
                                    value="{{$setting_row->youtube_chanel}}">
                         </div>
 
+                        <div class="form-group ">
+                            <label for="phone">Google Map</label>
+                            <input type="text" class="form-control" name="google_map" id="google_map"
+                                   value="{{$setting_row->google_map}}">
+                        </div>
+
+
+                        <div class="form-group ">
+                            <label for="phone">Contact Address</label>
+                            <input type="text" class="form-control" name="contact_address" id="google_map"
+                                   value="{{$setting_row->contact_address}}">
+                        </div>
+                        <div class="form-group ">
+                            <label for="phone">Contact Phone </label>
+                            <input type="text" class="form-control" name="contact_phone" id="google_map"
+                                   value="{{$setting_row->contact_phone}}">
+                        </div>
+                        <div class="form-group ">
+                            <label for="phone">Contact Email</label>
+                            <input type="text" class="form-control" name="contact_email" id="google_map"
+                                   value="{{$setting_row->contact_email}}">
+                        </div>
+
+
 
 
 

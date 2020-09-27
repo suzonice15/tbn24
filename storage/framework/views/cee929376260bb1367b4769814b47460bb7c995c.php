@@ -61,6 +61,51 @@
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
 
+                    <?php
+
+
+                    $message=DB::table('contacts')->where('status','=',0)->count();
+                    $messages=DB::table('contacts')->where('status','=',0)->get();
+                    ?>
+
+                    <li class="dropdown messages-menu ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="label label-danger"><?php echo e($message); ?></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have <?php echo e($message); ?> messages</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+
+                                    <?php if($messages): ?>
+                                        <?php $__currentLoopData = $messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><!-- start message -->
+                                        <p> <?php echo e($message->contact_email); ?> </p>
+                                        <a href="<?php echo e(url('/')); ?>/message/seen/<?php echo e($message->contact_id); ?>">
+
+                                            <h4>
+                                               <?php echo e($message->contact_subject); ?>
+
+
+                                             </h4>
+                                            <p>   <?php echo e($message->contact_message); ?></p>
+                                        </a>
+                                    </li>
+                                    <!-- end message -->
+
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php endif; ?>
+
+
+
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="<?php echo e(url('/')); ?>/admin/contact-us">See All Messages</a></li>
+                        </ul>
+                    </li>
+
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src=" <?php echo e(url('public/uploads/users')); ?>/<?php echo e(Session::get('picture')); ?>" class="user-image" alt="User Image">

@@ -52,6 +52,11 @@
             </li>
 
 
+            <li>
+                <a href="<?php echo e(URL::to('admin/contact-us')); ?>">
+                    <i class="fa fa fa-tv"></i> <span> Contact Us</span>
+                </a>
+            </li>
 
             <li class="treeview">
                 <a href="#">
@@ -63,6 +68,7 @@
                 <ul class="treeview-menu">
                     <li><a href=" <?php echo e(url('admin/schedules')); ?>"><i class="fa fa fa-list"></i></i>Schedule Daily</a></li>
                     <li><a href=" <?php echo e(url('admin/schedule-weekly')); ?>"><i class="fa fa fa-list"></i></i>Schedule Weekly</a></li>
+                    <li><a href=" <?php echo e(url('/schedules/schedule-weekly-day-view')); ?>"><i class="fa fa fa-list"></i></i> Schedule Weekly View</a></li>
 
 
                 </ul>

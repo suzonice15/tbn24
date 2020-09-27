@@ -245,4 +245,33 @@ class AdminController extends Controller
         $url = URL::current();
         return redirect('/admin')->with('success', 'You are successfully Logout !')->with('current', $url);;
     }
+    public function message_seen($id)
+    {
+        $data['status']=1;
+        $result = DB::table('contacts')->where('contact_id', $id)->update($data);
+        return redirect('/admin/contact-us')->with('success', 'You Seen successfully This Message !');
+    }
+
+
+    public function contact_us()
+    {
+        $data['main'] = ' Contact Us List ';
+        $data['active'] = ' Contact Us List ';
+        $data['title'] = '';
+        $contacts  = DB::table('contacts')->orderBy('contact_id', 'desc')->paginate(2);
+        return view('admin.user.contact_us', compact('contacts'), $data);
+    }
+
+    public function pagination_contact_us(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $contacts  =DB::table('contacts')->orderBy('contact_id', 'desc')->paginate(2);
+
+            return view('admin.user.pagination_contact_us', compact('contacts'));
+        }
+
+    }
 }

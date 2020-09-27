@@ -44,6 +44,20 @@ class ScheduleController extends Controller
 
     }
 
+    public function schedule_weekly_day_view()
+    {
+        $data['main'] = '  Schedule List  ';
+        $data['active'] = '  Schedule List ';
+        $data['title'] = '';
+        $today="Y-m-d";
+
+        
+        return view('admin.schedule.schedule_weekly_day_view', $data);
+
+    }
+
+
+
 
 
     public function pagination(Request $request)
@@ -171,6 +185,7 @@ class ScheduleController extends Controller
     {
         $data['programs']=DB::table('programs')->get();
 
+      
         $data['schedule'] = DB::table('schedules')->where('id', $id)->first();
         return view('admin.schedule.edit',$data);
 
@@ -245,9 +260,18 @@ class ScheduleController extends Controller
         $data['active'] = ' Schedule Weekly List  ';
         $data['title'] = '';
         $today="Y-m-d";
-    // echo $mutable = Carbon::now();
+
+
+
+//        Stats::where('created_at', '>', Carbon::now()->startOfWeek())
+//            ->where('created_at', '<', Carbon::now()->endOfWeek())
+//            ->get();
         $data['programs']=DB::table('programs')->get();
-        $schedules  =DB::table('schedules')->join('programs','programs.id','=','schedules.program_id')
+        $start_date= Carbon::now()->startOfWeek();
+        $end_date=Carbon::now()->endOfWeek();
+        $schedules  =DB::table('schedules')->select('schedules.*','programs.program_name')->join('programs','programs.id','=','schedules.program_id')
+            ->where('schedule_date', '>', $start_date)
+           ->where('schedule_date', '<',$end_date)
             ->orderBy('schedules.id', 'desc')
             ->paginate(10);
         return view('admin.schedule.schedule_weekly', compact('schedules'), $data);
@@ -266,7 +290,15 @@ class ScheduleController extends Controller
 //                ->where('program_id', 'LIKE', '%' . $query . '%')
 //                ->orderBy('programs.id', 'desc')
 //                ->paginate(10);
-            $schedules  =DB::table('schedules')->select('schedules.*','programs.program_name')->join('programs','programs.id','=','schedules.program_id')
+//            $schedules  =DB::table('schedules')->select('schedules.*','programs.program_name')
+//                ->join('programs','programs.id','=','schedules.program_id')
+//                ->orderBy('schedules.id', 'desc')
+//                ->paginate(10);
+            $start_date= Carbon::now()->startOfWeek();
+            $end_date=Carbon::now()->endOfWeek();
+            $schedules  =DB::table('schedules')->join('programs','programs.id','=','schedules.program_id')
+                ->where('schedule_date', '>', $start_date)
+                ->where('schedule_date', '<',$end_date)
                 ->orderBy('schedules.id', 'desc')
                 ->paginate(10);
 
@@ -274,6 +306,42 @@ class ScheduleController extends Controller
         }
 
     }
+
+    public function fetch_data_using_week(Request $request){
+        if ($request->ajax()) {
+
+              $query = $request->get('day_id');
+
+            $start_date= Carbon::now()->startOfWeek();
+            $end_date=Carbon::now()->endOfWeek();
+            $schedules  =DB::table('schedules')->join('programs','programs.id','=','schedules.program_id')
+                ->where('schedule_date', '>', $start_date)
+                ->where('schedule_date', '<',$end_date)
+                ->where('day', '=',$query)
+                ->orderBy('schedules.id', 'desc')
+                ->get();
+
+            return view('admin.schedule.fetch_data_using_week', compact('schedules'));
+        }
+    }
+    public function fetch_data_using_program_week(Request $request){
+        if ($request->ajax()) {
+
+            $query = $request->get('program_id');
+
+            $start_date= Carbon::now()->startOfWeek();
+            $end_date=Carbon::now()->endOfWeek();
+            $schedules  =DB::table('schedules')->join('programs','programs.id','=','schedules.program_id')
+                ->where('schedule_date', '>', $start_date)
+                ->where('schedule_date', '<',$end_date)
+                ->where('program_id', '=',$query)
+                ->orderBy('schedules.id', 'desc')
+                ->get();
+
+            return view('admin.schedule.fetch_data_using_week', compact('schedules'));
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.

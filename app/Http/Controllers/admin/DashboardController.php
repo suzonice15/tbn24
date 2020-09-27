@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 
 use AdminHelper;
 use DB;
+use URL;
 class DashboardController extends Controller
 {
     /**
@@ -27,47 +28,22 @@ class DashboardController extends Controller
     {
 
     $user_id=1;
+        $user_id = 1;//AdminHelper::Admin_user_autherntication();
+        $url = URL::current();
 
-
-        if($user_id < 1){
+        if ($user_id < 1) {
             //  return redirect('admin');
-            Redirect::to('admin')->send();
+            Redirect::to('admin')->with('redirect', $url)->send();
 
         }
-       $status= Session::get('status');
-        if($status=='vendor'){
-            // $data['orders']= DB::table('order_data')->select('order_total','order_status')->get();
-            $today = date('Y-m-d');
-            $data['new'] = DB::table('order_data')->where('order_status', 'new')->count();
-            $data['new_sum'] = DB::table('order_data')->where('order_status', '=', 'new')->sum('order_total');
-            $data['pending_payment'] = DB::table('order_data')->where('order_status', 'pending_payment')->count();
-            $data['pending_sum'] = DB::table('order_data')->where('order_status', 'pending_payment')->sum('order_total');
-            $data['processing'] = DB::table('order_data')->where('order_status', 'processing')->count();
-            $data['processing_sum'] = DB::table('order_data')->where('order_status', 'processing')->sum('order_total');
-            $data['on_courier'] = DB::table('order_data')->where('order_status', 'on_courier')->count();
-            $data['on_courier_sum'] = DB::table('order_data')->where('order_status', 'on_courier')->sum('order_total');
-            $data['delivered'] = DB::table('order_data')->where('order_status', 'delivered')->count();
-            $data['delivered_sum'] = DB::table('order_data')->where('order_status', 'delivered')->sum('order_total');
-            $data['refund'] = DB::table('order_data')->where('order_status', 'refund')->count();
-            $data['refund_sum'] = DB::table('order_data')->where('order_status', 'refund')->sum('order_total');
-            $data['cancled'] = DB::table('order_data')->where('order_status', 'cancled')->count();
-            $data['cancled_sum'] = DB::table('order_data')->where('order_status', 'cancled')->sum('order_total');
-            $data['completed'] = DB::table('order_data')->where('order_status', 'completed')->count();
-            $data['completed_sum'] = DB::table('order_data')->where('order_status', 'completed')->sum('order_total');
-            $data['today_order'] = DB::table('order_data')->where('order_date', $today)->count();
-            $data['today_order_sum'] = DB::table('order_data')->where('order_date', $today)->sum('order_total');
-            $data['products'] = DB::table('product')->where('vendor_id',Session::get('id'))->count();
-            $data['category'] = DB::table('category')->count();
-            return view('layouts.vendor_dashboard', $data);
 
-        }
-        {
-            // $data['orders']= DB::table('order_data')->select('order_total','order_status')->get();
+
+ // $data['orders']= DB::table('order_data')->select('order_total','order_status')->get();
             $today = date('Y-m-d');
             $data['new'] = 'dd';
 
             return view('layouts.dashboard', $data);
-        }
+
     }
 
     /**

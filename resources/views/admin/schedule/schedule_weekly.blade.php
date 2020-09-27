@@ -168,13 +168,28 @@
                 $(document).on('click', '#search', function () {
                     var program_id = $('#program_id').val();
                     var day_id = $('#day_id').val();
-                    if(program_id){
-                        alert(program_id);
+                    var data_id = $('#data_id').val();
+                    if(data_id=='day'){
+                        $.ajax({
+                            type: "GET",
+                            url: "{{url('schedules/fetch_data_using_week')}}?day_id=" + day_id,
+                            success: function (data) {
+                                $('tbody').html('');
+                                $('tbody').html(data);
+                            }
+                        })
+                    } else {
+                        $.ajax({
+                            type: "GET",
+                            url: "{{url('schedules/fetch_data_using_program_week')}}?program_id=" + program_id,
+                            success: function (data) {
+                                $('tbody').html('');
+                                $('tbody').html(data);
+                            }
+                        })
                     }
 
-                    if(day_id){
-                        alert(day_id);
-                    }
+
 
                     var schedule_date = $('#schedule_date_using_ajax').val();
                     fetch_data_by_program(program_id, schedule_date);

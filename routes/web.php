@@ -52,14 +52,21 @@ Route::get('admin/schedule-weekly', 'admin\ScheduleController@schedule_weekly');
 Route::get('/admin/schedule-weekly/delete/{id}', 'admin\ScheduleController@schedule_weekly_delete');
 Route::post('admin/schedule-weekly/store', 'admin\ScheduleController@schedule_weekly_store');
 Route::get('admin/schedule-weekly/create', 'admin\ScheduleController@schedule_weekly_create');
-
-
 Route::post('admin/schedule-weekly/update/{id}', 'admin\ScheduleController@schedule_weekly_update');
 Route::get('admin/schedule-weekly/{id}', 'admin\ScheduleController@schedule_weekly_edit');
-
 Route::get('/admin/schedules/delete/{id}', 'admin\ScheduleController@delete');
 Route::get('schedules/pagination', 'admin\ScheduleController@pagination');
 Route::get('schedules/pagination_by_program_id', 'admin\ScheduleController@pagination_by_program_id');
+Route::get('schedules/fetch_data_using_week', 'admin\ScheduleController@fetch_data_using_week');
+Route::get('schedules/fetch_data_using_program_week', 'admin\ScheduleController@fetch_data_using_program_week');
+
+
+
+
+/****=============== admin weekly schedules section    =====================  ******/
+Route::get('schedules/schedule-weekly-day-view', 'admin\ScheduleController@schedule_weekly_day_view');
+
+
 
 
 /****=============== app setting  section    =====================  ******/
@@ -76,6 +83,8 @@ Route::get('ajax_program', 'HomeController@ajax_program');
 Route::get('/program-details/{id}', 'HomeController@single_program');
 Route::get('/about-us', 'HomeController@about');
 Route::get('/documents', 'HomeController@documents');
+Route::get('/contact', 'HomeController@contact');
+Route::post('/contact', 'HomeController@contact_store');
 Route::get('/today-schedule', 'HomeController@today_schedule');
 
 
@@ -127,6 +136,10 @@ Route::post('admin/user/update/{id}', 'admin\AdminController@update');
 Route::get('admin/user/{id}', 'admin\AdminController@edit');
 Route::get('/admin/user/delete/{id}', 'admin\AdminController@delete');
 Route::get('logout', 'admin\AdminController@logout');
+Route::get('admin/contact-us', 'admin\AdminController@contact_us');
+Route::get('message/seen/{id}', 'admin\AdminController@message_seen');
+Route::get('admin/pagination_contact_us', 'admin\AdminController@pagination_contact_us');
+
 
 /****=============== category section    =====================  ******/
 Route::get('admin/categories', 'admin\CategoryController@index');
