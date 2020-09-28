@@ -1,6 +1,8 @@
 
-<form   style="height: 364px;" id="containerForm" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="{{url('/')}}/admin/programs/store" method="post" novalidate="novalidate">
-    @csrf
+<form   style="
+    height: 364px;
+" id="containerForm" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="<?php echo e(url('/')); ?>/admin/programs/store" method="post" novalidate="novalidate">
+    <?php echo csrf_field(); ?>
     <div class="row ">
 
         <div class="clearfix form-horizontal">
@@ -71,7 +73,7 @@
                         <div  style="
     position: absolute;
     right: 25px;
-" class="form-group">
+"class="form-group">
                             <button type="button" class="btn btn-success" id="save_program_data"><i class="fa fa-save"></i>Save</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>Cancel</button>
                         </div>
@@ -179,3 +181,4 @@ $('#save_program_data').click(function () {
     </div>
 </form>
 
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/program/create.blade.php ENDPATH**/ ?>

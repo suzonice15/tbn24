@@ -1,6 +1,6 @@
 
-<form id="containerForm" style="height: 364px;" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="{{ url('admin/programs/update') }}/{{ $program->id }}" method="post" novalidate="novalidate">
-    @csrf
+<form id="containerForm" style="height: 364px;" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="<?php echo e(url('admin/programs/update')); ?>/<?php echo e($program->id); ?>" method="post" novalidate="novalidate">
+    <?php echo csrf_field(); ?>
     <div class="row ">
 
         <div class="clearfix form-horizontal">
@@ -12,7 +12,7 @@
                     <div class="form-group has-feedback">
                         <label class="control-label col-md-3" for="pro_name">Name</label>
                         <div class="col-md-9">
-                            <input type="text" maxlength="150" value="{{$program->program_name}}" class="form-control" id="program_name" name="program_name" placeholder="Name"  >
+                            <input type="text" maxlength="150" value="<?php echo e($program->program_name); ?>" class="form-control" id="program_name" name="program_name" placeholder="Name"  >
                             <p style="color:red" id="program_name_error"></p>
 
                         </div>
@@ -21,7 +21,7 @@
                     <div class="form-group has-feedback">
                         <label class="control-label col-md-3" for="pro_dtls">Details</label>
                         <div class="col-md-9">
-                            <textarea type="text" maxlength="255" class="form-control" id="program_details" name="program_details" placeholder="Details" >{{$program->program_details}}</textarea>
+                            <textarea type="text" maxlength="255" class="form-control" id="program_details" name="program_details" placeholder="Details" ><?php echo e($program->program_details); ?></textarea>
                             <p style="color:red" id="program_details_error"></p>
 
                         </div>
@@ -30,7 +30,7 @@
                     <div class="form-group has-feedback">
                         <label class="control-label col-md-3" for="pro_name">Playlist ID</label>
                         <div class="col-md-9">
-                            <input type="text" maxlength="150" value="{{$program->youtube}}" class="form-control" id="youtube" name="youtube" placeholder="Youtube Playlist ID" >
+                            <input type="text" maxlength="150" value="<?php echo e($program->youtube); ?>" class="form-control" id="youtube" name="youtube" placeholder="Youtube Playlist ID" >
                             <p style="color:red" id="youtube_error"></p>
 
                         </div>
@@ -58,7 +58,7 @@
                                     <div id="imageUploaderContainer" class="panel-body p-5" style="overflow: hidden; position: relative; height: 30.117px;">
                                         <span class="img-info" style="position: absolute; left: 0px; right: 0px; text-align: center; top: 50%; font-size: 25px; margin-top: -32px;">Upload Image</span>
                                         <div class="img-container" style="position: absolute; overflow: hidden; left: 5px; right: 5px; top: 5px; bottom: 5px;">
-                                            <img class="image-display " src="{{url('/')}}/public/uploads/program/{{$program->program_image}}" style="display:block;  height: 100%">
+                                            <img class="image-display " src="<?php echo e(url('/')); ?>/public/uploads/program/<?php echo e($program->program_image); ?>" style="display:block;  height: 100%">
                                         </div>
 
                                     </div>
@@ -177,3 +177,4 @@
     </div>
 </form>
 
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/program/edit.blade.php ENDPATH**/ ?>

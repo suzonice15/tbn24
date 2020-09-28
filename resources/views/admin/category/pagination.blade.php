@@ -2,42 +2,20 @@
     <?php $i=0;?>
     @foreach ($categories as $category)
 
-        <?php
-            if(empty($category->medium_banner)){
-                $image='https://www.dhakabaazar.com/uploads/nova-black-berry-moving-room-fan-heater-35643564-min_thumb.png';
-            } else {
-                $image=url('public/uploads/category').'/'.$category->medium_banner;
-            }
-           $total_prodcut= DB::table('product_category_relation')->where('category_id',$category->category_id)->count();
 
-        ?>
 
         <tr>
-            <td>{{ $category->category_id }}</td>
-            <td>
-            <img width="50" src="{{$image}}" >
-            </td>
-
-
             <td>{{$category->category_title}} </td>
 
 
-            </td>
-            <td>{{$category->category_name}} </td>
-            <td>
 
-            <?php if($category->parent_id==0){ ?>
-
-                <span class="label label-success">Main Parent</span>
-                <?php } ?>
-            </td>
-            <td>{{$total_prodcut}} </td>
-            <td><?php if($category->status==1) {echo "Publised" ;}else{ echo "Unpublished";} ?> </td>
-            <td>{{date('d-m-Y',strtotime($category->registered_date))}}</td>
+            <td><?php if($category->status==1) {echo "Active" ;}else{ echo "Inactive";} ?> </td>
+            <td>{{date('d-m-Y',strtotime($category->created_date))}}</td>
             <td>
-                <a title="edit" href="{{ url('admin/category') }}/{{ $category->category_id }}">
-                    <span class="glyphicon glyphicon-edit btn btn-success"></span>
-                </a>
+                <button type="button" class="btn   btn-success edit_modal" data-toggle="modal" data-category_id="{{$category->category_id}}"   data-target="#edit-program">
+                    <i class="fa fa-edit"></i>
+                </button>
+
 
 
                 <a title="delete" href="{{ url('admin/category/delete') }}/{{ $category->category_id }}" onclick="return confirm('Are you want to delete this information :press Ok for delete otherwise Cancel')">
@@ -53,5 +31,27 @@
         </td>
     </tr>
 @endif
+
+
+<script>
+
+
+
+    $('.edit_modal').on('click',function () {
+
+        let category_id=$(this).data("category_id") // will return the number 123
+
+
+        $.ajax({
+            type:"GET",
+            url:"{{url('admin/category')}}/"+category_id,
+            success:function(data)
+            {
+                $('#append_edit_data').html(data)
+            }
+        })
+    });
+</script>
+
 
 

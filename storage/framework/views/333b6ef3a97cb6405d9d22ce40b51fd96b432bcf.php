@@ -57,6 +57,32 @@
                     <i class="fa fa fa-tv"></i> <span> Contact Us</span>
                 </a>
             </li>
+            <li>
+                <a href="<?php echo e(URL::to('admin/faq')); ?>">
+                    <i class="fa fa fa-tv"></i> <span> Faq  </span>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo e(URL::to('admin/news')); ?>">
+                    <i class="fa fa fa-tv"></i> <span> News  </span>
+                </a>
+            </li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa fa-clock-o"></i> <span>Youtube</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" <?php echo e(url('admin/playlist')); ?>"><i class="fa fa fa-list"></i></i>Playlist</a></li>
+                    <li><a href=" <?php echo e(url('admin/categories')); ?>"><i class="fa fa fa-list"></i></i>Category</a></li>
+
+
+                </ul>
+            </li>
 
             <li class="treeview">
                 <a href="#">

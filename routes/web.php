@@ -17,11 +17,32 @@ use Illuminate\Support\Facades\Route;
 
 
 
-/* program section */
 
 
- 
-/****=============== admin page section    =====================  ******/
+/****=============== admin faq section    =====================  ******/
+Route::get('admin/faq', 'admin\FaqController@index');
+Route::get('admin/faq/create', 'admin\FaqController@create');
+Route::post('admin/faq/store', 'admin\FaqController@store');
+Route::post('admin/faq/update/{id}', 'admin\FaqController@update');
+Route::get('admin/faq/{id}', 'admin\FaqController@edit');
+Route::get('/admin/faq/delete/{id}', 'admin\FaqController@delete');
+Route::get('faq/pagination', 'admin\FaqController@pagination');
+
+
+/****=============== admin news section    =====================  ******/
+Route::get('admin/news', 'admin\NewsController@index');
+Route::get('admin/news/create', 'admin\NewsController@create');
+Route::post('admin/news/store', 'admin\NewsController@store');
+Route::post('admin/news/update/{id}', 'admin\NewsController@update');
+Route::get('admin/news/{id}', 'admin\NewsController@edit');
+Route::get('/admin/news/delete/{id}', 'admin\NewsController@delete');
+Route::get('news/pagination', 'admin\NewsController@pagination');
+
+
+
+
+
+/****=============== admin program section    =====================  ******/
 Route::get('admin/programs', 'admin\ProgramController@index');
 Route::get('admin/programs/create', 'admin\ProgramController@create');
 Route::post('admin/programs/store', 'admin\ProgramController@store');
@@ -90,37 +111,6 @@ Route::get('/today-schedule', 'HomeController@today_schedule');
 
 
 
-Route::get('/product/{id}', 'HomeController@product');
-Route::get('/search_engine', 'HomeController@search_engine');
-Route::get('/search', 'HomeController@search');
-Route::get('/hot_home_product', 'HomeController@hot_home_product');
-Route::get('/home_page_category_ajax', 'HomeController@home_page_category_ajax');
-Route::get('/add-to-cart', 'AjaxController@add_to_cart');
-Route::get('/related/product', 'AjaxController@relatedProduct');
-Route::get('/hotdeal/product', 'AjaxController@hotdealProduct');
-Route::get('track-your-order', 'HomeController@track_order');
-Route::post('track-your-order', 'HomeController@track_order');
-Route::get('/page/{id}', 'HomeController@page');
-Route::post('/add_to_review', 'AjaxController@add_to_review');
-Route::get('homePage/pagination', 'HomeController@homepagination');
-Route::get('live/product/search', 'HomeController@liveProductSearch');
-
-
-
-
-
-
-/*            cart           */
-Route::get('/thank-you', 'CheckOutController@thankYou');
-Route::get('/cart', 'CheckOutController@cart');
-Route::get('/plus_cart_item', 'CheckOutController@plus_cart_item');
-Route::get('/minus_cart_item', 'CheckOutController@minus_cart_item');
-Route::get('/remove_cart_item', 'CheckOutController@remove_cart_item');
-Route::get('/add-to-wishlist', 'CheckOutController@add_to_wishlist');
-Route::get('/wishlist', 'CheckOutController@wishlist');
-Route::get('/remove-to-wishlist', 'CheckOutController@remove_wish_list');
-Route::get('/checkout', 'CheckOutController@checkout');
-Route::post('/chechout', 'CheckOutController@checkoutStore');
 
 Route::get('/admin', 'admin\AdminController@login');
 Route::post('/login_check', 'admin\AdminController@loginCheck');
@@ -143,13 +133,23 @@ Route::get('admin/pagination_contact_us', 'admin\AdminController@pagination_cont
 
 /****=============== category section    =====================  ******/
 Route::get('admin/categories', 'admin\CategoryController@index');
-Route::post('category-urlcheck', 'admin\CategoryController@urlCheck');
 Route::get('admin/category/create', 'admin\CategoryController@create');
 Route::post('admin/category/store', 'admin\CategoryController@store');
 Route::post('admin/category/update/{id}', 'admin\CategoryController@update');
 Route::get('admin/category/{id}', 'admin\CategoryController@edit');
 Route::get('/admin/category/delete/{id}', 'admin\CategoryController@delete');
 Route::get('category/pagination/fetch_data', 'admin\CategoryController@fetch_data');
+
+
+
+/****=============== category section    =====================  ******/
+Route::get('admin/playlist', 'admin\PlaylistController@index');
+Route::get('admin/playlist/create', 'admin\PlaylistController@create');
+Route::post('admin/playlist/store', 'admin\PlaylistController@store');
+Route::post('admin/playlist/update/{id}', 'admin\PlaylistController@update');
+Route::get('admin/playlist/{id}', 'admin\PlaylistController@edit');
+Route::get('/admin/playlist/delete/{id}', 'admin\PlaylistController@delete');
+Route::get('playlist/pagination/fetch_data', 'admin\PlaylistController@fetch_data');
 
 
 /****=============== admin page section    =====================  ******/

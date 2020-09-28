@@ -97,21 +97,25 @@
                 <div class="col-md-4">
                     <div style="min-height: 200px; visibility: hidden; animation-duration: 500ms; animation-delay: 0.5s; animation-name: none;"
                          class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".5s">
-                        <i class="ion-ios-location-outline"></i>
+                        <i class="icon-location-arrow"></i>
+
                         <h5>{{$google_map->contact_address}}</h5>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div style="min-height: 200px; visibility: hidden; animation-duration: 500ms; animation-delay: 0.7s; animation-name: none;"
                          class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
-                        <i class="ion-ios-email-outline"></i>
+
+                        <i class="icon-envelope"></i>
+
                         <p>{{$google_map->contact_email}}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div style="min-height: 200px; visibility: hidden; animation-duration: 500ms; animation-delay: 0.9s; animation-name: none;"
                          class="phone wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".9s">
-                        <i class="ion-ios-telephone-outline"></i>
+                        <i class="icon-phone"></i>
+
                         <p>{{$google_map->contact_phone}}</p>
                     </div>
                 </div>

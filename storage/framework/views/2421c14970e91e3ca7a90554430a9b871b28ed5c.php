@@ -1,12 +1,12 @@
 
-<form id="containerForm" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="{{ url('admin/category/update') }}/{{ $category->category_id }}" method="post" novalidate="novalidate">
-    @csrf
+<form id="containerForm" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="<?php echo e(url('admin/category/update')); ?>/<?php echo e($category->category_id); ?>" method="post" novalidate="novalidate">
+    <?php echo csrf_field(); ?>
     <div class="row ">
         <div class="col-md-10 col-sm-8">
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="pro_name">Name</label>
                 <div class="col-md-9">
-                    <input type="text" maxlength="150" value="{{ $category->category_title }}" class="form-control" id="category_title" name="category_title" placeholder="Name"  >
+                    <input type="text" maxlength="150" value="<?php echo e($category->category_title); ?>" class="form-control" id="category_title" name="category_title" placeholder="Name"  >
                     <p style="color:red" id="category_title_error"></p>
 
                 </div>
@@ -43,7 +43,7 @@
 
 <script type="text/javascript">
 
-    document.forms['containerForm'].elements['status'].value = "{{ $category->status }}";
+    document.forms['containerForm'].elements['status'].value = "<?php echo e($category->status); ?>";
 
 
     $(document).ready(function() {
@@ -84,3 +84,4 @@
 </script>
 
 
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/category/edit.blade.php ENDPATH**/ ?>

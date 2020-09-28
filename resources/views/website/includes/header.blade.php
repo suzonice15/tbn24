@@ -34,7 +34,7 @@ var base_url_main="{{url('/')}}";
     <!-- Twitter Bootstrs CSS -->
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/bootstrap.min.css">
     <!-- Ionicons Fonts Css -->
-    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/font-awesome/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/ionicons.min.css">
     <!-- animate css -->
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/animate.css">

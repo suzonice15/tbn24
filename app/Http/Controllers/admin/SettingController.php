@@ -274,6 +274,9 @@ class SettingController extends Controller
         $row_data['google_map'] = $request->google_map;
         $row_data['contact_phone'] = $request->contact_phone;
         $row_data['contact_address'] = $request->contact_address;
+        $row_data['twitter'] = $request->twitter;
+        $row_data['linkedIn'] = $request->linkedIn;
+        $row_data['ios_app_link'] = $request->ios_app_link;
         $row_data['contact_email'] = $request->contact_email;
         DB::table('app_seating')->where('app_setting_id', 1)->update($row_data);
          return redirect('admin/app-setting');

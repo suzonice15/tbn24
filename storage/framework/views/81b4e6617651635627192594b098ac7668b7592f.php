@@ -1,6 +1,6 @@
 
-<form id="containerForm" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="{{url('/')}}/admin/category/store" method="post" novalidate="novalidate">
-    @csrf
+<form id="containerForm" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="<?php echo e(url('/')); ?>/admin/category/store" method="post" novalidate="novalidate">
+    <?php echo csrf_field(); ?>
     <div class="row ">
 
         <div class="clearfix form-horizontal">
@@ -75,3 +75,4 @@
 
 
 
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/category/create.blade.php ENDPATH**/ ?>

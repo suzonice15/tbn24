@@ -169,7 +169,7 @@
                      >
                     <div class="media-left">
                         <div class="icon">
-                            <i class="fa  fa-tv"></i>
+                            <i class="icon-facetime-video"></i>
                         </div>
                     </div>
                     <div class="media-body">
@@ -184,7 +184,7 @@
                      data-wow-delay="600ms">
                     <div class="media-left">
                         <div class="icon">
-                            <i class="fa fa-fw fa-lightbulb-o"></i>
+                            <i class="icon-lightbulb"></i>
                         </div>
                     </div>
                     <div class="media-body">
@@ -198,7 +198,8 @@
                      data-wow-delay="900ms">
                     <div class="media-left">
                         <div class="icon">
-                            <i class="ion-pie-graph"></i>
+                            <i class="icon-bar-chart"></i>
+
                         </div>
                     </div>
                     <div class="media-body">
@@ -212,7 +213,7 @@
                      data-wow-delay="1200ms">
                     <div class="media-left">
                         <div class="icon">
-                            <i class="ion-ios-people-outline"></i>
+                            <i class="icon-user"></i>
                         </div>
                     </div>
                     <div class="media-body">
@@ -226,7 +227,8 @@
                      data-wow-delay="1500ms">
                     <div class="media-left">
                         <div class="icon">
-                            <i class="ion-ios-circle-outline"></i>
+                            <i class="icon-circle-blank"></i>
+
                         </div>
                     </div>
                     <div class="media-body">
@@ -241,7 +243,7 @@
                      data-wow-delay="1800ms">
                     <div class="media-left">
                         <div class="icon">
-                            <i class="ion-ios-star-outline"></i>
+                            <i class="icon-star"></i>
                         </div>
                     </div>
                     <div class="media-body">
@@ -269,7 +271,7 @@
                         data-wow-duration="500ms">
                         You are always welcome to contact with us
                         </h2>
-                        <a href="contact.php"
+                        <a href="<?php echo e(url('/')); ?>/contact"
                            class="btn btn-default btn-contact wow fadeInDown"
                            data-wow-delay=".7s" data-wow-duration="500ms">Contact Us</a>
 
