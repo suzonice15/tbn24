@@ -278,6 +278,8 @@ class SettingController extends Controller
         $row_data['linkedIn'] = $request->linkedIn;
         $row_data['ios_app_link'] = $request->ios_app_link;
         $row_data['contact_email'] = $request->contact_email;
+        $row_data['before_login_alert'] = $request->before_login_alert;
+        $row_data['after_login_alert'] = $request->after_login_alert;
         DB::table('app_seating')->where('app_setting_id', 1)->update($row_data);
          return redirect('admin/app-setting');
     }

@@ -11,7 +11,7 @@
 
 </style>
 
-<footer  class="container-fluid">
+<footer  class="container-fluid" style="padding-top: 24px;padding-bottom: 11px;" >
     <div class="row mt30 pt30">
         <div class="container">
             <div class="row">
@@ -82,6 +82,135 @@
 
     </div>
 </footer>
+
+<div class="xs-copyright copyright-yellow " style="background-color: green;">
+    <div class="container container-fullwidth">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-12">
+                <div class="xs-copyright-text"  style="color:#ffffff;text-align: center;padding: 11px;" >
+                    ©  <?=date('Y')?> All Rights Reserved by tbn24.com Developed by <a target="_blank " style="color:#ffffff" href="https://www.isolutionsbd.com/">isolutions</a>
+                </div>
+                <!-- .xs-copyright-text END -->
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- five mitinte check modal -->
+<?php
+$five_minite_acctive=1;
+
+if(isset($five_minite_acctive)) { ?>
+
+    <!-- Modal -->
+    <div class="modal fade" id="five_minite_check_modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Notification From tbn24.com</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>You are not registered customer please registion first then login to your account then continously show our program</h2>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{url('/')}}/customer/login" class="btn btn-success">Login</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<?php } ?>
+
+<?php
+$one_hour_check_modal=1;
+
+if(isset($one_hour_check_modal)) { ?>
+
+    <!-- Modal -->
+    <div class="modal fade" id="one_hour_check_modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Notification From tbn24.com</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>To continously show our video   login  again</h2>
+                    <a href="{{url('/')}}/customer/login" class="btn btn-success">Login</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<?php } ?>
+
+
+
+        <!-- five mitinte check modal -->
+
+<script>
+    $(document).ready(function(){
+
+        function five_minite_check_modal(){
+            $.ajax({
+                type:"GET",
+                url:"{{url('customer/five_minite_check')}}",
+                success:function(data)
+                {
+
+                    if(data=='') {
+                        $("#five_minite_check_modal").modal();
+                    }
+                }
+            })
+
+
+        }
+        var five="{{get_footer_data()->before_login_alert}}*60000";
+
+
+        window.setInterval( five_minite_check_modal, five);
+    });
+</script>
+
+<!-- 1 hour  check modal -->
+
+<script>
+    $(document).ready(function(){
+
+        function one_hour_check_modal(){
+            $.ajax({
+                type:"GET",
+                url:"{{url('customer/one_hour_check')}}",
+                success:function(data)
+                {
+
+                    if(data=='') {
+                        $("#one_hour_check_modal").modal();
+                    }
+                }
+            })
+
+
+        }
+
+        var one_hour="{{get_footer_data()->after_login_alert}}*60000";
+
+        window.setInterval( one_hour_check_modal, one_hour);
+    });
+</script>
 
 
 

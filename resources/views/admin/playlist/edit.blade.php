@@ -10,7 +10,6 @@
             <div class="row">
                 <div class="col-md-9 col-sm-8">
                     <div class="row">
-
                         <div class="form-group ">
                             <label class="control-label col-md-3" for="category_id">Category</label>
                             <div class="col-md-9">
@@ -20,11 +19,8 @@
                                             <option value="{{$category->category_id}}">{{$category->category_title}}</option>
                                         @endforeach
                                     @endif
-
-
                                 </select>
                                 <p style="color:red"  id="category_id_error"></p>
-
                             </div>
                         </div>
 

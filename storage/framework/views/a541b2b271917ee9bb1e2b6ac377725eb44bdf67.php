@@ -1,6 +1,4 @@
-
-@extends('website.master')
-@section('mainContent')
+<?php $__env->startSection('mainContent'); ?>
 
     <style>
 
@@ -87,8 +85,8 @@
                     <div class="card">
                         <div class="card-header">Login</div>
                         <div class="card-body">
-                            <form name="my-form" onsubmit="return validform()" action="{{url('/')}}/customer/login" method="post">
-                                @csrf
+                            <form name="my-form" onsubmit="return validform()" action="<?php echo e(url('/')); ?>/customer/login" method="post">
+                                <?php echo csrf_field(); ?>
 
                                 <div class="form-group row">
                                     <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
@@ -120,7 +118,7 @@
                                         Login
                                     </button>
 
-                                    <a class="btn btn-info" href="{{url('/')}}/customer/form">Registration</a>
+                                    <a class="btn btn-info" href="<?php echo e(url('/')); ?>/customer/form">Registration</a>
                                 </div>
                             </form>
                         </div>
@@ -161,5 +159,7 @@
             }
         }
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('website.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/website/customer/login_form.blade.php ENDPATH**/ ?>

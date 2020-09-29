@@ -1,6 +1,4 @@
-
-@extends('website.master')
-@section('mainContent')
+<?php $__env->startSection('mainContent'); ?>
 
 
     <style>
@@ -88,13 +86,13 @@
                     <div class="card">
                         <div class="card-header">Registration</div>
                         <div class="card-body">
-                            <form name="my-form" onsubmit="return validform()" action="{{url('/')}}/customer/form" method="post">
-@csrf
+                            <form name="my-form" onsubmit="return validform()" action="<?php echo e(url('/')); ?>/customer/form" method="post">
+<?php echo csrf_field(); ?>
 
                                 <div class="form-group row">
                                     <label for="email" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                     <div class="col-md-6">
-                                        <input  required type="text" value="{{old('name')}}" id="name" class="form-control" name="name">
+                                        <input  required type="text" value="<?php echo e(old('name')); ?>" id="name" class="form-control" name="name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -119,21 +117,22 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-9 ">
-                                        @if(Session::has('error'))
+                                        <?php if(Session::has('error')): ?>
 
                                             <div class="alert alert-danger">
 
-                                                {{ Session::get('error') }}
+                                                <?php echo e(Session::get('error')); ?>
 
-                                                @php
+
+                                                <?php
 
                                                 Session::forget('error');
 
-                                                @endphp
+                                                ?>
 
                                             </div>
 
-                                        @endif
+                                        <?php endif; ?>
                                     </div>
                                 </div>
 
@@ -156,7 +155,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         Submit
                                     </button>
-                                    <a class="btn btn-info" href="{{url('/')}}/customer/login">Login</a>
+                                    <a class="btn btn-info" href="<?php echo e(url('/')); ?>/customer/login">Login</a>
 
                                 </div>
 
@@ -200,5 +199,7 @@
     </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('website.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/website/customer/sign_up_form.blade.php ENDPATH**/ ?>

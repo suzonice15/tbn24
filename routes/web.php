@@ -211,28 +211,6 @@ Route::post('admin/slider/update/{id}', 'admin\SliderController@update');
 Route::get('admin/slider/{id}', 'admin\SliderController@edit');
 Route::get('/admin/slider/delete/{id}', 'admin\SliderController@destroy');
 
-/****=============== admin vendor  section   =====================  ******/
-Route::get('admin/vendors', 'admin\AdminVendorController@index');
-Route::get('/admin/vendor/view/{id}', 'admin\AdminVendorController@show');
-Route::get('admin/vendor/pending/products', 'admin\AdminVendorController@pending');
-Route::get('admin/vendor/published/products', 'admin\AdminVendorController@published_product');
-Route::get('admin/vendor/pending/products/pagination', 'admin\AdminVendorController@pending_pagination');
-Route::get('admin/vendor/published/products/pagination', 'admin\AdminVendorController@published_pagination');
-Route::get('admin/vendor/product/published/{id}', 'admin\AdminVendorController@published');
-Route::get('admin/vendor/product/unpublished/{id}', 'admin\AdminVendorController@unpublished');
-Route::get('/admin/vendor/delete/{id}', 'admin\AdminVendorController@delete');
-Route::get('/admin/vendor/active/{id}', 'admin\AdminVendorController@active');
-Route::get('/admin/vendor/inactive/{id}', 'admin\AdminVendorController@inactive');
-
-/****=============== vendor font section    =====================  ******/
-Route::get('/shop/{id}', 'VendorController@shop');
-Route::get('/vendor-shop-ajax-product', 'VendorController@vedor_shop_ajax');
-Route::get('vendor/form', 'VendorController@sign_up_form');
-Route::post('vendor/save', 'VendorController@store');
-Route::get('vendor/login', 'VendorController@login');
-Route::get('vendor/logout', 'VendorController@logout');
-Route::post('vendor/login', 'VendorController@login_check');
-Route::post('vendor-shop-urlcheck', 'VendorController@shopUrlCheck')->name('vendor.Shopurlcheck');
 
 
 
@@ -240,19 +218,17 @@ Route::post('vendor-shop-urlcheck', 'VendorController@shopUrlCheck')->name('vend
 
 Route::get('customer/login', 'CustomerController@login');
 Route::get('customer/form', 'CustomerController@sign_up_form');
+Route::post('customer/form', 'CustomerController@store');
+Route::get('/myaccount', 'CustomerController@myaccount');
+Route::get('/customer/logout', 'CustomerController@logout');
+Route::post('/myprofile_save', 'CustomerController@myprofile_save');
+
+
 Route::get('customer/logout', 'CustomerController@logout');
 Route::post('customer/login', 'CustomerController@login_check');
+Route::get('customer/five_minite_check', 'CustomerController@five_minite_check');
+Route::get('customer/one_hour_check', 'CustomerController@one_hour_check');
 
-
-/****=============== vendor admin section    =====================  ******/
-Route::get('vendor/product/create', 'VendorController@create');
-Route::post('vendor/product/product_store', 'VendorController@product_store');
-Route::get('/vendor/products', 'VendorController@index');
-Route::get('vendor/products/pagination', 'VendorController@pagination');
-Route::get('vendor/product/delete/{id}', 'VendorController@delete_product');
-Route::get('vendor/product/{id}', 'VendorController@edit');
-Route::post('/vendor/product/update/{id}', 'VendorController@update');
-Route::get('vendor/orders', 'VendorController@all_orders');
 
 
 

@@ -116,7 +116,20 @@ var base_url_main="{{url('/')}}";
                     <li><a href="{{url('/')}}/about-us">About Us</a></li>
                     <li><a href="{{url('/')}}/contact">Contact</a></li>
                     <li><a href="{{url('/')}}/documents">Documents</a></li>
-                </ul>
+
+                    <?php
+                        //check session
+                    $user_id=Session::get('user_id');
+                        if($user_id){
+                    ?>
+                    <li><a href="{{url('/')}}/myaccount">My Account</a></li>
+
+                    <?php } else { ?>
+                    <li><a href="{{url('/')}}/customer/login">Login</a></li>
+
+                <?php }
+
+?>                </ul>
             </div>
         </nav>
         <!-- /main nav -->

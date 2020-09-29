@@ -116,7 +116,20 @@ var base_url_main="<?php echo e(url('/')); ?>";
                     <li><a href="<?php echo e(url('/')); ?>/about-us">About Us</a></li>
                     <li><a href="<?php echo e(url('/')); ?>/contact">Contact</a></li>
                     <li><a href="<?php echo e(url('/')); ?>/documents">Documents</a></li>
-                </ul>
+
+                    <?php
+                        //check session
+                    $user_id=Session::get('user_id');
+                        if($user_id){
+                    ?>
+                    <li><a href="<?php echo e(url('/')); ?>/myaccount">My Account</a></li>
+
+                    <?php } else { ?>
+                    <li><a href="<?php echo e(url('/')); ?>/customer/login">Login</a></li>
+
+                <?php }
+
+?>                </ul>
             </div>
         </nav>
         <!-- /main nav -->

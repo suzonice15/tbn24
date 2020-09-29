@@ -25,8 +25,9 @@ class HomeController extends Controller
     public function index()
     {
        // $ip = '103.92.214.7';//\Request::ip();
-        $ip = '72.229.28.185';
+        $ip = '103.92.214.8';
         $details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
+       
         $county= $details->country_code;
         if($county=='BD'){
             $data['api']= get_bd_api();
