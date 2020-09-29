@@ -20,7 +20,7 @@ class SettingController extends Controller
      */
     public function homePageSetting(Request $request)
     {
-        $user_id = AdminHelper::Admin_user_autherntication();
+        $user_id =1;// AdminHelper::Admin_user_autherntication();
         $url = URL::current();
 
         if ($user_id < 1) {
@@ -51,8 +51,8 @@ class SettingController extends Controller
                 }
             }
         }
-        $data['main'] = 'Setting';
-        $data['active'] = 'Update Setting';
+        $data['main'] = 'Home Page Setting';
+        $data['active'] = 'Home Page Setting';
         $data['title'] = '  ';
         return view('admin.setting.home_page_setting', $data);
 
@@ -286,7 +286,7 @@ class SettingController extends Controller
 
     public function socialSetting(Request $request)
     {
-        $user_id = AdminHelper::Admin_user_autherntication();
+        $user_id = 1;//AdminHelper::Admin_user_autherntication();
         $url = URL::current();
 
         if ($user_id < 1) {

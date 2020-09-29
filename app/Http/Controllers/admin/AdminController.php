@@ -224,6 +224,19 @@ class AdminController extends Controller
         }
 
     }
+    public function websiteUserDelete($id)
+    {
+        $result = DB::table('users')->where('id', $id)->delete();
+        if ($result) {
+            return redirect('admin/website/user')
+                ->with('success', 'Deleted successfully.');
+        } else {
+            return redirect('admin/website/user')
+                ->with('error', 'No successfully.');
+        }
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -232,12 +245,14 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy()
-    {
-        Session::put('id', '');
-        $url = URL::current();
+{
+    Session::put('id', '');
+    $url = URL::current();
 
-        return redirect('/')->with('success', 'You are successfully Logout !')->with('current', $url);
-    }
+    return redirect('/')->with('success', 'You are successfully Logout !')->with('current', $url);
+}
+
+
 
     public function logout()
     {
@@ -258,7 +273,7 @@ class AdminController extends Controller
         $data['main'] = ' Contact Us List ';
         $data['active'] = ' Contact Us List ';
         $data['title'] = '';
-        $contacts  = DB::table('contacts')->orderBy('contact_id', 'desc')->paginate(2);
+        $contacts  = DB::table('contacts')->orderBy('contact_id', 'desc')->paginate(10);
         return view('admin.user.contact_us', compact('contacts'), $data);
     }
 
@@ -268,9 +283,30 @@ class AdminController extends Controller
 
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            $contacts  =DB::table('contacts')->orderBy('contact_id', 'desc')->paginate(2);
+            $contacts  =DB::table('contacts')->orderBy('contact_id', 'desc')->paginate(10);
 
             return view('admin.user.pagination_contact_us', compact('contacts'));
+        }
+
+    }
+    
+    public function websiteUser(){
+
+        $data['main'] = 'Website User List ';
+        $data['active'] = ' Website User List  ';
+        $data['title'] = '';
+        $users  = DB::table('users')->orderBy('id', 'desc')->paginate(10);
+        return view('admin.user.websiteUser', compact('users'), $data);
+    }
+    
+    public function websiteUserPagination(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $users  =DB::table('users')->orderBy('id', 'desc')->paginate(10);
+            return view('admin.user.websiteUserPagination', compact('users'));
         }
 
     }

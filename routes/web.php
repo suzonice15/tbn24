@@ -117,7 +117,7 @@ Route::post('/login_check', 'admin\AdminController@loginCheck');
 Route::get('/dashboard', 'admin\DashboardController@index');
 
 
-/****=============== admin section    =====================  ******/
+/****=============== admin  user section    =====================  ******/
 
 Route::get('admin/users', 'admin\AdminController@index');
 Route::get('admin/user/create', 'admin\AdminController@create');
@@ -129,6 +129,15 @@ Route::get('logout', 'admin\AdminController@logout');
 Route::get('admin/contact-us', 'admin\AdminController@contact_us');
 Route::get('message/seen/{id}', 'admin\AdminController@message_seen');
 Route::get('admin/pagination_contact_us', 'admin\AdminController@pagination_contact_us');
+
+Route::get('admin/website/user', 'admin\AdminController@websiteUser');
+Route::get('website/user/pagination/fetch_data', 'admin\AdminController@websiteUserPagination');
+Route::get('admin/website/user/delete/{id}', 'admin\AdminController@websiteUserDelete');
+
+
+
+
+
 
 
 /****=============== category section    =====================  ******/

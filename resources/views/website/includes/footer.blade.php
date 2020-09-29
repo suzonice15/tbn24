@@ -178,7 +178,7 @@ if(isset($one_hour_check_modal)) { ?>
 
 
         }
-        var five="{{get_footer_data()->before_login_alert}}*60000";
+        var five =(<?php echo get_footer_data()->before_login_alert; ?>) * 60000;
 
 
         window.setInterval( five_minite_check_modal, five);
@@ -206,7 +206,7 @@ if(isset($one_hour_check_modal)) { ?>
 
         }
 
-        var one_hour="{{get_footer_data()->after_login_alert}}*60000";
+        var one_hour =(<?php echo get_footer_data()->after_login_alert; ?>) * 60000;
 
         window.setInterval( one_hour_check_modal, one_hour);
     });

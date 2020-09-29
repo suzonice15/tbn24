@@ -45,10 +45,21 @@
                     <i class="fa fa fa-tv"></i> <span>Program</span>
                 </a>
             </li>
-            <li>
-                <a href="<?php echo e(URL::to('admin/app-setting')); ?>">
-                    <i class="fa fa fa-tv"></i> <span>App Setting</span>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa fa-clock-o"></i> <span>Schedule</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href=" <?php echo e(url('admin/schedules')); ?>"><i class="fa fa fa-list"></i></i>Schedule Daily</a></li>
+                    <li><a href=" <?php echo e(url('admin/schedule-weekly')); ?>"><i class="fa fa fa-list"></i></i>Schedule Weekly</a></li>
+                    <li><a href=" <?php echo e(url('/schedules/schedule-weekly-day-view')); ?>"><i class="fa fa fa-list"></i></i> Schedule Weekly View</a></li>
+
+
+                </ul>
             </li>
 
 
@@ -84,36 +95,9 @@
                 </ul>
             </li>
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa fa-clock-o"></i> <span>Schedule</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href=" <?php echo e(url('admin/schedules')); ?>"><i class="fa fa fa-list"></i></i>Schedule Daily</a></li>
-                    <li><a href=" <?php echo e(url('admin/schedule-weekly')); ?>"><i class="fa fa fa-list"></i></i>Schedule Weekly</a></li>
-                    <li><a href=" <?php echo e(url('/schedules/schedule-weekly-day-view')); ?>"><i class="fa fa fa-list"></i></i> Schedule Weekly View</a></li>
 
 
-                </ul>
-            </li>
 
-            
-                
-                    
-                    
-                
-                
-                    
-
-                    
-
-                    
-
-                
-            
 
 
             <li class="treeview">
@@ -127,6 +111,7 @@
                 <ul class="treeview-menu">
                     <li><a href=" <?php echo e(url('admin/user/create')); ?>"><i class="fa fa-circle-o"></i>Create User</a></li>
                     <li><a href=" <?php echo e(url('admin/users')); ?>"><i class="fa fa-circle-o"></i>All Users</a></li>
+                    <li><a href=" <?php echo e(url('admin/website/user')); ?>"><i class="fa fa-circle-o"></i>Website User</a></li>
 
 
                 </ul>
@@ -157,14 +142,14 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href=" <?php echo e(url('admin/default/setting')); ?>"><i class="fa fa-circle-o"></i>Default Setting</a>
+
+
+            <ul class="treeview-menu">
+                    <li><a href=" <?php echo e(url('admin/app-setting')); ?>"><i class="fa fa-circle-o"></i>Default Setting</a>
                     </li>
                     <li><a href=" <?php echo e(url('admin/homepage/setting')); ?>"><i class="fa fa-circle-o"></i>Home Page Setting</a></li>
-                    <li><a href=" <?php echo e(url('admin/social/setting')); ?>"><i class="fa fa-circle-o"></i>Social Media Setting</a></li>
+                    <li hidden ><a  href=" <?php echo e(url('admin/social/setting')); ?>"><i class="fa fa-circle-o"></i>Social Media Setting</a></li>
                     <li><a href=" <?php echo e(url('/clear-cache')); ?>"><i class="fa fa-circle-o"></i>clear-cache</a></li>
-
-
                 </ul>
             </li>
 
