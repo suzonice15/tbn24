@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Validator;
-
+ use Alaouy\Youtube\Facades\Youtube;
 
 
 class HomeController extends Controller
@@ -24,6 +24,10 @@ class HomeController extends Controller
 
     public function index()
     {
+
+
+
+
        // $ip = '103.92.214.7';//\Request::ip();
         $ip = '103.92.214.8';
         $details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
@@ -149,13 +153,38 @@ class HomeController extends Controller
  
     
 
+    public function programVideo(){
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        $videoList = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
+        $playlists = Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');
+        $data['videoLists']=$videoList;
+        $data['playlists']=$playlists;
+
+//        echo '<pre>';
+//        print_r($playlists);
+//        exit();
+//
+        
+        return view('website.program_video',$data);
+
+    }
+    public function youtubePlaylist($playlist){
+
+        //$videoList = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
+       // $playlists = Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');
+       // $data['videoLists']=$videoList;
+        //$data['playlists']=$playlists;
+
+        $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($playlist);
+
+
+      
+
+        return view('website.youtubePlaylist',$data);
+
+    }
+
+
     
     public function page($url){
         $data['page']=DB::table('page')->select('*')->where('page_link',$url)->first();

@@ -16,8 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+/*           website  url */
 
-
+Route::get('/', 'HomeController@index');
+Route::get('/all-program', 'HomeController@all_program');
+Route::get('ajax_program', 'HomeController@ajax_program');
+Route::get('/program-details/{id}', 'HomeController@single_program');
+Route::get('/about-us', 'HomeController@about');
+Route::get('/documents', 'HomeController@documents');
+Route::get('/contact', 'HomeController@contact');
+Route::post('/contact', 'HomeController@contact_store');
+Route::get('/today-schedule', 'HomeController@today_schedule');
+Route::get('/program-video', 'HomeController@programVideo');
+Route::get('/youtube-playlist/{any}', 'HomeController@youtubePlaylist');
 
 /****=============== admin faq section    =====================  ******/
 Route::get('admin/faq', 'admin\FaqController@index');
@@ -98,15 +109,6 @@ Route::post('admin/app-setting', 'admin\SettingController@appSetting_store');
 
 
 
-Route::get('/', 'HomeController@index');
-Route::get('/all-program', 'HomeController@all_program');
-Route::get('ajax_program', 'HomeController@ajax_program');
-Route::get('/program-details/{id}', 'HomeController@single_program');
-Route::get('/about-us', 'HomeController@about');
-Route::get('/documents', 'HomeController@documents');
-Route::get('/contact', 'HomeController@contact');
-Route::post('/contact', 'HomeController@contact_store');
-Route::get('/today-schedule', 'HomeController@today_schedule');
 
 
 

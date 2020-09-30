@@ -62,7 +62,7 @@ class CustomerController extends Controller
         $data['email'] = $request->email;       
         $data['phone'] = $request->phone;
         $data['remember_token'] = time().rand(1,5000);
-        $ip = '103.92.214.8';//\Request::ip();
+        $ip = Request::ip();
         $details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
         $data['country'] = $details->country_name;
         $data['city'] = $details->city;

@@ -165,7 +165,7 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-lg-4 col-xs-12">
-                <div class="media wow fadeInUp animated"
+                <div class="media wow"
                      >
                     <div class="media-left">
                         <div class="icon">
@@ -180,8 +180,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 col-xs-12">
-                <div class="media wow fadeInDown animated" data-wow-duration="500ms"
-                     data-wow-delay="600ms">
+                <div class="media wow" >
                     <div class="media-left">
                         <div class="icon">
                             <i class="icon-lightbulb"></i>
@@ -194,8 +193,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 col-xs-12">
-                <div class="media wow fadeInDown animated" data-wow-duration="500ms"
-                     data-wow-delay="900ms">
+                <div class="media wow">
                     <div class="media-left">
                         <div class="icon">
                             <i class="icon-bar-chart"></i>
@@ -209,8 +207,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 col-xs-12">
-                <div class="media wow fadeInDown animated" data-wow-duration="500ms"
-                     data-wow-delay="1200ms">
+                <div class="media wow " >
                     <div class="media-left">
                         <div class="icon">
                             <i class="icon-user"></i>
@@ -223,8 +220,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 col-xs-12">
-                <div class="media wow fadeInDown animated" data-wow-duration="500ms"
-                     data-wow-delay="1500ms">
+                <div class="media wow " >
                     <div class="media-left">
                         <div class="icon">
                             <i class="icon-circle-blank"></i>
@@ -239,8 +235,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 col-xs-12">
-                <div class="media wow fadeInDown animated" data-wow-duration="500ms"
-                     data-wow-delay="1800ms">
+                <div class="media wow" >
                     <div class="media-left">
                         <div class="icon">
                             <i class="icon-star"></i>

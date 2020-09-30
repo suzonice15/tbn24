@@ -179,6 +179,7 @@ return [
         'Intervention\Image\ImageServiceProvider',
         Stevebauman\Location\LocationServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+		Alaouy\Youtube\YoutubeServiceProvider::class,
 
     ],
 
@@ -233,6 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => 'Intervention\Image\Facades\Image',
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+		'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
 
     ],
 
