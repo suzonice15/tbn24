@@ -21,6 +21,7 @@
             <thead>
             <tr>
 
+                <th>Sl</th>
                 <th>Picture</th>
                 <th>Name</th>
                 <th>Category</th>

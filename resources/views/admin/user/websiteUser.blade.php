@@ -22,6 +22,7 @@
                 <tr>
 
 
+                    <th>Sl</th>
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>

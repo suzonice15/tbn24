@@ -1,10 +1,11 @@
 @if(isset($categories))
-    <?php $i=0;?>
+    <?php $i=$categories->perPage() * ($categories->currentPage()-1);?>
     @foreach ($categories as $category)
 
 
 
         <tr>
+            <td>{{ ++$i}} </td>
             <td>{{$category->category_title}} </td>
 
 

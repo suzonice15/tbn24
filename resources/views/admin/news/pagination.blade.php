@@ -1,10 +1,12 @@
 @if(isset($news))
-    
+    <?php $i=$news->perPage() * ($news->currentPage()-1);?>
+
     @foreach ($news as $new)
         <tr>
 
          
 
+            <td>{{ ++$i }}</td>
             <td>{{ $new->news_title }}</td>
             <td>{{ $new->news_body }}</td>
             <td>

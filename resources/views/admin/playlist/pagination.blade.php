@@ -1,10 +1,11 @@
 @if(isset($playlists))
-    <?php $i=0;?>
+    <?php $i=$playlists->perPage() * ($playlists->currentPage()-1);?>
+
     @foreach ($playlists as $playlist)
 
 
 
-        <tr>
+        <tr>        <td>{{ ++$i}} </td>
             <td> <img src="{{url('/')}}/public/uploads/playlist/{{$playlist->playlist_picture}}" width="70"> </td>
             <td>{{$playlist->playlist_name}} </td>
             <td>{{$playlist->category_title}} </td>

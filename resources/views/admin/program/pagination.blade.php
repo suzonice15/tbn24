@@ -1,10 +1,11 @@
 @if(isset($programs))
-    
+    <?php $i=$programs->perPage() * ($programs->currentPage()-1);?>
+
     @foreach ($programs as $program)
         <tr>
 
          
-            <td>{{ $program->id }}</td>
+            <td>{{ ++$i }}</td>
             <td>{{ $program->program_name }}</td>
             <td>
                 <img width="50" src="{{ url('/public/uploads') }}/{{ $program->folder }}/program/{{ $program->program_image }}">

@@ -25,44 +25,17 @@ class CustomerController extends Controller
     }
     public function index()
     {
-        $user_id = AdminHelper::Admin_user_autherntication();
-        $url = URL::current();
-
-        if ($user_id < 1) {
-            //  return redirect('admin');
-            Redirect::to('vendor/login')->with('redirect', $url)->send();
-
-        }
-
-
-        $data['main'] = 'Vendors';
-        $data['active'] = 'All Products';
-        $data['title'] = '  ';
-        $products = DB::table('product')->where('vendor_id',Session::get('id'))->orderBy('product_id', 'desc')->paginate(10);
-
-        return view('website.vendor.product_list', compact('products'), $data);
-    }
-
-    public function pagination(Request $request)
-    {
-        if ($request->ajax()) {
-
-            $query = $request->get('query');
-            $query = str_replace(" ", "%", $query);
-            $products = DB::table('product')->where('vendor_id',Session::get('id'))->where('sku', 'LIKE', '%' . $query . '%')
-
-                ->orderBy('product_id', 'desc')->paginate(10);
-            return view('admin.product.pagination', compact('products'));
-        }
 
     }
+
+
     public function store(Request $request){
         
         $data['name'] = $request->name;
         $data['email'] = $request->email;       
         $data['phone'] = $request->phone;
         $data['remember_token'] = time().rand(1,5000);
-        $ip = Request::ip();
+        $ip = \Request::ip();
         $details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
         $data['country'] = $details->country_name;
         $data['city'] = $details->city;
@@ -127,19 +100,28 @@ class CustomerController extends Controller
 
 
 
+
     public function sign_up_form()
     {
-
-         return view('website.customer.sign_up_form');
+$user_id=Session::get('user_id');
+        if($user_id) {
+        return redirect('customer/login');
+        } else {
+            return view('website.customer.sign_up_form');
+        }
     }
 
     public  function login(){
 
 //       $all_count= file_get_contents("https://restcountries.eu/rest/v2/all");
 //        
+        $user_id=Session::get('user_id');
+        if($user_id) {
+            return redirect('/myaccount');
+        } else {
 
-
-        return view('website.customer.login_form');
+            return view('website.customer.login_form');
+        }
     }
     public function login_check(Request $request)
     {
@@ -153,6 +135,7 @@ class CustomerController extends Controller
             Session::put('user_id', $id);
             Session::put('email', $email);
             Session::put('name', $name);
+            Session::put('user_picture', $result->picture);
             return redirect('/');
 
         } else {
@@ -160,17 +143,106 @@ class CustomerController extends Controller
         }
 
     }
-    
-    public function  myaccount(){
-        $user_id=Session::get('user_id');
-        $data['user']=DB::table('users')->where('id',$user_id)->first();
-        return view('website.customer.my_profile',$data);
 
+    public function  myaccount(){
+ 
+        $user_id=Session::get('user_id');
+        if($user_id) {
+            $data['user']=DB::table('users')->where('id',$user_id)->first();
+            return view('website.customer.my_profile',$data);
+        } else {
+            return redirect('customer/login');
+        }
+
+    }
+    public function  password_changed(){
+        $user_id=Session::get('user_id');
+
+        $user_id=Session::get('user_id');
+        if($user_id) {
+           
+            return view('website.customer.password_changed');
+        } else {
+            return redirect('customer/login');
+        }
+
+    }
+    public function password_changed_store(Request $request){
+
+        $password = md5($request->password);
+        $user_id=Session::get('user_id');
+
+      $check_exitntin_user=  DB::table('users')->where('id',$user_id)->where('password',$password)->first();
+        if($check_exitntin_user){
+            $data['password'] = md5($request->new_password);
+            $result = DB::table('users')->where('id',Session::get('user_id'))->update($data);
+            return redirect('/customer/password/changed')
+                ->with('success', 'Password Changed Successfully');
+
+        } else {
+
+            return redirect('/customer/password/changed')
+                ->with('error', 'Old Password does not matched');
+
+        }
     }
 
 
 
-     public function five_minite_check(){
+    public function  photo_changed(){
+        $user_id=Session::get('user_id');
+
+        $user_id=Session::get('user_id');
+        if($user_id) {
+
+            return view('website.customer.photo_changed');
+        } else {
+            return redirect('customer/login');
+        }
+
+    }
+    public function photo_changed_store(Request $request){
+
+         $user_id=Session::get('user_id');
+        $image = $request->file('user_picture');
+        if ($image) {
+
+            $random='customer'.rand(1,2140).time();
+            $image_name = $random.'.' . $image->getClientOriginalExtension();
+
+            $destinationPath = public_path('/uploads/users');
+
+            $resize_image = Image::make($image->getRealPath());
+
+            $resize_image->resize(200, 200, function ($constraint) {
+
+            })->save($destinationPath . '/' . $image_name);
+
+
+            $data['picture'] = $image_name;
+
+            Session::put('user_picture',$image_name);
+        }
+
+
+        $checked=  DB::table('users')->where('id',$user_id)->update($data);
+        if($checked){
+
+            return redirect('customer/photo/changed')
+                ->with('success', 'Picture Changed Successfully');
+
+        } else {
+
+            return redirect('customer/photo/changed')
+                ->with('error', 'Picture does not Successfully');
+
+        }
+    }
+
+
+
+
+    public function five_minite_check(){
 
        echo  $user_id=Session::get('user_id');
          if($user_id){

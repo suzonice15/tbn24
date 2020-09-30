@@ -17,6 +17,7 @@
                 <thead>
                 <tr>
 
+                    <th>Sl</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Subject</th>

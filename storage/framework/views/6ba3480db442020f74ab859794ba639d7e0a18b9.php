@@ -6,11 +6,10 @@
 
          
             <td><?php echo e(++$i); ?></td>
-            <td><?php echo e($schedule->day); ?></td>
             <td><?php echo e($schedule->program_name); ?></td>
-
-            <td><?php echo e(date('H:i',strtotime($schedule->start_time))); ?>-<?php echo e(date('H:i',strtotime($schedule->end_time))); ?></td>
-
+            <td><?php echo e($schedule->schedule_date); ?></td>
+            <td><?php echo e($schedule->start_time); ?></td>
+            <td><?php echo e($schedule->end_time); ?></td>
 
 
             <td>
@@ -32,7 +31,7 @@
                 </button>
 
 
-                <a title="delete" href="<?php echo e(url('admin/schedule-weekly/delete')); ?>/<?php echo e($schedule->id); ?>" onclick="return confirm('Are you want to delete this Product')">
+                <a title="delete" href="<?php echo e(url('admin/schedules/delete')); ?>/<?php echo e($schedule->id); ?>" onclick="return confirm('Are you want to delete this Product')">
                     <span class="glyphicon glyphicon-trash btn btn-danger"></span>
                 </a>
             </td>
@@ -59,7 +58,7 @@
 
         $.ajax({
             type:"GET",
-            url:"<?php echo e(url('admin/schedule-weekly')); ?>/"+schedule_id,
+            url:"<?php echo e(url('admin/schedules')); ?>/"+schedule_id,
             success:function(data)
             {
                 $('#append_edit_data').html(data)
@@ -67,4 +66,4 @@
         })
     });
 </script>
-<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/schedule/pagination_schedule_weekly.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/schedule/pagination.blade.php ENDPATH**/ ?>

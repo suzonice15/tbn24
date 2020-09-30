@@ -1,10 +1,12 @@
 <?php if(isset($users)): ?>
-    <?php $i=0;?>
+    <?php $i=$users->perPage() * ($users->currentPage()-1);?>
+
     <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
 
         <tr>
+             <td><?php echo e(++$i); ?> </td>
              <td><?php echo e($user->name); ?> </td>
             <td><?php echo e($user->phone); ?> </td>
             <td><?php echo e($user->email); ?> </td>

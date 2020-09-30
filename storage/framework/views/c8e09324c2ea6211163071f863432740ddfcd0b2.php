@@ -1,6 +1,6 @@
 
-@extends('website.master')
-@section('mainContent')
+
+<?php $__env->startSection('mainContent'); ?>
 
 
 <style>
@@ -31,7 +31,7 @@
                                 if($picture){
 
                             ?>
-                            <img class="avatar" src="{{url('/')}}/public/uploads/users/{{$picture}}">
+                            <img class="avatar" src="<?php echo e(url('/')); ?>/public/uploads/users/<?php echo e($picture); ?>">
 
                                 <?php } else { ?>
 
@@ -41,21 +41,21 @@
 
 
 
-                            <div class="name"> {{Session::get('name')}}</div>
+                            <div class="name"> <?php echo e(Session::get('name')); ?></div>
                         </div>
                         <ul class="nav">
-                            <li><a href="{{url('/')}}/myaccount">  My Profile </a></li>
+                            <li><a href="<?php echo e(url('/')); ?>/myaccount">  My Profile </a></li>
 
-                            <li><a href="{{url('/')}}/customer/password/changed">  Change
+                            <li><a href="<?php echo e(url('/')); ?>/customer/password/changed">  Change
                                     Password </a></li>
-                            <li> <a href="{{url('/')}}/customer/photo/changed">  Change Photo </a> </li>
-                            <li><a href="{{url('/')}}/customer/logout">  Logout </a></li>
+                            <li> <a href="<?php echo e(url('/')); ?>/customer/photo/changed">  Change Photo </a> </li>
+                            <li><a href="<?php echo e(url('/')); ?>/customer/logout">  Logout </a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-9 account-content">
 
-                    @yield('customerContent')
+                    <?php echo $__env->yieldContent('customerContent'); ?>
 
                 </div>
             </div>
@@ -64,4 +64,5 @@
 </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('website.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/website/customer/my_account_home.blade.php ENDPATH**/ ?>

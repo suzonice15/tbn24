@@ -1,10 +1,11 @@
 <?php if(isset($faqs)): ?>
-    
+    <?php $i=$faqs->perPage() * ($faqs->currentPage()-1);?>
+
     <?php $__currentLoopData = $faqs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $faq): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
 
          
-            <td><?php echo e($faq->faq_id); ?></td>
+            <td><?php echo e(++$i); ?></td>
             <td><?php echo e($faq->questions); ?></td>
             <td><?php echo e($faq->answers); ?></td>
              <td><?php echo e(date('d-m-Y',strtotime($faq->created_date))); ?></td>

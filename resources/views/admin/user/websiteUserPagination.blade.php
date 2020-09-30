@@ -1,10 +1,12 @@
 @if(isset($users))
-    <?php $i=0;?>
+    <?php $i=$users->perPage() * ($users->currentPage()-1);?>
+
     @foreach ($users as $user)
 
 
 
         <tr>
+             <td>{{ ++$i}} </td>
              <td>{{$user->name}} </td>
             <td>{{$user->phone}} </td>
             <td>{{$user->email}} </td>

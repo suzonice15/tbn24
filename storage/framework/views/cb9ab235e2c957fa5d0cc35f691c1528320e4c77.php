@@ -1,10 +1,11 @@
 <?php if(isset($playlists)): ?>
-    <?php $i=0;?>
+    <?php $i=$playlists->perPage() * ($playlists->currentPage()-1);?>
+
     <?php $__currentLoopData = $playlists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $playlist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
 
-        <tr>
+        <tr>        <td><?php echo e(++$i); ?> </td>
             <td> <img src="<?php echo e(url('/')); ?>/public/uploads/playlist/<?php echo e($playlist->playlist_picture); ?>" width="70"> </td>
             <td><?php echo e($playlist->playlist_name); ?> </td>
             <td><?php echo e($playlist->category_title); ?> </td>

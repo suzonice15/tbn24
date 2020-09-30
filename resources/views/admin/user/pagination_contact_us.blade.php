@@ -1,9 +1,10 @@
 @if(isset($contacts))
+    <?php $i=$contacts->perPage() * ($contacts->currentPage()-1);?>
 
     @foreach ($contacts as $contact)
         <tr>
 
-
+<td>{{ ++$i }}</td>
 
             <td>{{ $contact ->contact_name }}</td>
             <td>{{ $contact ->contact_email }}</td>

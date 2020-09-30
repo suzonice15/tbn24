@@ -231,8 +231,13 @@ Route::get('customer/login', 'CustomerController@login');
 Route::get('customer/form', 'CustomerController@sign_up_form');
 Route::post('customer/form', 'CustomerController@store');
 Route::get('/myaccount', 'CustomerController@myaccount');
+Route::get('/customer/password/changed', 'CustomerController@password_changed');
+Route::post('/customer/password/changed', 'CustomerController@password_changed_store');
 Route::get('/customer/logout', 'CustomerController@logout');
 Route::post('/myprofile_save', 'CustomerController@myprofile_save');
+ 
+Route::get('/customer/photo/changed', 'CustomerController@photo_changed');
+Route::post('/customer/photo/changed', 'CustomerController@photo_changed_store');
 
 
 Route::get('customer/logout', 'CustomerController@logout');

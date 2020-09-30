@@ -1,10 +1,11 @@
 @if(isset($schedules))
-    
+    <?php $i=$schedules->perPage() * ($schedules->currentPage()-1);?>
+
     @foreach ($schedules as $schedule)
         <tr>
 
          
-            <td>{{ $schedule->id }}</td>
+            <td>{{ ++$i }}</td>
             <td>{{ $schedule->program_name }}</td>
             <td>{{ $schedule->schedule_date }}</td>
             <td>{{ $schedule->start_time }}</td>

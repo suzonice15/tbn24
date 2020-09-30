@@ -1,23 +1,17 @@
-@extends('layouts.master')
-@section('pageTitle')
-    All Categoreis  List
-@endsection
-@section('mainContent')
+<?php $__env->startSection('mainContent'); ?>
 <div class="box-body">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <button type="button" class="btn btn-xs btn-success" data-toggle="modal" id="add_modal" data-target="#add-program">
                 <i class="fa fa-plus"></i>Add New
             </button>
             <a onclick="Grid_tab1_1600763452_download()" class="btn btn-xs btn-success"><i class="fa fa-download"></i> Download CSV</a>
 
         </div>
-        <div class="col-md-4 pull-right ">
-            <input type="text" id="serach" name="search" placeholder="Search category" class="form-control" >
+        <div class="col-md-4  pull-right">
+            <input type="text" id="serach" name="search" placeholder="Enter Faq " class="form-control" >
         </div>
-
     </div>
-    <br/>
     <br/>
     <div class="table-responsive">
 
@@ -25,16 +19,17 @@
             <thead>
             <tr>
 
-                <th>Sl</th>
-                <th>Category</th>
-                 <th>Status</th>
-                 <th>Created date</th>
-                <th>Action </th>
+                <th >Sl</th>
+                <th width="20%">Title</th>
+                <th width="50%">Full News</th>
+                <th>Status</th>
+                <th>Created Date</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
 
-               @include('admin.category.pagination')
+               <?php echo $__env->make('admin.news.pagination', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </tbody>
 
         </table>
@@ -57,7 +52,8 @@
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-    </div>
+</div>
+
 
     <div class="modal fade" id="edit-program">
         <div class="modal-dialog">
@@ -78,19 +74,17 @@
 
     </div>
 
-    <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
 
-</div>
+    <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
 
 <script>
     $(document).ready(function(){
 
-
         function fetch_data(page, query)
         {
-            $.ajax({
+          $.ajax({
                 type:"GET",
-                url:"{{url('category/pagination/fetch_data')}}?page="+page+"&query="+query,
+                url:"<?php echo e(url('news/pagination')); ?>?page="+page+"&query="+query,
                 success:function(data)
                 {
                     $('tbody').html('');
@@ -99,7 +93,7 @@
             })
         }
 
-        $(document).on('keyup', '#serach', function(){
+        $(document).on('keyup input', '#serach', function(){
             var query = $('#serach').val();
             var page = $('#hidden_page').val();
             if(query.length >0) {
@@ -119,20 +113,29 @@
         });
 
 
-        $('#add_modal').click(function () {
-            $.ajax({
-                type:"GET",
-                url:"{{url('admin/category/create')}}",
-                success:function(data)
-                {
-                    $('#append_data').html(data)
-                }
-            })
-        });
+$('#add_modal').click(function () {
+    $.ajax({
+        type:"GET",
+        url:"<?php echo e(url('admin/news/create')); ?>",
+        success:function(data)
+        {
+             $('#append_data').html(data)
+        }
+    })
+});
+
+
+
+
 
     });
 </script>
 
 
-@endsection
 
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/news/index.blade.php ENDPATH**/ ?>

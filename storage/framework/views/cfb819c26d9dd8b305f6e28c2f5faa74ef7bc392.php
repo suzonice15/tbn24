@@ -1,9 +1,10 @@
 <?php if(isset($contacts)): ?>
+    <?php $i=$contacts->perPage() * ($contacts->currentPage()-1);?>
 
     <?php $__currentLoopData = $contacts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $contact): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
 
-
+<td><?php echo e(++$i); ?></td>
 
             <td><?php echo e($contact ->contact_name); ?></td>
             <td><?php echo e($contact ->contact_email); ?></td>

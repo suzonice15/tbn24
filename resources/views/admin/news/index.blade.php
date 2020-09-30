@@ -21,6 +21,7 @@
             <thead>
             <tr>
 
+                <th >Sl</th>
                 <th width="20%">Title</th>
                 <th width="50%">Full News</th>
                 <th>Status</th>

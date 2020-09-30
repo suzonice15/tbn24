@@ -1,10 +1,11 @@
 @if(isset($faqs))
-    
+    <?php $i=$faqs->perPage() * ($faqs->currentPage()-1);?>
+
     @foreach ($faqs as $faq)
         <tr>
 
          
-            <td>{{ $faq->faq_id }}</td>
+            <td>{{ ++$i}}</td>
             <td>{{ $faq->questions }}</td>
             <td>{{ $faq->answers }}</td>
              <td>{{date('d-m-Y',strtotime($faq->created_date))}}</td>

@@ -1,8 +1,7 @@
-@extends('layouts.master')
-@section('pageTitle')
+<?php $__env->startSection('pageTitle'); ?>
     All Categoreis  List
-@endsection
-@section('mainContent')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('mainContent'); ?>
 <div class="box-body">
     <div class="row">
         <div class="col-md-4">
@@ -34,7 +33,7 @@
             </thead>
             <tbody>
 
-               @include('admin.category.pagination')
+               <?php echo $__env->make('admin.category.pagination', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </tbody>
 
         </table>
@@ -90,7 +89,7 @@
         {
             $.ajax({
                 type:"GET",
-                url:"{{url('category/pagination/fetch_data')}}?page="+page+"&query="+query,
+                url:"<?php echo e(url('category/pagination/fetch_data')); ?>?page="+page+"&query="+query,
                 success:function(data)
                 {
                     $('tbody').html('');
@@ -122,7 +121,7 @@
         $('#add_modal').click(function () {
             $.ajax({
                 type:"GET",
-                url:"{{url('admin/category/create')}}",
+                url:"<?php echo e(url('admin/category/create')); ?>",
                 success:function(data)
                 {
                     $('#append_data').html(data)
@@ -134,5 +133,7 @@
 </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/category/index.blade.php ENDPATH**/ ?>
