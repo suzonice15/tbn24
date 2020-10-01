@@ -7,11 +7,12 @@ use DB;
 
 class FaqController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public  function __construct()
+    {
+        $time_zone=  get_time_zone()->app_time_zone;
+        date_default_timezone_set($time_zone);
+        $this->middleware('AdminLoginCheck');
+    }
     public function index()
     {
         $data['main'] = '  Faq List  ';

@@ -35,6 +35,7 @@ function get_bd_api()
         return $result->live_url_bd;
     }
 }
+
 function get_footer_data(){
 
     $result=DB::table('app_seating')->select('after_login_alert','before_login_alert','ios_app_link','google_app_id','twitter','facebook','instagram_id','youtube_chanel','contact_address','contact_phone','linkedIn','ios_app_link')->where('app_setting_id',1)->first();
@@ -43,6 +44,14 @@ function get_footer_data(){
         return $result;
     }
 }
+function get_time_zone(){
 
+    $result=DB::table('app_seating')
+        ->select('app_time_zone')->where('app_setting_id',1)->first();
+
+    if($result){
+        return $result;
+    }
+}
 
 ?>

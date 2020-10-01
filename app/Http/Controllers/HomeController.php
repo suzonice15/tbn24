@@ -18,7 +18,8 @@ class HomeController extends Controller
     public  function __construct()
     {
 
-
+        $time_zone=  get_time_zone()->app_time_zone;
+        date_default_timezone_set($time_zone);
 
     }
 
@@ -27,6 +28,7 @@ class HomeController extends Controller
 
 
 
+        
 
        // $ip = '103.92.214.7';//\Request::ip();
         $ip = '103.92.214.8';

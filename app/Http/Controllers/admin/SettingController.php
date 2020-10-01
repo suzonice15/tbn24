@@ -13,11 +13,14 @@ use Illuminate\Support\Arr;
 
 class SettingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+    public  function __construct()
+    {
+        $time_zone=  get_time_zone()->app_time_zone;
+        date_default_timezone_set($time_zone);
+        $this->middleware('AdminLoginCheck');
+    }
     public function homePageSetting(Request $request)
     {
         $user_id =1;// AdminHelper::Admin_user_autherntication();
@@ -118,19 +121,15 @@ class SettingController extends Controller
         $row_data['default_product_terms']= $request->default_product_terms;
         $row_data['bkash']= $request->bkash;
         $row_data['address']= $request->address;
-
         $image = $request->file('logo');
         if ($image) {
-
             $old_logo=$setting_row->logo;
             if($old_logo){
                 $main_image=public_path().'/uploads/'.$old_logo;
                 if(file_exists($main_image)){
                     @unlink($main_image);
                 }
-
             }
-
             $image_name =date("d-m-Y") .'logo'. '.'  . $image->getClientOriginalExtension();
             $destinationPath = public_path('/uploads/');
             $resize_image = Image::make($image->getRealPath());

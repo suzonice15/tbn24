@@ -21,7 +21,8 @@ class CustomerController extends Controller
      */
     public  function __construct()
     {
-
+        $time_zone=  get_time_zone()->app_time_zone;
+        date_default_timezone_set($time_zone);
     }
     public function index()
     {
