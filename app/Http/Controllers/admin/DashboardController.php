@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Redirect;
 use AdminHelper;
 use DB;
 use URL;
+use Carbon\Carbon;
+
 class DashboardController extends Controller
 {
     /**
@@ -26,23 +28,16 @@ class DashboardController extends Controller
 
     public function index()
     {
-      
 
-     
-    $user_id=1;
-        $user_id = 1;//AdminHelper::Admin_user_autherntication();
-        $url = URL::current();
-
-        if ($user_id < 1) {
-            //  return redirect('admin');
-            Redirect::to('admin')->with('redirect', $url)->send();
-
-        }
+        $data['main'] = 'Dashboard';
+        $data['active'] = 'Dashboard';
 
 
- // $data['orders']= DB::table('order_data')->select('order_total','order_status')->get();
-            $today = date('Y-m-d');
-            $data['new'] = 'dd';
+ $data['total_programs']= DB::table('programs')->select('id')->count();
+ $data['total_users']= DB::table('users')->select('id')->count();
+ $data['message']= DB::table('contacts')->select('status')->where('status','=',0)->count();
+ $data['today_schedule']= DB::table('schedules')->select('id')->whereDate('schedule_date', Carbon::now()->format('Y-m-d'))->count();
+
 
             return view('layouts.dashboard', $data);
 

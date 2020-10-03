@@ -117,51 +117,41 @@ if(isset($five_minite_acctive)) { ?>
                     <h2>You are not registered customer please registion first then login to your account then continously show our program</h2>
 
 
-                    <form>
+                    <form class="form-horizontal">
 
-                        <div class="clearfix form-horizontal">
-
-
-                        <div class="row">
-
-
-
-                            <div class="col-md-10" style="justify-content: center;
-display: flex;">
-                        <div class="form-group">
+                        <div class="form-group row">
                             <label class="control-label col-md-3" for="question">Email</label>
-                            <div class="col-md-10">
-                                <input required type="email" maxlength="200" value="" class="form-control" id="five_email" name="five_email"
+                            <div class="col-md-6">
+                                <input required type="email" maxlength="200" value="" class="form-control" id="five_email"  name="five_email"
                                        placeholder="Email" >
                                 <p id="five_email_error" style="color:red;font-size: 14px"></p>
 
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group row">
                             <label class="control-label col-md-3" for="question">Password</label>
-                            <div class="col-md-10">
-                                <input required type="password" maxlength="200" value="" class="form-control" id="five_password" name="five_password"
+                            <div class="col-md-6">
+                                <input required type="password" maxlength="200" value="" class="form-control"  id="five_password"  name="five_password"
                                        placeholder="Password">
-                                <p id="five_password_error" style="color:red;font-size: 14px"></p>
+                                <p class="five_password_error" style="color:red;font-size: 14px"></p>
 
                             </div>
                         </div>
 
-                                <div class="form-group">
-<br>
-                                    <div class="col-md-12">
-                                        <button type="button" class="form-control btn btn-success" id="login_modal_five_minite"
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3" for="question"></label>
+
+                                    <div class="col-md-3">
+                                        <button id="five_modal_submit" type="button" class="form-control btn btn-success "
                                                >Login</button>
+                                        <br/>
+                                    </div>
+                                    <div class="col-md-3">
                                         <p>Don't have an acount? <a href="{{url('/')}}/customer/form"> Signup</a></p>
+
                                     </div>
                                 </div>
-                            </div>
 
-
-                        </div>
-
-
-                   </div>
 
 
                     </form>
@@ -192,8 +182,44 @@ if(isset($one_hour_check_modal)) { ?>
                     <h4 class="modal-title">Notification From tbn24.com</h4>
                 </div>
                 <div class="modal-body">
-                    <h2>To continously show our video   login  again</h2>
-                    <a href="{{url('/')}}/customer/login" class="btn btn-success">Login</a>
+
+                    <form class="form-horizontal">
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3" for="question">Email</label>
+                            <div class="col-md-6">
+                                <input required type="email" maxlength="200" value="" class="form-control"   id="one_email" name="one_email"
+                                       placeholder="Email" >
+                                <p id="one_email_error" style="color:red;font-size: 14px"></p>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3" for="question">Password</label>
+                            <div class="col-md-6">
+                                <input required type="password" maxlength="200" value="" class="form-control"  id="one_password" name="one_password"
+                                       placeholder="Password">
+                                <p id="one_password_error" style="color:red;font-size: 14px"></p>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3" for="question"></label>
+
+                            <div class="col-md-3">
+                                <button id="one_modal_submit" type="button" class="form-control btn btn-success "
+                                >Login</button>
+                                <br/>
+                            </div>
+
+                        </div>
+
+
+
+                    </form>
+
+
                 </div>
 
             </div>
@@ -237,7 +263,10 @@ if(isset($one_hour_check_modal)) { ?>
     });
 
 
-    $('#login_modal_five_minite').on('click',function () {
+
+    /*      five modal   data submit    */
+
+    $('#five_modal_submit').on('click',function () {
 
       let email=  $('#five_email').val();
       let password=  $('#five_password').val();
@@ -267,18 +296,53 @@ if(isset($one_hour_check_modal)) { ?>
                             alert(data.error)
                         } else {
                             $('#five_minite_check_modal').modal('hide');
+
                         }
                     });
 
         }
-
-
-
-
-
-
-
     })
+
+
+    /*     one hour  modal    data submit     */
+
+    $('#one_modal_submit').on('click',function () {
+
+        let email1=  $('#one_email').val();
+        let password1=  $('#one_password').val();
+
+
+        if(email1=='' || password1=='') {
+            if(email1==''){
+                $('#one_email_error').text("This Field is required");
+            } else {
+                $('#one_email_error').text("");
+            }
+
+            if(password1==''){
+                $('#one_password_error').text("This Field is required");
+            } else {
+                $('#one_password_error').text("");
+            }
+        } else {
+
+            $.post("{{url('/')}}/modal/login",
+                    {
+                        email: email1,
+                        password: password1,
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    function(data, status){
+                        if(data.error){
+                            alert(data.error)
+                        } else {
+                            $('#one_hour_check_modal').modal('hide');
+
+                        }
+                    });
+
+        }
+    });
 </script>
 
 <!-- 1 hour  check modal -->
@@ -301,6 +365,8 @@ if(isset($one_hour_check_modal)) { ?>
 
 
         }
+       
+
 
         var one_hour =(<?php echo get_footer_data()->after_login_alert; ?>) * 60000;
 
