@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Validator;
+use Session;
  use Alaouy\Youtube\Facades\Youtube;
 
 
@@ -192,5 +193,26 @@ class HomeController extends Controller
         $data['page']=DB::table('page')->select('*')->where('page_link',$url)->first();
         return view('website.page',$data);
 
+    }
+
+    public function modal_login(Request $request){
+
+
+        $email = $request->email;
+        $password = md5($request->password);
+        $result = DB::table('users')->where('email', $email)->where('password', $password)->first();
+        if ($result) {
+            $id = $result->id;
+            $email = $result->email;
+            $name = $result->name;
+            Session::put('user_id', $id);
+            Session::put('email', $email);
+            Session::put('name', $name);
+            Session::put('user_picture', $result->picture);
+
+
+        } else {
+            return response()->json(['error' => 'Your Email Or Password Invalid Try Again']);
+        }
     }
 }

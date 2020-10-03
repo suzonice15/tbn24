@@ -105,25 +105,76 @@ $five_minite_acctive=1;
 if(isset($five_minite_acctive)) { ?>
 
     <!-- Modal -->
-    <div class="modal fade" id="five_minite_check_modal" role="dialog">
-        <div class="modal-dialog">
+    <div class="modal fade" id="five_minite_check_modal" role="dialog" >
+        <div class="modal-dialog modal-lg">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
                     <h4 class="modal-title">Notification From tbn24.com</h4>
                 </div>
                 <div class="modal-body">
                     <h2>You are not registered customer please registion first then login to your account then continously show our program</h2>
+
+
+                    <form>
+
+                        <div class="clearfix form-horizontal">
+
+
+                        <div class="row">
+
+
+
+                            <div class="col-md-10" style="justify-content: center;
+display: flex;">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="question">Email</label>
+                            <div class="col-md-10">
+                                <input required type="email" maxlength="200" value="" class="form-control" id="five_email" name="five_email"
+                                       placeholder="Email" >
+                                <p id="five_email_error" style="color:red;font-size: 14px"></p>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="question">Password</label>
+                            <div class="col-md-10">
+                                <input required type="password" maxlength="200" value="" class="form-control" id="five_password" name="five_password"
+                                       placeholder="Password">
+                                <p id="five_password_error" style="color:red;font-size: 14px"></p>
+
+                            </div>
+                        </div>
+
+                                <div class="form-group">
+<br>
+                                    <div class="col-md-12">
+                                        <button type="button" class="form-control btn btn-success" id="login_modal_five_minite"
+                                               >Login</button>
+                                        <p>Don't have an acount? <a href="{{url('/')}}/customer/form"> Signup</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                   </div>
+
+
+                    </form>
+
+
+
                 </div>
-                <div class="modal-footer">
-                    <a href="{{url('/')}}/customer/login" class="btn btn-success">Login</a>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
+
+
+
             </div>
         </div>
     </div>
-
 
 
 <?php } ?>
@@ -135,19 +186,16 @@ if(isset($one_hour_check_modal)) { ?>
 
     <!-- Modal -->
     <div class="modal fade" id="one_hour_check_modal" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Notification From tbn24.com</h4>
                 </div>
                 <div class="modal-body">
                     <h2>To continously show our video   login  again</h2>
                     <a href="{{url('/')}}/customer/login" class="btn btn-success">Login</a>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -171,7 +219,11 @@ if(isset($one_hour_check_modal)) { ?>
                 {
 
                     if(data=='') {
-                        $("#five_minite_check_modal").modal();
+                        $("#five_minite_check_modal").modal({
+                                backdrop: 'static',
+                                keyboard: false
+                        }
+                        );
                     }
                 }
             })
@@ -183,6 +235,50 @@ if(isset($one_hour_check_modal)) { ?>
 
         window.setInterval( five_minite_check_modal, five);
     });
+
+
+    $('#login_modal_five_minite').on('click',function () {
+
+      let email=  $('#five_email').val();
+      let password=  $('#five_password').val();
+
+        if(email=='' || password=='') {
+            if(email==''){
+                $('#five_email_error').text("This Field is required");
+            } else {
+                $('#five_email_error').text("");
+            }
+
+            if(password==''){
+                $('#five_password_error').text("This Field is required");
+            } else {
+                $('#five_password_error').text("");
+            }
+        } else {
+
+            $.post("{{url('/')}}/modal/login",
+                    {
+                        email: email,
+                        password: password,
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    function(data, status){
+                        if(data.error){
+                            alert(data.error)
+                        } else {
+                            $('#five_minite_check_modal').modal('hide');
+                        }
+                    });
+
+        }
+
+
+
+
+
+
+
+    })
 </script>
 
 <!-- 1 hour  check modal -->
@@ -218,9 +314,13 @@ if(isset($one_hour_check_modal)) { ?>
 <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
 <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
-<script src="https://vjs.zencdn.net/7.2.3/video.js"></script><script>
-    var player = videojs('hls-example');
-    player.play();
+<script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+
+
+
+<script>
+
+var player = videojs('hls-example', {autoplay: 'any'});
 </script>
 </body>
 </html>
