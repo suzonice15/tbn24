@@ -1,6 +1,6 @@
-@extends('layouts.master')
 
-@section('mainContent')
+
+<?php $__env->startSection('mainContent'); ?>
     <div class="box-body">
 
         <br/>
@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
 
-                @include('admin.pull.pull_result_pagination')
+                <?php echo $__env->make('admin.pull.pull_result_pagination', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </tbody>
 
             </table>
@@ -77,7 +77,7 @@
                 {
                     $.ajax({
                         type:"GET",
-                        url:"{{url('pulls/pagination')}}?page="+page+"&query="+query,
+                        url:"<?php echo e(url('pulls/pagination')); ?>?page="+page+"&query="+query,
                         success:function(data)
                         {
                             $('tbody').html('');
@@ -109,7 +109,7 @@
                 $('#add_modal').click(function () {
                     $.ajax({
                         type:"GET",
-                        url:"{{url('admin/pulls/create')}}",
+                        url:"<?php echo e(url('admin/pulls/create')); ?>",
                         success:function(data)
                         {
                             $('#append_data').html(data)
@@ -128,5 +128,7 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/pull/pull_result.blade.php ENDPATH**/ ?>

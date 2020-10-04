@@ -1,7 +1,7 @@
-@if(isset($pulls))
+<?php if(isset($pulls)): ?>
     <?php $i=$pulls->perPage() * ($pulls->currentPage()-1);?>
 
-    @foreach ($pulls as $pull)
+    <?php $__currentLoopData = $pulls; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pull): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
         <?php
 
@@ -10,9 +10,9 @@
 
 
 
-            <td>{{ ++$i }}</td>
+            <td><?php echo e(++$i); ?></td>
 
-            <td>{{ $pull->pull_question }}</td>
+            <td><?php echo e($pull->pull_question); ?></td>
             <td>
                 <?php
                 $options=DB::table('pull_add_option')->where('pull_id',$pull->pull_id)->get();
@@ -27,7 +27,7 @@
                     $vote_percent=($total_single_option_vote*100)/$total_vote;
 
                     ?>
-               {{$vote_percent}} %   ({{$total_single_option_vote}} votes)
+               <?php echo e($vote_percent); ?> %   (<?php echo e($total_single_option_vote); ?> votes)
                         -
                     <span class="label label-success">
 
@@ -49,22 +49,23 @@
 
 
             </td>
-            <td>{{$total_vote}}</td>
-            <td>{{date('d-m-Y',strtotime($pull->pull_created_date))}}</td>
-            <td>{{date('d-m-Y',strtotime($pull->pull_expire_time))}}</td>
+            <td><?php echo e($total_vote); ?></td>
+            <td><?php echo e(date('d-m-Y',strtotime($pull->pull_created_date))); ?></td>
+            <td><?php echo e(date('d-m-Y',strtotime($pull->pull_expire_time))); ?></td>
 
 
 
         </tr>
 
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
     <tr>
         <td colspan="9" align="center">
-            {!! $pulls->links() !!}
+            <?php echo $pulls->links(); ?>
+
         </td>
     </tr>
-@endif
+<?php endif; ?>
 
 <script>
 
@@ -77,7 +78,7 @@
 
         $.ajax({
             type:"GET",
-            url:"{{url('admin/pulls')}}/"+pull_id,
+            url:"<?php echo e(url('admin/pulls')); ?>/"+pull_id,
             success:function(data)
             {
                 $('#append_edit_data').html(data)
@@ -85,3 +86,4 @@
         })
     });
 </script>
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/pull/pull_result_pagination.blade.php ENDPATH**/ ?>

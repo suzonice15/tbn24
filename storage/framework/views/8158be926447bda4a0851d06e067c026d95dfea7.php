@@ -15,7 +15,7 @@
                     <section class="cd-intro row">
                         <div class="col-md-8">
 
-                            <video  poster="http://tbn24.com/images/logo.png"   id='hls-example'  class="video-js vjs-default-skin" width="120%" height="400"  controls>
+                            <video  poster="http://tbn24.com/images/logo.png"   id='hls-example'  class="video-js vjs-default-skin" width="100%" height="400"  controls>
                                 <source  type="application/x-mpegURL" src="<?php echo e($api); ?>">
                             </video>
                         </div>
@@ -97,8 +97,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="block wow fadeInLeft" data-wow-delay=".3s"
-                     data-wow-duration="500ms">
+                <div class="block wow " >
                     <h2>ABOUT US</h2>
                    <?php echo $about->page_content ?>
                     <div class="text-left">
@@ -116,43 +115,8 @@
             ==================================================
             Portfolio Section Start
             ================================================== -->
-<section id="works" class="works">
-    <div class="container">
-        <div class="section-heading">
-            <h1 class="title" >Our Programs</h1>
-        </div>
-        <div class="row">
+<span class="home_page_program"></span>
 
-            <?php if($programs): ?>
-                <?php $__currentLoopData = $programs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $program): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="col-sm-4 col-xs-12">
-                <figure class=" portfolio-item"
-                        >
-                    <div class="img-wrapper">
-                        <img width="100%" src="<?php echo e(url('/')); ?>/public/uploads/program/<?php echo e($program->program_image); ?>"
-                             class="img-responsive" alt="<?php echo e($program->program_name); ?>">
-                        <div class="overlay">
-                            <div class="buttons">
-                                <a target="_blank" rel="noopener"
-                                   href="<?php echo e(url('/')); ?>/program-details/<?php echo e($program->id); ?>">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <figcaption>
-                        <h4>
-                            <a href="<?php echo e(url('/')); ?>/program-details/<?php echo e($program->id); ?>"> <?php echo e($program->program_name); ?> </a>
-                        </h4>
-                    </figcaption>
-                </figure>
-            </div>
-             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php endif; ?>
-            <div class="text-center">
-                <a href="<?php echo e(url('/')); ?>/all-program" class="btn btn-default">View All Program</a>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- #works -->
 <!--
             ==================================================
@@ -262,8 +226,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
-                    <h2 class="title wow fadeInDown" data-wow-delay=".3s"
-                        data-wow-duration="500ms">
+                    <h2 class="title wow "  >
                         You are always welcome to contact with us
                         </h2>
                         <a href="<?php echo e(url('/')); ?>/contact"
@@ -276,6 +239,13 @@
         </div>
     </div>
 </section>
+
+<script defer >
+    $.get("<?php echo e(url('/')); ?>/home_page_program", function(data, status){
+       $('.home_page_program').html(data);
+    });
+
+</script>
 
 
 

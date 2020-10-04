@@ -75,6 +75,7 @@
                                 </li>
                             </ul>
 
+
                     </div>
                 </div>
             </div>
@@ -100,7 +101,6 @@
 
 <!-- five mitinte check modal -->
 <?php
-$five_minite_acctive=1;
 
 if(isset($five_minite_acctive)) { ?>
 
@@ -111,17 +111,18 @@ if(isset($five_minite_acctive)) { ?>
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <h4 class="modal-title">Notification From tbn24.com</h4>
+                    <h4 style="text-align:center;" class="modal-title"><img height="50" src="{{url('/')}}/public/logo.png"></h4>
                 </div>
                 <div class="modal-body">
-                    <h2>You are not registered customer please registion first then login to your account then continously show our program</h2>
+                    <p style="text-align:center;"  >{{get_footer_data()->five_minite_modal_note}}
+                    </p>
 
 
                     <form class="form-horizontal">
 
                         <div class="form-group row">
                             <label class="control-label col-md-3" for="question">Email</label>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <input required type="email" maxlength="200" value="" class="form-control" id="five_email"  name="five_email"
                                        placeholder="Email" >
                                 <p id="five_email_error" style="color:red;font-size: 14px"></p>
@@ -130,7 +131,7 @@ if(isset($five_minite_acctive)) { ?>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-md-3" for="question">Password</label>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <input required type="password" maxlength="200" value="" class="form-control"  id="five_password"  name="five_password"
                                        placeholder="Password">
                                 <p class="five_password_error" style="color:red;font-size: 14px"></p>
@@ -141,16 +142,25 @@ if(isset($five_minite_acctive)) { ?>
                                 <div class="form-group row">
                                     <label class="control-label col-md-3" for="question"></label>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         <button id="five_modal_submit" type="button" class="form-control btn btn-success "
                                                >Login</button>
                                         <br/>
                                     </div>
-                                    <div class="col-md-3">
-                                        <p>Don't have an acount? <a href="{{url('/')}}/customer/form"> Signup</a></p>
 
-                                    </div>
                                 </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3" for="question"></label>
+
+
+                            <div class="col-md-5">
+                                <p>Don't have an acount? <a href="{{url('/')}}/customer/form"> Signup</a></p>
+
+                            </div>
+                        </div>
+
+
 
 
 
@@ -170,7 +180,6 @@ if(isset($five_minite_acctive)) { ?>
 <?php } ?>
 
 <?php
-$one_hour_check_modal=1;
 
 if(isset($one_hour_check_modal)) { ?>
 
@@ -179,15 +188,16 @@ if(isset($one_hour_check_modal)) { ?>
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Notification From tbn24.com</h4>
+                    <h4 style="text-align:center;" class="modal-title"><img height="50" src="{{url('/')}}/public/logo.png"></h4>
                 </div>
                 <div class="modal-body">
-
+                    <p style="text-align:center;" >{{get_footer_data()->one_hour_modal_note}}
+                    </p>
                     <form class="form-horizontal">
 
                         <div class="form-group row">
                             <label class="control-label col-md-3" for="question">Email</label>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <input required type="email" maxlength="200" value="" class="form-control"   id="one_email" name="one_email"
                                        placeholder="Email" >
                                 <p id="one_email_error" style="color:red;font-size: 14px"></p>
@@ -196,7 +206,7 @@ if(isset($one_hour_check_modal)) { ?>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-md-3" for="question">Password</label>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <input required type="password" maxlength="200" value="" class="form-control"  id="one_password" name="one_password"
                                        placeholder="Password">
                                 <p id="one_password_error" style="color:red;font-size: 14px"></p>
@@ -205,7 +215,7 @@ if(isset($one_hour_check_modal)) { ?>
                         </div>
 
                         <div class="form-group row">
-                            <label class="control-label col-md-3" for="question"></label>
+                            <label class="control-label col-md-2" for="question"></label>
 
                             <div class="col-md-3">
                                 <button id="one_modal_submit" type="button" class="form-control btn btn-success "
@@ -234,7 +244,7 @@ if(isset($one_hour_check_modal)) { ?>
 
         <!-- five mitinte check modal -->
 
-<script>
+<script >
     $(document).ready(function(){
 
         function five_minite_check_modal(){
@@ -347,7 +357,7 @@ if(isset($one_hour_check_modal)) { ?>
 
 <!-- 1 hour  check modal -->
 
-<script>
+<script  >
     $(document).ready(function(){
 
         function one_hour_check_modal(){
@@ -365,7 +375,7 @@ if(isset($one_hour_check_modal)) { ?>
 
 
         }
-       
+
 
 
         var one_hour =(<?php echo get_footer_data()->after_login_alert; ?>) * 60000;
@@ -378,13 +388,13 @@ if(isset($one_hour_check_modal)) { ?>
 
 <!-- JS code -->
 <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-<script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
-<script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+<script  src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+<script   src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
+<script  src="https://vjs.zencdn.net/7.2.3/video.js"></script>
 
 
 
-<script>
+<script >
 
 var player = videojs('hls-example', {autoplay: 'any'});
 </script>

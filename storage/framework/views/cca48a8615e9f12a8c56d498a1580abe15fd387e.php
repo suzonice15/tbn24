@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('mainContent')
+<?php $__env->startSection('mainContent'); ?>
 <div class="box-body">
     <div class="row">
         <div class="col-md-6">
@@ -11,7 +9,7 @@
 
         </div>
         <div class="col-md-4  pull-right">
-            <input type="text" id="serach" name="search" placeholder="Enter Pull " class="form-control" >
+            <input type="text" id="serach" name="search" placeholder="Enter Faq " class="form-control" >
         </div>
     </div>
     <br/>
@@ -22,8 +20,8 @@
             <tr>
 
                 <th >Sl</th>
-
-                <th width="50%">Question</th>
+                <th width="20%">Title</th>
+                <th width="50%">Full News</th>
                 <th>Status</th>
                 <th>Created Date</th>
                 <th>Action</th>
@@ -31,7 +29,7 @@
             </thead>
             <tbody>
 
-               @include('admin.pull.pagination')
+               <?php echo $__env->make('admin.news.pagination', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </tbody>
 
         </table>
@@ -44,7 +42,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" style="font-weight: bold">&times;</span></button>
-                    <h4 class="modal-title" style="text-align:center">New Poll</h4>
+                    <h4 class="modal-title" style="text-align:center">New Program</h4>
                 </div>
                 <div class="modal-body" id="append_data">
 
@@ -86,7 +84,7 @@
         {
           $.ajax({
                 type:"GET",
-                url:"{{url('pulls/pagination')}}?page="+page+"&query="+query,
+                url:"<?php echo e(url('news/pagination')); ?>?page="+page+"&query="+query,
                 success:function(data)
                 {
                     $('tbody').html('');
@@ -118,7 +116,7 @@
 $('#add_modal').click(function () {
     $.ajax({
         type:"GET",
-        url:"{{url('admin/pulls/create')}}",
+        url:"<?php echo e(url('admin/news/create')); ?>",
         success:function(data)
         {
              $('#append_data').html(data)
@@ -137,5 +135,7 @@ $('#add_modal').click(function () {
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/news/index.blade.php ENDPATH**/ ?>

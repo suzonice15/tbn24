@@ -1,5 +1,5 @@
-@extends('website.master')
-@section('mainContent')
+
+<?php $__env->startSection('mainContent'); ?>
 
     <section id="contact-section">
         <div class="container">
@@ -9,30 +9,32 @@
                         <h2 class="subtitle " >Contact With Us</h2>
                         <div class="contact-form">
 
-                                @if(Session::has('success'))
+                                <?php if(Session::has('success')): ?>
                                     <div class="callout callout-success">
 
 
                                         <h4 style="color:green">
-                                            {{ Session::get('success')}}
+                                            <?php echo e(Session::get('success')); ?>
+
 
                                         </h4>
                                     </div>
-                                @elseif(Session::has('error'))
+                                <?php elseif(Session::has('error')): ?>
                                     <div class="callout callout-danger">
 
 
                                         <h4 style="color:red">
-                                            {{ Session::get('error')}}
+                                            <?php echo e(Session::get('error')); ?>
+
 
                                         </h4>
                                     </div>
-                                @else
+                                <?php else: ?>
 
-                                @endif
+                                <?php endif; ?>
 
-                                <form id="contact-form" method="post" action="{{url('/')}}/contact" role="form">
-@csrf
+                                <form id="contact-form" method="post" action="<?php echo e(url('/')); ?>/contact" role="form">
+<?php echo csrf_field(); ?>
                                 <div class="form-group " data-wow-duration="500ms" data-wow-delay=".6s">
                                     <input type="text" placeholder="Your Name" class="form-control" required="required"
                                            name="name" id="name">
@@ -57,11 +59,11 @@
 
                                         <div class="col-md-3">
 
-                                           <div style="background: green;padding: 8px;color: white;font-style: italic;/*! font-variant-numeric: diagonal-fractions; */font-size: 17px;"> {{$number1}}+{{$number2}}=</div>
+                                           <div style="background: green;padding: 8px;color: white;font-style: italic;/*! font-variant-numeric: diagonal-fractions; */font-size: 17px;"> <?php echo e($number1); ?>+<?php echo e($number2); ?>=</div>
 
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="hidden" name="pure_capta" value="{{$sum}}">
+                                            <input type="hidden" name="pure_capta" value="<?php echo e($sum); ?>">
 
                                             <input type="text" required="required" placeholder="Enter Capcha"
                                                    class="form-control" value=" " name="captcha" id="captcha">
@@ -88,19 +90,22 @@
 
                             <li style="font-size: 20px;color: white;"> <i class="icon-home"></i>
 
-                                {{$google_map->contact_address}}
+                                <?php echo e($google_map->contact_address); ?>
+
 
                             <li style="font-size: 20px;color: white;">
 
                                 <i class="icon-envelope"></i>
-                                {{$google_map->contact_email}}
+                                <?php echo e($google_map->contact_email); ?>
+
 
 
                             </li>
                             <li style="font-size: 20px;color: white;">
 
                                 <i class="icon-phone"></i>
-                                {{$google_map->contact_phone}}
+                                <?php echo e($google_map->contact_phone); ?>
+
 
                             </li>
                         </ul>
@@ -121,7 +126,7 @@
                 <div class="map-area">
                     <h2 class="subtitle">Find Us</h2>
                     <div class="map">
-                        <iframe src="{{$google_map->google_map}}"
+                        <iframe src="<?php echo e($google_map->google_map); ?>"
                                 style="border:0" allowfullscreen="" width="100%" height="400"
                                 frameborder="0"></iframe>
 
@@ -135,4 +140,6 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('website.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/website/contact.blade.php ENDPATH**/ ?>

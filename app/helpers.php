@@ -38,7 +38,7 @@ function get_bd_api()
 
 function get_footer_data(){
 
-    $result=DB::table('app_seating')->select('after_login_alert','before_login_alert','ios_app_link','google_app_id','twitter','facebook','instagram_id','youtube_chanel','contact_address','contact_phone','linkedIn','ios_app_link')->where('app_setting_id',1)->first();
+    $result=DB::table('app_seating')->select('one_hour_modal_note','five_minite_modal_note','after_login_alert','before_login_alert','ios_app_link','google_app_id','twitter','facebook','instagram_id','youtube_chanel','contact_address','contact_phone','linkedIn','ios_app_link')->where('app_setting_id',1)->first();
 
     if($result){
         return $result;

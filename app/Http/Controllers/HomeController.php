@@ -43,9 +43,12 @@ class HomeController extends Controller
         }
 
 
+//        $data['five_minite_acctive']= 'only_home_page_modal_active';
+//        $data['one_hour_check_modal']= 'only_home_page_modal_active';
+
         $today="Y-m-d";
         $data['about']=DB::table('page')->select('page_content')->where('page_link','about-us')->first();
-        $data['programs']=DB::table('programs')->paginate(6);
+
         $data['today_programs']=DB::table('programs')
                                 ->join('schedules','schedules.program_id','=','programs.id')
             ->whereDate('schedule_date', '=', date('Y-m-d'))
@@ -214,5 +217,11 @@ class HomeController extends Controller
         } else {
             return response()->json(['error' => 'Your Email Or Password Invalid Try Again']);
         }
+    }
+
+    public  function home_page_program(){
+        $data['programs']=DB::table('programs')->select('program_image','program_name','id')->paginate(6);
+        return view('website.ajax_home_page_program',$data);
+
     }
 }

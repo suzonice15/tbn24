@@ -13,6 +13,8 @@ class PullController extends Controller
         date_default_timezone_set($time_zone);
         $this->middleware('AdminLoginCheck');
     }
+
+
     public function index()
     {
         $data['main'] = 'Poll List
@@ -21,7 +23,7 @@ class PullController extends Controller
 ';
         $data['title'] = '';
         $pulls  = DB::table('pulls')
-            ->join('programs','programs.id','=','pulls.program_id')->orderBy('pull_id', 'desc')->paginate(10);
+            ->orderBy('pull_id', 'desc')->paginate(10);
         return view('admin.pull.index', compact('pulls'), $data);
     }
 
@@ -31,10 +33,35 @@ class PullController extends Controller
 
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            $news  =DB::table('news')->select("*")
-                ->where('news_title', 'LIKE', '%' . $query . '%')->orderBy('news_id', 'desc')->paginate(10);
+            $pulls =DB::table('pulls')->select("*")
+                ->where('pull_question', 'LIKE', '%' . $query . '%')->orderBy('pull_id', 'desc')->paginate(10);
 
-            return view('admin.news.pagination', compact('news'));
+            return view('admin.pull.pagination', compact('pulls'));
+        }
+
+    }
+
+
+    public function pull_result()
+    {
+        $data['main'] = 'Result List';
+        $data['active'] = 'Result List';
+        $data['title'] = '';
+        $pulls  = DB::table('pulls')
+            ->orderBy('pull_id', 'desc')->paginate(10);
+        return view('admin.pull.pull_result', compact('pulls'), $data);
+    }
+
+    public function pull_result_pagination(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $pulls =DB::table('pulls')->select("*")
+                ->where('pull_question', 'LIKE', '%' . $query . '%')->orderBy('pull_id', 'desc')->paginate(10);
+
+            return view('admin.pull.pull_result_pagination', compact('pulls'));
         }
 
     }
@@ -58,26 +85,42 @@ class PullController extends Controller
      */
     public function store(Request $request)
     {
-        $data['news_title']=$request->news_title;
-        $data['news_body']=$request->news_body;
-        $data['status']=$request->status;
+        $data['pull_question']=$request->pull_question;
+        $data['pull_expire_time']=date('Y-m-d',strtotime($request->pull_expire_time));
+        $data['pull_status']=$request->pull_status;
 
-        $result =DB::table('news')->insert($data);
-        if ($result) {
-            return redirect('admin/news')
+
+
+        $pull_id =DB::table('pulls')->insertGetId($data);
+
+        $number = count($request->name);
+        if($number > 0)
+        {
+            for($i=0; $i<$number; $i++)
+            {
+                if(trim($request->name[$i] != ''))
+                {
+                    $row_data['option_name']=$request->name[$i];
+                    $row_data['pull_id']=$pull_id;
+                    DB::table('pull_add_option')->insert($row_data);
+
+
+                }
+            }
+
+        }
+
+
+        if ($pull_id) {
+            return redirect('admin/pulls')
                 ->with('success', 'created successfully.');
         } else {
-            return redirect('admin/news')
+            return redirect('admin/pulls')
                 ->with('error', 'No successfully.');
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\admin\Faq  $faq
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Faq $faq)
     {
         //
@@ -91,8 +134,9 @@ class PullController extends Controller
      */
     public function edit($id)
     {
-        $data['new'] = DB::table('news')->where('news_id', $id)->first();
-        return view('admin.news.edit',$data);
+        $data['pull'] = DB::table('pulls')->where('pull_id', $id)->first();
+        $data['options'] = DB::table('pull_add_option')->where('pull_id', $id)->get();
+        return view('admin.pull.edit',$data);
 
 
     }
@@ -107,17 +151,38 @@ class PullController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $data['news_title']=$request->news_title;
-        $data['news_body']=$request->news_body;
-        $data['status']=$request->status;
-        $result= DB::table('news')->where('news_id',$id)->update($data);
+        $data['pull_question']=$request->pull_question;
+        $data['pull_expire_time']=date('Y-m-d',strtotime($request->pull_expire_time));
+        $data['pull_status']=$request->pull_status;
+
+        $pull_id=  DB::table('pulls')->where('pull_id',$id)->update($data);
+        DB::table('pull_add_option')->where('pull_id',$id)->delete();
+        if($request->name){
+            $number = count($request->name);
+        } else {
+            $number =0;
+        }
+
+        if($number > 0)
+        {
+            for($i=0; $i<$number; $i++)
+            {
+                if(trim($request->name[$i] != ''))
+                {
+                    $row_data['option_name']=$request->name[$i];
+                    $row_data['pull_id']=$id;
+                    DB::table('pull_add_option')->insert($row_data);
 
 
-         if ($result) {
-            return redirect('admin/news')
+                }
+            }
+        }
+
+         if ($pull_id) {
+            return redirect('admin/pulls')
                 ->with('success', 'Updated successfully.');
         } else {
-            return redirect('admin/news')
+            return redirect('admin/pulls')
                 ->with('error', 'No successfully.');
         }
     }
@@ -130,12 +195,12 @@ class PullController extends Controller
      */
     public function delete($id)
     {
-        $result = DB::table('news')->where('news_id', $id)->delete();
+        $result = DB::table('pulls')->where('pull_id', $id)->delete();
         if ($result) {
-            return redirect('admin/news')
+            return redirect('admin/pulls')
                 ->with('success', 'Deleted successfully.');
         } else {
-            return redirect('admin/news')
+            return redirect('admin/pulls')
                 ->with('error', 'No successfully.');
         }
     }

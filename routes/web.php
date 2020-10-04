@@ -25,6 +25,7 @@ Route::get('/program-details/{id}', 'HomeController@single_program');
 Route::get('/about-us', 'HomeController@about');
 Route::get('/documents', 'HomeController@documents');
 Route::get('/contact', 'HomeController@contact');
+Route::get('/home_page_program', 'HomeController@home_page_program');
 Route::post('/modal/login', 'HomeController@modal_login');
 Route::post('/contact', 'HomeController@contact_store');
 Route::get('/today-schedule', 'HomeController@today_schedule');
@@ -60,6 +61,17 @@ Route::post('admin/pulls/store', 'admin\PullController@store');
 Route::post('admin/pulls/update/{id}', 'admin\PullController@update');
 Route::get('admin/pulls/{id}', 'admin\PullController@edit');
 Route::get('/admin/pulls/delete/{id}', 'admin\PullController@delete');
+Route::get('pulls/pagination', 'admin\PullController@pagination');
+
+
+
+/****===============  Pull Result section    =====================  ******/
+Route::get('admin/pull/result', 'admin\PullController@pull_result');
+Route::get('admin/pull/result/create', 'admin\PullController@create');
+Route::post('admin/pull/result/store', 'admin\PullController@store');
+Route::post('admin/pull/result/update/{id}', 'admin\PullController@update');
+Route::get('admin/pull/result/{id}', 'admin\PullController@edit');
+Route::get('/admin/pull/result/delete/{id}', 'admin\PullController@delete');
 Route::get('pulls/pagination', 'admin\PullController@pagination');
 
 

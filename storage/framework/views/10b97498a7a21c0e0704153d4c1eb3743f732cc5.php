@@ -1,6 +1,6 @@
 
-<form id="containerForm" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="{{ url('admin/pulls/update') }}/{{ $pull->pull_id }}" method="post" novalidate="novalidate">
-    @csrf
+<form id="containerForm" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="<?php echo e(url('admin/pulls/update')); ?>/<?php echo e($pull->pull_id); ?>" method="post" novalidate="novalidate">
+    <?php echo csrf_field(); ?>
     <div class="row ">
 
         <div class="clearfix form-horizontal">
@@ -10,7 +10,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="question">Question</label>
                 <div class="col-md-6">
-                    <input type="text" maxlength="200" value="{{$pull->pull_question}}" class="form-control" id="pull_question" name="pull_question"
+                    <input type="text" maxlength="200" value="<?php echo e($pull->pull_question); ?>" class="form-control" id="pull_question" name="pull_question"
                            placeholder="Question" autocomplete="off">
 
                 </div>
@@ -18,7 +18,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="expire_time">Expire Time</label>
                 <div class="col-md-6">
-                    <input type="text"   value="{{ date('d-m-Y',strtotime($pull->pull_expire_time))}}" class="form-control datepicker" id="pull_expire_time"
+                    <input type="text"   value="<?php echo e(date('d-m-Y',strtotime($pull->pull_expire_time))); ?>" class="form-control datepicker" id="pull_expire_time"
                            name="pull_expire_time" placeholder="Expire Time" autocomplete="off">
                 </div>
             </div>
@@ -183,3 +183,4 @@
 </script>
 
 
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/pull/edit.blade.php ENDPATH**/ ?>

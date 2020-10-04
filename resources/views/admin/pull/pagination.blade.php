@@ -7,7 +7,7 @@
          
 
             <td>{{ ++$i }}</td>
-            <td>{{ $pull->program_name }}</td>
+
             <td>{{ $pull->pull_question }}</td>
             <td>
                 @if( $pull->pull_status==1)
@@ -55,7 +55,7 @@
 
         $.ajax({
             type:"GET",
-            url:"{{url('admin/news')}}/"+pull_id,
+            url:"{{url('admin/pulls')}}/"+pull_id,
             success:function(data)
             {
                 $('#append_edit_data').html(data)

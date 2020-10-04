@@ -1,12 +1,12 @@
-@extends('layouts.master')
 
-@section('mainContent')
+
+<?php $__env->startSection('mainContent'); ?>
 
     <div class="box-body">
-        <form  name="app_setiing" action="{{ url('admin/app-setting')  }}" class="form-horizontal"
+        <form  name="app_setiing" action="<?php echo e(url('admin/app-setting')); ?>" class="form-horizontal"
                method="post"
                enctype="multipart/form-data">
-            @csrf
+            <?php echo csrf_field(); ?>
         <div class="row">
 
 
@@ -456,24 +456,24 @@
                 <div class="form-group ">
                     <label for="phone">Android App Link</label>
                     <input type="text" class="form-control" name="google_app_id" id="google_app_id"
-                           value="{{$setting_row->google_app_id}}">
+                           value="<?php echo e($setting_row->google_app_id); ?>">
                 </div>
                 <div class="form-group ">
                     <label for="phone">IOS App Link</label>
                     <input type="text" class="form-control" name="ios_app_link" id="ios_app_link"
-                           value="{{$setting_row->ios_app_link}}">
+                           value="<?php echo e($setting_row->ios_app_link); ?>">
                 </div>
 
 
                 <div class="form-group ">
                     <label for="phone">Live URL</label>
                     <input type="text" class="form-control" name="live_url" id="live_url"
-                           value="{{$setting_row->live_url}}">
+                           value="<?php echo e($setting_row->live_url); ?>">
                 </div>
                 <div class="form-group ">
                     <label for="phone">Live URL BD</label>
                     <input type="text" class="form-control" name="live_url_bd" id="live_url_bd"
-                           value="{{$setting_row->live_url_bd}}">
+                           value="<?php echo e($setting_row->live_url_bd); ?>">
                 </div>
 
                 <div class="form-group ">
@@ -503,27 +503,27 @@
                         <div class="form-group ">
                             <label for="phone">Facebook App ID</label>
                             <input type="text" class="form-control" name="facebook" id="facebook"
-                                   value="{{$setting_row->facebook}}">
+                                   value="<?php echo e($setting_row->facebook); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone">Instagram ID</label>
                             <input type="text" class="form-control" name="instagram_id" id="instagram_id"
-                                   value="{{$setting_row->instagram_id}}">
+                                   value="<?php echo e($setting_row->instagram_id); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone">      Youtube Channel ID</label>
                             <input type="text" class="form-control" name="youtube_chanel" id="youtube_chanel"
-                                   value="{{$setting_row->youtube_chanel}}">
+                                   value="<?php echo e($setting_row->youtube_chanel); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone">Twitter</label>
                             <input type="text" class="form-control" name="twitter" id="twitter"
-                                   value="{{$setting_row->twitter}}">
+                                   value="<?php echo e($setting_row->twitter); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone"> LinkedIn</label>
                             <input type="text" class="form-control" name="linkedIn" id="linkedIn"
-                                   value="{{$setting_row->linkedIn}}">
+                                   value="<?php echo e($setting_row->linkedIn); ?>">
                         </div>
 
 
@@ -545,45 +545,45 @@
                         <div class="form-group ">
                             <label for="phone">Google Map</label>
                             <input type="text" class="form-control" name="google_map" id="google_map"
-                                   value="{{$setting_row->google_map}}">
+                                   value="<?php echo e($setting_row->google_map); ?>">
                         </div>
 
 
                         <div class="form-group ">
                             <label for="phone">Contact Address</label>
                             <input type="text" class="form-control" name="contact_address" id="google_map"
-                                   value="{{$setting_row->contact_address}}">
+                                   value="<?php echo e($setting_row->contact_address); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone">Contact Phone </label>
                             <input type="text" class="form-control" name="contact_phone" id="google_map"
-                                   value="{{$setting_row->contact_phone}}">
+                                   value="<?php echo e($setting_row->contact_phone); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone">Contact Email</label>
                             <input type="text" class="form-control" name="contact_email" id="google_map"
-                                   value="{{$setting_row->contact_email}}">
+                                   value="<?php echo e($setting_row->contact_email); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone">Before Login Alert Time (in seconds)</label>
                             <input type="text" class="form-control" name="before_login_alert" id="before_login_alert"
-                                   value="{{$setting_row->before_login_alert}}">
+                                   value="<?php echo e($setting_row->before_login_alert); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone">After Login Alert Time (in seconds)</label>
                             <input type="text" class="form-control" name="after_login_alert" id="after_login_alert"
-                                   value="{{$setting_row->after_login_alert}}">
+                                   value="<?php echo e($setting_row->after_login_alert); ?>">
                         </div>
 
                         <div class="form-group ">
                             <label for="phone">Five Minitue Modal Note</label>
                             <input type="text" class="form-control" name="five_minite_modal_note" id="five_minite_modal_note"
-                                   value="{{$setting_row->five_minite_modal_note}}">
+                                   value="<?php echo e($setting_row->five_minite_modal_note); ?>">
                         </div>
                         <div class="form-group ">
                             <label for="phone">One Hour Modal Note</label>
                             <input type="text" class="form-control" name="one_hour_modal_note" id="one_hour_modal_note"
-                                   value="{{$setting_row->one_hour_modal_note}}">
+                                   value="<?php echo e($setting_row->one_hour_modal_note); ?>">
                         </div>
 
 
@@ -613,13 +613,15 @@
     </div>
      <script>
 
-        document.forms['app_setiing'].elements['app_time_zone'].value = "{{$setting_row->app_time_zone}}";
-        document.forms['app_setiing'].elements['program_start_type'].value = "{{$setting_row->program_start_type}}";
+        document.forms['app_setiing'].elements['app_time_zone'].value = "<?php echo e($setting_row->app_time_zone); ?>";
+        document.forms['app_setiing'].elements['program_start_type'].value = "<?php echo e($setting_row->program_start_type); ?>";
 
     </script>
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/setting/app_setting.blade.php ENDPATH**/ ?>

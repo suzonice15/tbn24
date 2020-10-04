@@ -1,6 +1,6 @@
 <form id="containerForm" class="form app-lb-ajax-form bv-form" enctype="multipart/form-data"
-      action="{{url('/')}}/admin/pulls/store" method="post" novalidate="novalidate">
-    @csrf
+      action="<?php echo e(url('/')); ?>/admin/pulls/store" method="post" novalidate="novalidate">
+    <?php echo csrf_field(); ?>
     <div class="row ">
 
         <div class="clearfix form-horizontal">
@@ -158,3 +158,4 @@
 
 </form>
 
+<?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/pull/create.blade.php ENDPATH**/ ?>
