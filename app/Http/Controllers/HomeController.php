@@ -29,9 +29,7 @@ class HomeController extends Controller
 
 
 
-        
-
-       // $ip = '103.92.214.7';//\Request::ip();
+      $ip = \Request::ip();
         $ip = '103.92.214.8';
         $details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
        
@@ -43,11 +41,14 @@ class HomeController extends Controller
         }
 
 
-//        $data['five_minite_acctive']= 'only_home_page_modal_active';
-//        $data['one_hour_check_modal']= 'only_home_page_modal_active';
 
-        $today="Y-m-d";
+     $data['five_minite_acctive']= 'only_home_page_modal_active';
+      $data['one_hour_check_modal']= 'only_home_page_modal_active';
+
+
         $data['about']=DB::table('page')->select('page_content')->where('page_link','about-us')->first();
+
+       
 
         $data['today_programs']=DB::table('programs')
                                 ->join('schedules','schedules.program_id','=','programs.id')
@@ -166,11 +167,14 @@ class HomeController extends Controller
         $data['videoLists']=$videoList;
         $data['playlists']=$playlists;
 
-//        echo '<pre>';
-//        print_r($playlists);
-//        exit();
-//
-        
+       // $video = Youtube::getVideoInfo('rie-hPVJ7Sw');
+
+
+
+        $data['popular_video']=DB::table('popular_video')->select('*')->orderBy('order_by','asc')->get();
+
+       
+       
         return view('website.program_video',$data);
 
     }
@@ -222,6 +226,38 @@ class HomeController extends Controller
     public  function home_page_program(){
         $data['programs']=DB::table('programs')->select('program_image','program_name','id')->paginate(6);
         return view('website.ajax_home_page_program',$data);
+
+    }
+    public function vote_count(Request $request){
+       // $pull_id= $request->pull_id;
+        $pull_id= $request->get('pull_id');
+         $ip =\Request::ip();
+        $data['ip']=$ip;
+        $data['pull_id']=$pull_id;
+        $data['option_id']=$request->option_id;
+      //  DB::table('vote')->insert($data);
+        $already_given_vote= DB::table('vote')->where('pull_id',$pull_id)->where('ip',$ip)->first();
+        if($already_given_vote){
+
+        } else{
+            $insertGetId = DB::table('vote')->insertGetId($data);
+         //   echo $insertGetId;
+//            if($insertGetId){
+//                DB::table('vote')->where('vote_id',$insertGetId)->delete();
+//
+//          }
+
+        }
+
+    }
+
+
+
+    public function ajax_pull_data_get(){
+        $data['ip']= \Request::ip();
+        $today="Y-m-d";
+        $data['pulls']=DB::table('pulls')->select('*')->where('pull_expire_time', '>=', $today)->get();
+        return view('website.ajax_poll',$data);
 
     }
 }

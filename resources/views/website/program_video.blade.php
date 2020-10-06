@@ -483,6 +483,60 @@
     </section>
     <!-- end video modal -->
 
+
+
+    <section id="works" class="works">
+        <div class="container">
+            <br>
+
+            @if($popular_video)
+            <div class="section-heading" style="margin-top: 92px; margin-bottom: 10px;">
+                <h1 class="title wow fadeInDown animated" data-wow-delay=".3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;">Popular Videos</h1>
+            </div>
+            <div class="row">
+
+
+                    @foreach($popular_video as $row)
+
+
+                        <?php
+                    $video = Youtube::getVideoInfo($row->video_id);
+
+
+                    ?>
+                        <div class="col-sm-4 col-xs-12">
+                            <figure class="wow fadeInLeft animated portfolio-item animated">
+                                <div class="img-wrapper">
+                                    <img src="{{$video->snippet->thumbnails->high->url}}" class="img-responsive"
+                                         alt="{{$video->snippet->title}}" width="100%">
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a  target="_blank" data-youtube-id="{{$row->video_id}}"
+                                                class="video-banner js-trigger-video-modal"
+                                                href="http://www.youtube.com/watch?v={{$row->video_id}}">Play
+                                                Video</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                    <h4>
+                                        <a    data-youtube-id="{{$row->video_id}}"
+                                              class="video-banner js-trigger-video-modal"  target="_blank"
+                                              href="http://www.youtube.com/watch?v={{$row->video_id}}"> {{$video->snippet->title}}</a>
+                                    </h4>
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                    @endforeach
+
+            </div>
+            @endif
+        </div>
+    </section>
+
+
     <section id="works" class="works">
         <div class="container">
             <br>

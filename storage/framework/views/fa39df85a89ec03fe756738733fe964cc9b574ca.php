@@ -9,7 +9,7 @@
 
         </div>
         <div class="col-md-4  pull-right">
-            <input type="text" id="serach" name="search" placeholder="Enter Faq " class="form-control" >
+            <input type="text" id="serach" name="search" placeholder="Video Title" class="form-control" >
         </div>
     </div>
     <br/>
@@ -20,16 +20,16 @@
             <tr>
 
                 <th >Sl</th>
-                <th width="20%">Title</th>
-                <th width="50%">Full News</th>
-                <th>Status</th>
+                <th width="20%">Video Title</th>
+                <th>Video Id</th>
+                <th>Order By</th>
                 <th>Created Date</th>
                 <th>Action</th>
             </tr>
             </thead>
             <tbody>
 
-               <?php echo $__env->make('admin.news.pagination', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+               <?php echo $__env->make('admin.popularvideo.pagination', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </tbody>
 
         </table>
@@ -84,7 +84,7 @@
         {
           $.ajax({
                 type:"GET",
-                url:"<?php echo e(url('news/pagination')); ?>?page="+page+"&query="+query,
+                url:"<?php echo e(url('admin/popular_video/pagination')); ?>?page="+page+"&query="+query,
                 success:function(data)
                 {
                     $('tbody').html('');
@@ -116,7 +116,7 @@
 $('#add_modal').click(function () {
     $.ajax({
         type:"GET",
-        url:"<?php echo e(url('admin/news/create')); ?>",
+        url:"<?php echo e(url('/admin/popular/video/create')); ?>",
         success:function(data)
         {
              $('#append_data').html(data)
@@ -138,4 +138,4 @@ $('#add_modal').click(function () {
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/news/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/admin/popularvideo/index.blade.php ENDPATH**/ ?>

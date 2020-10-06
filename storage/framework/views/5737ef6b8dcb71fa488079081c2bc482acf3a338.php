@@ -483,6 +483,60 @@
     </section>
     <!-- end video modal -->
 
+
+
+    <section id="works" class="works">
+        <div class="container">
+            <br>
+
+            <?php if($popular_video): ?>
+            <div class="section-heading" style="margin-top: 92px; margin-bottom: 10px;">
+                <h1 class="title wow fadeInDown animated" data-wow-delay=".3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;">Popular Videos</h1>
+            </div>
+            <div class="row">
+
+
+                    <?php $__currentLoopData = $popular_video; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+
+                        <?php
+                    $video = Youtube::getVideoInfo($row->video_id);
+
+
+                    ?>
+                        <div class="col-sm-4 col-xs-12">
+                            <figure class="wow fadeInLeft animated portfolio-item animated">
+                                <div class="img-wrapper">
+                                    <img src="<?php echo e($video->snippet->thumbnails->high->url); ?>" class="img-responsive"
+                                         alt="<?php echo e($video->snippet->title); ?>" width="100%">
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a  target="_blank" data-youtube-id="<?php echo e($row->video_id); ?>"
+                                                class="video-banner js-trigger-video-modal"
+                                                href="http://www.youtube.com/watch?v=<?php echo e($row->video_id); ?>">Play
+                                                Video</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                    <h4>
+                                        <a    data-youtube-id="<?php echo e($row->video_id); ?>"
+                                              class="video-banner js-trigger-video-modal"  target="_blank"
+                                              href="http://www.youtube.com/watch?v=<?php echo e($row->video_id); ?>"> <?php echo e($video->snippet->title); ?></a>
+                                    </h4>
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+            </div>
+            <?php endif; ?>
+        </div>
+    </section>
+
+
     <section id="works" class="works">
         <div class="container">
             <br>

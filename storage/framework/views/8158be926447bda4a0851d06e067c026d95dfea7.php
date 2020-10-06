@@ -6,7 +6,7 @@
         Slider Section Start
         ================================================== -->
 <section id="hero-area">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="block wow fadeInUp">
@@ -28,7 +28,7 @@
                                     <div class="row">
                                         <div class="">
                                             <h4>Upcomming Program</h4>
-                                            <div class="col-xs-10 col-md-11 md-p-r-0 " style="height:400px;overflow-y: scroll;">
+                                            <div class="col-xs-10 col-md-11 md-p-r-0 " style="height:330px;overflow-y: scroll;">
                                                 <!-- Tab panes -->
                                                 <div class="tab-content">
                                                     <div class="tab-pane active ifrm-player-list" style="" id="home-vr">
@@ -93,19 +93,41 @@
             Slider Section Start
             ================================================== -->
 
+
+
+
 <section id="about" style="padding: 22px 0;">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="block wow " >
+            <div class="col-md-9">
+                <div class="block wow">
                     <h2>ABOUT US</h2>
                    <?php echo $about->page_content ?>
                     <div class="text-left">
                         <a href="contact.php" class="btn btn-default">Read More</a>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Online Vote</div>
+                    <div class="panel-body">
+
+
+
+                    <span class="ajax_pull_data_get"></span>
+
+
+
+
+
+                    </div>
+                </div>
+
 
             </div>
+
 
         </div>
     </div>
@@ -244,6 +266,32 @@
     $.get("<?php echo e(url('/')); ?>/home_page_program", function(data, status){
        $('.home_page_program').html(data);
     });
+
+function ajax_pull_data_get(){
+    $.get("<?php echo e(url('/')); ?>/ajax_pull_data_get", function(data, status){
+        $('.ajax_pull_data_get').html(data);
+    });
+}
+    ajax_pull_data_get();
+
+        $("body").on("submit",".poll-form",function(e){
+            e.preventDefault();
+            var thisobj=$(this);
+           console.log("input"+thisobj.serialize());
+           console.log("url"+thisobj.attr("action"));
+            $.ajax({
+                url : thisobj.attr("action"),
+                data : thisobj.serialize(),
+                type : "POST",
+                success: function(data){
+                    ajax_pull_data_get();
+                },
+
+            });
+
+
+        });
+
 
 </script>
 

@@ -565,12 +565,12 @@
                                    value="{{$setting_row->contact_email}}">
                         </div>
                         <div class="form-group ">
-                            <label for="phone">Before Login Alert Time (in seconds)</label>
+                            <label for="phone">Before Login Alert Time (in minute)</label>
                             <input type="text" class="form-control" name="before_login_alert" id="before_login_alert"
                                    value="{{$setting_row->before_login_alert}}">
                         </div>
                         <div class="form-group ">
-                            <label for="phone">After Login Alert Time (in seconds)</label>
+                            <label for="phone">After Login Alert Time (in minute)</label>
                             <input type="text" class="form-control" name="after_login_alert" id="after_login_alert"
                                    value="{{$setting_row->after_login_alert}}">
                         </div>

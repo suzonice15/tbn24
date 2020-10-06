@@ -248,7 +248,7 @@ if(isset($one_hour_check_modal)) { ?>
 
         <!-- five mitinte check modal -->
 
-<script >
+<script>
     $(document).ready(function(){
 
         function five_minite_check_modal(){
@@ -273,7 +273,7 @@ if(isset($one_hour_check_modal)) { ?>
         var five =(<?php echo get_footer_data()->before_login_alert; ?>) * 60000;
 
 
-        window.setInterval( five_minite_check_modal, five);
+        window.setInterval(five_minite_check_modal, five);
     });
 
 
@@ -315,7 +315,7 @@ if(isset($one_hour_check_modal)) { ?>
                     });
 
         }
-    })
+    });
 
 
     /*     one hour  modal    data submit     */
@@ -361,7 +361,7 @@ if(isset($one_hour_check_modal)) { ?>
 
 <!-- 1 hour  check modal -->
 
-<script  >
+<script>
     $(document).ready(function(){
 
         function one_hour_check_modal(){
@@ -375,16 +375,12 @@ if(isset($one_hour_check_modal)) { ?>
                         $("#one_hour_check_modal").modal();
                     }
                 }
-            })
-
-
+            });
         }
-
-
 
         var one_hour =(<?php echo get_footer_data()->after_login_alert; ?>) * 60000;
 
-        window.setInterval( one_hour_check_modal, one_hour);
+        window.setInterval(one_hour_check_modal, one_hour);
     });
 </script>
 
@@ -398,7 +394,7 @@ if(isset($one_hour_check_modal)) { ?>
 
 
 
-<script >
+<script>
 
 var player = videojs('hls-example', {autoplay: 'any'});
 </script>

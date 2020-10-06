@@ -10,7 +10,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="question">Question</label>
                 <div class="col-md-6">
-                    <input type="text" maxlength="200" value="{{$pull->pull_question}}" class="form-control" id="pull_question" name="pull_question"
+                    <input required type="text" maxlength="200" value="{{$pull->pull_question}}" class="form-control" id="pull_question" name="pull_question"
                            placeholder="Question" autocomplete="off">
 
                 </div>
@@ -18,7 +18,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="expire_time">Expire Time</label>
                 <div class="col-md-6">
-                    <input type="text"   value="{{ date('d-m-Y',strtotime($pull->pull_expire_time))}}" class="form-control datepicker" id="pull_expire_time"
+                    <input type="text"  required  value="{{ date('d-m-Y',strtotime($pull->pull_expire_time))}}" class="form-control datepicker" id="pull_expire_time"
                            name="pull_expire_time" placeholder="Expire Time" autocomplete="off">
                 </div>
             </div>
@@ -31,7 +31,8 @@
                             <table class="table table-bordered" id="dynamic_field">
 
                                 <?php
-                                if($options) {
+                                if(isset($options)) {
+
                                     $count=0;
                                     foreach ($options as $option){
                                 ++$count;
@@ -52,7 +53,15 @@
                                     }
 
 
-                                    } ?>
+                                    }  if($count==0) {
+
+
+                                    ?>
+                                    <tr>
+                                        <td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td>
+                                        <td><button type="button" name="add" id="add" class="btn btn-success"><i class="fa fa-plus"></i></button></td>
+                                    </tr>
+                                <?php  } ?>
 
                             </table>
                         </div>

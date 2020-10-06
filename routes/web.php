@@ -31,6 +31,8 @@ Route::post('/contact', 'HomeController@contact_store');
 Route::get('/today-schedule', 'HomeController@today_schedule');
 Route::get('/program-video', 'HomeController@programVideo');
 Route::get('/youtube-playlist/{any}', 'HomeController@youtubePlaylist');
+Route::post('/vote/count', 'HomeController@vote_count');
+Route::get('/ajax_pull_data_get', 'HomeController@ajax_pull_data_get');
 
 /****=============== admin faq section    =====================  ******/
 Route::get('admin/faq', 'admin\FaqController@index');
@@ -62,6 +64,28 @@ Route::post('admin/pulls/update/{id}', 'admin\PullController@update');
 Route::get('admin/pulls/{id}', 'admin\PullController@edit');
 Route::get('/admin/pulls/delete/{id}', 'admin\PullController@delete');
 Route::get('pulls/pagination', 'admin\PullController@pagination');
+
+
+
+/****=============== admin post section    =====================  ******/
+Route::get('admin/post', 'admin\PostController.php@index');
+Route::get('admin/post/create', 'admin\PostController.php@create');
+Route::post('admin/post/store', 'admin\PostController.php@store');
+Route::post('admin/post/update/{id}', 'admin\PostController.php@update');
+Route::get('admin/post/{id}', 'admin\PostController.php@edit');
+Route::get('/admin/post/delete/{id}', 'admin\PostController.php@delete');
+Route::get('post/pagination', 'admin\PostController.php@pagination');
+
+
+
+/****=============== admin Popular Video Pull section    =====================  ******/
+Route::get('/admin/popular/video', 'admin\PopularVideoController@index');
+Route::get('/admin/popular/video/create', 'admin\PopularVideoController@create');
+Route::post('/admin/popular/video/store', 'admin\PopularVideoController@store');
+Route::post('/admin/popular/video/{id}', 'admin\PopularVideoController@update');
+Route::get('/admin/popular/video/{id}', 'admin\PopularVideoController@edit');
+Route::get('/admin/popular/video/delete/{id}', 'admin\PopularVideoController@delete');
+Route::get('admin/popular_video/pagination', 'admin\PopularVideoController@pagination');
 
 
 

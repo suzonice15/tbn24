@@ -10,7 +10,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="question">Question</label>
                 <div class="col-md-6">
-                    <input type="text" maxlength="200" value="" class="form-control" id="pull_question" name="pull_question"
+                    <input required type="text" maxlength="200" value="" class="form-control" id="pull_question" name="pull_question"
                            placeholder="Question" >
 
                 </div>
@@ -18,7 +18,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="expire_time">Expire Time</label>
                 <div class="col-md-6">
-                    <input type="text"   class="form-control datepicker" id="pull_expire_time"
+                    <input required type="text"   class="form-control datepicker" id="pull_expire_time"
                            name="pull_expire_time" placeholder="Expire Time">
                 </div>
             </div>
