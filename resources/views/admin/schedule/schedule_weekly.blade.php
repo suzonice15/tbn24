@@ -8,7 +8,7 @@
                         data-target="#add-schedule">
                     <i class="fa fa-plus"></i>Add New
                 </button>
-                <a onclick="Grid_tab1_1600763452_download()" class="btn   btn-success"><i class="fa fa-download"></i>
+                <a style="display:none" onclick="Grid_tab1_1600763452_download()" class="btn   btn-success"><i class="fa fa-download"></i>
                     Download CSV</a>
 
             </div>
@@ -74,7 +74,7 @@
         <br/>
         <div class="table-responsive">
 
-            <table class="table table-bordered table-striped   ">
+            <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <th>Sl</th>
@@ -123,7 +123,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" style="font-weight: bold">&times;</span></button>
-                        <h4 class="modal-title" style="text-align:center">Edit Program</h4>
+                        <h4 class="modal-title" style="text-align:center">Edit Schedule</h4>
                     </div>
                     <div class="modal-body" id="append_edit_data">
 
@@ -170,6 +170,7 @@
                     var day_id = $('#day_id').val();
                     var data_id = $('#data_id').val();
                     if(data_id=='day'){
+
                         $.ajax({
                             type: "GET",
                             url: "{{url('schedules/fetch_data_using_week')}}?day_id=" + day_id,
@@ -188,13 +189,7 @@
                             }
                         })
                     }
-
-
-
-                    var schedule_date = $('#schedule_date_using_ajax').val();
-                    fetch_data_by_program(program_id, schedule_date);
                 });
-
 
                 $(document).on('click', '.pagination a', function (event) {
                     event.preventDefault();
@@ -238,10 +233,5 @@
 
             });
         </script>
-
-
-
-
-
 @endsection
 

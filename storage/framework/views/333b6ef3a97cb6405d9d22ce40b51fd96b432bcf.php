@@ -108,7 +108,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href=" <?php echo e(url('admin/posts')); ?>"><i class="fa fa fa-list"></i></i>All Posts</a></li>
+                    <li><a href=" <?php echo e(url('admin/post')); ?>"><i class="fa fa fa-list"></i></i>All Posts</a></li>
                     <li><a href=" <?php echo e(url('admin/categories')); ?>"><i class="fa fa fa-list"></i></i>Category</a></li>
 
 

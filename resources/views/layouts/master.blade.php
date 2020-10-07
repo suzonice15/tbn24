@@ -39,7 +39,7 @@
             </div>
         @elseif(Session::has('error'))
             <div class="callout callout-danger">
-                <h4>Error !</h4>
+
 
                 <h4>
                     {{ Session::get('error')}}

@@ -228,6 +228,33 @@ class HomeController extends Controller
         return view('website.ajax_home_page_program',$data);
 
     }
+
+    public  function blog(){
+        $data['blogs']=DB::table('post')->paginate(12);
+        $data['category']=DB::table('category')->orderBy('category_id','desc')->get();
+        return view('website.blog',$data);
+
+    }
+    public  function category($category_id){
+        $data['blogs']=DB::table('post')
+            ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
+            ->where('category_id','=',$category_id)
+            ->paginate(12);
+        $data['category']=DB::table('category')->orderBy('category_id','desc')->get();
+        return view('website.category',$data);
+
+    }
+    public  function post($post_name){
+        $data['post']=DB::table('post')
+            ->where('post_name','=',$post_name)
+            ->first();
+        $data['category']=DB::table('category')->orderBy('category_id','desc')->get();
+        return view('website.single_post',$data);
+
+    }
+
+
+
     public function vote_count(Request $request){
        // $pull_id= $request->pull_id;
         $pull_id= $request->get('pull_id');

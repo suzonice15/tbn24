@@ -4,10 +4,10 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-6">
-            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" id="add_modal" data-target="#add-program">
+            <button type="button" class="btn btn-success" data-toggle="modal" id="add_modal" data-target="#add-program">
                 <i class="fa fa-plus"></i>Add New
             </button>
-            <a onclick="Grid_tab1_1600763452_download()" class="btn btn-xs btn-success"><i class="fa fa-download"></i> Download CSV</a>
+            <a  style="display: none" onclick="Grid_tab1_1600763452_download()" class="btn btn-xs btn-success"><i class="fa fa-download"></i> Download CSV</a>
 
         </div>
         <div class="col-md-4  pull-right">
@@ -42,7 +42,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" style="font-weight: bold">&times;</span></button>
-                    <h4 class="modal-title" style="text-align:center">New Program</h4>
+                    <h4 class="modal-title" style="text-align:center">Add New FAQ</h4>
                 </div>
                 <div class="modal-body" id="append_data">
 

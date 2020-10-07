@@ -29,18 +29,10 @@ class ScheduleController extends Controller
         $data['title'] = '';
         $today="Y-m-d";
         $data['programs']=DB::table('programs')->get();
-
-
-
-        $schedules  =DB::table('schedules')->join('programs','programs.id','=','schedules.program_id')
-
+        $schedules  =DB::table('schedules')->select('schedules.*','program_name')->leftJoin('programs','programs.id','=','schedules.program_id')
             ->orderBy('schedules.id', 'desc')
             ->paginate(10);
 
-//        $schedules  =DB::table('schedules')->join('programs','programs.id','=','schedules.program_id')
-//            ->whereDate('schedule_date', '=', date('Y-m-d'))
-//            ->orderBy('schedules.id', 'desc')
-//            ->paginate(10);
         return view('admin.schedule.index', compact('schedules'), $data);
 
     }
@@ -51,8 +43,6 @@ class ScheduleController extends Controller
         $data['active'] = '  Schedule List ';
         $data['title'] = '';
         $today="Y-m-d";
-
-        
         return view('admin.schedule.schedule_weekly_day_view', $data);
 
     }
@@ -65,16 +55,9 @@ class ScheduleController extends Controller
     {
         if ($request->ajax()) {
 
-          //  $query = $request->get('program_id');
-           // $query = str_replace(" ", "%", $query);
-//            $programs  =Program::select("*")
-//                ->where('program_id', 'LIKE', '%' . $query . '%')
-//                ->orderBy('programs.id', 'desc')
-//                ->paginate(10);
-            $schedules  =DB::table('schedules')->select('schedules.*','programs.program_name')->join('programs','programs.id','=','schedules.program_id')
+            $schedules  =DB::table('schedules')->select('schedules.*','programs.program_name')->leftJoin('programs','programs.id','=','schedules.program_id')
                 ->orderBy('schedules.id', 'desc')
                 ->paginate(10);
-
             return view('admin.schedule.pagination', compact('schedules'));
         }
 
@@ -87,12 +70,17 @@ class ScheduleController extends Controller
             $schedule_date = $request->get('schedule_date');
             if($schedule_date){
                 $date=date('Y-m-d',strtotime($schedule_date));
+                $schedules = DB::table('schedules')->join('programs', 'programs.id', '=', 'schedules.program_id')
+                    ->where('program_id', '=', $program_id)
+                    ->whereDate('schedule_date', '=', $date)
+                    ->orderBy('schedules.id', 'desc')
+                    ->paginate(5000);
+            } else {
+                $schedules = DB::table('schedules')->join('programs', 'programs.id', '=', 'schedules.program_id')
+                    ->where('program_id', '=', $program_id)
+                    ->orderBy('schedules.id', 'desc')
+                    ->paginate(5000);
             }
-            $schedules  =DB::table('schedules')->join('programs','programs.id','=','schedules.program_id')
-                ->where('program_id','=',$program_id)
-                ->whereDate('schedule_date', '=',$date)
-                ->orderBy('schedules.id', 'desc')
-                ->paginate(5000);
 
             return view('admin.schedule.pagination', compact('schedules'));
         }

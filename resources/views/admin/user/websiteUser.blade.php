@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-4">
 
-                <a onclick="Grid_tab1_1600763452_download()" class="btn btn-xs btn-success"><i class="fa fa-download"></i> Download CSV</a>
+                <a style="display: none" onclick="Grid_tab1_1600763452_download()" class="btn btn-xs btn-success"><i class="fa fa-download"></i> Download CSV</a>
 
             </div>
             {{--<div class="col-md-4 pull-right ">--}}

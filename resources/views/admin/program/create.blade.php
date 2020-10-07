@@ -12,7 +12,7 @@
                         <div class="form-group has-feedback">
                             <label class="control-label col-md-3" for="pro_name">Name</label>
                             <div class="col-md-9">
-                                <input type="text" maxlength="150" value="" class="form-control" id="program_name" name="program_name" placeholder="Name"  >
+                                <input autocomplete="off" type="text" maxlength="150" value="" class="form-control" id="program_name" name="program_name" placeholder="Name"  >
                                 <p style="color:red" id="program_name_error"></p>
 
                             </div>
@@ -30,7 +30,7 @@
                         <div class="form-group has-feedback">
                             <label class="control-label col-md-3" for="pro_name">Playlist ID</label>
                             <div class="col-md-9">
-                                <input type="text" maxlength="150" value="" class="form-control" id="youtube" name="youtube" placeholder="Youtube Playlist ID" >
+                                <input autocomplete="off" type="text" maxlength="150" value="" class="form-control" id="youtube" name="youtube" placeholder="Youtube Playlist ID" >
                                 <p style="color:red" id="youtube_error"></p>
 
                             </div>

@@ -502,6 +502,7 @@
 
                         <?php
                     $video = Youtube::getVideoInfo($row->video_id);
+                        if($video){
 
 
                     ?>
@@ -528,6 +529,8 @@
                                 </figcaption>
                             </figure>
                         </div>
+
+                        <?php } ?>
 
                     @endforeach
 

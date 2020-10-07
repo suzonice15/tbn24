@@ -7,7 +7,7 @@
             <button type="button" class="btn btn-success" data-toggle="modal" id="add_modal" data-target="#add-schedule">
                 <i class="fa fa-plus"></i>Add New
             </button>
-            <a onclick="Grid_tab1_1600763452_download()" class="btn   btn-success"><i class="fa fa-download"></i> Download CSV</a>
+            <a style="display:none" onclick="Grid_tab1_1600763452_download()" class="btn   btn-success"><i class="fa fa-download"></i> Download CSV</a>
 
         </div>
         <div class="col-md-4">
@@ -39,7 +39,7 @@
                 <label>Date</label>
             </div>
             <div class="col-md-9">
-                <input type="text" maxlength="" value="" class="form-control datepicker" id="schedule_date_using_ajax"
+                <input autocomplete="off" type="text" maxlength="" value="" class="form-control datepicker_index" id="schedule_date_using_ajax"
                        name="schedule_date" placeholder="Date" >
             </div>
 
@@ -86,7 +86,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" style="font-weight: bold">&times;</span></button>
-                    <h4 class="modal-title" style="text-align:center">New Daily Schedule
+                    <h4 class="modal-title" style="text-align:center">Add New Schedule
                     </h4>
                 </div>
                 <div class="modal-body" id="append_data">
@@ -106,7 +106,8 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" style="font-weight: bold">&times;</span></button>
-                    <h4 class="modal-title" style="text-align:center">Edit Program</h4>
+                    <h4 class="modal-title" style="text-align:center">Edit Schedule
+                    </h4>
                 </div>
                 <div class="modal-body" id="append_edit_data">
 
@@ -122,7 +123,7 @@
 
     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
 
-<script>
+<script defer>
     $(document).ready(function(){
 
         function fetch_data(page)
@@ -154,12 +155,16 @@
         $(document).on('click', '#search', function(){
             var program_id = $('#program_id_id').val();
             var schedule_date = $('#schedule_date_using_ajax').val();
-
+//           if(program_id && schedule_date){
+//               fetch_data_by_program(program_id,schedule_date);
+//           } else {
+//
+//               fetch_data_by_program(program_id,schedule_date);
+//           }
             fetch_data_by_program(program_id,schedule_date);
 
+
         });
-
-
         $(document).on('click', '.pagination a', function(event){
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
@@ -167,8 +172,6 @@
          //   var program_id = $('#program_id_id').val();
             fetch_data(page);
         });
-
-
 $('#add_modal').click(function () {
     $.ajax({
         type:"GET",
@@ -179,6 +182,8 @@ $('#add_modal').click(function () {
         }
     })
 });
+        $(".datepicker_index").datepicker({ dateFormat: "dd-mm-yyyy", todayHighlight:'TRUE',
+            autoclose: true,});
 
 
 
@@ -186,10 +191,5 @@ $('#add_modal').click(function () {
 
     });
 </script>
-
-
-
-
-
 @endsection
 

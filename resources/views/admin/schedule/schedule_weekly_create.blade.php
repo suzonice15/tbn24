@@ -75,7 +75,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="date">Date</label>
                 <div class="col-md-9">
-                    <input type="text"  value="" class="form-control datepicker" id="schedule_datee"
+                    <input autocomplete="off" type="text"  value="" class="form-control datepicker" id="schedule_datee"
                            name="schedule_date"  placeholder="Date" >
 
                     <p style="color:red" id="schedule_date_error"></p>
@@ -149,7 +149,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="note">Note</label>
                 <div class="col-md-9">
-                    <input type="text" maxlength="255" value="" class="form-control" id="schedule_note" name="schedule_note"
+                    <input autocomplete="off" type="text" maxlength="255" value="" class="form-control" id="schedule_note" name="schedule_note"
                            placeholder="Note" >
 
                 </div>

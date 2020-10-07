@@ -10,7 +10,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="question">Question</label>
                 <div class="col-md-6">
-                    <input required type="text" maxlength="200" value="" class="form-control" id="pull_question" name="pull_question"
+                    <input autocomplete="off" required type="text" maxlength="200" value="" class="form-control" id="pull_question" name="pull_question"
                            placeholder="Question" >
 
                 </div>
@@ -18,7 +18,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="expire_time">Expire Time</label>
                 <div class="col-md-6">
-                    <input required type="text"   class="form-control datepicker" id="pull_expire_time"
+                    <input  autocomplete="off" required type="text"   class="form-control datepicker" id="pull_expire_time"
                            name="pull_expire_time" placeholder="Expire Time">
                 </div>
             </div>
@@ -67,7 +67,7 @@
 
     </div>
 
-    <script>
+    <script defer>
         $(document).ready(function(){
             var i=1;
             $('#add').click(function(){
@@ -78,80 +78,37 @@
                 var button_id = $(this).attr("id");
                 $('#row'+button_id+'').remove();
             });
-
         });
     </script>
 
 
-    <script type="text/javascript">
-        $('.datepicker').datepicker({
-            format: "dd-mm-yyyy",
-                    autoclose: true,
-        }
-        );
+    <script type="text/javascript" defer>
+
+        $(".datepicker").datepicker({ dateFormat: "dd-mm-yyyy", todayHighlight:'TRUE',
+            autoclose: true,}).datepicker("setDate", new Date());
+
 
         $(document).ready(function () {
             $('#save_program_data').click(function () {
                 let news_title = $('#news_title').val();
                 let news_body = $('#news_body').val();
                 if (news_title == '') {
-
                     $('#news_title_error').text('This Field Must be fillup');
                     return false;
                 } else {
                     $('#news_title_error').text('');
-
-
                 }
 
                 if (news_body == '') {
-
                     $('#news_body_error').text('This Field Must be fillup');
                     return false;
                 } else {
                     $('#news_body_error').text('');
-
-
                 }
 
                 $("#containerForm").submit(); // Submit the form
-
-
-            })
-
-        });
-
-
-        function doSqureImageBox() {
-            var width = $("#imageUploaderContainer").width();
-            width = 100;
-            $("#imageUploaderContainer").css("height", width);
-        }
-        $(function () {
-            $('#select_image').on('click', function () {
-                $('#image-selector').trigger('click');
-            });
-            doSqureImageBox();
-
-
-            $('#image-selector').on("change", function (e) {
-                var target = $(".image-display");
-                var fr = new FileReader();
-                // when image is loaded, set the src of the image where you want to display it
-                fr.onload = function (e) {
-                    target.attr("src", this.result);
-                    target.show();
-                    $(".img-info").hide();
-                    try {
-                        $.colorbox.resize();
-                    } catch (e) {
-                    }
-                    ;
-                };
-                fr.readAsDataURL(this.files[0]);
             });
         });
-
     </script>
 
 

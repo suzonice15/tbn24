@@ -118,11 +118,9 @@
 
 <script type="text/javascript">
 
-    $('.datepicker').datepicker({
-                format: "dd-mm-yyyy",
-                autoclose: true,
-            }
-    );
+    $(".datepicker").datepicker({ dateFormat: "dd-mm-yyyy", todayHighlight:'TRUE',
+        autoclose: true,}).datepicker("setDate", new Date());
+
 
     $(document).ready(function() {
         $('#save_program_data').click(function () {
@@ -131,29 +129,18 @@
             let image=  $('#image-selector').val();
             let youtube=  $('#youtube').val();
             if(questions ==''){
-
                 $('#questions_error').text('This Field Must be fillup');
                 return false;
             } else {
                 $('#questions_error').text('');
-
-
             }
-
             if(answers ==''){
-
                 $('#answers_error').text('This Field Must be fillup');
                 return false;
             } else {
                 $('#answers_error').text('');
-
-
             }
-
             $("#containerForm").submit(); // Submit the form
-
-
-
         })
 
     });

@@ -75,7 +75,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="date">Date</label>
                 <div class="col-md-9">
-                    <input type="text"  value="" class="form-control datepicker" id="schedule_datee"
+                    <input autocomplete="off" type="text"   value="" class="form-control datepicker" id="schedule_datee"
                            name="schedule_date"  placeholder="Date" >
 
                     <p style="color:red" id="schedule_date_error"></p>
@@ -98,7 +98,10 @@
                                 <option value="01:30">01:30</option>
                                 <option value="01:45">01:45</option>
                                 <option value="02:00">02:00</option>
-
+                                <option value="02:15">02:15</option>
+                                <option value="02:30">02:30</option>
+                                <option value="02:45">02:45</option>
+                                <option value="03:00">03:00</option>
 
                             </select>
 
@@ -149,7 +152,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="note">Note</label>
                 <div class="col-md-9">
-                    <input type="text" maxlength="255" value="" class="form-control" id="schedule_note" name="schedule_note"
+                    <input autocomplete="off" type="text" maxlength="255" value="" class="form-control" id="schedule_note" name="schedule_note"
                            placeholder="Note" >
 
                 </div>
@@ -185,21 +188,19 @@
 </form>
 
 
-<script>
+<script defer>
     $(function () {
 
         $('.select2').select2();
-        $('.datepicker').datepicker(
-                {
-                    format: "dd-mm-yyyy",
-                    autoclose: true,
-                });
+        $(".datepicker").datepicker({ dateFormat: "dd-mm-yyyy", todayHighlight:'TRUE',
+            autoclose: true,}).datepicker("setDate", new Date());
+
 
     });
 
     </script>
 
-<script type="text/javascript">
+<script type="text/javascript" defer>
     $(document).ready(function() {
         $('#save_program_data').click(function () {
             let schedule_date=  $('#schedule_datee').val();

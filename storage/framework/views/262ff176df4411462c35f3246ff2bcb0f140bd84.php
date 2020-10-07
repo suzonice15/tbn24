@@ -73,13 +73,8 @@ var base_url_main="<?php echo e(url('/')); ?>";
     <script type="text/javascript" src="<?php echo e(asset('assets/font_end/')); ?>/js/swfobject.min.js"></script>
     <!-- template main js -->
     <script src="<?php echo e(asset('assets/font_end/')); ?>/js/main.js?v=1.0.2"></script>
-    <script async src="//"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-9484012974069353",
-            enable_page_level_ads: true
-        });
-    </script>
+
+
 </head>
 <body>
 <!--
@@ -113,6 +108,7 @@ var base_url_main="<?php echo e(url('/')); ?>";
                     <li><a href="<?php echo e(url('/')); ?>/all-program">Our Program</a></li>
                     <li><a href="<?php echo e(url('/')); ?>/today-schedule">Program Schedule</a></li>
                     <li><a href="<?php echo e(url('/')); ?>/program-video">Program Video </a></li>
+                    <li><a href="<?php echo e(url('/')); ?>/blog">Blog</a></li>
                     <li><a href="<?php echo e(url('/')); ?>/about-us">About Us</a></li>
                     <li><a href="<?php echo e(url('/')); ?>/contact">Contact</a></li>
                     <li><a href="<?php echo e(url('/')); ?>/documents">Documents</a></li>

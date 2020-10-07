@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 Route::get('/all-program', 'HomeController@all_program');
+Route::get('/blog', 'HomeController@blog');
 Route::get('ajax_program', 'HomeController@ajax_program');
 Route::get('/program-details/{id}', 'HomeController@single_program');
 Route::get('/about-us', 'HomeController@about');
@@ -28,6 +29,8 @@ Route::get('/contact', 'HomeController@contact');
 Route::get('/home_page_program', 'HomeController@home_page_program');
 Route::post('/modal/login', 'HomeController@modal_login');
 Route::post('/contact', 'HomeController@contact_store');
+Route::get('/category/{name}', 'HomeController@category');
+Route::get('/post/{name}', 'HomeController@post');
 Route::get('/today-schedule', 'HomeController@today_schedule');
 Route::get('/program-video', 'HomeController@programVideo');
 Route::get('/youtube-playlist/{any}', 'HomeController@youtubePlaylist');
@@ -68,13 +71,14 @@ Route::get('pulls/pagination', 'admin\PullController@pagination');
 
 
 /****=============== admin post section    =====================  ******/
-Route::get('admin/post', 'admin\PostController.php@index');
-Route::get('admin/post/create', 'admin\PostController.php@create');
-Route::post('admin/post/store', 'admin\PostController.php@store');
-Route::post('admin/post/update/{id}', 'admin\PostController.php@update');
-Route::get('admin/post/{id}', 'admin\PostController.php@edit');
-Route::get('/admin/post/delete/{id}', 'admin\PostController.php@delete');
-Route::get('post/pagination', 'admin\PostController.php@pagination');
+Route::get('admin/post', 'admin\PostController@index');
+Route::get('admin/post/create', 'admin\PostController@create');
+Route::post('admin/post/store', 'admin\PostController@store');
+Route::post('admin/post/update/{id}', 'admin\PostController@update');
+Route::get('admin/post/{id}', 'admin\PostController@edit');
+Route::get('/admin/post/delete/{id}', 'admin\PostController@delete');
+Route::get('post/pagination', 'admin\PostController@fetch_data');
+Route::post('post-urlcheck', 'admin\PostController@urlCheck')->name('post.urlcheck');
 
 
 

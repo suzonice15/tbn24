@@ -1,58 +1,37 @@
-@if(isset($categories))
-    <?php $i=$categories->perPage() * ($categories->currentPage()-1);?>
-    @foreach ($categories as $category)
+@if(isset($posts))
+    <?php $i=$posts->perPage() * ($posts->currentPage()-1);?>
+    @foreach ($posts as $post)
 
 
 
         <tr>
             <td>{{ ++$i}} </td>
-            <td>{{$category->category_title}} </td>
-
-
-
-            <td><?php if($category->status==1) {echo "Active" ;}else{ echo "Inactive";} ?> </td>
-            <td>{{date('d-m-Y',strtotime($category->created_date))}}</td>
+            <td>{{$post->post_title}} </td>
+            <td> <img width="50" src="{{url('/')}}/public/uploads/post/{{$post->post_picture}}" ></td>
+            <td><?php if($post->post_status==1) {echo "Active" ;}else{ echo "Inactive";} ?> </td>
+            <td>{{date('d-m-Y',strtotime($post->post_created_date))}}</td>
             <td>
-                <button type="button" class="btn   btn-success edit_modal" data-toggle="modal" data-category_id="{{$category->category_id}}"   data-target="#edit-program">
-                    <i class="fa fa-edit"></i>
-                </button>
 
+                <a  href="{{ url('admin/post') }}/{{ $post->post_id }}">
+                    <span class="glyphicon glyphicon-edit btn btn-success"></span>
+                </a>
 
-
-                <a title="delete" href="{{ url('admin/category/delete') }}/{{ $category->category_id }}" onclick="return confirm('Are you want to delete this information :press Ok for delete otherwise Cancel')">
+                <a title="delete" href="{{ url('admin/post/delete') }}/{{ $post->post_id }}" onclick="return confirm('Are you want to delete this information :press Ok for delete otherwise Cancel')">
                     <span class="glyphicon glyphicon-trash btn btn-danger"></span>
-                </a></td>
+                </a>
+            </td>
         </tr>
 
     @endforeach
 
     <tr>
         <td colspan="6" align="center">
-            {!! $categories->links() !!}
+            {!! $posts->links() !!}
         </td>
     </tr>
 @endif
 
 
-<script>
-
-
-
-    $('.edit_modal').on('click',function () {
-
-        let category_id=$(this).data("category_id") // will return the number 123
-
-
-        $.ajax({
-            type:"GET",
-            url:"{{url('admin/category')}}/"+category_id,
-            success:function(data)
-            {
-                $('#append_edit_data').html(data)
-            }
-        })
-    });
-</script>
 
 
 

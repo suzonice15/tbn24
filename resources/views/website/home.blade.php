@@ -16,7 +16,7 @@
                     <section class="cd-intro row">
                         <div class="col-md-8">
 
-                            <video  poster="http://tbn24.com/images/logo.png"   id='hls-example'  class="video-js vjs-default-skin" width="100%" height="400"  controls>
+                            <video     id='hls-example'  class="video-js vjs-default-skin" width="100%" height="400"  controls>
                                 <source  type="application/x-mpegURL" src="{{$api}}">
                             </video>
                         </div>

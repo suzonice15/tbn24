@@ -2,10 +2,10 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-6">
-            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" id="add_modal" data-target="#add-program">
+            <button type="button" class="btn   btn-success" data-toggle="modal" id="add_modal" data-target="#add-program">
                 <i class="fa fa-plus"></i>Add New
             </button>
-            <a onclick="Grid_tab1_1600763452_download()" class="btn btn-xs btn-success"><i class="fa fa-download"></i> Download CSV</a>
+            <a  style="display: none" onclick="Grid_tab1_1600763452_download()" class="btn btn-xs btn-success"><i class="fa fa-download"></i> Download CSV</a>
 
         </div>
         <div class="col-md-4  pull-right">

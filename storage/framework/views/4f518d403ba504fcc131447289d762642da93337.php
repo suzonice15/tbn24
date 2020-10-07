@@ -40,7 +40,7 @@
             </div>
         <?php elseif(Session::has('error')): ?>
             <div class="callout callout-danger">
-                <h4>Error !</h4>
+
 
                 <h4>
                     <?php echo e(Session::get('error')); ?>
