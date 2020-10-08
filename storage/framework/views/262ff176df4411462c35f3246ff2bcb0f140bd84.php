@@ -73,8 +73,6 @@ var base_url_main="<?php echo e(url('/')); ?>";
     <script type="text/javascript" src="<?php echo e(asset('assets/font_end/')); ?>/js/swfobject.min.js"></script>
     <!-- template main js -->
     <script src="<?php echo e(asset('assets/font_end/')); ?>/js/main.js?v=1.0.2"></script>
-
-
 </head>
 <body>
 <!--

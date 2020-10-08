@@ -21,7 +21,7 @@ var base_url_main="{{url('/')}}";
     <!-- Mobile Specific Metas
             ================================================== -->
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
 
 
     <script type="text/javascript">
@@ -73,8 +73,6 @@ var base_url_main="{{url('/')}}";
     <script type="text/javascript" src="{{ asset('assets/font_end/')}}/js/swfobject.min.js"></script>
     <!-- template main js -->
     <script src="{{ asset('assets/font_end/')}}/js/main.js?v=1.0.2"></script>
-
-
 </head>
 <body>
 <!--

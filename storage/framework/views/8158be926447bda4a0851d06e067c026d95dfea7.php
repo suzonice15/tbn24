@@ -13,13 +13,13 @@
 
                     <!-- Slider -->
                     <section class="cd-intro row">
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-sm-12">
 
                             <video     id='hls-example'  class="video-js vjs-default-skin"  height="400"  controls>
                                 <source  type="application/x-mpegURL" src="<?php echo e($api); ?>">
                             </video>
                         </div>
-                        <div class="col-md-4 md-p-l-0"
+                        <div class="col-md-4 col-sm-12 md-p-l-0"
                              class="wow fadeInUp animated cd-headline slide">
                             <div id="ifrm-player-list" style=""  class="panel panel-default playlist">
 
@@ -48,24 +48,13 @@
     </div>
 </section>
 <!--/#main-slider-->
-<!--
-            ==================================================
-            Slider Section Start
-            ================================================== -->
-
-
-
-
 <section id="about" style="padding: 22px 0;">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="block wow">
                     <h2>ABOUT US</h2>
-
                     <span class="about_us"></span>
-
-
                 </div>
             </div>
 
@@ -73,22 +62,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Online Vote</div>
                     <div class="panel-body">
-
-
-
                     <span class="ajax_pull_data_get"></span>
-
-
-
-
-
                     </div>
                 </div>
-
-
             </div>
-
-
         </div>
     </div>
 </section>
