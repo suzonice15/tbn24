@@ -539,84 +539,7 @@
         </div>
     </section>
 
-
-    <section id="works" class="works">
-        <div class="container">
-            <br>
-            <div class="section-heading" style="margin-top: 92px; margin-bottom: 10px;">
-                <h1 class="title wow fadeInDown animated" data-wow-delay=".3s"
-                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;">Videos</h1>
-            </div>
-            <div class="row">
-
-                <?php if($videoLists): ?>
-                    <?php $__currentLoopData = $videoLists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $videoList): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="col-sm-4 col-xs-12">
-                            <figure class="wow fadeInLeft animated portfolio-item animated">
-                                <div class="img-wrapper">
-                                    <img src="<?php echo e($videoList->snippet->thumbnails->high->url); ?>" class="img-responsive"
-                                         alt="<?php echo e($videoList->snippet->title); ?>" width="100%">
-                                    <div class="overlay">
-                                        <div class="buttons">
-                                            <a  target="_blank" data-youtube-id="<?php echo e($videoList->id->videoId); ?>"
-                                               class="video-banner js-trigger-video-modal"
-                                               href="http://www.youtube.com/watch?v=<?php echo e($videoList->id->videoId); ?>">Play
-                                                Video</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <figcaption>
-                                    <h4>
-                                        <a    data-youtube-id="<?php echo e($videoList->id->videoId); ?>"
-                                              class="video-banner js-trigger-video-modal"  target="_blank"
-                                           href="http://www.youtube.com/watch?v=<?php echo e($videoList->id->videoId); ?>"> <?php echo e($videoList->snippet->title); ?></a>
-                                    </h4>
-                                </figcaption>
-                            </figure>
-                        </div>
-
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                <?php endif; ?>
-            </div>
-        </div>
-    </section>
-    <section  class="works">
-        <div class="container">
-            <br>
-            <div class="section-heading" style="margin-top: 92px; margin-bottom: 10px;">
-                <h1 class="title wow fadeInDown animated" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;"> Video Playlist</h1>
-            </div>
-            <div class="row">
-
-
-                <?php if($playlists): ?>
-                    <?php $__currentLoopData = $playlists['results']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $play): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-sm-4 col-xs-12">
-                    <figure class="wow  portfolio-item " >
-                        <div class="img-wrapper">
-                            <img src="<?php echo e($play->snippet->thumbnails->high->url); ?>" class="img-responsive" alt="<?php echo e($play->snippet->title); ?>" width="100%">
-                            <div class="overlay">
-                                <div class="buttons">
-                                    <a href="<?php echo e(url('/')); ?>/youtube-playlist/<?php echo e($play->id); ?>">Details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <figcaption>
-                            <h4>
-                                <a href="<?php echo e(url('/')); ?>/youtube-playlist/<?php echo e($play->id); ?>"><?php echo e($play->snippet->title); ?></a>
-                            </h4>
-                        </figcaption>
-                    </figure>
-                </div>
-
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    <?php endif; ?>
-
-
-
-                </div>
-        </div>
-    </section>
+    <span class="buttom-program-video"></span>
 
     <script>
         $(document).ready(function () {
@@ -694,7 +617,11 @@
     </script>
 
 
-
+    <script defer >
+        $.get("<?php echo e(url('/')); ?>/ajax-program-video", function(data, status){
+            $('.buttom-program-video').html(data);
+        });
+    </script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('website.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\tbn24\resources\views/website/program_video.blade.php ENDPATH**/ ?>

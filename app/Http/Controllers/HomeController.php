@@ -39,25 +39,8 @@ class HomeController extends Controller
         } else {
             $data['api']= get_api();
         }
-
-
-
      $data['five_minite_acctive']= 'only_home_page_modal_active';
-      $data['one_hour_check_modal']= 'only_home_page_modal_active';
-
-
-        $data['about']=DB::table('page')->select('page_content')->where('page_link','about-us')->first();
-
-       
-
-        $data['today_programs']=DB::table('programs')
-                                ->join('schedules','schedules.program_id','=','programs.id')
-            ->whereDate('schedule_date', '=', date('Y-m-d'))
-
-                                ->orderBy('start_time','desc')->get();
-
-
-        
+      $data['one_hour_check_modal']= 'only_home_page_modal_active';        
          return view('website.home',$data);
     }
    
@@ -73,30 +56,33 @@ class HomeController extends Controller
     {
 
        $data['programs'] =DB::table('programs')
-         
-           ->orderBy('programs.id','DESC')->paginate(6);
+           ->select('program_image','id','program_name')
+           ->orderBy('programs.id','DESC')->paginate(3);
         return view('website.all_program',$data);
      }
-
-    public function today_schedule()
-    {
-
-        $data['today_programs']=DB::table('programs')
-            ->join('schedules','schedules.program_id','=','programs.id')
-            ->whereDate('schedule_date', '=', date('Y-m-d'))
-
-            ->orderBy('start_time','desc')->get();
-        return view('website.today_schedule',$data);
-    }
     public  function  ajax_program(Request $request){
         if($request->ajax())
-        {         
-            $programs =DB::table('programs')->orderBy('id','DESC')->paginate(6);
+        {
+            $programs =DB::table('programs')
+                ->select('program_image','id','program_name')
+                ->orderBy('id','DESC')->paginate(3);
             $view = view('website.ajax_all_program',compact('programs'))->render();
             return response()->json(['html'=>$view]);
         }
 
     }
+
+    public function today_schedule()
+    {
+
+        $data['today_programs']=DB::table('programs')
+            ->select('program_name','schedule_date','program_id','start_time','program_image')
+            ->join('schedules','schedules.program_id','=','programs.id')
+            ->whereDate('schedule_date', '=', date('Y-m-d'))
+            ->orderBy('start_time','desc')->get();
+        return view('website.today_schedule',$data);
+    }
+
     public   function single_program($id){
 
         $data['program']=DB::table('programs')->
@@ -115,9 +101,6 @@ class HomeController extends Controller
        $data['number1']=rand(1,20);
        $data['number2']=rand(1,20);
         $data['sum']= $data['number1']+ $data['number2'];
-
-
-
         $data['google_map']=DB::table('app_seating')->select('google_map','contact_email','contact_phone','contact_address')->where('app_setting_id','=',1)->first();
         return view('website.contact',$data);
     }
@@ -162,21 +145,17 @@ class HomeController extends Controller
 
     public function programVideo(){
 
-        $videoList = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
-        $playlists = Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');
-        $data['videoLists']=$videoList;
-        $data['playlists']=$playlists;
-
-       // $video = Youtube::getVideoInfo('rie-hPVJ7Sw');
-
-
-
-        $data['popular_video']=DB::table('popular_video')->select('*')->orderBy('order_by','asc')->get();
-
-       
-       
+        
+        $data['popular_video']=DB::table('popular_video')->select('video_id')->orderBy('order_by','asc')->get();
         return view('website.program_video',$data);
 
+    }
+    
+    public function ajax_program_video(){
+
+        $data['videoLists'] = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
+        $data['playlists'] = Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');        
+         return view('website.ajax_program_video',$data);
     }
     public function youtubePlaylist($playlist){
 
@@ -229,26 +208,58 @@ class HomeController extends Controller
 
     }
 
-    public  function blog(){
-        $data['blogs']=DB::table('post')->paginate(12);
+    public  function about_us(){
+        $data['about']=DB::table('page')->select('page_content')->where('page_link','about-us')->first();
+
+        return view('website.ajax_about_us',$data);
+
+    }
+    
+    public function ajaxFooterLoad(){
+         
+        return view('website.includes.ajaxFooterLoad');
+    }
+
+    public function ajax_post_category_call(){
         $data['category']=DB::table('category')->orderBy('category_id','desc')->get();
+        return view('website.ajax_post_category_call',$data);
+    }
+
+
+    public  function todayScheduleAjaxData(){
+        $data['today_programs']=DB::table('programs')
+            ->select('program_name','program_image','programs.id','program_details','start_time')
+            ->join('schedules','schedules.program_id','=','programs.id')
+            ->whereDate('schedule_date', '=', date('Y-m-d'))
+            ->orderBy('start_time','desc')->get();
+        return view('website.todayScheduleAjaxData',$data);
+
+    }
+
+
+    public  function blog(){
+        $data['blogs']=DB::table('post')
+            ->select('post_title','post_name','post_picture')
+            ->paginate(12);        
         return view('website.blog',$data);
 
     }
     public  function category($category_id){
         $data['blogs']=DB::table('post')
+            ->select('post_title','post_name','post_picture')
             ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
             ->where('category_id','=',$category_id)
             ->paginate(12);
-        $data['category']=DB::table('category')->orderBy('category_id','desc')->get();
+       
         return view('website.category',$data);
 
     }
     public  function post($post_name){
         $data['post']=DB::table('post')
+            ->select('post_title','post_name','post_picture','post_created_date','post_man','post_description')
             ->where('post_name','=',$post_name)
             ->first();
-        $data['category']=DB::table('category')->orderBy('category_id','desc')->get();
+        
         return view('website.single_post',$data);
 
     }
@@ -283,7 +294,7 @@ class HomeController extends Controller
     public function ajax_pull_data_get(){
         $data['ip']= \Request::ip();
         $today="Y-m-d";
-        $data['pulls']=DB::table('pulls')->select('*')->where('pull_expire_time', '>=', $today)->get();
+        $data['pulls']=DB::table('pulls')->select('pull_question','pull_id')->where('pull_status','=',1)->where('pull_expire_time', '>=', $today)->get();
         return view('website.ajax_poll',$data);
 
     }

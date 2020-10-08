@@ -27,12 +27,17 @@ Route::get('/about-us', 'HomeController@about');
 Route::get('/documents', 'HomeController@documents');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/home_page_program', 'HomeController@home_page_program');
+Route::get('/ajax-footer-load', 'HomeController@ajaxFooterLoad');
+Route::get('/ajax-post-category-call', 'HomeController@ajax_post_category_call');
+Route::get('/about_us', 'HomeController@about_us');
+Route::get('/today-schedule-ajax-data', 'HomeController@todayScheduleAjaxData');
 Route::post('/modal/login', 'HomeController@modal_login');
 Route::post('/contact', 'HomeController@contact_store');
 Route::get('/category/{name}', 'HomeController@category');
 Route::get('/post/{name}', 'HomeController@post');
 Route::get('/today-schedule', 'HomeController@today_schedule');
 Route::get('/program-video', 'HomeController@programVideo');
+Route::get('/ajax-program-video', 'HomeController@ajax_program_video');
 Route::get('/youtube-playlist/{any}', 'HomeController@youtubePlaylist');
 Route::post('/vote/count', 'HomeController@vote_count');
 Route::get('/ajax_pull_data_get', 'HomeController@ajax_pull_data_get');
@@ -77,7 +82,7 @@ Route::post('admin/post/store', 'admin\PostController@store');
 Route::post('admin/post/update/{id}', 'admin\PostController@update');
 Route::get('admin/post/{id}', 'admin\PostController@edit');
 Route::get('/admin/post/delete/{id}', 'admin\PostController@delete');
-Route::get('post/pagination', 'admin\PostController@fetch_data');
+Route::get('admin/post_pagination', 'admin\PostController@fetch_data');
 Route::post('post-urlcheck', 'admin\PostController@urlCheck')->name('post.urlcheck');
 
 

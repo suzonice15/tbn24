@@ -39,14 +39,8 @@
 
                 <div class="col-md-3">
                     <h3>Blog Categories</h3>
-                    <ul>
-                        @if($category)
-                            @foreach($category as $cat)
-                                <li><a href="{{url('/')}}/category/{{$cat->category_id}}" >{{$cat->category_title}}</a></li>
-                            @endforeach
-                        @endif
+                    <span class="ajax-category-call"></span>
 
-                    </ul>
 
                 </div>
 
@@ -54,6 +48,10 @@
         </div>
     </section>
 
-
+    <script defer >
+        $.get("{{url('/')}}/ajax-post-category-call", function(data, status){
+            $('.ajax-category-call').html(data);
+        });
+    </script>
 
 @endsection

@@ -3,7 +3,7 @@ if($pulls){
 $vote_percent=0;
 foreach ($pulls as $pull){
 
-$total_vote=DB::table('vote')->where('pull_id',$pull->pull_id)->count();
+$total_vote=DB::table('vote')->select('pull_id')->where('pull_id',$pull->pull_id)->count();
 
 ?>
 
@@ -13,7 +13,7 @@ $total_vote=DB::table('vote')->where('pull_id',$pull->pull_id)->count();
     <ul>
         <div class="question">{{$pull->pull_question}}</div>
         <?php
-        $options=DB::table('pull_add_option')->where('pull_id',$pull->pull_id)->get();
+        $options=DB::table('pull_add_option')->select('option_name','pull_add_option_id')->where('pull_id',$pull->pull_id)->get();
 
 
         if($options){
@@ -22,12 +22,12 @@ $total_vote=DB::table('vote')->where('pull_id',$pull->pull_id)->count();
             $total_single_option_vote= DB::table('vote')->where('option_id',$option->pull_add_option_id)->count();
 
 
-            $vote_percent=($total_single_option_vote*100)/$total_vote;
+            $vote_percent=round(($total_single_option_vote*100)/$total_vote);
         }
 
 
 
-        $already_given_vote= DB::table('vote')->where('ip',$ip)->where('pull_id',$pull->pull_id)->count();
+        $already_given_vote= DB::table('vote')->select('ip')->where('ip',$ip)->where('pull_id',$pull->pull_id)->count();
         if($already_given_vote==0){
 
         ?>

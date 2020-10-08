@@ -27,7 +27,7 @@
                     $vote_percent=($total_single_option_vote*100)/$total_vote;
 
                     ?>
-               {{$vote_percent}} %   ({{$total_single_option_vote}} votes)
+               {{round($vote_percent)}} %   ({{$total_single_option_vote}} votes)
                         -
                     <span class="label label-success">
 

@@ -53,7 +53,7 @@
         {
             $.ajax({
                 type:"GET",
-                url:"{{url('post/pagination')}}?page="+page+"&query="+query,
+                url:"{{url('admin/post_pagination')}}?page="+page+"&query="+query,
                 success:function(data)
                 {
                     $('tbody').html('');

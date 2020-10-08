@@ -16,7 +16,7 @@
                     <section class="cd-intro row">
                         <div class="col-md-8">
 
-                            <video     id='hls-example'  class="video-js vjs-default-skin" width="100%" height="400"  controls>
+                            <video     id='hls-example'  class="video-js vjs-default-skin"  height="400"  controls>
                                 <source  type="application/x-mpegURL" src="{{$api}}">
                             </video>
                         </div>
@@ -29,47 +29,8 @@
                                     <div class="row">
                                         <div class="">
                                             <h4>Upcomming Program</h4>
-                                            <div class="col-xs-10 col-md-11 md-p-r-0 " style="height:330px;overflow-y: scroll;">
-                                                <!-- Tab panes -->
-                                                <div class="tab-content">
-                                                    <div class="tab-pane active ifrm-player-list" style="" id="home-vr">
 
-                                                        @if($today_programs)
-                                                            @foreach($today_programs as $program)
-
-                                                        <div class="program v">
-                                                            <div class="col-xs-4 img-container" style="background: url({{url('/')}}/public/uploads/program/{{$program->program_image}})">
-                                                            </div>
-                                                            <div class="col-xs-5">
-                                                                <div class="program-title ">{{$program->program_name}}</div>
-                                                                <div class="program-details">
-                                                                    {{$program->program_details}}
-                                                                </div>
-                                                                <div class="program-date">
-                                                                    <a rel="noopener"
-                                                                       href="{{url('/')}}/program-details/{{$program->id}}"
-                                                                       class="btn btn-xs btn-default">View Detail</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-3">
-                                                                <div class="program-time-circle"><?php echo date('H:i',strtotime($program->start_time)) ?></div>
-                                                            </div>
-
-                                                        </div>
-
-                                                            @endforeach
-                                                            @endif
-
-
-
-
-                                                        </div>
-
-
-
-                                                </div>
-
-                                            </div>
+                                            <span class="today-schedule-data"></span>
 
                                         </div>
                                     </div>
@@ -102,10 +63,10 @@
             <div class="col-md-9">
                 <div class="block wow">
                     <h2>ABOUT US</h2>
-                   <?php echo $about->page_content ?>
-                    <div class="text-left">
-                        <a href="contact.php" class="btn btn-default">Read More</a>
-                    </div>
+
+                    <span class="about_us"></span>
+
+
                 </div>
             </div>
 
@@ -267,6 +228,14 @@
        $('.home_page_program').html(data);
     });
 
+    $.get("{{url('/')}}/about_us", function(data, status){
+        $('.about_us').html(data);
+    });
+    $.get("{{url('/')}}/today-schedule-ajax-data", function(data, status){
+        $('.today-schedule-data').html(data);
+    });
+
+
 function ajax_pull_data_get(){
     $.get("{{url('/')}}/ajax_pull_data_get", function(data, status){
         $('.ajax_pull_data_get').html(data);
@@ -277,8 +246,7 @@ function ajax_pull_data_get(){
         $("body").on("submit",".poll-form",function(e){
             e.preventDefault();
             var thisobj=$(this);
-           console.log("input"+thisobj.serialize());
-           console.log("url"+thisobj.attr("action"));
+
             $.ajax({
                 url : thisobj.attr("action"),
                 data : thisobj.serialize(),

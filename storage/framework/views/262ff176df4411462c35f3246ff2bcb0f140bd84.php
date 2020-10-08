@@ -95,7 +95,7 @@ var base_url_main="<?php echo e(url('/')); ?>";
 
             <!-- logo -->
             <div class="navbar-brand">
-                <a href="<?php echo e(url('/')); ?>"> <img src="http://tbn24.com/images/logo.png" alt="">
+                <a href="<?php echo e(url('/')); ?>"> <img src="<?php echo e(url('/')); ?>/public/logo.png" alt="">
                 </a>
             </div>
             <!-- /logo -->

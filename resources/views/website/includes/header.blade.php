@@ -95,7 +95,7 @@ var base_url_main="{{url('/')}}";
 
             <!-- logo -->
             <div class="navbar-brand">
-                <a href="{{url('/')}}"> <img src="http://tbn24.com/images/logo.png" alt="">
+                <a href="{{url('/')}}"> <img src="{{url('/')}}/public/logo.png" alt="">
                 </a>
             </div>
             <!-- /logo -->
