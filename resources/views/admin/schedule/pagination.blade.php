@@ -7,9 +7,9 @@
          
             <td>{{ ++$i }}</td>
             <td>{{ $schedule->program_name }}</td>
-            <td>{{ $schedule->schedule_date }}</td>
-            <td>{{ $schedule->start_time }}</td>
-            <td>{{ $schedule->end_time }}</td>
+            <td>{{  date("d-m-Y",strtotime($schedule->schedule_date)) }}</td>
+            <td>{{ date("H:i",strtotime($schedule->start_time)) }}</td>
+            <td>{{  date("H:i",strtotime($schedule->end_time)) }}</td>
 
 
             <td>

@@ -8,8 +8,6 @@
         ================================================== -->
 <style>
     @media only screen and (max-width: 600px) {
-
-
         .video-js .vjs-tech {
             height: 100%;
             width: 97%;
@@ -44,9 +42,6 @@
 
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>

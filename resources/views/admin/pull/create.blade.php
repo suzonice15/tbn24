@@ -10,8 +10,9 @@
             <div class="form-group has-feedback">
                 <label class="control-label col-md-3" for="question">Question</label>
                 <div class="col-md-6">
-                    <input autocomplete="off" required type="text" maxlength="200" value="" class="form-control" id="pull_question" name="pull_question"
+                    <input autocomplete="off"   type="text" maxlength="200" value="" class="form-control" id="pull_question" name="pull_question"
                            placeholder="Question" >
+                    <p id="pull_question_error" style="color:red"></p>
 
                 </div>
             </div>
@@ -20,6 +21,7 @@
                 <div class="col-md-6">
                     <input  autocomplete="off" required type="text"   class="form-control datepicker" id="pull_expire_time"
                            name="pull_expire_time" placeholder="Expire Time">
+
                 </div>
             </div>
 
@@ -84,28 +86,19 @@
 
     <script type="text/javascript" defer>
 
-        $(".datepicker").datepicker({ dateFormat: "dd-mm-yyyy", todayHighlight:'TRUE',
-            autoclose: true,}).datepicker("setDate", new Date());
-
 
         $(document).ready(function () {
+
+            $(".datepicker").datepicker({ dateFormat: "dd-mm-yyyy", todayHighlight:'TRUE',
+                autoclose: true,}).datepicker("setDate", new Date());
             $('#save_program_data').click(function () {
-                let news_title = $('#news_title').val();
-                let news_body = $('#news_body').val();
-                if (news_title == '') {
-                    $('#news_title_error').text('This Field Must be fillup');
+                let pull_question = $('#pull_question').val();
+                   if (pull_question =='') {
+                    $('#pull_question_error').text('This Field Must be fillup');
                     return false;
                 } else {
-                    $('#news_title_error').text('');
+                    $('#pull_question_error').text('');
                 }
-
-                if (news_body == '') {
-                    $('#news_body_error').text('This Field Must be fillup');
-                    return false;
-                } else {
-                    $('#news_body_error').text('');
-                }
-
                 $("#containerForm").submit(); // Submit the form
             });
         });

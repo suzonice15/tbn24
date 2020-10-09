@@ -1,3 +1,5 @@
+
+<hr>
 <span class="ajax-footer-load"></span>
 <div class="xs-copyright copyright-yellow " style="background-color: green;">
     <div class="container container-fullwidth">
@@ -176,9 +178,9 @@ if(isset($one_hour_check_modal)) { ?>
 
         }
         var five =(<?php echo get_footer_data()->before_login_alert; ?>) * 60000;
-
-
         window.setInterval(five_minite_check_modal, five);
+
+
     });
 
 
@@ -294,6 +296,17 @@ if(isset($one_hour_check_modal)) { ?>
         $('.ajax-footer-load').html(data);
     });
 
+    function clear_cach(){
+        $.ajax({
+            type:"GET",
+            url:"{{url('/clear-cache')}}",
+            success:function(data)
+            {
+
+            }
+        })
+    }
+    window.setInterval(clear_cach, 369000);
 
 
 </script>

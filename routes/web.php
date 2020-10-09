@@ -308,7 +308,8 @@ Route::get('customer/one_hour_check', 'CustomerController@one_hour_check');
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
-    return redirect('dashboard');
+     $exitCode = Artisan::call('view:clear');
+     return redirect('dashboard');
 });
 
 

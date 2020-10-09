@@ -88,22 +88,8 @@
                     <div class="form-group has-feedback">
                         <label class="control-label col-md-6" for="start_time">Start Time</label>
                         <div class="col-md-6">
-                            <select name="start_time" id="start_time" class="form-control select2">
-                                <option value="00:00">00:00</option>
-                                <option value="00:15">00:15</option>
-                                <option value="00:30">00:30</option>
-                                <option value="00:45">00:45</option>
-                                <option value="01:00">01:00</option>
-                                <option value="01:15">01:15</option>
-                                <option value="01:30">01:30</option>
-                                <option value="01:45">01:45</option>
-                                <option value="02:00">02:00</option>
-                                <option value="02:15">02:15</option>
-                                <option value="02:30">02:30</option>
-                                <option value="02:45">02:45</option>
-                                <option value="03:00">03:00</option>
-
-                            </select>
+                            <input autocomplete="off" type="text"   value="" class="form-control" id="start_time"
+                                                                                    name="start_time"  placeholder="12:30" >
 
                         </div>
                     </div>
@@ -112,19 +98,10 @@
                     <div class="form-group has-feedback">
                         <label class="control-label col-md-6" for="end_time">End Time</label>
                         <div class="col-md-6">
-                            <select name="end_time" id="end_time" class="form-control select2">
-                                <option value="00:00">00:00</option>
-                                <option value="00:15">00:15</option>
-                                <option value="00:30">00:30</option>
-                                <option value="00:45">00:45</option>
-                                <option value="01:00">01:00</option>
-                                <option value="01:15">01:15</option>
-                                <option value="01:30">01:30</option>
-                                <option value="01:45">01:45</option>
-                                <option value="02:00">02:00</option>
 
 
-                            </select>
+                            <input autocomplete="off" type="text"   value="" class="form-control " id="end_time"
+                                   name="end_time"  placeholder="12:30" >
                         </div>
                     </div>
                 </div>
@@ -202,34 +179,52 @@
 
 <script type="text/javascript" defer>
     $(document).ready(function() {
+
         $('#save_program_data').click(function () {
             let schedule_date=  $('#schedule_datee').val();
+            let start_time=  $('#start_time').val();
+            let end_time=  $('#end_time').val();
             let program_id=  $('#program_id').val();
              if(schedule_date ==''){
-
                 $('#schedule_date_error').text('This Field Must be fillup');
                 return false;
             } else {
                 $('#schedule_date_error').text('');
-
-
             }
 
             if(program_id ==''){
-
                 $('#program_id_error').text('This Field Must be fillup');
                 return false;
             } else {
                 $('#program_id_error').text('');
-
-
             }
 
-            $("#containerForm").submit(); // Submit the form
 
+            if (start_time.indexOf(':') > -1) {
 
+            } else {
+                alert('Please Enter Colon At Start Time');
+                return false;
 
-        })
+            }
+            if (end_time.indexOf(':') > -1) {
+
+            } else {
+                alert('Please Enter Colon At End Time');
+                return false;
+            }
+
+            var starting_time = start_time.substring(0, 2);
+            var endign_time = end_time.substring(0, 2);
+            starting_time= parseInt(starting_time);
+            endign_time= parseInt(endign_time);
+
+            if(endign_time < starting_time){
+                alert('Please Enter Starting Time Greater than  Ending Time');
+                return false;
+            }
+          $("#containerForm").submit(); // Submit the form
+        });
 
     });
 </script>

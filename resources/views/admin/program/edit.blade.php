@@ -68,12 +68,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
                         <div class="form-group pull-right" style="
     position: absolute;
     right: 25px;
@@ -81,19 +75,11 @@
                             <button type="button" class="btn btn-success" id="save_program_data"><i class="fa fa-pencil"></i>Update</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>Cancel</button>
                         </div>
-
-
                     </div>
-
                 </div>
-
             </div>
-
-
         </div>
         <script type="text/javascript">
-
-
 
             $(document).ready(function() {
                 $('#save_program_data').click(function () {
@@ -121,15 +107,7 @@
 
                     }
 
-                    if(youtube ==''){
-
-                        $('#youtube_error').text('This Field Must be fillup');
-                        return false;
-                    } else {
-                        $('#youtube_error').text('');
-
-
-                    }
+                   
 
 
                     $("#containerForm").submit(); // Submit the form

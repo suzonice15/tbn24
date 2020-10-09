@@ -75,10 +75,6 @@
                             <button type="button" class="btn btn-success" id="save_program_data"><i class="fa fa-save"></i>Save</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>Cancel</button>
                         </div>
-
-
-
-
                 </div>
 
             </div>
@@ -115,15 +111,7 @@ $('#save_program_data').click(function () {
 
     }
 
-    if(youtube ==''){
 
-        $('#youtube_error').text('This Field Must be fillup');
-        return false;
-    } else {
-        $('#youtube_error').text('');
-
-
-    }
     if(image ==''){
         $('#image-selector_error').text('This Field Must be fillup');
         return false;

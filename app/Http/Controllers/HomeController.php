@@ -231,7 +231,7 @@ class HomeController extends Controller
             ->select('program_name','program_image','programs.id','program_details','start_time')
             ->join('schedules','schedules.program_id','=','programs.id')
             ->whereDate('schedule_date', '=', date('Y-m-d'))
-            ->orderBy('start_time','desc')->get();
+            ->orderBy('start_time','ASC')->get();
         return view('website.todayScheduleAjaxData',$data);
 
     }

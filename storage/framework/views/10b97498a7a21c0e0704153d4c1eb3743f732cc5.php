@@ -13,6 +13,8 @@
                     <input required type="text" maxlength="200" value="<?php echo e($pull->pull_question); ?>" class="form-control" id="pull_question" name="pull_question"
                            placeholder="Question" autocomplete="off">
 
+                    <p id="pull_question_error" style="color:red"></p>
+
                 </div>
             </div>
             <div class="form-group has-feedback">
@@ -118,43 +120,21 @@
 
 <script type="text/javascript">
 
-    $('.datepicker').datepicker({
-                format: "dd-mm-yyyy",
-                autoclose: true,
-            }
-    );
+    $(".datepicker").datepicker({ dateFormat: "dd-mm-yyyy", todayHighlight:'TRUE',
+        autoclose: true,}).datepicker("setDate", new Date());
+
 
     $(document).ready(function() {
         $('#save_program_data').click(function () {
-            let questions=  $('#questions').val();
-            let answers=  $('#answers').val();
-            let image=  $('#image-selector').val();
-            let youtube=  $('#youtube').val();
-            if(questions ==''){
-
-                $('#questions_error').text('This Field Must be fillup');
+            let pull_question = $('#pull_question').val();
+            if (pull_question =='') {
+                $('#pull_question_error').text('This Field Must be fillup');
                 return false;
             } else {
-                $('#questions_error').text('');
-
-
+                $('#pull_question_error').text('');
             }
-
-            if(answers ==''){
-
-                $('#answers_error').text('This Field Must be fillup');
-                return false;
-            } else {
-                $('#answers_error').text('');
-
-
-            }
-
             $("#containerForm").submit(); // Submit the form
-
-
-
-        })
+        });
 
     });
 

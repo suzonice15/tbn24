@@ -5,7 +5,15 @@
         ==================================================
         Slider Section Start
         ================================================== -->
-<section id="hero-area">
+<style>
+    @media  only screen and (max-width: 600px) {
+        .video-js .vjs-tech {
+            height: 100%;
+            width: 97%;
+        }
+    }
+</style>
+<section id="hero-area" >
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -33,9 +41,6 @@
 
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>

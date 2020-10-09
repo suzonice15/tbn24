@@ -88,19 +88,8 @@
                         <div class="form-group has-feedback">
                             <label class="control-label col-md-6" for="start_time">Start Time</label>
                             <div class="col-md-6">
-                                <select name="start_time" id="start_time" class="form-control select2">
-                                    <option value="00:00">00:00</option>
-                                    <option value="00:15">00:15</option>
-                                    <option value="00:30">00:30</option>
-                                    <option value="00:45">00:45</option>
-                                    <option value="01:00">01:00</option>
-                                    <option value="01:15">01:15</option>
-                                    <option value="01:30">01:30</option>
-                                    <option value="01:45">01:45</option>
-                                    <option value="02:00">02:00</option>
-
-
-                                </select>
+                                <input autocomplete="off" type="text"   value="{{date('H:i',strtotime($schedule->start_time))}}" class="form-control" id="start_time"
+                                       name="start_time"  placeholder="12:30" >
 
                             </div>
                         </div>
@@ -109,19 +98,10 @@
                         <div class="form-group has-feedback">
                             <label class="control-label col-md-6" for="end_time">End Time</label>
                             <div class="col-md-6">
-                                <select name="end_time" id="end_time" class="form-control select2">
-                                    <option value="00:00">00:00</option>
-                                    <option value="00:15">00:15</option>
-                                    <option value="00:30">00:30</option>
-                                    <option value="00:45">00:45</option>
-                                    <option value="01:00">01:00</option>
-                                    <option value="01:15">01:15</option>
-                                    <option value="01:30">01:30</option>
-                                    <option value="01:45">01:45</option>
-                                    <option value="02:00">02:00</option>
 
 
-                                </select>
+                                <input autocomplete="off" type="text"   value="{{date('H:i',strtotime($schedule->end_time))}}" class="form-control" id="end_time"
+                                       name="end_time"  placeholder="12:45" >
                             </div>
                         </div>
                     </div>
@@ -197,8 +177,6 @@
 
     });
 
-     document.forms['containerForm'].elements['start_time'].value = "<?php echo date('H:i',strtotime($schedule->start_time)); ?>";
-     document.forms['containerForm'].elements['end_time'].value = "<?php echo date('H:i',strtotime($schedule->end_time)); ?>";
      document.forms['containerForm'].elements['program_id'].value = "<?php echo $schedule->program_id; ?>";
 
 
@@ -206,34 +184,53 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+
         $('#save_program_data').click(function () {
-            let schedule_date=  $('#schedule_date').val();
+            let schedule_date=  $('#schedule_datee').val();
+            let start_time=  $('#start_time').val();
+            let end_time=  $('#end_time').val();
             let program_id=  $('#program_id').val();
             if(schedule_date ==''){
-
                 $('#schedule_date_error').text('This Field Must be fillup');
                 return false;
             } else {
                 $('#schedule_date_error').text('');
-
-
             }
 
             if(program_id ==''){
-
                 $('#program_id_error').text('This Field Must be fillup');
                 return false;
             } else {
                 $('#program_id_error').text('');
-
-
             }
 
+
+            if (start_time.indexOf(':') > -1) {
+
+            } else {
+                alert('Please Enter Colon At Start Time');
+                return false;
+
+            }
+            if (end_time.indexOf(':') > -1) {
+
+            } else {
+                alert('Please Enter Colon At End Time');
+                return false;
+            }
+
+            var starting_time = start_time.substring(0, 2);
+            var endign_time = end_time.substring(0, 2);
+            starting_time= parseInt(starting_time);
+            endign_time= parseInt(endign_time);
+
+            if(endign_time < starting_time){
+                alert('Please Enter Starting Time Greater than  Ending Time');
+                return false;
+            }
             $("#containerForm").submit(); // Submit the form
+        });
 
-
-
-        })
 
     });
 </script>
