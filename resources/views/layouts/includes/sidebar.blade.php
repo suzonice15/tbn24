@@ -56,7 +56,7 @@
                 <ul class="treeview-menu">
                     <li><a href=" {{ url('admin/schedules') }}"><i class="fa fa fa-list"></i></i>Schedule Daily</a></li>
                     <li><a href=" {{ url('admin/schedule-weekly') }}"><i class="fa fa fa-list"></i></i>Schedule Weekly</a></li>
-                    <li style="display:none"><a href=" {{ url('/schedules/schedule-weekly-day-view') }}"><i class="fa fa fa-list"></i></i> Schedule Weekly View</a></li>
+                    <li ><a href=" {{ url('/schedules/schedule-weekly-day-view') }}"><i class="fa fa fa-list"></i></i> Schedule Weekly View</a></li>
 
 
                 </ul>

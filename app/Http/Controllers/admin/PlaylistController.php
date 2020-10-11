@@ -41,7 +41,7 @@ class PlaylistController extends Controller
         $data['active'] = ' Playlist List ';
         $data['title'] = '  ';       
         $data['playlists']= DB::table('playlists')->select('playlists.*','category.category_title')
-            ->join('category','category.category_id','playlists.category_id')->orderBy('playlist_id', 'desc')->paginate(10);
+            ->join('category','category.category_id','playlists.category_id')->orderBy('playlist_id', 'desc')->paginate(50);
         return view('admin.playlist.index',$data);
     }
 
@@ -52,7 +52,7 @@ class PlaylistController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $categories = DB::table('category')
-                ->orWhere('category_title', 'like', '%'.$query.'%')->paginate(10);
+                ->orWhere('category_title', 'like', '%'.$query.'%')->paginate(50);
             return view('admin.category.pagination', compact('categories'));
         }
 

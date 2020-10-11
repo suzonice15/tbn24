@@ -18,7 +18,7 @@ class NewsController extends Controller
         $data['main'] = '  News List  ';
         $data['active'] = ' News List ';
         $data['title'] = '';
-        $news  = DB::table('news')->orderBy('news_id', 'desc')->paginate(10);
+        $news  = DB::table('news')->orderBy('news_id', 'desc')->paginate(50);
         return view('admin.news.index', compact('news'), $data);
     }
 
@@ -29,7 +29,7 @@ class NewsController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $news  =DB::table('news')->select("*")
-                ->where('news_title', 'LIKE', '%' . $query . '%')->orderBy('news_id', 'desc')->paginate(10);
+                ->where('news_title', 'LIKE', '%' . $query . '%')->orderBy('news_id', 'desc')->paginate(50);
 
             return view('admin.news.pagination', compact('news'));
         }

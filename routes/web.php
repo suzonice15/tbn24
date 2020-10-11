@@ -132,6 +132,7 @@ Route::get('admin/schedules/{id}', 'admin\ScheduleController@edit');
 Route::get('/admin/schedules/delete/{id}', 'admin\ScheduleController@delete');
 Route::get('schedules/pagination', 'admin\ScheduleController@pagination');
 Route::get('schedules/pagination_by_program_id', 'admin\ScheduleController@pagination_by_program_id');
+Route::get('schedules/schedule_fetch_data_or_insert_data', 'admin\ScheduleController@schedule_fetch_data_or_insert_data');
 
 
 
@@ -146,7 +147,6 @@ Route::post('admin/schedule-weekly/update/{id}', 'admin\ScheduleController@sched
 Route::get('admin/schedule-weekly/{id}', 'admin\ScheduleController@schedule_weekly_edit');
 Route::get('/admin/schedules/delete/{id}', 'admin\ScheduleController@delete');
 Route::get('schedules/pagination', 'admin\ScheduleController@pagination');
-Route::get('schedules/pagination_by_program_id', 'admin\ScheduleController@pagination_by_program_id');
 Route::get('schedules/fetch_data_using_week', 'admin\ScheduleController@fetch_data_using_week');
 Route::get('schedules/fetch_data_using_program_week', 'admin\ScheduleController@fetch_data_using_program_week');
 

@@ -23,7 +23,7 @@ class PullController extends Controller
 ';
         $data['title'] = '';
         $pulls  = DB::table('pulls')
-            ->orderBy('pull_id', 'desc')->paginate(10);
+            ->orderBy('pull_id', 'desc')->paginate(20);
         return view('admin.pull.index', compact('pulls'), $data);
     }
 
@@ -34,7 +34,7 @@ class PullController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $pulls =DB::table('pulls')->select("*")
-                ->where('pull_question', 'LIKE', '%' . $query . '%')->orderBy('pull_id', 'desc')->paginate(10);
+                ->where('pull_question', 'LIKE', '%' . $query . '%')->orderBy('pull_id', 'desc')->paginate(20);
 
             return view('admin.pull.pagination', compact('pulls'));
         }
@@ -48,7 +48,7 @@ class PullController extends Controller
         $data['active'] = 'Result List';
         $data['title'] = '';
         $pulls  = DB::table('pulls')
-            ->orderBy('pull_id', 'desc')->paginate(10);
+            ->orderBy('pull_id', 'desc')->paginate(20);
         return view('admin.pull.pull_result', compact('pulls'), $data);
     }
 

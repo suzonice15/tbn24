@@ -10,7 +10,7 @@
             <a style="display:none" onclick="Grid_tab1_1600763452_download()" class="btn   btn-success"><i class="fa fa-download"></i> Download CSV</a>
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="col-md-4">
 
             <label>Program</label>
@@ -19,6 +19,7 @@
             <select class="form-control select2" id="program_id_id" name="program_id_id">
 
 
+                <option value="1">All</option>
                 @if($programs)
                     @foreach($programs as $program)
 
@@ -46,11 +47,13 @@
 
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-3">
 
 
                 <button type="button"    class="btn   btn-info" id="search"
                        name="search" value="Search" ><i class="fa fa-search"> </i>Search</button>
+            <button type="button"    class="btn   btn-info" id="insert_data"
+                    name="insert_data" value="insert_data" ><i class="fa fa-plus"> </i>Load Data</button>
 
         </div>
 
@@ -152,25 +155,43 @@
             })
         }
 
+        function fetch_data_or_insert_data(schedule_date)
+        {
+            $.ajax({
+                type:"GET",
+                url:"{{url('schedules/schedule_fetch_data_or_insert_data')}}?schedule_date="+schedule_date,
+                success:function(data)
+                {
+                    $('tbody').html('');
+                    $('tbody').html(data);
+                }
+            })
+        }
+
+        /*    report */
         $(document).on('click', '#search', function(){
             var program_id = $('#program_id_id').val();
             var schedule_date = $('#schedule_date_using_ajax').val();
-//           if(program_id && schedule_date){
-//               fetch_data_by_program(program_id,schedule_date);
-//           } else {
-//
-//               fetch_data_by_program(program_id,schedule_date);
-//           }
             fetch_data_by_program(program_id,schedule_date);
-
-
         });
+
+        /*    insert data  */
+
+        $(document).on('click', '#insert_data', function(){
+           var schedule_date = $('#schedule_date_using_ajax').val();
+            if(schedule_date) {
+                fetch_data_or_insert_data(schedule_date);
+            } else {
+                alert('Please Enter Date');
+            }
+        });
+
+
         $(document).on('click', '.pagination a', function(event){
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
             $('#hidden_page').val(page);
-         //   var program_id = $('#program_id_id').val();
-            fetch_data(page);
+             fetch_data(page);
         });
 $('#add_modal').click(function () {
     $.ajax({

@@ -18,7 +18,7 @@ class PopularVideoController extends Controller
         $data['main'] = 'Popular Video List';
         $data['active'] = ' Popular Video List ';
         $data['title'] = '';
-        $videos  = DB::table('popular_video')->orderBy('id', 'desc')->paginate(10);
+        $videos  = DB::table('popular_video')->orderBy('id', 'desc')->paginate(50);
         return view('admin.popularvideo.index', compact('videos'), $data);
     }
 
@@ -29,7 +29,7 @@ class PopularVideoController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $videos  =DB::table('popular_video')->select("*")
-                ->where('video_name', 'LIKE', '%' . $query . '%')->orderBy('id', 'desc')->paginate(10);
+                ->where('video_name', 'LIKE', '%' . $query . '%')->orderBy('id', 'desc')->paginate(50);
             return view('admin.popularvideo.pagination', compact('videos'));
         }
 

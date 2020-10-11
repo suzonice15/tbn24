@@ -1,10 +1,12 @@
+
+<?php $count=0;?>
 @if(isset($schedules))
 
     @foreach ($schedules as $schedule)
         <tr>
 
 
-            <td>{{ $schedule->id }}</td>
+            <td>{{ ++$count }}</td>
             <td>{{ $schedule->day }}</td>
             <td>{{ $schedule->program_name }}</td>
 
@@ -47,10 +49,7 @@
 
 
     $('.edit_modal').on('click',function () {
-
         let schedule_id=$(this).data("id") // will return the number 123
-
-
         $.ajax({
             type:"GET",
             url:"{{url('admin/schedule-weekly')}}/"+schedule_id,

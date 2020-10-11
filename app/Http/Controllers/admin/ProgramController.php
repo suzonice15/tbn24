@@ -22,7 +22,7 @@ class ProgramController extends Controller
         $data['active'] = ' Program List ';
         $data['title'] = '';
 
-        $programs  = Program::orderBy('programs.id', 'desc')->paginate(10);
+        $programs  = Program::orderBy('programs.id', 'desc')->paginate(50);
 
         return view('admin.program.index', compact('programs'), $data);
     }
@@ -34,7 +34,7 @@ class ProgramController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $programs  =Program::select("*")
-                ->where('program_name', 'LIKE', '%' . $query . '%')->orderBy('programs.id', 'desc')->paginate(10);
+                ->where('program_name', 'LIKE', '%' . $query . '%')->orderBy('programs.id', 'desc')->paginate(50);
 
             return view('admin.program.pagination', compact('programs'));
         }

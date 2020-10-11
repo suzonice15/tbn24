@@ -33,7 +33,7 @@ class PostController  extends Controller
         $data['main'] = 'Posts';
         $data['active'] = 'Posts';
         $data['title'] = '';
-        $data['posts']= DB::table('post')->orderBy('post_id', 'desc')->paginate(10);
+        $data['posts']= DB::table('post')->orderBy('post_id', 'desc')->paginate(50);
         return view('admin.post.index',$data);
     }
 
@@ -44,7 +44,7 @@ class PostController  extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $posts = DB::table('post')
-                ->orWhere('post_title', 'like', '%'.$query.'%')->paginate(10);
+                ->orWhere('post_title', 'like', '%'.$query.'%')->paginate(50);
             return view('admin.post.pagination', compact('posts'));
         }
 

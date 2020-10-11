@@ -19,7 +19,7 @@ class FaqController extends Controller
         $data['active'] = ' Faq List ';
         $data['title'] = '';
 
-        $faqs  = DB::table('faqs')->orderBy('faq_id', 'desc')->paginate(10);
+        $faqs  = DB::table('faqs')->orderBy('faq_id', 'desc')->paginate(50);
         return view('admin.faq.index', compact('faqs'), $data);
     }
 
@@ -30,7 +30,7 @@ class FaqController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $faqs  =DB::table('faqs')->select("*")
-                ->where('answers', 'LIKE', '%' . $query . '%')->orderBy('faq_id', 'desc')->paginate(10);
+                ->where('answers', 'LIKE', '%' . $query . '%')->orderBy('faq_id', 'desc')->paginate(50);
 
             return view('admin.faq.pagination', compact('faqs'));
         }

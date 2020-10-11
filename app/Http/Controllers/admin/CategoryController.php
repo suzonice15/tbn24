@@ -42,7 +42,7 @@ class CategoryController extends Controller
         $data['title'] = '  ';
        // $data['users']=DB::table('category')->orderBy('cateo','desc')->get();
       //  return view('admin.user.index', $data);
-        $data['categories']= DB::table('category')->orderBy('category_id', 'desc')->paginate(10);
+        $data['categories']= DB::table('category')->orderBy('category_id', 'desc')->paginate(50);
         return view('admin.category.index',$data);
     }
 
@@ -53,7 +53,7 @@ class CategoryController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $categories = DB::table('category')
-                ->orWhere('category_title', 'like', '%'.$query.'%')->paginate(10);
+                ->orWhere('category_title', 'like', '%'.$query.'%')->paginate(50);
             return view('admin.category.pagination', compact('categories'));
         }
 

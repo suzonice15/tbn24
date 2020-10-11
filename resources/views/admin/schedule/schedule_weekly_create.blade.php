@@ -168,11 +168,11 @@
     $(function () {
 
         $('.select2').select2();
-        $('.datepicker').datepicker(
-                {
-                    format: "dd-mm-yyyy",
-                    autoclose: true,
-                });
+
+
+        $(".datepicker").datepicker({ dateFormat: "dd-mm-yyyy", todayHighlight:'TRUE',
+            autoclose: true,}).datepicker("setDate", new Date());
+
 
     });
 
