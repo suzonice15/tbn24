@@ -155,13 +155,15 @@ Route::get('schedules/fetch_data_using_program_week', 'admin\ScheduleController@
 
 /****=============== admin weekly schedules section    =====================  ******/
 Route::get('schedules/schedule-weekly-day-view', 'admin\ScheduleController@schedule_weekly_day_view');
+Route::get('weakly_data_delete/{id}', 'admin\ScheduleController@weakly_data_delete');
+Route::get('admin/schedules/weekly_day_view_edit/{id}', 'admin\ScheduleController@weekly_day_view_edit');
+Route::post('admin/schedules/weekly_view_update/{id}', 'admin\ScheduleController@weekly_day_view_update');
 
 
 
 
 /****=============== app setting  section    =====================  ******/
 Route::get('admin/app-setting', 'admin\SettingController@appSetting');
-Route::post('admin/app-setting', 'admin\SettingController@appSetting_store');
 
 
 

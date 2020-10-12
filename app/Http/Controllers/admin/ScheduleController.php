@@ -46,16 +46,21 @@ class ScheduleController extends Controller
         $today = "Y-m-d";
 $staturday='Saturday';
 $sunday='Sunday';
+$monday='Monday';
+$tuesday='Tuesday';
+$wednesday='Wednesday';
+$thursday='Thursday';
+ $friday='Friday';
         $start_date = Carbon::now()->startOfWeek();
         $end_date = Carbon::now()->endOfWeek();
-        $schedules = DB::table('schedules')->select('day','schedules.id','schedules.start_time','schedules.end_time', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
-            ->where('schedule_date', '>', $start_date)
-            ->where('schedule_date', '<', $end_date)
-            ->where('day', '=', $sunday)
-            ->get();
-        echo '<pre>';
-        print_r($schedules);
-        exit();
+
+
+        $data['sundays'] = DB::table('schedules')->select('day','schedules.id','schedules.start_time','schedules.end_time', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
+            ->where('schedule_date', '>=', $start_date)
+            ->where('schedule_date', '<=', $end_date)
+                    ->get();
+
+
         return view('admin.schedule.schedule_weekly_day_view', $data);
 
     }
@@ -83,30 +88,37 @@ $sunday='Sunday';
             if ($schedule_date) {
                 if ($program_id == 1) {
                     $date = date('Y-m-d', strtotime($schedule_date));
-                    $schedules = DB::table('schedules')->select('schedules.*', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
+                    $schedules = DB::table('schedules')
+                        ->select('schedules.*', 'programs.program_name')
+                        ->join('programs', 'programs.id', '=', 'schedules.program_id')
                         ->whereDate('schedule_date', '=', $date)
                         ->orderBy('schedules.start_time', 'asc')
-                        ->get();
+                        ->paginate(5000);
                 } else {
                     $date = date('Y-m-d', strtotime($schedule_date));
-                    $schedules = DB::table('schedules')->select('schedules.*', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
+                    $schedules = DB::table('schedules')
+                        ->select('schedules.*', 'programs.program_name')
+                        ->join('programs', 'programs.id', '=', 'schedules.program_id')
                         ->where('program_id', '=', $program_id)
                         ->whereDate('schedule_date', '=', $date)
                         ->orderBy('schedules.start_time', 'asc')
-                        ->get();
+                        ->paginate(5000);
                 }
 
             } else {
                 if ($program_id == 1) {
-                    $schedules = DB::table('schedules')->select('schedules.*', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
+                    $schedules = DB::table('schedules')
+                        ->select('schedules.*', 'programs.program_name')
+                        ->join('programs', 'programs.id', '=', 'schedules.program_id')
                         ->orderBy('schedules.start_time', 'asc')
-                        ->get();
+                        ->paginate(50000);
                 } else{
-                    $schedules = DB::table('schedules')->select('schedules.*', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
+                    $schedules = DB::table('schedules')
+                        ->select('schedules.*', 'programs.program_name')
+                        ->join('programs', 'programs.id', '=', 'schedules.program_id')
                         ->where('program_id', '=', $program_id)
                         ->orderBy('schedules.start_time', 'asc')
-                        ->get();
-
+                        ->paginate(5000);
                 }
             }
 
@@ -119,31 +131,31 @@ $sunday='Sunday';
     {
 
         if ($request->ajax()) {
-
-
             $schedule_date = date('Y-m-d', strtotime($request->get('schedule_date')));
             $day = date('l', strtotime($request->get('schedule_date')));
             $currentDate = \Carbon\Carbon::now();
             $nowDate = $currentDate->subDays($currentDate->dayOfWeek +7); // gives 2016-02-06
-
-
-            $schedules = DB::table('schedules')->select('schedules.*', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
+            $schedules = DB::table('schedules')
+                ->select('schedules.*', 'programs.program_name')
+                ->join('programs', 'programs.id', '=', 'schedules.program_id')
                 ->whereDate('schedule_date', '=', $schedule_date)
                 ->orderBy('schedules.start_time', 'asc')
                 ->paginate(100);
-
-            if ($schedules) {
+            if (sizeof($schedules) > 0) {
 
                 return view('admin.schedule.pagination', compact('schedules'));
-
             } else {
 
-                $new_data = DB::table('schedules')->select('schedules.*', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
-                    ->where('schedule_date', '<', $currentDate)
+
+                $new_data = DB::table('schedules')
+                    ->select('schedules.*', 'programs.program_name')
+                    ->join('programs', 'programs.id', '=', 'schedules.program_id')
                     ->where('schedule_date', '>', $nowDate)
                     ->where('day', '=',$day)
                     ->get();
-             if($new_data) {
+
+             if(sizeof($new_data) > 0) {
+
                  foreach ($new_data as $schedule) {
                      $data['schedule_date'] = $schedule_date;
                      $data['program_id'] = $schedule->program_id;
@@ -153,16 +165,17 @@ $sunday='Sunday';
                      $data['schedule_note'] = $schedule->schedule_note;
                      $data['created_at'] = $schedule_date;
                      $data['day'] = $day;
-                     $result = DB::table('schedules')->insert($data);
+                    $result = DB::table('schedules')->insert($data);
                  }
-
-                 $schedules = DB::table('schedules')->select('schedules.*', 'programs.program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
-                     ->whereDate('schedule_date', '=', $schedule_date)
-                     ->orderBy('schedules.start_time', 'asc')
-                     ->paginate(100);
-
-                 return view('admin.schedule.pagination', compact('schedules'));
              }
+                $schedules = DB::table('schedules')
+                    ->select('schedules.*', 'programs.program_name')
+                    ->join('programs', 'programs.id', '=', 'schedules.program_id')
+                    ->whereDate('schedule_date', '=', $schedule_date)
+                    ->orderBy('schedules.start_time', 'asc')
+                    ->paginate(100);
+                return view('admin.schedule.pagination', compact('schedules'));
+
 
             }
 
@@ -260,8 +273,6 @@ $sunday='Sunday';
     public function edit($id)
     {
         $data['programs'] = DB::table('programs')->get();
-
-
         $data['schedule'] = DB::table('schedules')->where('id', $id)->first();
         return view('admin.schedule.edit', $data);
 
@@ -451,5 +462,54 @@ $sunday='Sunday';
                 ->with('error', 'No successfully.');
         }
     }
+
+    public function weakly_data_delete($id)
+    {
+        $user_id = 1;//AdminHelper::Admin_user_autherntication();
+        $url = URL::current();
+        if ($user_id < 1) {
+            //  return redirect('admin');
+            Redirect::to('admin')->with('redirect', $url)->send();
+
+        }
+
+        $result = DB::table('schedules')->where('id', $id)->delete();
+        if ($result) {
+            return redirect('schedules/schedule-weekly-day-view')
+                ->with('success', 'Deleted successfully.');
+        } else {
+            return redirect('schedules/schedule-weekly-day-view')
+                ->with('error', 'No successfully.');
+        }
+    }
+
+    public function weekly_day_view_edit($id){
+
+        $data['programs'] = DB::table('programs')->get();
+        $data['schedule'] = DB::table('schedules')->where('id', $id)->first();
+        return view('admin.schedule.schedule_weekly_day_view_edit', $data);
+    }
+    public function weekly_day_view_update(Request $request,$id){
+        $data['schedule_date'] = date('Y-m-d', strtotime($request->schedule_date));
+        $data['program_id'] = $request->program_id;
+        $data['start_time'] = $request->start_time;
+        $data['chat_status'] = $request->chat_status;
+        $data['end_time'] = $request->end_time;
+        $data['schedule_note'] = $request->schedule_note;
+        $data['created_at'] = date('Y-m-d');
+        $data['day'] =date('l', strtotime($request->schedule_date));
+
+        $result = DB::table('schedules')->where('id', $id)->update($data);
+        if ($result) {
+            return redirect('schedules/schedule-weekly-day-view')
+                ->with('success', 'Updated successfully.');
+        } else {
+            return redirect('/schedules/schedule-weekly-day-view')
+                ->with('error', 'No successfully.');
+        }
+    }
+
+
+
 
 }
