@@ -387,11 +387,12 @@ $thursday='Thursday';
             $start_date = Carbon::now()->startOfWeek();
             $end_date = Carbon::now()->endOfWeek();
             $schedules = DB::table('schedules')->select('schedules.*','program_name')->join('programs', 'programs.id', '=', 'schedules.program_id')
-                ->where('schedule_date', '>', $start_date)
+                ->where('schedule_date', '>=', $start_date)
                 ->where('schedule_date', '<', $end_date)
                 ->where('day', '=', $query)
                 ->orderBy('schedules.id', 'desc')
                 ->get();
+           
 
             return view('admin.schedule.fetch_data_using_week', compact('schedules'));
         }

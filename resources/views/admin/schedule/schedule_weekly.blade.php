@@ -175,6 +175,7 @@
                             type: "GET",
                             url: "{{url('schedules/fetch_data_using_week')}}?day_id=" + day_id,
                             success: function (data) {
+                                console.log(data)
                                 $('tbody').html('');
                                 $('tbody').html(data);
                             }

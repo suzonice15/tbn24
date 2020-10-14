@@ -164,6 +164,7 @@ Route::post('admin/schedules/weekly_view_update/{id}', 'admin\ScheduleController
 
 /****=============== app setting  section    =====================  ******/
 Route::get('admin/app-setting', 'admin\SettingController@appSetting');
+Route::post('admin/app-setting', 'admin\SettingController@appSetting_store');
 
 
 

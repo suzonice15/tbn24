@@ -197,9 +197,23 @@
                         }
                     })
                 });
+
+
+                var today = new Date();
+                var dd = today.getDate()+11;
+                var mm = today.getMonth()+1; //January is 0!
+
+                var yyyy = today.getFullYear(); // change according to year 0 for current
+                var today1 = mm + '/' + dd + '/' + yyyy;
+                $("#birthday").datepicker({
+                    endDate:today1,
+                });
                 $(".datepicker_index").datepicker({
-                    dateFormat: "dd-mm-yyyy", todayHighlight: 'TRUE',
+                    dateFormat: "dd-mm-yyyy",
+                    todayHighlight: 'TRUE',
                     autoclose: true,
+                    endDate:today1,
+
                 });
 
 

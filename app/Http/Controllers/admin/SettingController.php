@@ -189,68 +189,7 @@ class SettingController extends Controller
 
         }
         $setting_row = DB::table('app_seating')->where('app_setting_id', 1)->first();
-//        if($request) {
-//            $row_data['app_time_zone'] = $request->app_time_zone;
-//            $row_data['facebook'] = $request->facebook;
-//            $row_data['google_app_id'] = $request->google_app_id;
-//            $row_data['instagram_id'] = $request->instagram_id;
-//            $row_data['live_url'] = $request->live_url;
-//            $row_data['live_url_bd'] = $request->live_url_bd;
-//            $row_data['program_start_type'] = $request->program_start_type;
-//            $row_data['youtube_chanel'] = $request->youtube_chanel;
-//
-////        $image = $request->file('logo');
-////        if ($image) {
-////
-////            $old_logo=$setting_row->logo;
-////            if($old_logo){
-////                $main_image=public_path().'/uploads/'.$old_logo;
-////                if(file_exists($main_image)){
-////                    @unlink($main_image);
-////                }
-////
-////            }
-////
-////            $image_name =date("d-m-Y") .'logo'. '.'  . $image->getClientOriginalExtension();
-////            $destinationPath = public_path('/uploads/');
-////            $resize_image = Image::make($image->getRealPath());
-////            $resize_image->save($destinationPath . '/' . $image_name);
-////            $row_data['logo'] = $image_name;
-////        }
-////
-////        $icon = $request->file('icon');
-////        if ($icon) {
-////
-////            $old_logo=$setting_row->icon;
-////            if($old_logo){
-////                $main_image=public_path().'/uploads/'.$old_logo;
-////
-////                if(file_exists($main_image)){
-////
-////                    @unlink($main_image);
-////
-////                }
-////
-////            }
-////
-////            $icon_image_name = date("d-m-Y") . '.' . $icon->getClientOriginalExtension();
-////
-////            $destinationPath = public_path('/uploads/');
-////
-////            $resize_image = Image::make($icon->getRealPath());
-////
-////            $resize_image->save($destinationPath . '/' . $icon_image_name);
-////
-////
-////            $row_data['icon'] = $icon_image_name;
-////        }
-//
-//            DB::table('app_seating')->where('app_setting_id', 1)->update($row_data);
-//            //return redirect('admin/app-setting');
-//        }
-
-
-
+ 
 
         $data['main'] = ' App Setting List ';
         $data['setting_row'] =$setting_row;
