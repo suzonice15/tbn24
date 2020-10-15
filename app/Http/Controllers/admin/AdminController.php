@@ -20,10 +20,10 @@ class AdminController extends Controller
 
     public function login()
     {
-        $user_id =0;
+        $user_id =Session::get('id');
 
-        if ($user_id > 0) {
-            //  return redirect('admin');
+        if ($user_id) {
+           
             Redirect::to('dashboard')->send();
 
         }

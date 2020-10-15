@@ -17,7 +17,7 @@
                         </div>
 
 			  			<div class="">
-                            {{get_ajax_footer_data()->contact_address}}
+                            <?php echo get_ajax_footer_data()->contact_address ?>
                         </div>
 
 			  			<div class="">

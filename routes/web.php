@@ -25,6 +25,7 @@ Route::get('ajax_program', 'HomeController@ajax_program');
 Route::get('/program-details/{id}', 'HomeController@single_program');
 Route::get('/about-us', 'HomeController@about');
 Route::get('/documents', 'HomeController@documents');
+Route::get('/document-details/{id}', 'HomeController@document_details');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/home_page_program', 'HomeController@home_page_program');
 Route::get('/ajax-footer-load', 'HomeController@ajaxFooterLoad');
@@ -84,6 +85,19 @@ Route::get('admin/post/{id}', 'admin\PostController@edit');
 Route::get('/admin/post/delete/{id}', 'admin\PostController@delete');
 Route::get('admin/post_pagination', 'admin\PostController@fetch_data');
 Route::post('post-urlcheck', 'admin\PostController@urlCheck')->name('post.urlcheck');
+
+
+
+
+/****=============== admin document section    =====================  ******/
+Route::get('admin/document', 'admin\DocumentController@index');
+Route::get('admin/document/create', 'admin\DocumentController@create');
+Route::post('admin/document/store', 'admin\DocumentController@store');
+Route::post('admin/document/update/{id}', 'admin\DocumentController@update');
+Route::get('admin/document/{id}', 'admin\DocumentController@edit');
+Route::get('/admin/document/delete/{id}', 'admin\DocumentController@delete');
+Route::get('admin/document_pagination', 'admin\DocumentController@fetch_data');
+Route::post('document-urlcheck', 'admin\DocumentController@urlCheck')->name('document.urlcheck');
 
 
 

@@ -6,15 +6,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
+
+                  @if($documents)
+                      @foreach($documents as $document)
                     <div class="block wow fadeInLeft animated" >
+                        <h3> <a href="{{url('/')}}/document-details/{{$document->document_parmalink}}" > <?php echo $document->document_title; ?></a></h3>
 
-                        <?php echo $about->page_content; ?>
+                        <?php echo $document->document_description; ?>
 
 
-        <a href="https://www.dropbox.com/s/e5ds1nfskw9zx1t/evicton-moratorium-letter-template.pdf" click="" to=""
+        <a href="{{$document->document_download}}" click="" to=""
            download=""> <h1>Click to Download</h1>
         </a>
                         </div>
+
+
+                  @endforeach
+                      @endif
+
+
                         </div>
                         </div>
                         </div>

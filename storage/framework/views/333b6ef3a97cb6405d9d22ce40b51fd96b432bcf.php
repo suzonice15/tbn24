@@ -99,6 +99,11 @@
                     <i class="fa fa fa-tv"></i> <span> Popular Video  </span>
                 </a>
             </li>
+            <li>
+                <a href="<?php echo e(URL::to('admin/document')); ?>">
+                    <i class="fa fa fa-tv"></i> <span> Documents  </span>
+                </a>
+            </li>
 
             <li   class="treeview">
                 <a href="#">

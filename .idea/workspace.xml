@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14945291-0e2e-459a-85b5-e9117a11d74f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/2eb0ded057a1f35cafdec79e6f6be3b4d409be28.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/792e0725ce4158925bf12650dbd2231e92313464.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/8db4dc3d5a3c71b785d40086a90d5e82800fe57e.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/website/document_details.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.zip" afterPath="$PROJECT_DIR$/app.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources.zip" afterPath="$PROJECT_DIR$/resources.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes.zip" afterPath="$PROJECT_DIR$/routes.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/ScheduleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/ScheduleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/SettingController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/SettingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/schedule/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/schedule/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly_day_view.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly_day_view.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/includes/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/includes/sidebar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/website/contact.blade.php" afterPath="$PROJECT_DIR$/resources/views/website/contact.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/website/documents.blade.php" afterPath="$PROJECT_DIR$/resources/views/website/documents.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/website/includes/ajaxFooterLoad.blade.php" afterPath="$PROJECT_DIR$/resources/views/website/includes/ajaxFooterLoad.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/333b6ef3a97cb6405d9d22ce40b51fd96b432bcf.php" afterPath="$PROJECT_DIR$/storage/framework/views/333b6ef3a97cb6405d9d22ce40b51fd96b432bcf.php" />
     </list>
     <ignored path="tbn24.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,288 +39,105 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="149" column="43" selection-start-line="149" selection-start-column="22" selection-end-line="149" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScheduleController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ScheduleController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="381" column="5" selection-start-line="381" selection-start-column="5" selection-end-line="381" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SettingController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/SettingController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3281">
-              <caret line="201" column="36" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app_setting.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/setting/app_setting.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="67" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schedule_weekly_day_view.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly_day_view.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
-              <folding>
-                <element signature="e#1141#1167#0#HTML" expanded="true" />
-                <element signature="e#1255#1281#0#HTML" expanded="true" />
-                <element signature="e#1358#1384#0#HTML" expanded="true" />
-                <element signature="e#1464#1490#0#HTML" expanded="true" />
-                <element signature="e#1570#1596#0#HTML" expanded="true" />
-                <element signature="e#3354#3412#0#HTML" expanded="true" />
-                <element signature="e#5015#5073#0#HTML" expanded="true" />
-                <element signature="e#6676#6734#0#HTML" expanded="true" />
-                <element signature="e#8339#8397#0#HTML" expanded="true" />
-                <element signature="e#10001#10059#0#HTML" expanded="true" />
-                <element signature="e#11661#11719#0#HTML" expanded="true" />
-                <element signature="e#13324#13382#0#HTML" expanded="true" />
-                <element signature="e#15081#15139#0#HTML" expanded="true" />
-                <element signature="e#16742#16800#0#HTML" expanded="true" />
-                <element signature="e#18380#18438#0#HTML" expanded="true" />
-                <element signature="e#20021#20079#0#HTML" expanded="true" />
-                <element signature="e#21659#21717#0#HTML" expanded="true" />
-                <element signature="e#23318#23376#0#HTML" expanded="true" />
-                <element signature="e#24978#25036#0#HTML" expanded="true" />
-                <element signature="e#26757#26815#0#HTML" expanded="true" />
-                <element signature="e#28415#28473#0#HTML" expanded="true" />
-                <element signature="e#30072#30130#0#HTML" expanded="true" />
-                <element signature="e#31733#31791#0#HTML" expanded="true" />
-                <element signature="e#33393#33451#0#HTML" expanded="true" />
-                <element signature="e#35049#35107#0#HTML" expanded="true" />
-                <element signature="e#36709#36767#0#HTML" expanded="true" />
-                <element signature="e#38489#38547#0#HTML" expanded="true" />
-                <element signature="e#40145#40203#0#HTML" expanded="true" />
-                <element signature="e#41803#41861#0#HTML" expanded="true" />
-                <element signature="e#43463#43521#0#HTML" expanded="true" />
-                <element signature="e#45122#45180#0#HTML" expanded="true" />
-                <element signature="e#46780#46838#0#HTML" expanded="true" />
-                <element signature="e#48440#48498#0#HTML" expanded="true" />
-                <element signature="e#50222#50280#0#HTML" expanded="true" />
-                <element signature="e#51878#51936#0#HTML" expanded="true" />
-                <element signature="e#53535#53593#0#HTML" expanded="true" />
-                <element signature="e#55188#55246#0#HTML" expanded="true" />
-                <element signature="e#56846#56904#0#HTML" expanded="true" />
-                <element signature="e#58498#58556#0#HTML" expanded="true" />
-                <element signature="e#60157#60215#0#HTML" expanded="true" />
-                <element signature="e#61937#61995#0#HTML" expanded="true" />
-                <element signature="e#63594#63652#0#HTML" expanded="true" />
-                <element signature="e#65253#65311#0#HTML" expanded="true" />
-                <element signature="e#66914#66972#0#HTML" expanded="true" />
-                <element signature="e#68574#68632#0#HTML" expanded="true" />
-                <element signature="e#70232#70290#0#HTML" expanded="true" />
-                <element signature="e#71891#71949#0#HTML" expanded="true" />
-                <element signature="e#73673#73731#0#HTML" expanded="true" />
-                <element signature="e#75330#75388#0#HTML" expanded="true" />
-                <element signature="e#76981#77039#0#HTML" expanded="true" />
-                <element signature="e#78639#78697#0#HTML" expanded="true" />
-                <element signature="e#80299#80357#0#HTML" expanded="true" />
-                <element signature="e#81957#82015#0#HTML" expanded="true" />
-                <element signature="e#83616#83674#0#HTML" expanded="true" />
-                <element signature="e#85396#85454#0#HTML" expanded="true" />
-                <element signature="e#87053#87111#0#HTML" expanded="true" />
-                <element signature="e#88711#88769#0#HTML" expanded="true" />
-                <element signature="e#90372#90430#0#HTML" expanded="true" />
-                <element signature="e#92032#92090#0#HTML" expanded="true" />
-                <element signature="e#93689#93747#0#HTML" expanded="true" />
-                <element signature="e#95349#95407#0#HTML" expanded="true" />
-                <element signature="e#97130#97188#0#HTML" expanded="true" />
-                <element signature="e#98788#98846#0#HTML" expanded="true" />
-                <element signature="e#100447#100505#0#HTML" expanded="true" />
-                <element signature="e#102108#102166#0#HTML" expanded="true" />
-                <element signature="e#103768#103826#0#HTML" expanded="true" />
-                <element signature="e#105426#105484#0#HTML" expanded="true" />
-                <element signature="e#107086#107144#0#HTML" expanded="true" />
-                <element signature="e#108867#108925#0#HTML" expanded="true" />
-                <element signature="e#110525#110583#0#HTML" expanded="true" />
-                <element signature="e#112184#112242#0#HTML" expanded="true" />
-                <element signature="e#113845#113903#0#HTML" expanded="true" />
-                <element signature="e#115505#115563#0#HTML" expanded="true" />
-                <element signature="e#117163#117221#0#HTML" expanded="true" />
-                <element signature="e#118822#118880#0#HTML" expanded="true" />
-                <element signature="e#120603#120661#0#HTML" expanded="true" />
-                <element signature="e#122260#122318#0#HTML" expanded="true" />
-                <element signature="e#123919#123977#0#HTML" expanded="true" />
-                <element signature="e#125580#125638#0#HTML" expanded="true" />
-                <element signature="e#127240#127298#0#HTML" expanded="true" />
-                <element signature="e#128897#128955#0#HTML" expanded="true" />
-                <element signature="e#130557#130615#0#HTML" expanded="true" />
-                <element signature="e#132336#132394#0#HTML" expanded="true" />
-                <element signature="e#133994#134052#0#HTML" expanded="true" />
-                <element signature="e#135654#135712#0#HTML" expanded="true" />
-                <element signature="e#137313#137371#0#HTML" expanded="true" />
-                <element signature="e#138970#139028#0#HTML" expanded="true" />
-                <element signature="e#140628#140686#0#HTML" expanded="true" />
-                <element signature="e#142409#142467#0#HTML" expanded="true" />
-                <element signature="e#144065#144123#0#HTML" expanded="true" />
-                <element signature="e#145723#145781#0#HTML" expanded="true" />
-                <element signature="e#147383#147441#0#HTML" expanded="true" />
-                <element signature="e#149041#149099#0#HTML" expanded="true" />
-                <element signature="e#150697#150755#0#HTML" expanded="true" />
-                <element signature="e#152355#152413#0#HTML" expanded="true" />
-                <element signature="e#154135#154193#0#HTML" expanded="true" />
-                <element signature="e#155792#155850#0#HTML" expanded="true" />
-                <element signature="e#157450#157508#0#HTML" expanded="true" />
-                <element signature="e#159110#159168#0#HTML" expanded="true" />
-                <element signature="e#160769#160827#0#HTML" expanded="true" />
-                <element signature="e#162426#162484#0#HTML" expanded="true" />
-                <element signature="e#164085#164143#0#HTML" expanded="true" />
-                <element signature="e#165864#165922#0#HTML" expanded="true" />
-                <element signature="e#167520#167578#0#HTML" expanded="true" />
-                <element signature="e#169177#169235#0#HTML" expanded="true" />
-                <element signature="e#170837#170895#0#HTML" expanded="true" />
-                <element signature="e#172495#172553#0#HTML" expanded="true" />
-                <element signature="e#174151#174209#0#HTML" expanded="true" />
-                <element signature="e#175809#175867#0#HTML" expanded="true" />
-                <element signature="e#177589#177647#0#HTML" expanded="true" />
-                <element signature="e#179220#179278#0#HTML" expanded="true" />
-                <element signature="e#180850#180908#0#HTML" expanded="true" />
-                <element signature="e#182483#182541#0#HTML" expanded="true" />
-                <element signature="e#184115#184173#0#HTML" expanded="true" />
-                <element signature="e#185744#185802#0#HTML" expanded="true" />
-                <element signature="e#187376#187434#0#HTML" expanded="true" />
-                <element signature="e#189098#189156#0#HTML" expanded="true" />
-                <element signature="e#190726#190784#0#HTML" expanded="true" />
-                <element signature="e#192354#192412#0#HTML" expanded="true" />
-                <element signature="e#193986#194044#0#HTML" expanded="true" />
-                <element signature="e#195618#195676#0#HTML" expanded="true" />
-                <element signature="e#197247#197305#0#HTML" expanded="true" />
-                <element signature="e#198879#198937#0#HTML" expanded="true" />
-                <element signature="e#200593#200651#0#HTML" expanded="true" />
-                <element signature="e#202181#202239#0#HTML" expanded="true" />
-                <element signature="e#203768#203826#0#HTML" expanded="true" />
-                <element signature="e#205357#205415#0#HTML" expanded="true" />
-                <element signature="e#206945#207003#0#HTML" expanded="true" />
-                <element signature="e#208532#208590#0#HTML" expanded="true" />
-                <element signature="e#210122#210180#0#HTML" expanded="true" />
-                <element signature="e#211872#211930#0#HTML" expanded="true" />
-                <element signature="e#213501#213559#0#HTML" expanded="true" />
-                <element signature="e#215132#215190#0#HTML" expanded="true" />
-                <element signature="e#216764#216822#0#HTML" expanded="true" />
-                <element signature="e#218395#218453#0#HTML" expanded="true" />
-                <element signature="e#220024#220082#0#HTML" expanded="true" />
-                <element signature="e#221654#221712#0#HTML" expanded="true" />
-                <element signature="e#223407#223465#0#HTML" expanded="true" />
-                <element signature="e#225036#225094#0#HTML" expanded="true" />
-                <element signature="e#226666#226724#0#HTML" expanded="true" />
-                <element signature="e#228298#228356#0#HTML" expanded="true" />
-                <element signature="e#229930#229988#0#HTML" expanded="true" />
-                <element signature="e#231559#231617#0#HTML" expanded="true" />
-                <element signature="e#233191#233249#0#HTML" expanded="true" />
-                <element signature="e#234944#235002#0#HTML" expanded="true" />
-                <element signature="e#236573#236631#0#HTML" expanded="true" />
-                <element signature="e#238203#238261#0#HTML" expanded="true" />
-                <element signature="e#239836#239894#0#HTML" expanded="true" />
-                <element signature="e#241468#241526#0#HTML" expanded="true" />
-                <element signature="e#243098#243156#0#HTML" expanded="true" />
-                <element signature="e#244730#244788#0#HTML" expanded="true" />
-                <element signature="e#246483#246541#0#HTML" expanded="true" />
-                <element signature="e#248113#248171#0#HTML" expanded="true" />
-                <element signature="e#249740#249798#0#HTML" expanded="true" />
-                <element signature="e#251372#251430#0#HTML" expanded="true" />
-                <element signature="e#253003#253061#0#HTML" expanded="true" />
-                <element signature="e#254633#254691#0#HTML" expanded="true" />
-                <element signature="e#256265#256323#0#HTML" expanded="true" />
-                <element signature="e#257990#258048#0#HTML" expanded="true" />
-                <element signature="e#259620#259678#0#HTML" expanded="true" />
-                <element signature="e#261251#261309#0#HTML" expanded="true" />
-                <element signature="e#262883#262941#0#HTML" expanded="true" />
-                <element signature="e#264514#264572#0#HTML" expanded="true" />
-                <element signature="e#266143#266201#0#HTML" expanded="true" />
-                <element signature="e#267775#267833#0#HTML" expanded="true" />
-                <element signature="e#269497#269555#0#HTML" expanded="true" />
-                <element signature="e#271125#271183#0#HTML" expanded="true" />
-                <element signature="e#272755#272813#0#HTML" expanded="true" />
-                <element signature="e#274388#274446#0#HTML" expanded="true" />
-                <element signature="e#276018#276076#0#HTML" expanded="true" />
-                <element signature="e#277645#277703#0#HTML" expanded="true" />
-                <element signature="e#279277#279335#0#HTML" expanded="true" />
-                <marker date="1602659430706" expanded="true" signature="2746:3056" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="2916:3011" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="3610:3949" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="5271:5610" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="6932:7271" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="8594:8933" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="10256:10595" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="11917:12256" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="277997:278232" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="279621:280271" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="279656:280227" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="279696:280175" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="279739:280068" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="279836:279935" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="280006:280045" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="280131:280155" placeholder="..." />
-                <marker date="1602659430706" expanded="true" signature="280287:280301" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/post/create.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="48" column="76" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="76" />
+              <caret line="27" column="69" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pagination_schedule_weekly.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/schedule/pagination_schedule_weekly.blade.php">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+            <state relative-caret-position="267">
+              <caret line="101" column="45" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="schedule_weekly.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly.blade.php">
+      <file leaf-file-name="document_details.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/website/document_details.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="175" column="72" selection-start-line="175" selection-start-column="51" selection-end-line="175" selection-end-column="72" />
+            <state relative-caret-position="187">
+              <caret line="11" column="78" selection-start-line="11" selection-start-column="78" selection-end-line="11" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="footer.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/includes/footer.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/website/includes/footer.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="-136">
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/schedule/index.blade.php">
+      <file leaf-file-name="ajaxFooterLoad.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/website/includes/ajaxFooterLoad.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3434">
-              <caret line="202" column="43" selection-start-line="202" selection-start-column="43" selection-end-line="202" selection-end-column="43" />
+            <state relative-caret-position="323">
+              <caret line="19" column="81" selection-start-line="19" selection-start-column="81" selection-end-line="19" selection-end-column="81" />
+              <folding>
+                <element signature="n#style#0;n#footer#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contact.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/website/contact.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="90" column="73" selection-start-line="90" selection-start-column="73" selection-end-line="90" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="documents.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/website/documents.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="67" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/document/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="111">
+              <caret line="92" column="0" selection-start-line="10" selection-start-column="10" selection-end-line="92" selection-end-column="0" />
+              <folding>
+                <element signature="e#354#4609#0#HTML" expanded="false" />
+                <element signature="e#464#519#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/document/edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="36" column="109" selection-start-line="36" selection-start-column="109" selection-end-line="36" selection-end-column="109" />
+              <folding>
+                <element signature="e#449#504#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/document/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="56" column="53" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -335,17 +153,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/admin/popularvideo/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/category/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/post/pagination.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/post/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/user/category.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/post/edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/website/ajax_about_us.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/website/todayScheduleAjaxData.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/website/ajax_poll.blade.php" />
         <option value="$PROJECT_DIR$/app/helpers.php" />
-        <option value="$PROJECT_DIR$/resources/views/website/includes/ajaxFooterLoad.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/ajax_post_category_call.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/category.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/single_post.blade.php" />
@@ -364,7 +172,6 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/includes/footer.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/pull/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/pull/create.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/website/includes/footer.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/FaqController.php" />
@@ -377,15 +184,26 @@
         <option value="$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly_create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/schedule/pagination_schedule_weekly.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/schedule/fetch_data_using_week.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/includes/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/schedule/pagination.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly_day_view_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/schedule/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/SettingController.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/ScheduleController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly_day_view.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/includes/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/admin/DocumentController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/document/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/document/pagination.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/document/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/document/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/website/documents.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/website/document_details.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/website/includes/ajaxFooterLoad.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/website/contact.blade.php" />
       </list>
     </option>
   </component>
@@ -431,7 +249,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -856,6 +673,32 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="document" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tbn24" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tbn24" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="category" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -938,6 +781,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Middleware" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tbn24" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tbn24" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controllers" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -971,6 +836,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -978,7 +844,7 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../compact_energy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -1046,12 +912,14 @@
       <workItem from="1602556589782" duration="12800000" />
       <workItem from="1602645446271" duration="832000" />
       <workItem from="1602648184485" duration="22000" />
-      <workItem from="1602649733818" duration="8226000" />
+      <workItem from="1602649733818" duration="9412000" />
+      <workItem from="1602729739069" duration="609000" />
+      <workItem from="1602748598881" duration="5618000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="287981000" />
+    <option name="totallyTimeSpent" value="295394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="20" width="1326" height="688" extended-state="0" />
@@ -1093,90 +961,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/website/todayScheduleAjaxData.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/ajax_poll.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-250">
-          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="47" column="29" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/includes/ajaxFooterLoad.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="852">
-          <caret line="60" column="63" selection-start-line="60" selection-start-column="63" selection-end-line="60" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/today_schedule.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="123" selection-start-line="23" selection-start-column="113" selection-end-line="23" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/single_post.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/ajax_post_category_call.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/ajax_all_program.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="97" selection-start-line="15" selection-start-column="85" selection-end-line="15" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/category.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="61" column="13" selection-start-line="57" selection-start-column="3" selection-end-line="61" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/program_video.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="542" column="0" selection-start-line="542" selection-start-column="0" selection-end-line="542" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/ajax_program_video.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/pull/pull_result_pagination.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/post/pagination.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1251,20 +1035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3893">
-          <caret line="233" column="39" selection-start-line="233" selection-start-column="39" selection-end-line="233" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/includes/footer.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1345,13 +1115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/includes/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="78" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/schedule/fetch_data_using_week.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1370,7 +1133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1547">
           <caret line="91" column="79" selection-start-line="0" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1378,7 +1140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
           <caret line="66" column="89" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1386,7 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3434">
           <caret line="202" column="43" selection-start-line="202" selection-start-column="43" selection-end-line="202" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1416,7 +1176,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/post/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="782">
           <caret line="48" column="76" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="76" />
           <folding />
         </state>
@@ -1432,223 +1192,166 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="2975">
           <caret line="175" column="72" selection-start-line="175" selection-start-column="51" selection-end-line="175" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="149" column="43" selection-start-line="149" selection-start-column="22" selection-end-line="149" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ScheduleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="381" column="5" selection-start-line="381" selection-start-column="5" selection-end-line="381" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/schedule/schedule_weekly_day_view.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="1037">
           <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
           <folding>
-            <element signature="e#1141#1167#0#HTML" expanded="true" />
-            <element signature="e#1255#1281#0#HTML" expanded="true" />
-            <element signature="e#1358#1384#0#HTML" expanded="true" />
-            <element signature="e#1464#1490#0#HTML" expanded="true" />
-            <element signature="e#1570#1596#0#HTML" expanded="true" />
-            <element signature="e#3354#3412#0#HTML" expanded="true" />
-            <element signature="e#5015#5073#0#HTML" expanded="true" />
-            <element signature="e#6676#6734#0#HTML" expanded="true" />
-            <element signature="e#8339#8397#0#HTML" expanded="true" />
-            <element signature="e#10001#10059#0#HTML" expanded="true" />
-            <element signature="e#11661#11719#0#HTML" expanded="true" />
-            <element signature="e#13324#13382#0#HTML" expanded="true" />
-            <element signature="e#15081#15139#0#HTML" expanded="true" />
-            <element signature="e#16742#16800#0#HTML" expanded="true" />
-            <element signature="e#18380#18438#0#HTML" expanded="true" />
-            <element signature="e#20021#20079#0#HTML" expanded="true" />
-            <element signature="e#21659#21717#0#HTML" expanded="true" />
-            <element signature="e#23318#23376#0#HTML" expanded="true" />
-            <element signature="e#24978#25036#0#HTML" expanded="true" />
-            <element signature="e#26757#26815#0#HTML" expanded="true" />
-            <element signature="e#28415#28473#0#HTML" expanded="true" />
-            <element signature="e#30072#30130#0#HTML" expanded="true" />
-            <element signature="e#31733#31791#0#HTML" expanded="true" />
-            <element signature="e#33393#33451#0#HTML" expanded="true" />
-            <element signature="e#35049#35107#0#HTML" expanded="true" />
-            <element signature="e#36709#36767#0#HTML" expanded="true" />
-            <element signature="e#38489#38547#0#HTML" expanded="true" />
-            <element signature="e#40145#40203#0#HTML" expanded="true" />
-            <element signature="e#41803#41861#0#HTML" expanded="true" />
-            <element signature="e#43463#43521#0#HTML" expanded="true" />
-            <element signature="e#45122#45180#0#HTML" expanded="true" />
-            <element signature="e#46780#46838#0#HTML" expanded="true" />
-            <element signature="e#48440#48498#0#HTML" expanded="true" />
-            <element signature="e#50222#50280#0#HTML" expanded="true" />
-            <element signature="e#51878#51936#0#HTML" expanded="true" />
-            <element signature="e#53535#53593#0#HTML" expanded="true" />
-            <element signature="e#55188#55246#0#HTML" expanded="true" />
-            <element signature="e#56846#56904#0#HTML" expanded="true" />
-            <element signature="e#58498#58556#0#HTML" expanded="true" />
-            <element signature="e#60157#60215#0#HTML" expanded="true" />
-            <element signature="e#61937#61995#0#HTML" expanded="true" />
-            <element signature="e#63594#63652#0#HTML" expanded="true" />
-            <element signature="e#65253#65311#0#HTML" expanded="true" />
-            <element signature="e#66914#66972#0#HTML" expanded="true" />
-            <element signature="e#68574#68632#0#HTML" expanded="true" />
-            <element signature="e#70232#70290#0#HTML" expanded="true" />
-            <element signature="e#71891#71949#0#HTML" expanded="true" />
-            <element signature="e#73673#73731#0#HTML" expanded="true" />
-            <element signature="e#75330#75388#0#HTML" expanded="true" />
-            <element signature="e#76981#77039#0#HTML" expanded="true" />
-            <element signature="e#78639#78697#0#HTML" expanded="true" />
-            <element signature="e#80299#80357#0#HTML" expanded="true" />
-            <element signature="e#81957#82015#0#HTML" expanded="true" />
-            <element signature="e#83616#83674#0#HTML" expanded="true" />
-            <element signature="e#85396#85454#0#HTML" expanded="true" />
-            <element signature="e#87053#87111#0#HTML" expanded="true" />
-            <element signature="e#88711#88769#0#HTML" expanded="true" />
-            <element signature="e#90372#90430#0#HTML" expanded="true" />
-            <element signature="e#92032#92090#0#HTML" expanded="true" />
-            <element signature="e#93689#93747#0#HTML" expanded="true" />
-            <element signature="e#95349#95407#0#HTML" expanded="true" />
-            <element signature="e#97130#97188#0#HTML" expanded="true" />
-            <element signature="e#98788#98846#0#HTML" expanded="true" />
-            <element signature="e#100447#100505#0#HTML" expanded="true" />
-            <element signature="e#102108#102166#0#HTML" expanded="true" />
-            <element signature="e#103768#103826#0#HTML" expanded="true" />
-            <element signature="e#105426#105484#0#HTML" expanded="true" />
-            <element signature="e#107086#107144#0#HTML" expanded="true" />
-            <element signature="e#108867#108925#0#HTML" expanded="true" />
-            <element signature="e#110525#110583#0#HTML" expanded="true" />
-            <element signature="e#112184#112242#0#HTML" expanded="true" />
-            <element signature="e#113845#113903#0#HTML" expanded="true" />
-            <element signature="e#115505#115563#0#HTML" expanded="true" />
-            <element signature="e#117163#117221#0#HTML" expanded="true" />
-            <element signature="e#118822#118880#0#HTML" expanded="true" />
-            <element signature="e#120603#120661#0#HTML" expanded="true" />
-            <element signature="e#122260#122318#0#HTML" expanded="true" />
-            <element signature="e#123919#123977#0#HTML" expanded="true" />
-            <element signature="e#125580#125638#0#HTML" expanded="true" />
-            <element signature="e#127240#127298#0#HTML" expanded="true" />
-            <element signature="e#128897#128955#0#HTML" expanded="true" />
-            <element signature="e#130557#130615#0#HTML" expanded="true" />
-            <element signature="e#132336#132394#0#HTML" expanded="true" />
-            <element signature="e#133994#134052#0#HTML" expanded="true" />
-            <element signature="e#135654#135712#0#HTML" expanded="true" />
-            <element signature="e#137313#137371#0#HTML" expanded="true" />
-            <element signature="e#138970#139028#0#HTML" expanded="true" />
-            <element signature="e#140628#140686#0#HTML" expanded="true" />
-            <element signature="e#142409#142467#0#HTML" expanded="true" />
-            <element signature="e#144065#144123#0#HTML" expanded="true" />
-            <element signature="e#145723#145781#0#HTML" expanded="true" />
-            <element signature="e#147383#147441#0#HTML" expanded="true" />
-            <element signature="e#149041#149099#0#HTML" expanded="true" />
-            <element signature="e#150697#150755#0#HTML" expanded="true" />
-            <element signature="e#152355#152413#0#HTML" expanded="true" />
-            <element signature="e#154135#154193#0#HTML" expanded="true" />
-            <element signature="e#155792#155850#0#HTML" expanded="true" />
-            <element signature="e#157450#157508#0#HTML" expanded="true" />
-            <element signature="e#159110#159168#0#HTML" expanded="true" />
-            <element signature="e#160769#160827#0#HTML" expanded="true" />
-            <element signature="e#162426#162484#0#HTML" expanded="true" />
-            <element signature="e#164085#164143#0#HTML" expanded="true" />
-            <element signature="e#165864#165922#0#HTML" expanded="true" />
-            <element signature="e#167520#167578#0#HTML" expanded="true" />
-            <element signature="e#169177#169235#0#HTML" expanded="true" />
-            <element signature="e#170837#170895#0#HTML" expanded="true" />
-            <element signature="e#172495#172553#0#HTML" expanded="true" />
-            <element signature="e#174151#174209#0#HTML" expanded="true" />
-            <element signature="e#175809#175867#0#HTML" expanded="true" />
-            <element signature="e#177589#177647#0#HTML" expanded="true" />
-            <element signature="e#179220#179278#0#HTML" expanded="true" />
-            <element signature="e#180850#180908#0#HTML" expanded="true" />
-            <element signature="e#182483#182541#0#HTML" expanded="true" />
-            <element signature="e#184115#184173#0#HTML" expanded="true" />
-            <element signature="e#185744#185802#0#HTML" expanded="true" />
-            <element signature="e#187376#187434#0#HTML" expanded="true" />
-            <element signature="e#189098#189156#0#HTML" expanded="true" />
-            <element signature="e#190726#190784#0#HTML" expanded="true" />
-            <element signature="e#192354#192412#0#HTML" expanded="true" />
-            <element signature="e#193986#194044#0#HTML" expanded="true" />
-            <element signature="e#195618#195676#0#HTML" expanded="true" />
-            <element signature="e#197247#197305#0#HTML" expanded="true" />
-            <element signature="e#198879#198937#0#HTML" expanded="true" />
-            <element signature="e#200593#200651#0#HTML" expanded="true" />
-            <element signature="e#202181#202239#0#HTML" expanded="true" />
-            <element signature="e#203768#203826#0#HTML" expanded="true" />
-            <element signature="e#205357#205415#0#HTML" expanded="true" />
-            <element signature="e#206945#207003#0#HTML" expanded="true" />
-            <element signature="e#208532#208590#0#HTML" expanded="true" />
-            <element signature="e#210122#210180#0#HTML" expanded="true" />
-            <element signature="e#211872#211930#0#HTML" expanded="true" />
-            <element signature="e#213501#213559#0#HTML" expanded="true" />
-            <element signature="e#215132#215190#0#HTML" expanded="true" />
-            <element signature="e#216764#216822#0#HTML" expanded="true" />
-            <element signature="e#218395#218453#0#HTML" expanded="true" />
-            <element signature="e#220024#220082#0#HTML" expanded="true" />
-            <element signature="e#221654#221712#0#HTML" expanded="true" />
-            <element signature="e#223407#223465#0#HTML" expanded="true" />
-            <element signature="e#225036#225094#0#HTML" expanded="true" />
-            <element signature="e#226666#226724#0#HTML" expanded="true" />
-            <element signature="e#228298#228356#0#HTML" expanded="true" />
-            <element signature="e#229930#229988#0#HTML" expanded="true" />
-            <element signature="e#231559#231617#0#HTML" expanded="true" />
-            <element signature="e#233191#233249#0#HTML" expanded="true" />
-            <element signature="e#234944#235002#0#HTML" expanded="true" />
-            <element signature="e#236573#236631#0#HTML" expanded="true" />
-            <element signature="e#238203#238261#0#HTML" expanded="true" />
-            <element signature="e#239836#239894#0#HTML" expanded="true" />
-            <element signature="e#241468#241526#0#HTML" expanded="true" />
-            <element signature="e#243098#243156#0#HTML" expanded="true" />
-            <element signature="e#244730#244788#0#HTML" expanded="true" />
-            <element signature="e#246483#246541#0#HTML" expanded="true" />
-            <element signature="e#248113#248171#0#HTML" expanded="true" />
-            <element signature="e#249740#249798#0#HTML" expanded="true" />
-            <element signature="e#251372#251430#0#HTML" expanded="true" />
-            <element signature="e#253003#253061#0#HTML" expanded="true" />
-            <element signature="e#254633#254691#0#HTML" expanded="true" />
-            <element signature="e#256265#256323#0#HTML" expanded="true" />
-            <element signature="e#257990#258048#0#HTML" expanded="true" />
-            <element signature="e#259620#259678#0#HTML" expanded="true" />
-            <element signature="e#261251#261309#0#HTML" expanded="true" />
-            <element signature="e#262883#262941#0#HTML" expanded="true" />
-            <element signature="e#264514#264572#0#HTML" expanded="true" />
-            <element signature="e#266143#266201#0#HTML" expanded="true" />
-            <element signature="e#267775#267833#0#HTML" expanded="true" />
-            <element signature="e#269497#269555#0#HTML" expanded="true" />
-            <element signature="e#271125#271183#0#HTML" expanded="true" />
-            <element signature="e#272755#272813#0#HTML" expanded="true" />
-            <element signature="e#274388#274446#0#HTML" expanded="true" />
-            <element signature="e#276018#276076#0#HTML" expanded="true" />
-            <element signature="e#277645#277703#0#HTML" expanded="true" />
-            <element signature="e#279277#279335#0#HTML" expanded="true" />
             <marker date="1602659430706" expanded="true" signature="2746:3056" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="2916:3011" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="3610:3949" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="5271:5610" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="6932:7271" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="8594:8933" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="10256:10595" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="11917:12256" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="277997:278232" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="279621:280271" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="279656:280227" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="279696:280175" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="279739:280068" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="279836:279935" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="280006:280045" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="280131:280155" placeholder="..." />
-            <marker date="1602659430706" expanded="true" signature="280287:280301" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+          <folding>
+            <element signature="e#7#132#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ScheduleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="381" column="5" selection-start-line="381" selection-start-column="5" selection-end-line="381" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/includes/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="103" column="64" selection-start-line="103" selection-start-column="55" selection-end-line="103" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/AdminLoginCheck.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-391">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding>
+            <element signature="e#46#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/document/pagination.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/DocumentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="110" column="23" selection-start-line="110" selection-start-column="15" selection-end-line="110" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/document/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="92" column="0" selection-start-line="10" selection-start-column="10" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <element signature="e#354#4609#0#HTML" expanded="false" />
+            <element signature="e#464#519#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/document/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="36" column="109" selection-start-line="36" selection-start-column="109" selection-end-line="36" selection-end-column="109" />
+          <folding>
+            <element signature="e#449#504#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/document/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="56" column="53" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="27" column="69" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="101" column="45" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/website/documents.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="67" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/website/document_details.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="78" selection-start-line="11" selection-start-column="78" selection-end-line="11" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/website/includes/footer.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/website/includes/ajaxFooterLoad.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="81" selection-start-line="19" selection-start-column="81" selection-end-line="19" selection-end-column="81" />
+          <folding>
+            <element signature="n#style#0;n#footer#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/website/contact.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="90" column="73" selection-start-line="90" selection-start-column="73" selection-end-line="90" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>

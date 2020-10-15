@@ -88,7 +88,7 @@
 
                             <li style="font-size: 20px;color: white;"> <i class="icon-home"></i>
 
-                                {{$google_map->contact_address}}
+                               <?php echo $google_map->contact_address ?>
 
                             <li style="font-size: 20px;color: white;">
 

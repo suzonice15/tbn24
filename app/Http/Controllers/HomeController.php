@@ -94,9 +94,15 @@ class HomeController extends Controller
        return view('website.about_us',$data);
      }
     public function documents(){
-        $data['about']=DB::table('page')->select('page_content')->where('page_link','documents')->first();
-        return view('website.documents',$data);
+    $data['documents']=DB::table('document')->orderBy('document_id','desc')->get();
+    return view('website.documents',$data);
+}
+    public function document_details($link){
+        $data['document']=DB::table('document')->where('document_parmalink',$link)->first();
+        return view('website.document_details',$data);
     }
+
+
     public function contact(){
        $data['number1']=rand(1,20);
        $data['number2']=rand(1,20);
