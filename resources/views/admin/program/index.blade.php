@@ -21,8 +21,10 @@
             <thead>
             <tr>
                 <th>Sl</th>
-                <th>Name</th>
+
                 <th>Image</th>
+                <th>Name</th>
+                <th>Playlist Id</th>
                 <th>Status</th>
                 <th>Created Date</th>
                 <th>Action</th>

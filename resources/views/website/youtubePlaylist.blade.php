@@ -494,6 +494,8 @@
 
                 @if($videoLists)
                     @foreach($videoLists['results'] as $videoList)
+                        @if($videoList->snippet->thumbnails)
+                            @if(!empty($videoList->snippet->thumbnails->high->url))
                         <div class="col-sm-4 col-xs-12">
                             <figure class="wow fadeInLeft animated portfolio-item animated">
                                 <div class="img-wrapper">
@@ -517,7 +519,8 @@
                                 </figcaption>
                             </figure>
                         </div>
-
+                            @endif
+                            @endif
                     @endforeach
                 @endif
             </div>

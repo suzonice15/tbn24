@@ -124,7 +124,7 @@
 
 
 
-            <li style="display:none" class="treeview">
+            <li  class="treeview">
                 <a href="#">
                     <i class="fa fa fa-clock-o"></i> <span>Youtube</span>
                     <span class="pull-right-container">

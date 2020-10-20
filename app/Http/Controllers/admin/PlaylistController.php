@@ -28,20 +28,12 @@ class PlaylistController extends Controller
 
     public function index()
     {
-        $user_id=1;//AdminHelper::Admin_user_autherntication();
-        $url=  URL::current();
-
-        if($user_id < 1){
-            //  return redirect('admin');
-              Redirect::to('admin')->with('redirect',$url)->send();
-
-        }
-
+         
         $data['main'] = ' Playlist List ';
         $data['active'] = ' Playlist List ';
         $data['title'] = '  ';       
-        $data['playlists']= DB::table('playlists')->select('playlists.*','category.category_title')
-            ->join('category','category.category_id','playlists.category_id')->orderBy('playlist_id', 'desc')->paginate(50);
+        $data['playlists']= DB::table('playlists')->select('playlists.*')
+           ->orderBy('playlist_id', 'desc')->paginate(50);
         return view('admin.playlist.index',$data);
     }
 
@@ -65,8 +57,7 @@ class PlaylistController extends Controller
      */
     public function create()
     {
-        $data['categories']=DB::table('category')->get();
-        return view('admin.playlist.create',$data);
+        return view('admin.playlist.create');
 
     }
 
@@ -80,23 +71,9 @@ class PlaylistController extends Controller
     {
         $data['playlist_name']=$request->playlist_name;
         $data['playlist_link']=$request->playlist_link;
-        $data['category_id']=$request->category_id;
-        $image = $request->file('program_img');
-        if ($image) {
-
-            $image_name = 'playlist_'.time() . '.' . $image->getClientOriginalExtension();
-
-            $destinationPath = public_path('/uploads/playlist');
-
-            $resize_image = Image::make($image->getRealPath());
-
-            $resize_image->resize(220, 220, function ($constraint) {
-
-            })->save($destinationPath . '/' . $image_name);
-            $data['playlist_picture']=$image_name;
-
-        }
-
+        $data['playlist_status']=$request->playlist_status;
+        $data['order_by']=$request->order_by;
+ 
 
         $result =DB::table('playlists')->insert($data);
         if ($result) {
@@ -146,23 +123,9 @@ class PlaylistController extends Controller
     {
         $data['playlist_name']=$request->playlist_name;
         $data['playlist_link']=$request->playlist_link;
-        $data['category_id']=$request->category_id;
-        $image = $request->file('program_img');
-        if ($image) {
-
-            $image_name = 'playlist_'.time() . '.' . $image->getClientOriginalExtension();
-
-            $destinationPath = public_path('/uploads/playlist');
-
-            $resize_image = Image::make($image->getRealPath());
-
-            $resize_image->resize(220, 220, function ($constraint) {
-
-            })->save($destinationPath . '/' . $image_name);
-            $data['playlist_picture']=$image_name;
-
-        }
-
+        $data['playlist_status']=$request->playlist_status;
+        $data['order_by']=$request->order_by;
+        
 
         $result =DB::table('playlists')->where('playlist_id','=',$id)->update($data);
         if ($result) {

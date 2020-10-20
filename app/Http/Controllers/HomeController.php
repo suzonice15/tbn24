@@ -28,18 +28,35 @@ class HomeController extends Controller
     {
 
 
+        $ip = \Request::ip();
+        //$ip = '103.92.214.8';
+       // $details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
+        $details = @json_decode(file_get_contents(
+            "http://www.geoplugin.net/json.gp?ip=" . $ip));
 
-      $ip = \Request::ip();
-        $ip = '103.92.214.8';
-        $details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
-       
-        $county= $details->country_code;
-        if($county=='BD'){
-            $data['api']= get_bd_api();
+        $county =$details->geoplugin_countryCode;
+        if ($county == 'BD') {
+            $data['api'] = get_bd_api();
         } else {
-            $data['api']= get_api();
+            $data['api'] = get_api();
         }
-     $data['five_minite_acctive']= 'only_home_page_modal_active';
+        $start_time = date('H:i');
+        $current_program = DB::table('programs')
+            ->select('*')
+            ->join('schedules', 'schedules.program_id', '=', 'programs.id')
+            ->whereDate('schedule_date', '=', date('Y-m-d'))
+            ->where('start_time', '>=',$start_time)
+            ->orderBy('start_time', 'asc')->first();
+      //  print_r($current_program);exit();
+        if($current_program) {
+
+            $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($current_program->youtube);
+        }
+      
+
+        
+
+        $data['five_minite_acctive']= 'only_home_page_modal_active';
       $data['one_hour_check_modal']= 'only_home_page_modal_active';        
          return view('website.home',$data);
     }
@@ -57,7 +74,7 @@ class HomeController extends Controller
 
        $data['programs'] =DB::table('programs')
            ->select('program_image','id','program_name')
-           ->orderBy('programs.id','DESC')->paginate(3);
+           ->orderBy('programs.id','DESC')->paginate(8);
         return view('website.all_program',$data);
      }
     public  function  ajax_program(Request $request){
@@ -65,7 +82,7 @@ class HomeController extends Controller
         {
             $programs =DB::table('programs')
                 ->select('program_image','id','program_name')
-                ->orderBy('id','DESC')->paginate(3);
+                ->orderBy('id','DESC')->paginate(4);
             $view = view('website.ajax_all_program',compact('programs'))->render();
             return response()->json(['html'=>$view]);
         }
@@ -151,7 +168,8 @@ class HomeController extends Controller
 
     public function programVideo(){
 
-        
+       //$play_list_row =  Youtube::getPlaylistById('PLUb--DPKJ7SR2OL-SorX9BM__5nBaZbdK');
+       
         $data['popular_video']=DB::table('popular_video')->select('video_id')->orderBy('order_by','asc')->get();
         return view('website.program_video',$data);
 
@@ -159,8 +177,17 @@ class HomeController extends Controller
     
     public function ajax_program_video(){
 
-        $data['videoLists'] = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
-        $data['playlists'] = Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');        
+     //   $data['videoLists'] = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
+        $data['playlists'] = DB::table('playlists')->orderBy('order_by')->get();//Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');
+        $apiKey = 'AIzaSyCp4SZRkiWxc5LfXap9MDqkCyej2OvSXRw';
+        $channelId = 'UCv_oQ-sRZoJdEX4K5fQ6q6w';
+        $resultsNumber = '50';
+
+        $requestUrl = 'https://www.googleapis.com/youtube/v3/search?key=' . $apiKey . '&channelId=' . $channelId . '&part=snippet,id&maxResults=' . $resultsNumber .'&order=date';
+
+        $response = file_get_contents( $requestUrl );
+        $data['videoLists'] = json_decode( $response, TRUE );
+
          return view('website.ajax_program_video',$data);
     }
     public function youtubePlaylist($playlist){
@@ -209,7 +236,7 @@ class HomeController extends Controller
     }
 
     public  function home_page_program(){
-        $data['programs']=DB::table('programs')->select('program_image','program_name','id')->paginate(6);
+        $data['programs']=DB::table('programs')->select('program_image','program_name','id')->paginate(8);
         return view('website.ajax_home_page_program',$data);
 
     }
@@ -234,10 +261,23 @@ class HomeController extends Controller
 
     public  function todayScheduleAjaxData(){
         $data['today_programs']=DB::table('programs')
-            ->select('program_name','program_image','programs.id','program_details','start_time')
+            ->select('program_name','program_image','programs.id','schedules.id as sid','program_details','start_time')
             ->join('schedules','schedules.program_id','=','programs.id')
             ->whereDate('schedule_date', '=', date('Y-m-d'))
             ->orderBy('start_time','ASC')->get();
+
+        $current_program = DB::table('programs')
+            ->select('schedules.id')
+            ->join('schedules', 'schedules.program_id', '=', 'programs.id')
+            ->whereDate('schedule_date', '=', date('Y-m-d'))
+            ->where('start_time', '>=', date('H:i'))
+            ->orderBy('start_time', 'asc')->first();
+        if($current_program) {
+            $data['program_id'] = $current_program->id;
+        } else {
+            $data['program_id'] = 0;
+
+        }
         return view('website.todayScheduleAjaxData',$data);
 
     }

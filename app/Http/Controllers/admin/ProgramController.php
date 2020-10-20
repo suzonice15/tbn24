@@ -34,7 +34,9 @@ class ProgramController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $programs  =Program::select("*")
-                ->where('program_name', 'LIKE', '%' . $query . '%')->orderBy('programs.id', 'desc')->paginate(50);
+                ->where('program_name', 'LIKE', '%' . $query . '%')
+                ->OrWhere('youtube', 'LIKE', '%' . $query . '%')
+                ->orderBy('programs.id', 'desc')->paginate(50);
 
             return view('admin.program.pagination', compact('programs'));
         }

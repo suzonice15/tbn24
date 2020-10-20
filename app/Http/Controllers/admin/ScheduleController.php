@@ -44,13 +44,7 @@ class ScheduleController extends Controller
         $data['active'] = 'Schedule List';
         $data['title'] = '';
         $today = "Y-m-d";
-$staturday='Saturday';
-$sunday='Sunday';
-$monday='Monday';
-$tuesday='Tuesday';
-$wednesday='Wednesday';
-$thursday='Thursday';
- $friday='Friday';
+
         $start_date = Carbon::now()->startOfWeek();
         $end_date = Carbon::now()->endOfWeek();
 

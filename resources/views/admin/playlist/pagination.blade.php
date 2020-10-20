@@ -6,10 +6,13 @@
 
 
         <tr>        <td>{{ ++$i}} </td>
-            <td> <img src="{{url('/')}}/public/uploads/playlist/{{$playlist->playlist_picture}}" width="70"> </td>
+
             <td>{{$playlist->playlist_name}} </td>
-            <td>{{$playlist->category_title}} </td>
-            <td>{{$playlist->playlist_link}} </td>             
+            <td>{{$playlist->playlist_link}} </td>
+            <td>{{$playlist->order_by}} </td>
+            <td>{{$playlist->playlist_status==1? 'Published':'Unpublished'}} </td>
+
+
             <td>{{date('d-m-Y',strtotime($playlist->created_date))}}</td>
             <td>
                 <button type="button" class="btn   btn-success edit_modal" data-toggle="modal" data-playlist_id="{{$playlist->playlist_id}}"   data-target="#edit-program">

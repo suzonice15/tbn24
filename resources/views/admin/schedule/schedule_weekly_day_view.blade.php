@@ -5,21 +5,20 @@
     table thead th{color:white}
 
    .tr-stricy-class {
-        position: fixed;
-        top: 50px;
-        background-color: green;
-        width: 79.5%;
-        left: 254px;
+       position: fixed;
+       top: 50px;
+       background-color: green;
+       width: 79.9%;
+       left: 246px;
        z-index: 11;
 
     }
     .static-trclass{
         position: fixed;
-        top: 102px;
+        top: 110px;
         background-color: green;
-        width: 79.5%;
-        left: 254px;
-
+        width: 79.9%;
+        left: 245px;
     }
     .first-item{
         margin: -7px;
@@ -39,7 +38,21 @@
 
         background-color:green;
         color:white;
-        float:left
+        float:left;
+        margin-bottom: 7px;
+        margin-top: -7px;
+
+    }
+    .third-item{
+        margin: -6px;
+        padding: 4px;
+        text-align: center;
+        height: auto;
+        background-color:blue;
+        color:white;
+        float:left;
+
+
     }
     .only-first-item{
 
@@ -79,24 +92,18 @@
                     foreach ($sundays as $schedule){
                     if( ($schedule->day == 'Sunday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
                      ++$count;
-
                     ?>
-
-	               <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
-                       -{{ date("H:i",strtotime($schedule->end_time)) }}
-                       <div class="btn-group">
-                           <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
-                               <i class="fa fa-edit"></i>
-                           </button>
-
-
-                           <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
-                              onclick="return confirm('Are you want to delete this Schedule')"
-                              class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
-                       </div>
-
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                        -{{ date("H:i",strtotime($schedule->end_time)) }}
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
+                               onclick="return confirm('Are you want to delete this Schedule')"
+                               class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
+                        </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -119,27 +126,19 @@
                     if( ($schedule->day == 'Monday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -160,26 +159,19 @@
                     if( ($schedule->day == 'Tuesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -200,24 +192,18 @@
                     if( ($schedule->day == 'Wednesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -239,25 +225,18 @@
                     if( ($schedule->day == 'Thursday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -279,25 +258,18 @@
                     if( ($schedule->day == 'Friday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -322,23 +294,17 @@
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -364,23 +330,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -403,25 +363,18 @@ $count=0;
                     if( ($schedule->day == 'Monday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -444,27 +397,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -488,23 +433,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -526,27 +465,19 @@ $count=0;
                     if( ($schedule->day == 'Thursday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -568,25 +499,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -609,25 +533,18 @@ $count=0;
                     if( ($schedule->day == 'Saturday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -655,23 +572,18 @@ $count=0;
                     if( ($schedule->day == 'Sunday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
                     ++$count;
                     ?>
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -692,25 +604,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -731,27 +636,19 @@ $count=0;
                     if( ($schedule->day == 'Tuesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -772,25 +669,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -815,23 +705,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -852,25 +736,18 @@ $count=0;
                     if( ($schedule->day == 'Friday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -895,23 +772,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -939,23 +810,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -978,23 +843,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -1018,23 +877,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1056,25 +909,18 @@ $count=0;
                     if( ($schedule->day == 'Wednesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1098,23 +944,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1137,27 +977,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -1180,23 +1012,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1220,28 +1046,20 @@ $count=0;
                     if($sundays) {
                     foreach ($sundays as $schedule){
                     if( ($schedule->day == 'Sunday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
-
-
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -1264,23 +1082,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -1303,23 +1115,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1341,7 +1147,7 @@ $count=0;
                     if( ($schedule->day == 'Wednesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
                     ++$count;
                     ?>
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -1373,27 +1179,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -1415,7 +1213,7 @@ $count=0;
                     ++$count;
 
                     ?>
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -1450,23 +1248,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -1492,25 +1284,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -1532,25 +1317,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1575,25 +1353,18 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -1614,25 +1385,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1655,25 +1419,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1696,25 +1453,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -1736,27 +1486,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -1782,25 +1524,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -1822,25 +1557,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1862,7 +1590,7 @@ $count=0;
                     if( ($schedule->day == 'Tuesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
                     ++$count;
                     ?>
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -1893,25 +1621,18 @@ $count=0;
                     if( ($schedule->day == 'Wednesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1934,25 +1655,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -1975,25 +1689,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -2015,25 +1722,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -2059,25 +1759,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -2100,24 +1793,20 @@ $count=0;
 
                     ++$count;
 
+
+
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
-                        -{{ date("H:i",strtotime($schedule->end_time)) }}
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
-                                <i class="fa fa-edit"></i>
-                            </button>
-
-
-                            <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
-                               onclick="return confirm('Are you want to delete this Schedule')"
-                               class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
-                        </div>
-
+                           <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                               -{{ date("H:i",strtotime($schedule->end_time)) }}
+                               <div class="btn-group">
+                                   <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
+                                       <i class="fa fa-edit"></i>
+                                   </button>
+                                   <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
+                                      onclick="return confirm('Are you want to delete this Schedule')"
+                                      class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
+                               </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -2139,27 +1828,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -2180,27 +1861,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -2221,25 +1894,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -2261,27 +1927,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -2302,25 +1960,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -2347,27 +1998,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -2388,25 +2031,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2429,25 +2065,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2470,27 +2099,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -2511,27 +2132,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -2552,25 +2165,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2595,23 +2201,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2638,25 +2238,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -2678,25 +2271,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2719,27 +2305,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -2760,25 +2338,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2801,27 +2372,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -2844,23 +2407,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2882,25 +2439,18 @@ $count=0;
                     if( ($schedule->day == 'Saturday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2929,23 +2479,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -2969,25 +2513,18 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3010,25 +2547,18 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3049,27 +2579,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3092,23 +2614,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -3130,25 +2646,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -3171,27 +2680,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3215,25 +2716,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -3256,25 +2750,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -3297,27 +2784,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3340,23 +2819,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -3381,23 +2854,17 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -3419,27 +2886,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3465,27 +2924,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3505,25 +2956,18 @@ $count=0;
                     if(($schedule->day == 'Monday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -3546,27 +2990,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3587,25 +3023,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -3627,25 +3056,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -3667,25 +3089,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -3707,27 +3122,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3752,25 +3159,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -3793,27 +3193,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3834,25 +3226,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -3877,25 +3262,18 @@ $count=0;
                     ++$count;
 
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3916,27 +3294,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3957,27 +3327,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -3998,25 +3360,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -4042,25 +3397,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -4082,25 +3430,18 @@ $count=0;
                     if(($schedule->day == 'Monday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -4122,25 +3463,18 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -4163,27 +3497,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -4203,25 +3529,18 @@ $count=0;
                     if(($schedule->day == 'Thursday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
 
                     <?php }
@@ -4243,25 +3562,18 @@ $count=0;
                     if(($schedule->day == 'Friday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
                     <?php }
                     }
@@ -4283,27 +3595,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -4328,27 +3632,19 @@ $count=0;
 
 
                     ++$count;
-
                     ?>
-
-
-                    <span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
                                 <i class="fa fa-edit"></i>
                             </button>
-
-
                             <a href="{{url('/')}}/weakly_data_delete/{{$schedule->id}}"
                                onclick="return confirm('Are you want to delete this Schedule')"
                                class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </div>
-
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
-
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -4369,8 +3665,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4402,8 +3698,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4415,7 +3711,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -4436,8 +3731,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4470,8 +3765,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4503,8 +3798,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4537,8 +3832,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4574,8 +3869,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4607,8 +3902,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4639,8 +3934,8 @@ $count=0;
                     if(($schedule->day == 'Tuesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4672,8 +3967,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4685,7 +3980,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -4706,8 +4000,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4739,8 +4033,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4752,7 +4046,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -4773,8 +4066,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4807,7 +4100,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                           <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4835,8 +4129,8 @@ $count=0;
                     if(($schedule->day == 'Monday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4862,8 +4156,8 @@ $count=0;
                     if(($schedule->day == 'Tuesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4887,10 +4181,9 @@ $count=0;
                     if($sundays) {
                     foreach ($sundays as $schedule){
                     if(($schedule->day == 'Wednesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
-
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4914,10 +4207,9 @@ $count=0;
                     if($sundays) {
                     foreach ($sundays as $schedule){
                     if(($schedule->day == 'Thursday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
-
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4945,7 +4237,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -4974,7 +4267,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5009,7 +4303,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5042,7 +4337,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5054,7 +4350,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -5075,8 +4370,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5108,8 +4403,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5141,8 +4436,8 @@ $count=0;
                     if(($schedule->day == 'Thursday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5174,8 +4469,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5206,8 +4501,8 @@ $count=0;
                     if(($schedule->day == 'Saturday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5244,8 +4539,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5277,8 +4572,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5311,7 +4606,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5344,7 +4640,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5377,8 +4674,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5410,8 +4707,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5444,8 +4741,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5457,7 +4754,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -5482,8 +4778,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5515,8 +4811,8 @@ $count=0;
                     if(($schedule->day == 'Monday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5549,7 +4845,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5561,7 +4858,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -5583,7 +4879,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5616,8 +4913,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5650,8 +4947,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5663,7 +4960,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -5684,8 +4980,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5722,8 +5018,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5735,7 +5031,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -5756,8 +5051,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5787,7 +5082,8 @@ $count=0;
                     foreach ($sundays as $schedule){
                     if(($schedule->day == 'Tuesday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
                     ++$count;
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5819,8 +5115,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5852,8 +5148,8 @@ $count=0;
                     if(($schedule->day == 'Thursday') && (strtotime($schedule->start_time) >= $start_time) && (strtotime($schedule->end_time) <= $end_time)){
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5887,7 +5183,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5899,7 +5196,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -5920,8 +5216,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5933,7 +5229,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -5959,8 +5254,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -5972,7 +5267,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -5993,8 +5287,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6027,8 +5321,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6061,8 +5355,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6095,7 +5389,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6128,7 +5423,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6140,7 +5436,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -6161,8 +5456,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6174,7 +5469,6 @@ $count=0;
                         </div>
                         <strong  style="text-align: center;font-size: 12px;overflow: auto;"> {{$schedule->program_name}}</strong>
                     </span>
-
                     <?php }
                     }
                     }?>
@@ -6199,7 +5493,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6231,7 +5526,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6263,8 +5559,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6297,8 +5593,8 @@ $count=0;
 
 
                     ++$count;
-
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6330,7 +5626,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6363,7 +5660,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">
@@ -6399,7 +5697,8 @@ $count=0;
 
                     ++$count;
 
-                    ?><span  class="<?php if($count==1) { echo 'first-item';} else { echo 'second-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
+                    ?>
+                    <span  class="<?php if($count==1) { echo 'first-item';} else if($count==2){ echo 'second-item';} else { echo 'third-item';} ?>">{{ date("H:i",strtotime($schedule->start_time)) }}
                         -{{ date("H:i",strtotime($schedule->end_time)) }}
                         <div class="btn-group">
                             <button type="button" class="btn btn-xs btn-success edit_modal" data-toggle="modal" data-id="{{$schedule->id}}"   data-target="#edit-program">

@@ -6,10 +6,12 @@
 
          
             <td>{{ ++$i }}</td>
-            <td>{{ $program->program_name }}</td>
             <td>
                 <img width="50" src="{{ url('/public/uploads') }}/{{ $program->folder }}/program/{{ $program->program_image }}">
             </td>
+            <td>{{ $program->program_name }}</td>
+            <td>{{ $program->youtube }}</td>
+
 
             <td>
                 @if( $program->status==1)

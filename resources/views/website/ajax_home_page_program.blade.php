@@ -7,7 +7,7 @@
 
             @if($programs)
                 @foreach($programs as $program)
-                    <div class="col-sm-4 col-xs-12">
+                    <div class="col-sm-4 col-md-3 col-xs-12">
                         <figure class=" portfolio-item"
                         >
                             <div class="img-wrapper">
