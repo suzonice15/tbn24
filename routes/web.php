@@ -42,6 +42,11 @@ Route::get('/ajax-program-video', 'HomeController@ajax_program_video');
 Route::get('/youtube-playlist/{any}', 'HomeController@youtubePlaylist');
 Route::post('/vote/count', 'HomeController@vote_count');
 Route::get('/ajax_pull_data_get', 'HomeController@ajax_pull_data_get');
+Route::post('/submit/comments', 'HomeController@submit_comments');
+Route::post('/submit/sub_comments', 'HomeController@submit_sub_comments');
+Route::post('/login/check_ajax', 'HomeController@login_check_ajax');
+Route::post('/get/comments', 'HomeController@get_comments');
+Route::post('/get/sub_comments_data', 'HomeController@sub_comments_data');
 
 /****=============== admin faq section    =====================  ******/
 Route::get('admin/faq', 'admin\FaqController@index');

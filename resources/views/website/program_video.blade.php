@@ -503,8 +503,6 @@
                         <?php
                     $video = Youtube::getVideoInfo($row->video_id);
                         if($video){
-
-
                     ?>
                         <div class="col-sm-4 col-xs-12">
                             <figure class="wow fadeInLeft animated portfolio-item animated">

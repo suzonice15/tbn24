@@ -38,6 +38,7 @@ var base_url_main="{{url('/')}}";
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/ionicons.min.css">
     <!-- animate css -->
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/blog.css">
     <link href="{{ asset('assets/font_end/')}}/css/video-js.css" rel="stylesheet">
     <!-- Hero area slider css-->
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/slider.css">

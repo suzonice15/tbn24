@@ -221,6 +221,7 @@ class SettingController extends Controller
         $row_data['after_login_alert'] = $request->after_login_alert;
         $row_data['five_minite_modal_note'] = $request->five_minite_modal_note;
         $row_data['one_hour_modal_note'] = $request->one_hour_modal_note;
+        $row_data['bad_comment_word'] = $request->bad_comment_word;
         DB::table('app_seating')->where('app_setting_id', 1)->update($row_data);
          return redirect('admin/app-setting');
     }

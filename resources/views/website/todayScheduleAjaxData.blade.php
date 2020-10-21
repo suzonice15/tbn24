@@ -8,8 +8,9 @@
                                            <div class="program v" >
                                                <div class="col-xs-4 img-container" style="background: url({{url('/')}}/public/uploads/program/{{$program->program_image}})">
                                                    <?php
+                                                    //   echo $program_id;
                                                        // Current Program Check
-                                                   if($program_id==$program->sid) {
+                                                   if($program_id == $program->sid) {
                                                    ?>
                                                    <div class="current-program col-xs-12">Current</div>
                                                    <?php

@@ -542,6 +542,13 @@
                     </div>
 
                     <div class="box-body" style="padding: 26px;">
+
+
+                        <div class="form-group ">
+                            <label for="phone">Bad Comment Word</label>
+                            <textarea  class="form-control" name="bad_comment_word" id="bad_comment_word"
+                                  >{{$setting_row->bad_comment_word}}</textarea>
+                        </div>
                         <div class="form-group ">
                             <label for="phone">Google Map</label>
                             <input type="text" class="form-control" name="google_map" id="google_map"

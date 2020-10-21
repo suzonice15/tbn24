@@ -26,6 +26,22 @@ class HomeController extends Controller
 
     public function index()
     {
+       
+
+        $current_program = DB::table('programs')
+            ->select('schedules.id')
+            ->join('schedules', 'schedules.program_id', '=', 'programs.id')
+            ->whereDate('schedule_date', '=', date('Y-m-d'))
+            ->where('start_time', '<=', date('H:i'))
+            ->where('end_time', '>=', date('H:i'))
+            ->orderBy('start_time', 'asc')->first();
+        if($current_program) {
+            $data['program_id'] = $current_program->id;
+        } else {
+            $data['program_id'] = 0;
+
+        }
+
 
 
         $ip = \Request::ip();
@@ -40,21 +56,21 @@ class HomeController extends Controller
         } else {
             $data['api'] = get_api();
         }
-        $start_time = date('H:i');
+        $start_time = date('h:i');
         $current_program = DB::table('programs')
-            ->select('*')
+            ->select('programs.youtube')
             ->join('schedules', 'schedules.program_id', '=', 'programs.id')
             ->whereDate('schedule_date', '=', date('Y-m-d'))
-            ->where('start_time', '>=',$start_time)
+            ->where('start_time', '<=', date('h:i'))
+            ->where('end_time', '>=', date('h:i'))
             ->orderBy('start_time', 'asc')->first();
-      //  print_r($current_program);exit();
         if($current_program) {
-
             $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($current_program->youtube);
         }
-      
 
-        
+
+
+
 
         $data['five_minite_acctive']= 'only_home_page_modal_active';
       $data['one_hour_check_modal']= 'only_home_page_modal_active';        
@@ -171,6 +187,7 @@ class HomeController extends Controller
        //$play_list_row =  Youtube::getPlaylistById('PLUb--DPKJ7SR2OL-SorX9BM__5nBaZbdK');
        
         $data['popular_video']=DB::table('popular_video')->select('video_id')->orderBy('order_by','asc')->get();
+        
         return view('website.program_video',$data);
 
     }
@@ -192,11 +209,7 @@ class HomeController extends Controller
     }
     public function youtubePlaylist($playlist){
 
-        //$videoList = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
-       // $playlists = Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');
-       // $data['videoLists']=$videoList;
-        //$data['playlists']=$playlists;
-
+        
         $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($playlist);
 
 
@@ -254,7 +267,15 @@ class HomeController extends Controller
     }
 
     public function ajax_post_category_call(){
-        $data['category']=DB::table('category')->orderBy('category_id','desc')->get();
+        $data['category']=DB::table('category')
+            ->select("category.*")            
+            ->get();
+        $data['posts']=DB::table('post')
+            ->orderBy('post_view','desc')
+            ->paginate(5);
+       
+
+
         return view('website.ajax_post_category_call',$data);
     }
 
@@ -270,7 +291,8 @@ class HomeController extends Controller
             ->select('schedules.id')
             ->join('schedules', 'schedules.program_id', '=', 'programs.id')
             ->whereDate('schedule_date', '=', date('Y-m-d'))
-            ->where('start_time', '>=', date('H:i'))
+            ->where('start_time', '<=', date('H:i'))
+            ->where('end_time', '>=', date('H:i'))
             ->orderBy('start_time', 'asc')->first();
         if($current_program) {
             $data['program_id'] = $current_program->id;
@@ -285,14 +307,14 @@ class HomeController extends Controller
 
     public  function blog(){
         $data['blogs']=DB::table('post')
-            ->select('post_title','post_name','post_picture')
+            ->select('post_title','post_name','post_picture','post_description','post_view')
             ->paginate(12);        
         return view('website.blog',$data);
 
     }
     public  function category($category_id){
         $data['blogs']=DB::table('post')
-            ->select('post_title','post_name','post_picture')
+            ->select('post_title','post_name','post_picture','post_view','post_description')
             ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
             ->where('category_id','=',$category_id)
             ->paginate(12);
@@ -302,10 +324,14 @@ class HomeController extends Controller
     }
     public  function post($post_name){
         $data['post']=DB::table('post')
-            ->select('post_title','post_name','post_picture','post_created_date','post_man','post_description')
+            ->select('post_id','post_title','post_name','post_picture','post_created_date','post_man','post_description','post_view')
             ->where('post_name','=',$post_name)
             ->first();
-        
+        $row_data['post_view']= $data['post']->post_view +1;
+        $post_id= $data['post']->post_id;
+
+        DB::table('post')->where('post_id','=',$post_id)->update($row_data);
+
         return view('website.single_post',$data);
 
     }
@@ -344,4 +370,95 @@ class HomeController extends Controller
         return view('website.ajax_poll',$data);
 
     }
+    public function submit_comments(Request $request){
+        $data['post_id']= $request->post_id;
+        $data['name']= $request->name;
+        $data['email']= $request->email;
+        $data['comments']=$request->text;
+
+        $str = bad_comment();
+        $badword=explode(" ",$str);
+        $mystring = $data['comments'];
+        $bad_comment=0;
+// Test if string contains the word
+        foreach ($badword as $row) {
+            if (strpos($mystring, $row) !== false) {
+               $bad_comment=1;
+            }  
+        }
+        if($bad_comment==0){
+            $data['status']=1;
+            $result= DB::table('comments')->insert($data);
+            echo 'ok';
+        }else {
+            $data['status']=0;
+            $result= DB::table('comments')->insert($data);
+            echo 'no';
+        }
+    }
+    public function submit_sub_comments(Request $request){
+        $data['comment_id']= $request->comment_id;
+        $data['post_id']= $request->post_id;
+        $data['name']= $request->name;
+        $data['email']= $request->email;
+        $data['comments']=$request->text;
+
+        $str = bad_comment();
+        $badword=explode(" ",$str);
+        $mystring = $data['comments'];
+        $bad_comment=0;
+// Test if string contains the word
+        foreach ($badword as $row) {
+            if (strpos($mystring, $row) !== false) {
+                $bad_comment=1;
+            }
+        }
+        if($bad_comment==0){
+            $data['status']=1;
+            $result= DB::table('sub_comments')->insert($data);
+            echo 'ok';
+        }else {
+            $data['status']=0;
+            $result= DB::table('sub_comments')->insert($data);
+            echo 'no';
+        }
+    }
+
+
+    public function get_comments(Request $request){
+        $post_id= $request->post_id;
+       $data['comments']=DB::table('comments')->where('post_id',$post_id)->where('status',1)->orderBy('comment_id','desc')->get();
+             return view('website.get_comments',$data);
+
+    }
+    public function sub_comments_data(Request $request){
+        $comment_id= $request->comment_id;
+        $data['comments']=DB::table('sub_comments')->where('comment_id',$comment_id)->where('status',1)->orderBy('sub_commets_id','desc')->get();
+        return view('website.sub_comments_data',$data);
+
+    }
+
+
+    public function login_check_ajax(Request $request){
+        $email = $request->email;
+        $password = md5($request->password);
+        $result = DB::table('users')->where('email', $email)->where('password', $password)->first();
+        if ($result) {
+            echo 'ok';
+            $id = $result->id;
+            $email = $result->email;
+            $name = $result->name;
+            Session::put('user_id', $id);
+            Session::put('email', $email);
+            Session::put('name', $name);
+           // Session::put('user_picture', $result->picture);
+          //  return redirect('/');
+
+        } else {
+           echo 'Your Email Or Password Invalid Try Again';
+        }
+
+    }
+
+
 }

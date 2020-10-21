@@ -53,6 +53,15 @@ function get_ajax_footer_data(){
         return $result;
     }
 }
+
+function bad_comment(){
+
+    $result=DB::table('app_seating')->select('bad_comment_word')->where('app_setting_id',1)->first();
+
+    if($result){
+        return $result->bad_comment_word;
+    }
+}
 function get_time_zone(){
 
     $result=DB::table('app_seating')
@@ -61,6 +70,10 @@ function get_time_zone(){
     if($result){
         return $result;
     }
+}
+function read_more($data,$limit){
+
+    return substr($data,0,$limit).'......';
 }
 
 ?>

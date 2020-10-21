@@ -32,7 +32,16 @@ class DashboardController extends Controller
         $data['main'] = 'Dashboard';
         $data['active'] = 'Dashboard';
 
-
+// curent proggram
+        $data['current_program'] = DB::table('programs')
+            ->select('programs.program_name','programs.program_image','start_time','end_time')
+            ->join('schedules', 'schedules.program_id', '=', 'programs.id')
+            ->whereDate('schedule_date', '=', date('Y-m-d'))
+            ->where('start_time', '<=', date('H:i'))
+            ->where('end_time', '>=', date('H:i'))
+            ->orderBy('start_time', 'asc')->first();
+       
+       
  $data['total_programs']= DB::table('programs')->select('id')->count();
  $data['total_users']= DB::table('users')->select('id')->count();
  $data['message']= DB::table('contacts')->select('status')->where('status','=',0)->count();
