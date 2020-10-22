@@ -12,11 +12,11 @@
                     <div class="block wow fadeInLeft animated" >
                         <h3> <a href="{{url('/')}}/document-details/{{$document->document_parmalink}}" > <?php echo $document->document_title; ?></a></h3>
 
-                        <?php echo $document->document_description; ?>
+                        <?php echo read_more($document->document_description,600); ?>
 
 
-        <a href="{{$document->document_download}}" click="" to=""
-           download=""> <h1>Click to Download</h1>
+        <a href="{{$document->document_download}}"  class="btn btn-success pull-right"
+           download="">Click to Download
         </a>
                         </div>
 

@@ -76,6 +76,60 @@
                 </ul>
             </li>
 
+            <li  class="treeview">
+                <a href="#">
+                    <i class="fa fa fa-clock-o"></i> <span>Comments</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ url('admin/comment') }}"><i class="fa fa fa-list"></i></i>Post Comments</a></li>
+                    <li><a href=" {{ url('admin/replay/comment') }}"><i class="fa fa fa-list"></i></i>Replay Comments</a></li>
+
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="{{URL::to('admin/popular/video')}}">
+                    <i class="fa fa fa-tv"></i> <span> Popular Video  </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{URL::to('admin/document')}}">
+                    <i class="fa fa fa-tv"></i> <span> Documents  </span>
+                </a>
+            </li>
+
+            <li   class="treeview">
+                <a href="#">
+                    <i class="fa fa fa-clock-o"></i> <span>Posts</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ url('admin/post') }}"><i class="fa fa fa-list"></i></i>All Posts</a></li>
+                    <li><a href=" {{ url('admin/categories') }}"><i class="fa fa fa-list"></i></i>Category</a></li>
+
+
+                </ul>
+            </li>
+
+
+
+
+
+            <li>
+                <a href=" {{ url('admin/playlist') }}">
+                    <i class="fa fa fa-clock-o"></i> <span>Youtube Playlist</span>
+
+            </span>
+                </a>
+
+            </li>
+
 
 
             <li>
@@ -93,54 +147,6 @@
                     <i class="fa fa fa-tv"></i> <span> News  </span>
                 </a>
             </li>
-
-            <li>
-                <a href="{{URL::to('admin/popular/video')}}">
-                    <i class="fa fa fa-tv"></i> <span> Popular Video  </span>
-                </a>
-            </li>
-            <li>
-                <a href="{{URL::to('admin/document')}}">
-                    <i class="fa fa fa-tv"></i> <span> Documents  </span>
-                </a>
-            </li>
-
-            <li   class="treeview">
-                <a href="#">
-                    <i class="fa fa fa-clock-o"></i> <span>Post</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href=" {{ url('admin/post') }}"><i class="fa fa fa-list"></i></i>All Posts</a></li>
-                    <li><a href=" {{ url('admin/categories') }}"><i class="fa fa fa-list"></i></i>Category</a></li>
-
-
-                </ul>
-            </li>
-
-
-
-
-
-            <li  class="treeview">
-                <a href="#">
-                    <i class="fa fa fa-clock-o"></i> <span>Youtube</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href=" {{ url('admin/playlist') }}"><i class="fa fa fa-list"></i></i>Playlist</a></li>
-                    <li><a href=" {{ url('admin/categories') }}"><i class="fa fa fa-list"></i></i>Category</a></li>
-
-
-                </ul>
-            </li>
-
-
-
 
 
 

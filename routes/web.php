@@ -47,6 +47,7 @@ Route::post('/submit/sub_comments', 'HomeController@submit_sub_comments');
 Route::post('/login/check_ajax', 'HomeController@login_check_ajax');
 Route::post('/get/comments', 'HomeController@get_comments');
 Route::post('/get/sub_comments_data', 'HomeController@sub_comments_data');
+Route::get('/get-single-playlist-by-program-id/{id}', 'HomeController@get_single_playlist_by_program_id');
 
 /****=============== admin faq section    =====================  ******/
 Route::get('admin/faq', 'admin\FaqController@index');
@@ -233,7 +234,7 @@ Route::get('category/pagination/fetch_data', 'admin\CategoryController@fetch_dat
 
 
 
-/****=============== category section    =====================  ******/
+/****=============== playlist section    =====================  ******/
 Route::get('admin/playlist', 'admin\PlaylistController@index');
 Route::get('admin/playlist/create', 'admin\PlaylistController@create');
 Route::post('admin/playlist/store', 'admin\PlaylistController@store');
@@ -241,6 +242,29 @@ Route::post('admin/playlist/update/{id}', 'admin\PlaylistController@update');
 Route::get('admin/playlist/{id}', 'admin\PlaylistController@edit');
 Route::get('/admin/playlist/delete/{id}', 'admin\PlaylistController@delete');
 Route::get('playlist/pagination/fetch_data', 'admin\PlaylistController@fetch_data');
+
+
+
+
+/****=============== Comments section    =====================  ******/
+Route::get('admin/comment', 'admin\CommentController@index');
+Route::get('admin/comment/create', 'admin\CommentController@create');
+ Route::post('admin/comment/update/{id}', 'admin\CommentController@update');
+Route::get('admin/comment/{id}', 'admin\CommentController@edit');
+Route::post('/admin/comment/delete', 'admin\CommentController@delete');
+Route::get('comment/pagination/fetch_data', 'admin\CommentController@fetch_data');
+
+
+
+
+
+/****===============replay Comments section    =====================  ******/
+Route::get('admin/replay/comment', 'admin\ReplayCommentController@index');
+Route::get('admin/replay/comment/create', 'admin\ReplayCommentController@create');
+ Route::post('admin/replay/comment/update/{id}', 'admin\ReplayCommentController@update');
+Route::get('admin/replay/comment/{id}', 'admin\ReplayCommentController@edit');
+Route::post('/admin/replay/comment/delete', 'admin\ReplayCommentController@delete');
+Route::get('replay/comment/pagination/fetch_data', 'admin\ReplayCommentController@fetch_data');
 
 
 /****=============== admin page section    =====================  ******/
@@ -285,14 +309,7 @@ Route::get('/admin/media/delete/{id}', 'admin\MediaController@destroy');
 Route::get('media/pagination', 'admin\MediaController@pagination');
 Route::get('media/pagination/fetch_data', 'admin\MediaController@pagination');
 
-/****=============== courier section    =====================  ******/
-Route::get('admin/couriers', 'admin\CourierController@index');
- Route::get('admin/courier/create', 'admin\CourierController@create');
-Route::post('admin/courier/store', 'admin\CourierController@store');
-Route::post('admin/courier/update/{id}', 'admin\CourierController@update');
-Route::get('admin/courier/{id}', 'admin\CourierController@edit');
-Route::get('/admin/courier/delete/{id}', 'admin\CourierController@delete');
-
+ 
 
 /****=============== media section    =====================  ******/
 Route::get('admin/sliders', 'admin\SliderController@index');

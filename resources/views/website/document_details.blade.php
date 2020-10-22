@@ -13,9 +13,8 @@
 
                                 <?php echo $document->document_description; ?>
 
-
-                                <a href="{{$document->document_download}}" click="" to=""
-                                   download=""> <h1>Click to Download</h1>
+                                <a href="{{$document->document_download}}"  class="btn btn-success pull-right"
+                                   download="">Click to Download
                                 </a>
                             </div>
 

@@ -1,5 +1,5 @@
 
-<form id="containerForm" style="height: 364px;" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="{{ url('admin/programs/update') }}/{{ $program->id }}" method="post" novalidate="novalidate">
+<form id="containerForm" style="height: 500px;" class="form app-lb-ajax-form bv-form" data-multipart="true" enctype="multipart/form-data" action="{{ url('admin/programs/update') }}/{{ $program->id }}" method="post" novalidate="novalidate">
     @csrf
     <div class="row ">
 
@@ -21,7 +21,7 @@
                     <div class="form-group has-feedback">
                         <label class="control-label col-md-3" for="pro_dtls">Details</label>
                         <div class="col-md-9">
-                            <textarea type="text" maxlength="255" class="form-control" id="program_details" name="program_details" placeholder="Details" >{{$program->program_details}}</textarea>
+                            <textarea type="text" rows="10" cols="10" class="form-control" id="program_details" name="program_details" placeholder="Details" >{{$program->program_details}}</textarea>
                             <p style="color:red" id="program_details_error"></p>
 
                         </div>

@@ -1,5 +1,4 @@
-@extends('website.master')
-@section('mainContent')
+
 
     <style>
 
@@ -483,64 +482,45 @@
     </section>
     <!-- end video modal -->
 
-
-
-    <section id="works" class="works">
+    <section id="works" class="works" style="margin-top: -100px">
         <div class="container">
-            <br>
-
-            @if($popular_video)
-            <div class="section-heading" style="margin-top: 92px; margin-bottom: 10px;">
-                <h1 class="title wow fadeInDown animated" data-wow-delay=".3s"
-                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;">Popular Videos</h1>
-            </div>
+           
             <div class="row">
 
-
-                    @foreach($popular_video as $row)
-
-
-                        <?php
-                    $video = Youtube::getVideoInfo($row->video_id);
-                        if($video){
-                    ?>
-                        <div class="col-sm-3 col-xs-12">
-                            <figure class="wow fadeInLeft animated portfolio-item animated">
-                                <div class="img-wrapper">
-                                    <img src="{{$video->snippet->thumbnails->high->url}}" class="img-responsive"
-                                         alt="{{$video->snippet->title}}" width="100%">
-                                    <div class="overlay">
-                                        <div class="buttons">
-                                            <a  target="_blank" data-youtube-id="{{$row->video_id}}"
-                                                class="video-banner js-trigger-video-modal"
-                                                href="http://www.youtube.com/watch?v={{$row->video_id}}">Play
-                                                Video</a>
+                @if($videoLists)
+                    @foreach($videoLists['results'] as $videoList)
+                        @if($videoList->snippet->thumbnails)
+                            @if(!empty($videoList->snippet->thumbnails->high->url))
+                                <div class="col-sm-3 col-xs-12">
+                                    <figure class="wow fadeInLeft animated portfolio-item animated">
+                                        <div class="img-wrapper">
+                                            <img src="{{$videoList->snippet->thumbnails->high->url}}" class="img-responsive"
+                                                 alt="{{$videoList->snippet->title}}" width="100%">
+                                            <div class="overlay">
+                                                <div class="buttons">
+                                                    <a  target="_blank" data-youtube-id="{{$videoList->snippet->resourceId->videoId}}"
+                                                        class="video-banner js-trigger-video-modal"
+                                                        href="http://www.youtube.com/watch?v={{$videoList->snippet->resourceId->videoId}}">Play
+                                                        Video</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <figcaption>
+                                            <h4>
+                                                <a    data-youtube-id="{{$videoList->snippet->resourceId->videoId}}"
+                                                      class="video-banner js-trigger-video-modal"  target="_blank"
+                                                      href="http://www.youtube.com/watch?v={{$videoList->snippet->resourceId->videoId}}"> {{$videoList->snippet->title}}</a>
+                                            </h4>
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <figcaption>
-                                    <h4>
-                                        <a    data-youtube-id="{{$row->video_id}}"
-                                              class="video-banner js-trigger-video-modal"  target="_blank"
-                                              href="http://www.youtube.com/watch?v={{$row->video_id}}"> {{$video->snippet->title}}</a>
-                                    </h4>
-                                </figcaption>
-                            </figure>
-                        </div>
-
-                        <?php } ?>
-
+                            @endif
+                        @endif
                     @endforeach
-
+                @endif
             </div>
-            @endif
         </div>
     </section>
-
-
-
-
-    <span class="buttom-program-video"></span>
 
     <script>
         $(document).ready(function () {
@@ -617,11 +597,3 @@
         });
     </script>
 
-
-    <script defer >
-        $.get("{{url('/')}}/ajax-program-video", function(data, status){
-            $('.buttom-program-video').html(data);
-        });
-    </script>
-
-@endsection

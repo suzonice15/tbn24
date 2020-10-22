@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Validator;
 use Session;
+use Carbon\Carbon;
  use Alaouy\Youtube\Facades\Youtube;
 
 
@@ -120,7 +121,24 @@ class HomeController extends Controller
 
         $data['program']=DB::table('programs')->
             where('id','=',$id)->first();
-       return  view('website.single_program',$data);
+
+
+        $start_date = Carbon::now()->startOfWeek();
+        $end_date = Carbon::now()->endOfWeek();
+
+
+        $data['schedules'] = DB::table('schedules')
+            ->select('day','schedules.start_time','schedules.end_time', 'programs.program_name','schedule_date')
+            ->join('programs', 'programs.id', '=', 'schedules.program_id')
+            ->where('schedule_date', '>=', $start_date)
+            ->where('schedule_date', '<=', $end_date)
+            ->where('programs.id', '=', $id)
+            ->orderBy('schedules.id','asc')
+            ->orderBy('start_time','asc')
+            ->get();
+
+
+        return  view('website.single_program',$data);
       }
     public function about(){
         $data['about']=DB::table('page')->select('page_content')->where('page_link','about-us')->first();
@@ -137,10 +155,8 @@ class HomeController extends Controller
 
 
     public function contact(){
-       $data['number1']=rand(1,20);
-       $data['number2']=rand(1,20);
-        $data['sum']= $data['number1']+ $data['number2'];
-        $data['google_map']=DB::table('app_seating')->select('google_map','contact_email','contact_phone','contact_address')->where('app_setting_id','=',1)->first();
+
+         $data['google_map']=DB::table('app_seating')->select('google_map','contact_email','contact_phone','contact_address')->where('app_setting_id','=',1)->first();
         return view('website.contact',$data);
     }
 
@@ -153,8 +169,7 @@ class HomeController extends Controller
  
         ]);
 
-        $pure_capta=$request->pure_capta;
-        if($pure_capta==$request->captcha) {
+
 
             $data['contact_name'] = $request->name;
             $data['contact_email'] = $request->email;
@@ -168,11 +183,6 @@ class HomeController extends Controller
                 return redirect('/contact')
                     ->with('error', 'No successfully.');
             }
-        } else {
-            return redirect('/contact')
-                ->with('error', 'Invalid Captcha');
-
-        }
 
  
     }
@@ -198,7 +208,7 @@ class HomeController extends Controller
         $data['playlists'] = DB::table('playlists')->orderBy('order_by')->get();//Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');
         $apiKey = 'AIzaSyCp4SZRkiWxc5LfXap9MDqkCyej2OvSXRw';
         $channelId = 'UCv_oQ-sRZoJdEX4K5fQ6q6w';
-        $resultsNumber = '50';
+        $resultsNumber = 1000;
 
         $requestUrl = 'https://www.googleapis.com/youtube/v3/search?key=' . $apiKey . '&channelId=' . $channelId . '&part=snippet,id&maxResults=' . $resultsNumber .'&order=date';
 
@@ -212,12 +222,19 @@ class HomeController extends Controller
         
         $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($playlist);
 
-
-      
-
         return view('website.youtubePlaylist',$data);
 
     }
+    public function get_single_playlist_by_program_id($playlist){
+
+
+
+       $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($playlist);
+
+      return view('website.ajax_single_program_playlist',$data);
+
+    }
+
 
 
     

@@ -52,24 +52,6 @@
                                     <textarea rows="6" placeholder="Message" required="required" class="form-control"
                                               name="message" id="message"></textarea>
                                 </div>
-                                <div class="row form-horizonal">
-                                    <div class="form-group " data-wow-duration="500ms" data-wow-delay="1.2s">
-
-                                        <div class="col-md-3">
-
-                                           <div style="background: green;padding: 8px;color: white;font-style: italic;/*! font-variant-numeric: diagonal-fractions; */font-size: 17px;"> {{$number1}}+{{$number2}}=</div>
-
-                                        </div>
-                                        <div class="col-md-9">
-                                            <input type="hidden" name="pure_capta" value="{{$sum}}">
-
-                                            <input type="text" required="required" placeholder="Enter Capcha"
-                                                   class="form-control" value=" " name="captcha" id="captcha">
-                                        </div>
-
-
-                                    </div>
-                                </div>
 
                                 <div id="submit" class="" data-wow-duration="500ms" data-wow-delay="1.4s">
                                     <input type="submit" id="contact-submit" class="btn btn-default btn-send"

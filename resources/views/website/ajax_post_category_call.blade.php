@@ -8,7 +8,7 @@
             @foreach($posts as $post)
         <li>
             <a href="{{url('/')}}/post/{{$post->post_name}}">
-                <img src="https://www.qurancampus.com/uploads/images.jpg"
+                <img src="{{url('/')}}/public/uploads/post/{{$post->post_picture}}"
                      alt="{{$post->post_title}}"
                      width="50" height="50">
                 <span><?php
