@@ -11,8 +11,10 @@
                         <figure class=" portfolio-item"
                         >
                             <div class="img-wrapper">
+                                <a href="{{url('/')}}/program-details/{{$program->id}}">
                                 <img width="100%" src="{{url('/')}}/public/uploads/program/{{$program->program_image}}"
                                      class="img-responsive" alt="{{$program->program_name}}">
+                                    </a>
                                 <div class="overlay">
                                     <div class="buttons">
                                         <a target="_blank" rel="noopener"

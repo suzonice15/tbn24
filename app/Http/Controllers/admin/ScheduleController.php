@@ -53,6 +53,7 @@ class ScheduleController extends Controller
             ->where('schedule_date', '>=', $start_date)
             ->where('schedule_date', '<=', $end_date)
                     ->get();
+        
 
 
         return view('admin.schedule.schedule_weekly_day_view', $data);
@@ -128,7 +129,7 @@ class ScheduleController extends Controller
             $schedule_date = date('Y-m-d', strtotime($request->get('schedule_date')));
             $day = date('l', strtotime($request->get('schedule_date')));
             $currentDate = \Carbon\Carbon::now();
-            $nowDate = $currentDate->subDays($currentDate->dayOfWeek +7); // gives 2016-02-06
+            $nowDate = $currentDate->subDays($currentDate->dayOfWeek +8); // gives 2016-02-06
             $schedules = DB::table('schedules')
                 ->select('schedules.*', 'programs.program_name')
                 ->join('programs', 'programs.id', '=', 'schedules.program_id')

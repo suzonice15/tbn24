@@ -61,6 +61,17 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="youtube">Youtube Video Id</label>
+                                        <div class="col-md-9">
+                                            <input type="text" maxlength="150" value="" class="form-control"
+                                                   id="youtube"
+                                                   name="youtube" placeholder="Youtube Video Id">
+
+
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3" for="status">Picture</label>
                                         <div class="col-md-9">

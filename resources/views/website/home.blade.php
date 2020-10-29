@@ -493,7 +493,7 @@
                                 </div>
                                 <figcaption>
                                     <h4>
-                                        <a data-youtube-id="LI2vA0O9d3g" class="video-banner js-trigger-video-modal" target="_blank" href="http://www.youtube.com/watch?v={{$videoList->snippet->resourceId->videoId}}"> {{$videoList->snippet->title}} </a>
+                                        <a data-youtube-id="{{$videoList->snippet->resourceId->videoId}}" class="video-banner js-trigger-video-modal" target="_blank" href="http://www.youtube.com/watch?v={{$videoList->snippet->resourceId->videoId}}"> {{$videoList->snippet->title}} </a>
                                     </h4>
                                 </figcaption>
                             </figure>
@@ -578,16 +578,16 @@
 <section id="about" style="padding: 22px 0;">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="block wow">
                     <h2>ABOUT US</h2>
                     <span class="about_us"></span>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Online Vote</div>
+                    <div class="panel-heading" style="background-color:#CB0000;color:white;font-weight:bold">Online Vote</div>
                     <div class="panel-body">
                     <span class="ajax_pull_data_get"></span>
                     </div>
@@ -729,6 +729,19 @@
 <script>
     $(document).ready(function () {
 
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.ctrlKey &&
+                    (e.keyCode === 67 ||
+                    e.keyCode === 86 ||
+                    e.keyCode === 85 ||
+                    e.keyCode === 117)) {
+                alert('not allowed');
+                return false;
+            } else {
+                return true;
+            }
+        };
 
         /* Toggle Video Modal
          -----------------------------------------*/

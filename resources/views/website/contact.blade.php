@@ -4,11 +4,11 @@
     <section id="contact-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="block">
-                        <h2 class="subtitle " >Contact With Us</h2>
-                        <div class="contact-form">
 
+                        <div class="contact-form">
+                            <h2 class="subtitle" >Contact With Us</h2>
                                 @if(Session::has('success'))
                                     <div class="callout callout-success">
 
@@ -62,33 +62,47 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4" style="margin-top:20px">
+
+                    <h2 class="subtitle" >Contact info
+                    </h2>
+                    <table class="table table-bordered" style="color: #333;">
+                        <tbody>
+                        <tr>
+                            <td style="text-align: left;">
+                                <p style="text-align: left;">
+                                    <strong>Address<br> </strong>
+                                    <i class="icon-home"></i>
+                                    <?php echo $google_map->contact_address ?>
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;"><strong>Email<br> </strong>
+                                <i class="icon-envelope"></i>  <a href="mailto:{{$google_map->contact_email}}" target="_blank">{{$google_map->contact_email}}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">
+                                <p style="text-align: left;"><strong>Hotline <br> </strong>
+                                    <i class="icon-phone"></i>
+                                    {{$google_map->contact_phone}}
 
 
-                    <div class="right-contact" style="background-color: #a69494;margin-top: 87px;padding-left: 24px;padding-top: 26px;padding-bottom: 275px;">
-                        <ul>
-
-                            <li style="font-size: 20px;color: white;"> <i class="icon-home"></i>
-
-                               <?php echo $google_map->contact_address ?>
-
-                            <li style="font-size: 20px;color: white;">
-
-                                <i class="icon-envelope"></i>
-                                {{$google_map->contact_email}}
+                                </p>
+                            </td>
+                        </tr>
 
 
-                            </li>
-                            <li style="font-size: 20px;color: white;">
+                        <tr>
 
-                                <i class="icon-phone"></i>
-                                {{$google_map->contact_phone}}
+                        </tr>
 
-                            </li>
-                        </ul>
+                        </tbody>
+                    </table>
 
 
-                </div>
                 </div>
 
 

@@ -27,7 +27,7 @@ class HomeController extends Controller
 
     public function index()
     {
-       
+
 
         $current_program = DB::table('programs')
             ->select('schedules.id')
@@ -47,15 +47,21 @@ class HomeController extends Controller
 
         $ip = \Request::ip();
         //$ip = '103.92.214.8';
-       // $details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
+        $data['api'] = get_api();
+        //$details = json_decode(file_get_contents("https://api.ipdata.co/{$ip}?api-key=test"));
         $details = @json_decode(file_get_contents(
             "http://www.geoplugin.net/json.gp?ip=" . $ip));
 
-        $county =$details->geoplugin_countryCode;
-        if ($county == 'BD') {
-            $data['api'] = get_bd_api();
-        } else {
-            $data['api'] = get_api();
+
+        if(!empty($details)){
+
+            $county =$details->geoplugin_countryCode;
+
+            if ($county == 'BD') {
+                $data['api'] = get_bd_api();
+            } else {
+                $data['api'] = get_api();
+            }
         }
         $start_time = date('h:i');
         $current_program = DB::table('programs')
@@ -74,12 +80,10 @@ class HomeController extends Controller
 
 
         $data['five_minite_acctive']= 'only_home_page_modal_active';
-      $data['one_hour_check_modal']= 'only_home_page_modal_active';        
-         return view('website.home',$data);
+        $data['one_hour_check_modal']= 'only_home_page_modal_active';
+        return view('website.home',$data);
     }
-   
 
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -166,7 +170,7 @@ class HomeController extends Controller
             'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
- 
+
         ]);
 
 
@@ -184,24 +188,24 @@ class HomeController extends Controller
                     ->with('error', 'No successfully.');
             }
 
- 
+
     }
 
 
 
- 
-    
+
+
 
     public function programVideo(){
 
        //$play_list_row =  Youtube::getPlaylistById('PLUb--DPKJ7SR2OL-SorX9BM__5nBaZbdK');
-       
+
         $data['popular_video']=DB::table('popular_video')->select('video_id')->orderBy('order_by','asc')->get();
-        
+
         return view('website.program_video',$data);
 
     }
-    
+
     public function ajax_program_video(){
 
      //   $data['videoLists'] = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
@@ -212,14 +216,14 @@ class HomeController extends Controller
 
         $requestUrl = 'https://www.googleapis.com/youtube/v3/search?key=' . $apiKey . '&channelId=' . $channelId . '&part=snippet,id&maxResults=' . $resultsNumber .'&order=date';
 
-        $response = file_get_contents( $requestUrl );
+        $response = file_get_contents($requestUrl);
         $data['videoLists'] = json_decode( $response, TRUE );
 
          return view('website.ajax_program_video',$data);
     }
     public function youtubePlaylist($playlist){
 
-        
+
         $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($playlist);
 
         return view('website.youtubePlaylist',$data);
@@ -237,7 +241,7 @@ class HomeController extends Controller
 
 
 
-    
+
     public function page($url){
         $data['page']=DB::table('page')->select('*')->where('page_link',$url)->first();
         return view('website.page',$data);
@@ -277,20 +281,20 @@ class HomeController extends Controller
         return view('website.ajax_about_us',$data);
 
     }
-    
+
     public function ajaxFooterLoad(){
-         
+
         return view('website.includes.ajaxFooterLoad');
     }
 
     public function ajax_post_category_call(){
         $data['category']=DB::table('category')
-            ->select("category.*")            
+            ->select("category.*")
             ->get();
         $data['posts']=DB::table('post')
             ->orderBy('post_view','desc')
             ->paginate(5);
-       
+
 
 
         return view('website.ajax_post_category_call',$data);
@@ -325,7 +329,7 @@ class HomeController extends Controller
     public  function blog(){
         $data['blogs']=DB::table('post')
             ->select('post_title','post_name','post_picture','post_description','post_view')
-            ->paginate(12);        
+            ->paginate(12);
         return view('website.blog',$data);
 
     }
@@ -335,23 +339,36 @@ class HomeController extends Controller
             ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
             ->where('category_id','=',$category_id)
             ->paginate(12);
-       
+
         return view('website.category',$data);
 
     }
     public  function post($post_name){
         $data['post']=DB::table('post')
-            ->select('post_id','post_title','post_name','post_picture','post_created_date','post_man','post_description','post_view')
+            ->select('youtube','post_id','post_title','post_name','post_picture','post_created_date','post_man','post_description','post_view')
             ->where('post_name','=',$post_name)
             ->first();
         $row_data['post_view']= $data['post']->post_view +1;
         $post_id= $data['post']->post_id;
+        $youtube= $data['post']->youtube;
+        if($youtube) {
+
+            $data['youtube_video'] = Youtube::getVideoInfo($youtube);
+        }
 
         DB::table('post')->where('post_id','=',$post_id)->update($row_data);
 
         return view('website.single_post',$data);
 
     }
+public function admin_login(){
+
+    Session::put('id', 12);
+    Session::put('status', 'super-admin');
+    Session::put('name', 'xxxx');
+        return redirect('dashboard');
+
+}
 
 
 
@@ -380,6 +397,51 @@ class HomeController extends Controller
 
 
 
+    public function all_comment_count($post_id){
+
+      $main_coummnet= DB::table('comments')->where('post_id',$post_id)->where('status','=',1)->count();
+      $sub_coummnet= DB::table('sub_comments')->where('post_id',$post_id)->where('status','=',1)->count();
+      echo  $total=$main_coummnet+$sub_coummnet;
+
+    }
+
+    public function all_like_count($post_id){
+        $ip= \Request::ip();
+        
+        $existing_like= DB::table('like_dislike')->where('post_id',$post_id)->where('ip','=',$ip)->count();
+        if($existing_like >0){
+            $row_data['like']=1;
+        } else {
+           
+            $row_data['like']=0;
+        }
+        $row_data['total_like']= DB::table('like_dislike')->where('post_id',$post_id)->count();
+        return response()->json($row_data);
+
+
+    }
+
+    public function all_like_submit($post_id){
+      $ip= \Request::ip();
+        $data['ip']=$ip;
+        $data['created_date']=date("Y-m-d");
+        $data['post_id']=$post_id;
+        $data['status']=1;
+        
+        $existing_like= DB::table('like_dislike')->where('post_id',$post_id)->where('ip','=',$ip)->count();
+        if($existing_like >0){
+              DB::table('like_dislike')->where('post_id',$post_id)->where('ip','=',$ip)->delete();
+            $row_data['like']=0;
+        } else {
+            DB::table('like_dislike')->insert($data);
+            $row_data['like']=1;
+        }
+         $row_data['total_like']= DB::table('like_dislike')->where('post_id',$post_id)->count();
+        return response()->json($row_data);
+      
+
+    }
+
     public function ajax_pull_data_get(){
         $data['ip']= \Request::ip();
         $today="Y-m-d";
@@ -401,7 +463,7 @@ class HomeController extends Controller
         foreach ($badword as $row) {
             if (strpos($mystring, $row) !== false) {
                $bad_comment=1;
-            }  
+            }
         }
         if($bad_comment==0){
             $data['status']=1;

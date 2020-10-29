@@ -78,6 +78,7 @@ class PostController  extends Controller
         $data['post_man']=session::get('name');
          $data['post_description']=$request->post_description;
           $data['post_status']=$request->post_status;
+          $data['youtube']=$request->youtube;
         $image = $request->file('post_picture');
         if ($image) {
             $image_name = time() . '.' . $image->getClientOriginalExtension();
@@ -135,6 +136,7 @@ class PostController  extends Controller
         $data['post_name']=$request->post_name;
         $data['post_description']=$request->post_description;
         $data['post_status']=$request->post_status;
+        $data['youtube']=$request->youtube;
         $image = $request->file('post_picture');
         if ($image) {
             $image_name = time() . '.' . $image->getClientOriginalExtension();

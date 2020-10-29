@@ -18,9 +18,9 @@
                                                        ?>
                                                </div>
                                                <div class="col-xs-5">
-                                                   <div class="program-title ">{{$program->program_name}}</div>
+                                                   <div class="program-title "> <a href="{{url('/')}}/program-details/{{$program->id}}">{{$program->program_name}}</a> </div>
                                                    <div class="program-details">
-                                                       {{$program->program_details}}
+                                                       <a href="{{url('/')}}/program-details/{{$program->id}}">{{$program->program_details}}</a>
                                                    </div>
                                                    <div class="program-date">
                                                        <a rel="noopener"
