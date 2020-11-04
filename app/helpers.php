@@ -25,6 +25,23 @@ function get_api()
         return $result->live_url;
     }
 }
+function election()
+{
+    $result=DB::table('app_seating')->select('election')->where('app_setting_id',1)->first();
+
+    if($result){
+        return $result->election;
+    }
+}
+function dashboard_election()
+{
+    $result=DB::table('app_seating')->select('dashboard_election')->where('app_setting_id',1)->first();
+
+    if($result){
+        return $result->dashboard_election;
+    }
+}
+
 
 
 function get_bd_api()

@@ -12,6 +12,24 @@
 
     <meta name="theme-color" content="#720000">
     <meta name="msapplication-navbutton-color" content="#720000">
+	<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '370949040951334');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=370949040951334&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
 
     <script>
 var base_url_main="{{url('/')}}";
@@ -106,11 +124,12 @@ var base_url_main="{{url('/')}}";
                     <li><a href="{{url('/')}}">Home</a></li>
                     <li><a href="{{url('/')}}/all-program">Our Program</a></li>
                     <li><a href="{{url('/')}}/today-schedule">Program Schedule</a></li>
-                    <li><a href="{{url('/')}}/program-video">Program Video </a></li>
+                    <li><a href="{{url('/')}}/program-video">Video </a></li>
                     <li><a href="{{url('/')}}/blog">Blog</a></li>
                     <li><a href="{{url('/')}}/about-us">About Us</a></li>
                     <li><a href="{{url('/')}}/contact">Contact</a></li>
                     <li><a href="{{url('/')}}/documents">Documents</a></li>
+                    <li><a href="{{url('/')}}/election">Election</a></li>
 
                     <?php
                         //check session

@@ -593,6 +593,20 @@
                                    value="{{$setting_row->one_hour_modal_note}}">
                         </div>
 
+                        <div class="form-group ">
+                            <label for="phone">Home Page Election Embeded Code</label>
+                            <textarea  rows="16" cols="10" class="form-control" name="dashboard_election" id="dashboard_election"
+                            >{{$setting_row->dashboard_election}}</textarea>
+                        </div>
+						
+						  <div class="form-group ">
+                            <label for="phone">Election Embeded Code</label>
+                            <textarea  rows="16" cols="10" class="form-control" name="election" id="election"
+                            >{{$setting_row->election}}</textarea>
+                        </div>
+
+
+
 
                         <div class="box-footer">
                             <input type="submit" class="btn btn-success pull-left" value="Update">

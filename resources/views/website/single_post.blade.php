@@ -645,6 +645,7 @@
         }
 
 
+
         function allLikeCount() {
             var post_id = $('#post_id_id').val();
             $.ajax({

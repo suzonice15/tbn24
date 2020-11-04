@@ -274,6 +274,12 @@ class HomeController extends Controller
         return view('website.ajax_home_page_program',$data);
 
     }
+    public  function election(){
+       // $data['programs']=DB::table('programs')->select('program_image','program_name','id')->paginate(8);
+        return view('website.election_api');
+
+    }
+
 
     public  function about_us(){
         $data['about']=DB::table('page')->select('page_content')->where('page_link','about-us')->first();
@@ -536,6 +542,18 @@ public function admin_login(){
         } else {
            echo 'Your Email Or Password Invalid Try Again';
         }
+
+    }
+    public function hitcounter(){
+        $ip= \Request::ip();
+        $data['client_ip']=$ip;
+        $data['date']=date("Y-m-d");      
+
+        $hitcounter= DB::table('hitcounter')->where('client_ip','=',$ip)->where('date','=',date("Y-m-d"))->count();
+        if($hitcounter==0){
+            DB::table('hitcounter')->insert($data);
+
+        }  
 
     }
 

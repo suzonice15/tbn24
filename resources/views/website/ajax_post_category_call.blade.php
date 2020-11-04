@@ -16,12 +16,12 @@
                     $count= 0;
                     $sting= '';
 
-                    $discription=(explode(" ",$post->post_title));
-                    for($i=1;$i<=9;$i++){
-                        $sting .=$discription[$i].' ';
-                        // $count++;
-                    }
-                        echo  $sting;
+                 echo $post->post_title;
+//                    for($i=1;$i<=9;$i++){
+                    //                        $sting .=$discription[$i].' ';
+                    //                        // $count++;
+                    //                    }
+                    //                        echo  $sting;
 
 
                   //  echo read_more($post->post_title,60);

@@ -308,6 +308,18 @@ if(isset($one_hour_check_modal)) { ?>
     }
     window.setInterval(clear_cach, 369000);
 
+    function hitcounter() {
+
+        $.ajax({
+            url: "{{url('/')}}/track_website_user",
+            success: function (data) {
+console.log(data)
+            }
+        });
+    }
+    hitcounter();
+
+
 
 </script>
 

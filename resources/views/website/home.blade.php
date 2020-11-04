@@ -437,6 +437,31 @@
         }
     }
 </style>
+<?php
+    if(dashboard_election()){
+		
+		?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              
+			<br>  
+			<br>  
+			<br>  
+			<br>  
+			<br>  
+    <?php
+     
+        echo dashboard_election();
+    
+
+    ?>
+
+	   </div>
+    </div>
+    </div>
+	
+	<?php }?>
 <section id="hero-area" >
     <div class="container">
         <div class="row">
