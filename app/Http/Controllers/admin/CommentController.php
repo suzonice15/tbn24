@@ -32,7 +32,7 @@ class CommentController extends Controller
         $data['main'] = ' Comments List ';
         $data['active'] = ' Comments List ';
         $data['title'] = '  ';
-        $data['comments'] = DB::table('Comments')->select('comments', 'created_data', 'comment_id', 'created_data', 'name', 'email', 'post_title')
+        $data['comments'] = DB::table('comments')->select('comments', 'created_data', 'comment_id', 'created_data', 'name', 'email', 'post_title')
             ->join('post', 'post.post_id', '=', 'comments.post_id')
             ->where('status', 0)
             ->orderBy('comment_id', 'desc')->paginate(50);
@@ -45,7 +45,7 @@ class CommentController extends Controller
 
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            $comments =  DB::table('Comments')->select('comments', 'created_data', 'comment_id', 'created_data', 'name', 'email', 'post_title')
+            $comments =  DB::table('comments')->select('comments', 'created_data', 'comment_id', 'created_data', 'name', 'email', 'post_title')
                 ->join('post', 'post.post_id', '=', 'comments.post_id')
                 ->orWhere('post_title', 'like', '%' . $query . '%')
                 ->where('status', 0)
