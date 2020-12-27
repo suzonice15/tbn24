@@ -8,7 +8,8 @@ use DB;
 use Validator;
 use Session;
 use Carbon\Carbon;
-use Alaouy\Youtube\Facades\Youtube;
+use Cache;
+ use Alaouy\Youtube\Facades\Youtube;
 
 
 class ApiController extends Controller
@@ -30,23 +31,44 @@ class ApiController extends Controller
     {
 
 
-        $current_program = DB::table('programs')
-            ->select('program_image','id','program_name')
-            ->orderBy('programs.id','DESC')->get();
-
+       
+            $current_program=   Cache::remember('programs', 1440, function() {
+       return   $current_program = DB::table('programs')
+           ->select('program_image','program_details','id','program_name')
+           ->orderBy('programs.id','DESC')->get();
+    });
+        
         return response()->json($current_program);
-
+ 
     }
-
-
+    
+    
     public function today_schedule()
     {
-        $today_programs=DB::table('programs')
-            ->select('program_name','schedule_date','schedules.id','start_time','program_image')
+       
+            
+             $today_programs=   Cache::remember('today_schedule', 1440, function() {
+       return  $today_programs=DB::table('programs')
+            ->select('program_name','program_details','schedule_date','programs.id as program_id','schedules.id','start_time','program_image')
             ->join('schedules','schedules.program_id','=','programs.id')
             ->whereDate('schedule_date', '=', date('Y-m-d'))
             ->orderBy('start_time','desc')->get();
-        return response()->json($today_programs);
+    });
+            
+                $schedule_array=array();
+            foreach($today_programs as $key=>$program){
+                
+                             $schedule_array[$key]['program_id']=$program->program_id;
+
+             $schedule_array[$key]['program_details']=$program->program_details;
+                $schedule_array[$key]['program_image']=$program->program_image;
+                $schedule_array[$key]['program_name']=$program->program_name;
+                $schedule_array[$key]['schedule_date']=date('d-m-Y',strtotime($program->schedule_date));
+                  $schedule_array[$key]['start_time']=date('H:i',strtotime($program->start_time));
+                    
+            }
+            
+            return response()->json($schedule_array);
     }
 
     /**
@@ -58,11 +80,11 @@ class ApiController extends Controller
     public function video()
     {
 
-
+       
         $ip = \Request::ip();
-
+      
         $api= get_api();
-
+        
         $details = @json_decode(file_get_contents(
             "http://www.geoplugin.net/json.gp?ip=" . $ip));
 
@@ -76,34 +98,35 @@ class ApiController extends Controller
                 $api= get_api();
             }
         }
+        
+         $api= get_api();
+        
+                return response()->json($api);
 
-
-        return response()->json($api);
-
-    }
-
-    public function about(){
+     }
+     
+      public function about(){
         $about=DB::table('page')->select('page_content')->where('page_link','about-us')->first();
         $about=$about->page_content;
-        return response()->json($about);
-    }
+                return response()->json($about);
+     }
+     
+    
 
+   
 
-
-
-
-    public   function single_program($id){
+    public   function singleProgram($id){
 
         $data['program']=DB::table('programs')->
-        where('id','=',$id)->first();
+            where('id','=',$id)->first();
 
 
         $start_date = Carbon::now()->startOfWeek();
         $end_date = Carbon::now()->endOfWeek();
 
 
-        $data['schedules'] = DB::table('schedules')
-            ->select('day','schedules.start_time','schedules.end_time', 'programs.program_name','schedule_date')
+        $schedules= DB::table('schedules')
+            ->select('day','schedules.start_time','schedules.end_time', 'schedule_date')
             ->join('programs', 'programs.id', '=', 'schedules.program_id')
             ->where('schedule_date', '>=', $start_date)
             ->where('schedule_date', '<=', $end_date)
@@ -111,422 +134,320 @@ class ApiController extends Controller
             ->orderBy('schedules.id','asc')
             ->orderBy('start_time','asc')
             ->get();
+            $schedule_array=array();
+            foreach($schedules as $key=>$schdule){
+                
+                $schedule_array[$key]['day']=$schdule->day;
+                $schedule_array[$key]['schedule_date']=date('d-m-Y',strtotime($schdule->schedule_date));
+                  $schedule_array[$key]['start_time']=date('h:i a',strtotime($schdule->start_time));
+                    $schedule_array[$key]['end_time']=date('h:i a',strtotime($schdule->end_time));
+            }
+            
 
 
-        return  view('website.single_program',$data);
+    return response()->json($schedule_array);
     }
-
-
-
-
-    public function documents(){
-        $data['documents']=DB::table('document')->orderBy('document_id','desc')->get();
-        return view('website.documents',$data);
-    }
-    public function document_details($link){
-        $data['document']=DB::table('document')->where('document_parmalink',$link)->first();
-        return view('website.document_details',$data);
-    }
-
+      
+      
+   
+      
 
     public function contact(){
 
-        $data['google_map']=DB::table('app_seating')->select('google_map','contact_email','contact_phone','contact_address')->where('app_setting_id','=',1)->first();
-        return view('website.contact',$data);
+         $data['google_map']=DB::table('app_seating')->select('google_map','contact_email','contact_phone','contact_address')->where('app_setting_id','=',1)->first();
+        
     }
+    
 
     public function contact_store(Request $request){
-        request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'subject' => 'required',
-            'message' => 'required',
-
-        ]);
+        
 
 
+            $data['contact_name'] = $request->contact_name;
+            $data['contact_email'] = $request->contact_email;
+            $data['contact_subject'] = $request->contact_subject;
+            $data['contact_message'] = $request->contact_message;
+            $result = DB::table('contacts')->insert($data);
+            if($result){
+                          echo "Your Message Send Successfully";
 
-        $data['contact_name'] = $request->name;
-        $data['contact_email'] = $request->email;
-        $data['contact_subject'] = $request->subject;
-        $data['contact_message'] = $request->message;
-        $result = DB::table('contacts')->insert($data);
-        if ($result) {
-            return redirect('/contact')
-                ->with('success', 'message receive successfully.');
-        } else {
-            return redirect('/contact')
-                ->with('error', 'No successfully.');
+            } else {
+                
+                echo "Your Message does not Send Successfully";
+            }
+
+
+    }
+    
+     public function registration_store(Request $request){
+        
+
+
+            $data['name'] = $request->name;
+            $data['email'] = $request->email;
+            
+            $email_exit=DB::table('users')->where('email',$request->email)->first();
+            if($email_exit){
+                return "This email allready exit";
+            }
+            $data['phone'] = $request->phone;
+            $data['created_at'] = date('Y-m-d H:i:s');
+
+            
+            $data['password'] = md5($request->password);
+            $result = DB::table('users')->insert($data);
+            if($result){
+                          echo "Your Registration   Successfully";
+
+            } else {
+                
+                echo "Your Registration does not  Successfully";
+            }
+
+
+    }
+
+
+
+
+
+ 
+    
+ 
+     
+
+    public  function blogs(){
+        $blogs=DB::table('post')
+            ->select('post_title','post_id','post_created_date','post_name','post_picture','post_description','post_view')
+            ->get();
+        return response()->json($blogs);
+
+ 
+    } 
+     public  function single_blog($id){
+        $comments=DB::table('comments')
+            ->select('*')
+            ->where('post_id',$id)
+             ->orderBy('comment_id','desc')
+            ->get();
+               $comments_array=array();
+            foreach($comments as $key=>$comment){
+                $comments_array[$key]['comment_id']=$comment->comment_id;
+                $comments_array[$key]['comments']=$comment->comments;
+                 $comments_array[$key]['name']=$comment->name;
+                 $subcomments=DB::table('sub_comments')
+            ->select('*')
+            ->where('comment_id',$comment->comment_id)
+            ->orderBy('sub_commets_id','desc')
+            ->get();
+            if($subcomments){
+                foreach($subcomments as $sub_key=>$subcomment){
+                      $comments_array[$key]['sub_comment'][$sub_key]['sub_commets_id']=$subcomment->sub_commets_id;
+                     $comments_array[$key]['sub_comment'][$sub_key]['name']=$subcomment->name;
+                     $comments_array[$key]['sub_comment'][$sub_key]['comments']=$subcomment->comments;
+
+                }
+            }
+            
+            }
+            
+          
+            
+        return response()->json($comments_array);
+
+ 
+    } 
+    
+    
+    
+    public function mainComment(Request $request){
+        
+         $data['post_id']= $request->post_id;
+        $data['name']= $request->name;
+        $data['email']= $request->email;
+        $data['comments']=$request->comments;
+
+        $str = bad_comment();
+        $badword=explode(" ",$str);
+        $mystring = $data['comments'];
+        $bad_comment=0;
+// Test if string contains the word
+        foreach ($badword as $row) {
+            if (strpos($mystring, $row) !== false) {
+               $bad_comment=1;
+            }
         }
+        if($bad_comment==0){
+            $data['status']=1;
+            $result= DB::table('comments')->insert($data);
+            echo 'Thank You for your Comment';
+        }else {
+            $data['status']=0;
+            $result= DB::table('comments')->insert($data);
+            echo 'Thank You for your Comment';
+        }
+        
+    }
+    
+    
+     
+      public function subComment(Request $request){
+        
+         $data['post_id']= $request->post_id;
+         $data['comment_id']= $request->comment_id;
+        $data['name']= $request->name;
+        $data['email']= $request->email;
+        $data['comments']=$request->comments;
+        $data['created_date']=date("Y-m-d");
+        $str = bad_comment();
+        $badword=explode(" ",$str);
+        $mystring = $data['comments'];
+        $bad_comment=0;
+// Test if string contains the word
+        foreach ($badword as $row) {
+            if (strpos($mystring, $row) !== false) {
+               $bad_comment=1;
+            }
+        }
+        if($bad_comment==0){
+            $data['status']=1;
+            $result= DB::table('sub_comments')->insert($data);
+            echo 'Thank You for your Comment';
+        }else {
+            $data['status']=0;
+            $result= DB::table('sub_comments')->insert($data);
+            echo 'Thank You for your Comment';
+        }
+        
+    }
+    
+    
+     
+
+
+
+    public function popularVideo(){
+        
+            
+       $popular_video=DB::table('popular_video')->select('video_id')->orderBy('order_by','asc')->get();
+        
+            $final_array=array();
+               
+                foreach($popular_video as $key=>$videoList){
+                    
+                      $video = Youtube::getVideoInfo($videoList->video_id);
+                        if($video){
+                  $final_array[$key]['index']=$key;
+                    $final_array[$key]['picture']=$video->snippet->thumbnails->high->url;
+                      $final_array[$key]['title']=$video->snippet->title;
+                    
+                      $final_array[$key]['videoId']=$videoList->video_id;
+                        
+                        } 
+                        
+                        
+                                          
+
+                         
+                
+            }
+            
+             
+       
+                return response()->json($final_array);
 
 
     }
+    
+    
+    
+    public function playlistVideo(){
+        
+            
+        $playlists = DB::table('playlists')->orderBy('order_by')->get();
+        
+            $final_array=array();
+               
+                foreach($playlists as $key=>$play){
+                    
+                      $play_list_row =  Youtube::getPlaylistById($play->playlist_link);
+                   
+                   //default
+                    //medium
+                    $final_array[$key]['picture']=$play_list_row->snippet->thumbnails->default->url;
+                     $final_array[$key]['title']=$play_list_row->snippet->title;
+                        $final_array[$key]['playlist']=$play->playlist_link;
+            }
+            
+             
+       
+                return response()->json($final_array);
 
-
-
-
-
-
-    public function programVideo(){
-
-        //$play_list_row =  Youtube::getPlaylistById('PLUb--DPKJ7SR2OL-SorX9BM__5nBaZbdK');
-
-        $data['popular_video']=DB::table('popular_video')->select('video_id')->orderBy('order_by','asc')->get();
-
-        return view('website.program_video',$data);
 
     }
+    
+     public function playlistVideoById($playlistId){
+        
+            
+         $videoLists= Youtube::getPlaylistItemsByPlaylistId($playlistId);
+        
+            $final_array=array();
+               
+             
+                       foreach($videoLists['results'] as $key=>$videoList){
+                        if($videoList->snippet->thumbnails){
+                            if(!empty($videoList->snippet->thumbnails->default->url)){
+                    
+                    
+                    $final_array[$key]['picture']=$videoList->snippet->thumbnails->default->url;
+                     $final_array[$key]['title']=$videoList->snippet->title;
+                        $final_array[$key]['videoId']=$videoList->snippet->resourceId->videoId;
+                            }
+                        }
+            }
+            
+             
+       
+                return response()->json($final_array);
 
-    public function ajax_program_video(){
 
-        //   $data['videoLists'] = Youtube::listChannelVideos('UCv_oQ-sRZoJdEX4K5fQ6q6w', 12);
-        $data['playlists'] = DB::table('playlists')->orderBy('order_by')->get();//Youtube::getPlaylistsByChannelId('UCv_oQ-sRZoJdEX4K5fQ6q6w');
+    }
+    
+    
+    public function allVideos(){
+        
+            
         $apiKey = 'AIzaSyCp4SZRkiWxc5LfXap9MDqkCyej2OvSXRw';
         $channelId = 'UCv_oQ-sRZoJdEX4K5fQ6q6w';
-        $resultsNumber = 1000;
+        $resultsNumber = 50;
 
         $requestUrl = 'https://www.googleapis.com/youtube/v3/search?key=' . $apiKey . '&channelId=' . $channelId . '&part=snippet,id&maxResults=' . $resultsNumber .'&order=date';
 
         $response = file_get_contents($requestUrl);
-        $data['videoLists'] = json_decode( $response, TRUE );
-
-        return view('website.ajax_program_video',$data);
-    }
-    public function youtubePlaylist($playlist){
-
-
-        $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($playlist);
-
-        return view('website.youtubePlaylist',$data);
-
-    }
-    public function get_single_playlist_by_program_id($playlist){
-
-
-
-        $data['videoLists'] = Youtube::getPlaylistItemsByPlaylistId($playlist);
-
-        return view('website.ajax_single_program_playlist',$data);
-
-    }
-
-
-
-
-    public function page($url){
-        $data['page']=DB::table('page')->select('*')->where('page_link',$url)->first();
-        return view('website.page',$data);
-
-    }
-
-    public function modal_login(Request $request){
-
-
-        $email = $request->email;
-        $password = md5($request->password);
-        $result = DB::table('users')->where('email', $email)->where('password', $password)->first();
-        if ($result) {
-            $id = $result->id;
-            $email = $result->email;
-            $name = $result->name;
-            Session::put('user_id', $id);
-            Session::put('email', $email);
-            Session::put('name', $name);
-            Session::put('user_picture', $result->picture);
-
-
-        } else {
-            return response()->json(['error' => 'Your Email Or Password Invalid Try Again']);
-        }
-    }
-
-    public  function home_page_program(){
-        $data['programs']=DB::table('programs')->select('program_image','program_name','id')->paginate(8);
-        return view('website.ajax_home_page_program',$data);
-
-    }
-    public  function election(){
-        // $data['programs']=DB::table('programs')->select('program_image','program_name','id')->paginate(8);
-        return view('website.election_api');
-
-    }
-
-
-    public  function about_us(){
-        $data['about']=DB::table('page')->select('page_content')->where('page_link','about-us')->first();
-
-        return view('website.ajax_about_us',$data);
-
-    }
-
-    public function ajaxFooterLoad(){
-
-        return view('website.includes.ajaxFooterLoad');
-    }
-
-    public function ajax_post_category_call(){
-        $data['category']=DB::table('category')
-            ->select("category.*")
-            ->get();
-        $data['posts']=DB::table('post')
-            ->orderBy('post_view','desc')
-            ->paginate(5);
-
-
-
-        return view('website.ajax_post_category_call',$data);
-    }
-
-
-    public  function todayScheduleAjaxData(){
-        $data['today_programs']=DB::table('programs')
-            ->select('program_name','program_image','programs.id','schedules.id as sid','program_details','start_time')
-            ->join('schedules','schedules.program_id','=','programs.id')
-            ->whereDate('schedule_date', '=', date('Y-m-d'))
-            ->orderBy('start_time','ASC')->get();
-
-        $current_program = DB::table('programs')
-            ->select('schedules.id')
-            ->join('schedules', 'schedules.program_id', '=', 'programs.id')
-            ->whereDate('schedule_date', '=', date('Y-m-d'))
-            ->where('start_time', '<=', date('H:i'))
-            ->where('end_time', '>=', date('H:i'))
-            ->orderBy('start_time', 'asc')->first();
-        if($current_program) {
-            $data['program_id'] = $current_program->id;
-        } else {
-            $data['program_id'] = 0;
-
-        }
-        return view('website.todayScheduleAjaxData',$data);
-
-    }
-
-
-    public  function blog(){
-        $data['blogs']=DB::table('post')
-            ->select('post_title','post_name','post_picture','post_description','post_view')
-            ->paginate(12);
-        return view('website.blog',$data);
-
-    }
-    public  function category($category_id){
-        $data['blogs']=DB::table('post')
-            ->select('post_title','post_name','post_picture','post_view','post_description')
-            ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
-            ->where('category_id','=',$category_id)
-            ->paginate(12);
-
-        return view('website.category',$data);
-
-    }
-    public  function post($post_name){
-        $data['post']=DB::table('post')
-            ->select('youtube','post_id','post_title','post_name','post_picture','post_created_date','post_man','post_description','post_view')
-            ->where('post_name','=',$post_name)
-            ->first();
-        $row_data['post_view']= $data['post']->post_view +1;
-        $post_id= $data['post']->post_id;
-        $youtube= $data['post']->youtube;
-        if($youtube) {
-
-            $data['youtube_video'] = Youtube::getVideoInfo($youtube);
-        }
-
-        DB::table('post')->where('post_id','=',$post_id)->update($row_data);
-
-        return view('website.single_post',$data);
-
-    }
-    public function admin_login(){
-
-        Session::put('id', 12);
-        Session::put('status', 'super-admin');
-        Session::put('name', 'xxxx');
-        return redirect('dashboard');
-
-    }
-
-
-
-    public function vote_count(Request $request){
-        // $pull_id= $request->pull_id;
-        $pull_id= $request->get('pull_id');
-        $ip =\Request::ip();
-        $data['ip']=$ip;
-        $data['pull_id']=$pull_id;
-        $data['option_id']=$request->option_id;
-        //  DB::table('vote')->insert($data);
-        $already_given_vote= DB::table('vote')->where('pull_id',$pull_id)->where('ip',$ip)->first();
-        if($already_given_vote){
-
-        } else{
-            $insertGetId = DB::table('vote')->insertGetId($data);
-            //   echo $insertGetId;
-//            if($insertGetId){
-//                DB::table('vote')->where('vote_id',$insertGetId)->delete();
-//
-//          }
-
-        }
-
-    }
-
-
-
-    public function all_comment_count($post_id){
-
-        $main_coummnet= DB::table('comments')->where('post_id',$post_id)->where('status','=',1)->count();
-        $sub_coummnet= DB::table('sub_comments')->where('post_id',$post_id)->where('status','=',1)->count();
-        echo  $total=$main_coummnet+$sub_coummnet;
-
-    }
-
-    public function all_like_count($post_id){
-        $ip= \Request::ip();
-
-        $existing_like= DB::table('like_dislike')->where('post_id',$post_id)->where('ip','=',$ip)->count();
-        if($existing_like >0){
-            $row_data['like']=1;
-        } else {
-
-            $row_data['like']=0;
-        }
-        $row_data['total_like']= DB::table('like_dislike')->where('post_id',$post_id)->count();
-        return response()->json($row_data);
-
-
-    }
-
-    public function all_like_submit($post_id){
-        $ip= \Request::ip();
-        $data['ip']=$ip;
-        $data['created_date']=date("Y-m-d");
-        $data['post_id']=$post_id;
-        $data['status']=1;
-
-        $existing_like= DB::table('like_dislike')->where('post_id',$post_id)->where('ip','=',$ip)->count();
-        if($existing_like >0){
-            DB::table('like_dislike')->where('post_id',$post_id)->where('ip','=',$ip)->delete();
-            $row_data['like']=0;
-        } else {
-            DB::table('like_dislike')->insert($data);
-            $row_data['like']=1;
-        }
-        $row_data['total_like']= DB::table('like_dislike')->where('post_id',$post_id)->count();
-        return response()->json($row_data);
-
-
-    }
-
-    public function ajax_pull_data_get(){
-        $data['ip']= \Request::ip();
-        $today="Y-m-d";
-        $data['pulls']=DB::table('pulls')->select('pull_question','pull_id')->where('pull_status','=',1)->where('pull_expire_time', '>=', $today)->get();
-        return view('website.ajax_poll',$data);
-
-    }
-    public function submit_comments(Request $request){
-        $data['post_id']= $request->post_id;
-        $data['name']= $request->name;
-        $data['email']= $request->email;
-        $data['comments']=$request->text;
-
-        $str = bad_comment();
-        $badword=explode(" ",$str);
-        $mystring = $data['comments'];
-        $bad_comment=0;
-// Test if string contains the word
-        foreach ($badword as $row) {
-            if (strpos($mystring, $row) !== false) {
-                $bad_comment=1;
+        $videoLists= json_decode( $response, TRUE );
+        $final_array=array();
+        
+            if($videoLists){
+                foreach($videoLists['items'] as $key=>$videoList){
+                   $final_array[$key]['picture']=$videoList['snippet']['thumbnails']['default']['url'];
+                    
+                      $final_array[$key]['title']=$videoList['snippet']['title'];
+                    
+                      $final_array[$key]['videoId']=$videoList['id']['videoId'];
+                        $final_array[$key]['index']=$key;
+                    
+                }
             }
-        }
-        if($bad_comment==0){
-            $data['status']=1;
-            $result= DB::table('comments')->insert($data);
-            echo 'ok';
-        }else {
-            $data['status']=0;
-            $result= DB::table('comments')->insert($data);
-            echo 'no';
-        }
-    }
-    public function submit_sub_comments(Request $request){
-        $data['comment_id']= $request->comment_id;
-        $data['post_id']= $request->post_id;
-        $data['name']= $request->name;
-        $data['email']= $request->email;
-        $data['comments']=$request->text;
+            
+            // echo '<pre>';
+            // print_r($final_array);
+            // exit();
+       
+                return response()->json($final_array);
 
-        $str = bad_comment();
-        $badword=explode(" ",$str);
-        $mystring = $data['comments'];
-        $bad_comment=0;
-// Test if string contains the word
-        foreach ($badword as $row) {
-            if (strpos($mystring, $row) !== false) {
-                $bad_comment=1;
-            }
-        }
-        if($bad_comment==0){
-            $data['status']=1;
-            $result= DB::table('sub_comments')->insert($data);
-            echo 'ok';
-        }else {
-            $data['status']=0;
-            $result= DB::table('sub_comments')->insert($data);
-            echo 'no';
-        }
-    }
-
-
-    public function get_comments(Request $request){
-        $post_id= $request->post_id;
-        $data['comments']=DB::table('comments')->where('post_id',$post_id)->where('status',1)->orderBy('comment_id','desc')->get();
-        return view('website.get_comments',$data);
 
     }
-    public function sub_comments_data(Request $request){
-        $comment_id= $request->comment_id;
-        $data['comments']=DB::table('sub_comments')->where('comment_id',$comment_id)->where('status',1)->orderBy('sub_commets_id','desc')->get();
-        return view('website.sub_comments_data',$data);
-
-    }
-
-
-    public function login_check_ajax(Request $request){
-        $email = $request->email;
-        $password = md5($request->password);
-        $result = DB::table('users')->where('email', $email)->where('password', $password)->first();
-        if ($result) {
-            echo 'ok';
-            $id = $result->id;
-            $email = $result->email;
-            $name = $result->name;
-            Session::put('user_id', $id);
-            Session::put('email', $email);
-            Session::put('name', $name);
-            // Session::put('user_picture', $result->picture);
-            //  return redirect('/');
-
-        } else {
-            echo 'Your Email Or Password Invalid Try Again';
-        }
-
-    }
-    public function hitcounter(){
-        $ip= \Request::ip();
-        $data['client_ip']=$ip;
-        $data['date']=date("Y-m-d");
-
-        $hitcounter= DB::table('hitcounter')->where('client_ip','=',$ip)->where('date','=',date("Y-m-d"))->count();
-        if($hitcounter==0){
-            DB::table('hitcounter')->insert($data);
-
-        }
-
-    }
+    
 
 
 }
