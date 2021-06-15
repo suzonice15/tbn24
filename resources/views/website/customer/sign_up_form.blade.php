@@ -1,11 +1,7 @@
 
 @extends('website.master')
 @section('mainContent')
-
-
     <style>
-
-
         body{
             margin: 0;
 
@@ -13,10 +9,7 @@
             line-height: 1.6;
             color: #212529;
             text-align: left;
-
         }
-
-
         .my-form
         {
             padding-top: 1.5rem;
@@ -25,13 +18,11 @@
             display:flex;
             justify-content: center;
         }
-
         .my-form .row
         {
             margin-left: 0;
             margin-right: 0;
         }
-
         .login-form
         {
             padding-top: 1.5rem;
@@ -89,12 +80,17 @@
                         <div class="card-header">Registration</div>
                         <div class="card-body">
                             <form name="my-form" onsubmit="return validform()" action="{{url('/')}}/customer/form" method="post">
-@csrf
-
+                            @csrf
                                 <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">Full Name:</label>
                                     <div class="col-md-6">
                                         <input  required type="text" value="{{old('name')}}" id="name" class="form-control" name="name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="national_id" class="col-md-4 col-form-label text-md-right">National ID No:</label>
+                                    <div class="col-md-6">
+                                        <input required type="text" id="national_id" class="form-control" name="national_id">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -115,8 +111,6 @@
                                         <input required  type="text" id="password" class="form-control" name="password">
                                     </div>
                                 </div>
-
-
                                 <div class="form-group row">
                                     <div class="col-md-9 ">
                                         @if(Session::has('error'))
@@ -137,7 +131,7 @@
                                     </div>
                                 </div>
 
-<?php
+                           <?php
                                 if(isset($error)){
                                 ?>
                                 <div class="form-group row">

@@ -19,6 +19,19 @@ use Illuminate\Support\Facades\Route;
 /*           website  url */
 
 Route::get('/', 'HomeController@index');
+Route::get('/meet-our-team', 'HomeController@team');
+Route::get('/privacy-policy', 'HomeController@page');
+
+Route::get('/ajax_team/{department_id}', 'HomeController@ajax_team');
+Route::get('/member-details/{memberId}', 'HomeController@memberDetail');
+Route::get('/carrier', 'HomeController@carrier');
+Route::get('/apply-now', 'HomeController@applyNow');
+Route::get('/apply-now-2', 'HomeController@applyNowForm2');
+Route::get('/apply-now-3', 'HomeController@applyNowForm3');
+Route::get('/apply-success', 'HomeController@applySuccess');
+Route::get('/chat/{id}', 'HomeController@getChat');
+Route::get('/chatStore/{message}', 'HomeController@storeChat');
+
 Route::get('/all-program', 'HomeController@all_program');
 Route::get('/blog', 'HomeController@blog');
 Route::get('/election', 'HomeController@election');
@@ -54,6 +67,15 @@ Route::post('/login/check_ajax', 'HomeController@login_check_ajax');
 Route::post('/get/comments', 'HomeController@get_comments');
 Route::post('/get/sub_comments_data', 'HomeController@sub_comments_data');
 Route::get('/get-single-playlist-by-program-id/{id}', 'HomeController@get_single_playlist_by_program_id');
+
+
+
+/****=============== admin chat section    =====================  ******/
+Route::get('admin/chat', 'admin\ChatController@chat');
+Route::get('ajax/chat/users', 'admin\ChatController@ajaxChatUsers');
+
+Route::get('admin/message/{id}', 'admin\ChatController@getMessage')->name('message');
+Route::post('message', 'admin\ChatController@sendMessage');
 
 /****=============== admin faq section    =====================  ******/
 Route::get('admin/faq', 'admin\FaqController@index');
@@ -97,6 +119,45 @@ Route::get('admin/post/{id}', 'admin\PostController@edit');
 Route::get('/admin/post/delete/{id}', 'admin\PostController@delete');
 Route::get('admin/post_pagination', 'admin\PostController@fetch_data');
 Route::post('post-urlcheck', 'admin\PostController@urlCheck')->name('post.urlcheck');
+
+
+/****=============== admin departments section    =====================  ******/
+Route::get('admin/departments', 'admin\DepartmentController@index');
+Route::get('admin/departments/create', 'admin\DepartmentController@create');
+Route::post('admin/departments/store', 'admin\DepartmentController@store');
+Route::post('admin/departments/update/{id}', 'admin\DepartmentController@update');
+Route::get('admin/departments/{id}', 'admin\DepartmentController@edit');
+Route::get('/admin/departments/delete/{id}', 'admin\DepartmentController@delete');
+
+Route::post('member-urlcheck', 'admin\MemberController@urlCheck')->name('member.urlcheck');
+
+/****=============== admin members section    =====================  ******/
+Route::get('admin/members', 'admin\MemberController@index');
+Route::get('admin/members/create', 'admin\MemberController@create');
+Route::post('admin/members/store', 'admin\MemberController@store');
+Route::post('admin/members/update/{id}', 'admin\MemberController@update');
+Route::get('admin/members/{id}', 'admin\MemberController@edit');
+Route::get('/admin/members/delete/{id}', 'admin\MemberController@delete');
+Route::get('admin/member_pagination', 'admin\MemberController@fetch_data');
+
+
+/****=============== admin add  question     =====================  ******/
+Route::get('admin/question', 'admin\QuestionController@index');
+Route::get('admin/question/create', 'admin\QuestionController@create');
+Route::post('admin/question/store', 'admin\QuestionController@store');
+Route::post('admin/question/update/{id}', 'admin\QuestionController@update');
+Route::get('admin/question/{id}', 'admin\QuestionController@edit');
+Route::get('/admin/question/delete/{id}', 'admin\QuestionController@delete');
+Route::get('admin/question_pagination', 'admin\QuestionController@fetch_data');
+Route::get('admin/exams', 'admin\QuestionController@exams');
+Route::get('admin/exam_pagination', 'admin\QuestionController@exam_pagination');
+Route::get('/admin/exam/delete/{id}', 'admin\QuestionController@examDelete');
+Route::get('admin/exam/{id}', 'admin\QuestionController@examEdit');
+
+ 
+
+
+
 
 
 
@@ -332,7 +393,21 @@ Route::get('/admin/slider/delete/{id}', 'admin\SliderController@destroy');
 
 Route::get('customer/login', 'CustomerController@login');
 Route::get('customer/form', 'CustomerController@sign_up_form');
+
 Route::post('customer/form', 'CustomerController@store');
+Route::post('customer/form1', 'CustomerController@form1');
+Route::post('customer/form2', 'CustomerController@form2');
+Route::post('customer/form3', 'CustomerController@form3');
+Route::get('exam-start', 'CustomerController@examStart');
+Route::post('examStore', 'CustomerController@examStore');
+Route::get('exam-success', 'CustomerController@examSuccess');
+
+
+
+
+
+
+
 Route::get('/myaccount', 'CustomerController@myaccount');
 Route::get('/customer/password/changed', 'CustomerController@password_changed');
 Route::post('/customer/password/changed', 'CustomerController@password_changed_store');

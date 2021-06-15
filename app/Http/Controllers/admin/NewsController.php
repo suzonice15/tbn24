@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
  
 use Illuminate\Http\Request;
 use DB;
+use Session;
 
 class NewsController extends Controller
 {
@@ -15,6 +16,11 @@ class NewsController extends Controller
     }
     public function index()
     {
+          $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
         $data['main'] = '  News List  ';
         $data['active'] = ' News List ';
         $data['title'] = '';

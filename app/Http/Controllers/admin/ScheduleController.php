@@ -20,11 +20,16 @@ class ScheduleController extends Controller
     {
         $time_zone = get_time_zone()->app_time_zone;
         date_default_timezone_set($time_zone);
-        $this->middleware('AdminLoginCheck');
+       // $this->middleware('AdminLoginCheck');
     }
 
     public function index()
     {
+          $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
         $data['main'] = '  Schedule List  ';
         $data['active'] = '  Schedule List ';
         $data['title'] = '';

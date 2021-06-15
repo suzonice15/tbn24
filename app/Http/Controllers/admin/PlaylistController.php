@@ -11,6 +11,7 @@ use AdminHelper;
 use URL;
 use Illuminate\Support\Facades\Redirect;
 
+
 class PlaylistController extends Controller
 {
     /**
@@ -28,7 +29,11 @@ class PlaylistController extends Controller
 
     public function index()
     {
-         
+        $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }   
         $data['main'] = ' Playlist List ';
         $data['active'] = ' Playlist List ';
         $data['title'] = '  ';       

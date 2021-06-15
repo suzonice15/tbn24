@@ -31,6 +31,12 @@ class DashboardController extends Controller
 
         $data['main'] = 'Dashboard';
         $data['active'] = 'Dashboard';
+              $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
+
 
 // curent proggram
         $data['current_program'] = DB::table('programs')
@@ -49,6 +55,7 @@ class DashboardController extends Controller
 
 
             return view('layouts.dashboard', $data);
+                 
 
     }
 

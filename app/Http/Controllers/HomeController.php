@@ -10,6 +10,9 @@ use Carbon\Carbon;
  use Alaouy\Youtube\Facades\Youtube;
 
 
+use Pusher\Pusher;
+use App\Message;
+
 class HomeController extends Controller
 {
     /**
@@ -28,7 +31,7 @@ class HomeController extends Controller
     public function index()
     {
 
-
+      //  Session::put('user_id',31);
         $current_program = DB::table('programs')
             ->select('schedules.id')
             ->join('schedules', 'schedules.program_id', '=', 'programs.id')
@@ -181,11 +184,9 @@ class HomeController extends Controller
             $data['contact_message'] = $request->message;
             $result = DB::table('contacts')->insert($data);
             if ($result) {
-                return redirect('/contact')
-                    ->with('success', 'message receive successfully.');
+                return redirect('/contact')->with('success', 'message receive successfully.');
             } else {
-                return redirect('/contact')
-                    ->with('error', 'No successfully.');
+                return redirect('/contact')->with('error', 'No successfully.');
             }
 
 
@@ -242,7 +243,7 @@ class HomeController extends Controller
 
 
 
-    public function page($url){
+    public function page($url='privacy-policy'){
         $data['page']=DB::table('page')->select('*')->where('page_link',$url)->first();
         return view('website.page',$data);
 
@@ -287,6 +288,31 @@ class HomeController extends Controller
         return view('website.ajax_about_us',$data);
 
     }
+
+    public  function team(){
+
+        $data['members']=DB::table('members')->get();
+        $data['departments']=DB::table('departments')->orderBy('department_id', 'desc')->get();
+
+        return view('website.teams',$data);
+
+    }
+    public function ajax_team($department_id){
+        $data['members']=DB::table('members')
+            ->where('department_id','=',$department_id)
+            ->orderBy('department_id', 'desc')->get();
+        return view('website.ajax_teams',$data);
+    }
+    public function memberDetail($department_id){
+        $data['member']=DB::table('members')
+            ->where('member_parmalink','=',$department_id)
+            ->first();
+          $data['members']=DB::table('members')->limit(4)->get();
+
+        return view('website.teamDetail',$data);
+    }
+
+
 
     public function ajaxFooterLoad(){
 
@@ -378,29 +404,6 @@ public function admin_login(){
 
 
 
-    public function vote_count(Request $request){
-       // $pull_id= $request->pull_id;
-        $pull_id= $request->get('pull_id');
-         $ip =\Request::ip();
-        $data['ip']=$ip;
-        $data['pull_id']=$pull_id;
-        $data['option_id']=$request->option_id;
-      //  DB::table('vote')->insert($data);
-        $already_given_vote= DB::table('vote')->where('pull_id',$pull_id)->where('ip',$ip)->first();
-        if($already_given_vote){
-
-        } else{
-            $insertGetId = DB::table('vote')->insertGetId($data);
-         //   echo $insertGetId;
-//            if($insertGetId){
-//                DB::table('vote')->where('vote_id',$insertGetId)->delete();
-//
-//          }
-
-        }
-
-    }
-
 
 
     public function all_comment_count($post_id){
@@ -453,6 +456,31 @@ public function admin_login(){
         $today="Y-m-d";
         $data['pulls']=DB::table('pulls')->select('pull_question','pull_id')->where('pull_status','=',1)->where('pull_expire_time', '>=', $today)->get();
         return view('website.ajax_poll',$data);
+
+    }
+	
+	
+
+    public function vote_count(Request $request){
+       // $pull_id= $request->pull_id;
+        $pull_id= $request->get('pull_id');
+         $ip =\Request::ip();
+        $data['ip']=$ip;
+        $data['pull_id']=$pull_id;
+        $data['option_id']=$request->option_id;
+      //  DB::table('vote')->insert($data);
+        $already_given_vote= DB::table('vote')->where('pull_id',$pull_id)->where('ip',$ip)->first();
+        if($already_given_vote){
+
+        } else{
+            $insertGetId = DB::table('vote')->insertGetId($data);
+         //   echo $insertGetId;
+//            if($insertGetId){
+//                DB::table('vote')->where('vote_id',$insertGetId)->delete();
+//
+//          }
+
+        }
 
     }
     public function submit_comments(Request $request){
@@ -556,6 +584,127 @@ public function admin_login(){
         }  
 
     }
+
+    public  function getChat($from_user){
+        $chats=array();
+
+        $chateData=DB::table('messages')
+            ->select('message','from','to','created_at')
+            ->where('messages.from',$from_user)
+            ->orWhere('messages.to',$from_user)
+            ->get();
+        if($chateData){
+            foreach ($chateData as $key=>$chat){
+               $userName= DB::table('users')->select('name')->where('id',$chat->from)->first();
+                if($userName){
+                    $chats[$key]['name']=$userName->name;
+                } else {
+                    $adminName= DB::table('admin')->select('name')->where('admin_id',$chat->from)->first();
+                    $chats[$key]['name']=$adminName->name;
+                }
+
+                $chats[$key]['from']=$chat->from;
+                $chats[$key]['user_id']=$from_user;
+                $chats[$key]['message']=$chat->message;
+                $chats[$key]['created_at']=$chat->created_at;
+
+            }
+        }
+
+
+
+        $data['chats']=$chats;
+        
+ 
+        return view('website.getChat',$data);
+    }
+
+    public  function storeChat($messsage){
+
+        $from =Session::get('user_id');
+        $admin_user= DB::table('messages')->select('to')->where('from',$from)->first();
+        if($admin_user){
+            $admin_user=$admin_user->to;
+        } else {
+            $admin_user='';
+        }
+        $to = $admin_user;
+        $message =$messsage;
+
+        $data = new Message();
+        $data->from = $from;
+        $data->to = $to;
+        $data->message = $message;
+        $data->is_read = 0; // message will be unread when sending message
+        $data->save();
+
+        // pusher
+        $options = array(
+            'cluster' => 'mt1',
+            'useTLS' => true
+        );
+
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            $options
+        );
+
+        $data = ['from' => $from, 'to' => $to]; // sending from and to user id when pressed enter
+        $pusher->trigger('my-channel', 'my-event', $data);
+    }
+
+    public  function carrier(){
+       $page= DB::table('page')->where('page_link','=','carrier')->first();
+        $data['page_content']=$page->page_content;
+        return view('website.customer.carrier',$data);
+     }
+    public  function applyNow(){
+        $user_id =Session::get('user_id');
+        if($user_id){
+            return view('website.customer.apply_form_1');
+            
+        } else {
+
+            return redirect('/customer/login');
+        }
+
+    }
+    public  function applyNowForm2(){
+        $user_id =Session::get('user_id');
+        if($user_id){
+            return view('website.customer.apply_form_2');
+
+        } else {
+
+            return redirect('/customer/login');
+        }
+
+    }
+
+    public  function applyNowForm3(){
+        $user_id =Session::get('user_id');
+        if($user_id){
+            return view('website.customer.apply_form_3');
+        } else {
+            return redirect('/customer/login');
+        } 
+    }
+    public  function applySuccess(){
+        
+            return view('website.customer.applySuccess');
+         
+    }
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -38,8 +38,13 @@
             <?php
 
 
-            if($status=='super-admin') {
+            if($status =='super-admin') {
             ?>
+            <li>
+                <a href="{{URL::to('admin/chat')}}">
+                    <i class="fa fa fa-tv"></i> <span>Chat</span>
+                </a>
+            </li>
              <li>
                 <a href="{{URL::to('admin/programs')}}">
                     <i class="fa fa fa-tv"></i> <span>Program</span>
@@ -60,6 +65,17 @@
 
 
                 </ul>
+            </li>
+
+            <li>
+                <a href="{{URL::to('admin/departments')}}">
+                    <i class="fa fa fa-tv"></i> <span>Departments</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{URL::to('admin/members')}}">
+                    <i class="fa fa fa-tv"></i> <span>Members</span>
+                </a>
             </li>
             <li class="treeview">
                 <a href="#">
@@ -115,12 +131,7 @@
 
 
                 </ul>
-            </li>
-
-
-
-
-
+            </li> 
             <li>
                 <a href=" {{ url('admin/playlist') }}">
                     <i class="fa fa fa-clock-o"></i> <span>Youtube Playlist</span>
@@ -128,10 +139,7 @@
             </span>
                 </a>
 
-            </li>
-
-
-
+            </li> 
             <li>
                 <a href="{{URL::to('admin/contact-us')}}">
                     <i class="fa fa fa-tv"></i> <span> Contact Us</span>
@@ -146,10 +154,7 @@
                 <a href="{{URL::to('admin/news')}}">
                     <i class="fa fa fa-tv"></i> <span> News  </span>
                 </a>
-            </li>
-
-
-
+            </li> 
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-user"></i>
@@ -183,6 +188,25 @@
 
                 </ul>
             </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user"></i>
+                    <span>Carrier</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ url('admin/question/create') }}"><i class="fa fa-circle-o"></i>Add Question </a>
+                    </li>
+                    <li><a href=" {{ url('admin/question') }}"><i class="fa fa-circle-o"></i>All Questions </a></li>
+                    <li><a href=" {{ url('admin/exams') }}"><i class="fa fa-circle-o"></i>Exams </a></li>
+
+
+                </ul>
+            </li>
+
 
             <li class="treeview">
                 <a href="#">

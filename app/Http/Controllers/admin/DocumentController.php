@@ -24,7 +24,11 @@ class DocumentController  extends Controller
 
     public function index()
     {
-
+  $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
         $data['main'] = 'Documents';
         $data['active'] = 'Documents';
         $data['title'] = '';

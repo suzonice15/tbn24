@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Program;
 use DB;
 use Image;
+use Session;
 
 class ProgramController extends Controller
 {
@@ -18,6 +19,11 @@ class ProgramController extends Controller
     }
     public function index()
     {
+          $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
         $data['main'] = ' Program List ';
         $data['active'] = ' Program List ';
         $data['title'] = '';

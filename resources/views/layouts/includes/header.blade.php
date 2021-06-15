@@ -68,42 +68,7 @@
                     $messages=DB::table('contacts')->where('status','=',0)->get();
                     ?>
 
-                    <li class="dropdown messages-menu ">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-danger">{{$message}}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have {{$message}} messages</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
 
-                                    @if($messages)
-                                        @foreach($messages as $message)
-                                    <li><!-- start message -->
-                                        <p> {{$message->contact_email}} </p>
-                                        <a href="{{url('/')}}/message/seen/{{$message->contact_id}}">
-
-                                            <h4>
-                                               {{$message->contact_subject}}
-
-                                             </h4>
-                                            <p>   {{$message->contact_message}}</p>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
-
-                                        @endforeach
-                                        @endif
-
-
-
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="{{url('/')}}/admin/contact-us">See All Messages</a></li>
-                        </ul>
-                    </li>
 
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">

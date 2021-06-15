@@ -23,14 +23,11 @@ class SettingController extends Controller
     }
     public function homePageSetting(Request $request)
     {
-        $user_id =1;// AdminHelper::Admin_user_autherntication();
-        $url = URL::current();
-
-        if ($user_id < 1) {
-            //  return redirect('admin');
-            Redirect::to('admin')->with('redirect', $url)->send();
-
-        }
+         $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
 
 //unset($request->_token);
         $all_home_page_data = $request->all();

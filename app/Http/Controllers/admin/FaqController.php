@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
  
 use Illuminate\Http\Request;
 use DB;
+use Session;
 
 class FaqController extends Controller
 {
@@ -15,6 +16,12 @@ class FaqController extends Controller
     }
     public function index()
     {
+        
+          $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
         $data['main'] = '  Faq List  ';
         $data['active'] = ' Faq List ';
         $data['title'] = '';

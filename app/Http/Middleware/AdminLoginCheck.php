@@ -16,10 +16,10 @@ class AdminLoginCheck
      */
     public function handle($request, Closure $next)
     {
-        $admin_login=Session::get('id');
-       if(empty($admin_login)){
-           return redirect('/admin');
-       }
+    //     $admin_login=Session::get('id');
+    //   if(empty($admin_login)){
+    //       return redirect('/admin');
+    //   }
         return $next($request);
     }
 }

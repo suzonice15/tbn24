@@ -16,6 +16,8 @@ class AdminController extends Controller
     {
         $time_zone=  get_time_zone()->app_time_zone;
         date_default_timezone_set($time_zone);
+                $this->middleware('AdminLoginCheck');
+
     }
 
     public function login()
@@ -61,7 +63,13 @@ class AdminController extends Controller
     }
 
     public function index()
-    {
+    { 
+        
+        $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
 
         $data['main'] = 'Users';
         $data['active'] = 'All users';
@@ -290,7 +298,11 @@ class AdminController extends Controller
     }
     
     public function websiteUser(){
-
+ $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
         $data['main'] = 'Website User List ';
         $data['active'] = ' Website User List  ';
         $data['title'] = '';

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
  
 use Illuminate\Http\Request;
 use DB;
+use Session;
 
 class PullController extends Controller
 {
@@ -17,6 +18,12 @@ class PullController extends Controller
 
     public function index()
     {
+        
+          $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
         $data['main'] = 'Poll List
  ';
         $data['active'] = 'Poll List

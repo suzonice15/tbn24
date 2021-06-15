@@ -732,41 +732,41 @@
             ==================================================
             Call To Action Section Start
             ================================================== -->
-<section id="call-to-action">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="block">
-                    <h2 class="title wow "  >
-                        You are always welcome to contact with us
-                        </h2>
-                        <a href="{{url('/')}}/contact"
-                           class="btn btn-default btn-contact wow fadeInDown"
-                           data-wow-delay=".7s" data-wow-duration="500ms">Contact Us</a>
+{{--<section id="call-to-action">--}}
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-md-12">--}}
+                {{--<div class="block">--}}
+                    {{--<h2 class="title wow "  >--}}
+                        {{--You are always welcome to contact with us--}}
+                        {{--</h2>--}}
+                        {{--<a href="{{url('/')}}/contact"--}}
+                           {{--class="btn btn-default btn-contact wow fadeInDown"--}}
+                           {{--data-wow-delay=".7s" data-wow-duration="500ms">Contact Us</a>--}}
 
-                </div>
-            </div>
+                {{--</div>--}}
+            {{--</div>--}}
 
-        </div>
-    </div>
-</section>
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</section>--}}
 
 <script>
     $(document).ready(function () {
 
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) {
-            if (e.ctrlKey &&
-                    (e.keyCode === 67 ||
-                    e.keyCode === 86 ||
-                    e.keyCode === 85 ||
-                    e.keyCode === 117)) {
-                alert('not allowed');
-                return false;
-            } else {
-                return true;
-            }
-        };
+//        document.addEventListener('contextmenu', event => event.preventDefault());
+//        document.onkeydown = function(e) {
+//            if (e.ctrlKey &&
+//                    (e.keyCode === 67 ||
+//                    e.keyCode === 86 ||
+//                    e.keyCode === 85 ||
+//                    e.keyCode === 117)) {
+//                alert('not allowed');
+//                return false;
+//            } else {
+//                return true;
+//            }
+//        };
 
         /* Toggle Video Modal
          -----------------------------------------*/

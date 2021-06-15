@@ -1,4 +1,196 @@
 
+<!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v10.0'
+          });
+        };
+
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution="biz_inbox"
+        page_id="465086916960118">
+      </div>
+
+<?php header("Access-Control-Allow-Origin: *"); ?>
+<div class="chat">
+
+
+    <div class="container" >
+        <div class="row">
+            <div class="activeChat"  style="display: none">
+                <div class="panel panel-primary" style="border:1px solid red" >
+                    <div class="panel-heading" style="background-color:red;color:white">
+                        {{--<span class="glyphicon glyphicon-comment"></span>--}}
+                        Live Chat
+
+                        <button type="button" style="font-size:30px;margin-top:-5px;color:white" class="close buttonClose" data-dismiss="modal" aria-label="Close">
+                           &times;
+                        </button>
+                    </div>
+                    <div class="panel-body" style="height:350px">
+                        <ul class="chat">
+<span  id="chat_show_content"></span>
+
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="chatInputData" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger btn-sm" id="btn-chat">
+                                Send</button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <button type="button" class="btn btn-danger chatShow" style="position: fixed;bottom: 0px;right: 0px;width: 200px;" >Live Chat</button>
+    </div>
+
+
+</div>
+<style>
+
+    .activeChat{
+        position: fixed;right: 7px;width:500px;top: 150px;z-index: 99999999;background: #f1f1f1;
+        height: 90%;box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
+        display:block
+    }
+    .chat
+    {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chat li
+    {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+
+    }
+
+    .chat li.left .chat-body
+    {
+        margin-left: 0px;
+        background-color: red;
+        padding: 7px;
+        color: white;
+        width: 412px;
+        float: left
+    }
+
+    .chat li.right .chat-body
+    {
+        margin-right: 3px;
+        background-color: #ddd;
+        padding: 7px;
+        color: black;
+        width: 374px;
+        float: right;
+    }
+
+
+    .chat li.right .chat-body p
+    {
+        margin: 0;
+        color: black;
+    }
+    .chat li.left .chat-body p
+    {
+        margin: 0;
+        color: white;
+    }
+
+    .panel .slidedown .glyphicon, .chat .glyphicon
+    {
+
+        margin-right: 5px;
+    }
+
+    .panel-body
+    {
+        overflow-y: scroll;
+        height: 100%;
+    }
+
+    ::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar
+    {
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar-thumb
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #555;
+    }
+</style>
+
+<script>
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function delete_cookie(name) {
+          document.getElementById('cookie_delete_section').style.display = 'none';
+
+    setCookie("cookie_active","active",30);
+ // document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+   setTimeout(function(){ 
+       
+     
+var cookie_active=getCookie("cookie_active");
+if(cookie_active=="active"){
+      document.getElementById('cookie_delete_section').style.display = 'none';
+}  
+   }, 1);
+
+
+</script>
+
+
+
 <hr>
 <span class="ajax-footer-load"></span>
 <div class="xs-copyright copyright-yellow " style="background-color: green;">
@@ -13,6 +205,25 @@
         </div>
     </div>
 </div>
+
+<div class="xs-copyright copyright-yellow " id="cookie_delete_section" style="background-color: #460f0f;
+position: fixed;
+bottom: 0px;
+width: 100%;">
+    <div class="container container-fullwidth">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-12">
+                <div class="xs-copyright-text"  style="color:#ffffff;text-align: center;padding: 11px;" >
+                   By using this site, you agree to our
+  <a target="_blank "  style="color:#ffffff;text-decoration:underline" href="{{url('/')}}/privacy-policy"> Privacy Policy</a> <button class="btn btn-success btn-sm" onClick="return delete_cookie('cookie_active')">OK</button>
+                </div>
+                <!-- .xs-copyright-text END -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- five mitinte check modal -->
 <?php
 
@@ -154,9 +365,97 @@ if(isset($one_hour_check_modal)) { ?>
 
 
         <!-- five mitinte check modal -->
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
 <script>
+
+   var user_id="{{ Session::get('user_id')}}";
     $(document).ready(function(){
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('ba7b245668d848c45d5a', {
+            cluster: 'mt1'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            if (user_id == data.from) {
+                scrollToBottomFunc();
+                getChat(user_id);
+            } else if (user_id == data.to) {
+                scrollToBottomFunc();
+                getChat(user_id);
+            }
+
+        });
+
+ $(document).on('click', '#btn-chat', function (e) {
+                var message= $('#chatInputData').val();
+                // check if enter key is pressed and message is not null also receiver is selected
+                if (message != '' ) {
+                 
+                 
+          
+                $.ajax({
+                    type:"GET",
+                    url:"{{url('chatStore')}}/"+message,
+                    success:function(data)
+                    {
+
+                        $('#chatInputData').val('');
+                        getChat(user_id);
+
+                    }
+                })
+            
+
+                }
+            });
+ 
+		$('.chatShow').click(function(){
+
+            if(user_id) {
+                $(this).hide();
+                $('.activeChat').show();
+                getChat(user_id);
+            } else {
+                alert("Please Login First")
+            }
+
+
+		});
+        $('.buttonClose').click(function(){
+
+
+            $('.activeChat').hide();
+            $('.chatShow').show();
+
+
+        });
+
+        function getChat(user_id) {
+            $.ajax({
+                type:"GET",
+                url:"{{url('chat')}}/"+user_id,
+                success:function(data)
+                {
+
+                    $('#chat_show_content').html(data);
+
+                },
+                complete: function () {
+                    scrollToBottomFunc();
+                }
+            })
+        }
+
+
+        function scrollToBottomFunc() {
+
+            $('.chat .panel-body').animate({scrollTop:20000000}, '300');
+
+        }
 
         function five_minite_check_modal(){
             $.ajax({
@@ -324,7 +623,23 @@ console.log(data)
 </script>
 
 
+<script src="{{ asset('assets/font_end/')}}/js/owl.carousel.min.js"></script>
+    <!-- bootstrap js -->
 
+    <script src="{{ asset('assets/font_end/')}}/js/bootstrap.min.js"></script>
+    <!-- wow js -->
+    <script src="{{ asset('assets/font_end/')}}/js/wow.min.js"></script>
+    <!-- slider js -->
+    <script src="{{ asset('assets/font_end/')}}/js/slider.js"></script>
+    <script src="{{ asset('assets/font_end/')}}/js/jquery.fancybox.js"></script>
+    <script src="{{ asset('assets/font_end/')}}/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('assets/font_end/')}}/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/font_end/')}}/js/swfobject.min.js"></script>
+    <!-- template main js -->
+    <script src="{{ asset('assets/font_end/')}}/js/main.js?v=1.0.2"></script>
+     <!-- modernizr js -->
+     <script src="{{ asset('assets/font_end/')}}/js/modernizr-2.6.2.min.js"></script>
+    <!-- jquery -->
 
 <!-- JS code -->
 <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->

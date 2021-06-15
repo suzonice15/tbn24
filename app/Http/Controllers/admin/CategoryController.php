@@ -28,14 +28,11 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $user_id=1;//AdminHelper::Admin_user_autherntication();
-        $url=  URL::current();
-
-        if($user_id < 1){
-            //  return redirect('admin');
-              Redirect::to('admin')->with('redirect',$url)->send();
-
-        }
+         $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
 
         $data['main'] = 'Categories';
         $data['active'] = 'All Categories';

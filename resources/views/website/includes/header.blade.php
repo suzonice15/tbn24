@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
+    <meta name="_token" content="{!! csrf_token() !!}" />
 
     <meta name="theme-color" content="#720000">
     <meta name="msapplication-navbutton-color" content="#720000">
@@ -52,7 +53,7 @@ var base_url_main="{{url('/')}}";
     <!-- Twitter Bootstrs CSS -->
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/bootstrap.min.css">
     <!-- Ionicons Fonts Css -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/ionicons.min.css">
     <!-- animate css -->
     <link rel="stylesheet" href="{{ asset('assets/font_end/')}}/css/animate.css">
@@ -72,26 +73,11 @@ var base_url_main="{{url('/')}}";
 
     <!-- Template Javascript Files
             ================================================== -->
-    <!-- modernizr js -->
-    <script src="{{ asset('assets/font_end/')}}/js/modernizr-2.6.2.min.js"></script>
-    <!-- jquery -->
+   
     <script
             src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- owl carouserl js -->
-    <script src="{{ asset('assets/font_end/')}}/js/owl.carousel.min.js"></script>
-    <!-- bootstrap js -->
-
-    <script src="{{ asset('assets/font_end/')}}/js/bootstrap.min.js"></script>
-    <!-- wow js -->
-    <script src="{{ asset('assets/font_end/')}}/js/wow.min.js"></script>
-    <!-- slider js -->
-    <script src="{{ asset('assets/font_end/')}}/js/slider.js"></script>
-    <script src="{{ asset('assets/font_end/')}}/js/jquery.fancybox.js"></script>
-    <script src="{{ asset('assets/font_end/')}}/js/jquery.magnific-popup.min.js"></script>
-    <script src="{{ asset('assets/font_end/')}}/js/jquery.nicescroll.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/font_end/')}}/js/swfobject.min.js"></script>
-    <!-- template main js -->
-    <script src="{{ asset('assets/font_end/')}}/js/main.js?v=1.0.2"></script>
+   
 </head>
 <body>
 <!--
@@ -112,7 +98,7 @@ var base_url_main="{{url('/')}}";
 
             <!-- logo -->
             <div class="navbar-brand">
-                <a href="{{url('/')}}"> <img src="{{url('/')}}/public/logo.png" alt="">
+                <a href="{{url('/')}}"> <img src="{{url('/')}}/public/website_logo.png" alt="">
                 </a>
             </div>
             <!-- /logo -->
@@ -125,11 +111,13 @@ var base_url_main="{{url('/')}}";
                     <li><a href="{{url('/')}}/all-program">Our Program</a></li>
                     <li><a href="{{url('/')}}/today-schedule">Program Schedule</a></li>
                     <li><a href="{{url('/')}}/program-video">Video </a></li>
-                    <li><a href="{{url('/')}}/blog">Blog</a></li>
+                    <!--<li><a href="{{url('/')}}/blog">Blog</a></li>-->
                     <li><a href="{{url('/')}}/about-us">About Us</a></li>
+                    <li><a href="{{url('/')}}/carrier">Carrier</a></li>
                     <li><a href="{{url('/')}}/contact">Contact</a></li>
-                    <li><a href="{{url('/')}}/documents">Documents</a></li>
-                    <li><a href="{{url('/')}}/election">Election</a></li>
+                    <!--<li><a href="{{url('/')}}/documents">Documents</a></li>-->
+                    <!--<li><a href="{{url('/')}}/meet-our-team">Teams</a></li>-->
+                    {{--<li><a href="{{url('/')}}/election">Election</a></li>--}}
 
                     <?php
                         //check session
@@ -139,7 +127,7 @@ var base_url_main="{{url('/')}}";
                     <li><a href="{{url('/')}}/myaccount">My Account</a></li>
 
                     <?php } else { ?>
-                    <li><a href="{{url('/')}}/customer/login">Login</a></li>
+                    <li><a href="{{url('/')}}/ /login">Login</a></li>
 
                 <?php }
 

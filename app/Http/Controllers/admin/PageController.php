@@ -7,6 +7,7 @@ use DB;
 use Image;
 use AdminHelper;
 use URL;
+use Session;
 
 class PageController extends Controller
 {
@@ -21,14 +22,11 @@ class PageController extends Controller
     
     public function index()
     {
-        $user_id=1;//AdminHelper::Admin_user_autherntication();
-        $url=  URL::current();
-
-        if($user_id < 1){
-            //  return redirect('admin');
-            Redirect::to('admin')->with('redirect',$url)->send();
-
-        }
+         $status= Session::get('id');
+         if(!$status)
+         {
+            return redirect('/admin');
+         }
 
         $data['main'] = 'Pages';
         $data['active'] = 'All Pages';
